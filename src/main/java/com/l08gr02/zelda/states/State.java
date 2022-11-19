@@ -10,5 +10,12 @@ public abstract class State<T> {
 
     // constructor
     public State(T model){
+        this.model = model;
+        this.viewer = getViewer();
+        this.controller = getController();
     }
+
+    protected abstract Viewer<T> getViewer();
+
+    protected abstract Controller<T> getController();
 }
