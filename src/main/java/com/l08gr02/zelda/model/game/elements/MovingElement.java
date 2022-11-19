@@ -1,6 +1,6 @@
 package com.l08gr02.zelda.model.game.elements;
 
-public class MovingElement extends Element {
+public abstract class MovingElement extends Element {
     // constructor
     MovingElement(int x, int y){
         super(x, y);
