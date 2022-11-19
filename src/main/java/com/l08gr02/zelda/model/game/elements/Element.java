@@ -2,7 +2,7 @@ package com.l08gr02.zelda.model.game.elements;
 
 import com.l08gr02.zelda.model.Position;
 
-public class Element {
+public abstract class Element {
     private Position pos;
 
     // constructor
