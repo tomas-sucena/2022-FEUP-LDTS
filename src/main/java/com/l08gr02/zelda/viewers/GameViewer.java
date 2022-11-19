@@ -1,14 +1,11 @@
 package com.l08gr02.zelda.viewers;
 
 import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
-import com.l08gr02.zelda.models.elements.Position;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 
@@ -43,7 +40,4 @@ public class GameViewer {
         return graphics;
     }
 
-    public void drawLink(Position position) {
-        screen.setCharacter(10, 10, TextCharacter.fromCharacter('L')[0]);
-    }
 }
