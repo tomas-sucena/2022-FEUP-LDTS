@@ -13,6 +13,7 @@ public class GameViewer {
     private final Screen screen;
     private final TextGraphics graphics;
 
+    // constructor
     public GameViewer(int tWidth, int tHeight) throws IOException {
         // criar o terminal
         Terminal terminal = new DefaultTerminalFactory()
@@ -26,6 +27,16 @@ public class GameViewer {
         screen.startScreen();
         screen.doResizeIfNecessary();
 
+        // criar os graphics
         graphics = screen.newTextGraphics();
+    }
+
+    // methods
+    public Screen getScreen() {
+        return screen;
+    }
+
+    public TextGraphics getGraphics() {
+        return graphics;
     }
 }
