@@ -8,6 +8,7 @@ public class GameplayPresenter {
     private Gameplay model;
     private GameplayViewer viewer;
     private DungeonPresenter dungeonPresenter;
+    public enum ACTION {UP, DOWN, LEFT, RIGHT, QUIT, NOTHING};
 
     // constructor
     public GameplayPresenter(Gameplay model, GameplayViewer viewer) {
@@ -18,6 +19,10 @@ public class GameplayPresenter {
     }
 
     // methods
-
+    public void update(){
+        while (true){
+            dungeonPresenter.update();
+        }
+    }
 
 }

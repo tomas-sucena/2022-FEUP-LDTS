@@ -2,10 +2,15 @@ package com.l08gr02.zelda.viewers;
 
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.graphics.TextGraphics;
+import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
+import com.l08gr02.zelda.models.Gameplay;
+import com.l08gr02.zelda.models.dungeon.Dungeon;
+import com.l08gr02.zelda.presenters.GameplayPresenter;
 import com.l08gr02.zelda.viewers.dungeon.DungeonViewer;
 
 import java.io.IOException;
@@ -48,5 +53,47 @@ public class GameplayViewer {
 
     public DungeonViewer getDungeonViewer() {
         return dungeonViewer;
+    }
+
+    public GameplayPresenter.ACTION readInput() throws IOException {
+        KeyStroke key = screen.pollInput();
+
+        switch (key.getKeyType()){
+            case EOF :
+                return GameplayPresenter.ACTION.QUIT;
+
+            case ArrowUp :
+                return GameplayPresenter.ACTION.UP;
+
+            case ArrowDown :
+                return GameplayPresenter.ACTION.DOWN;
+
+            case ArrowLeft :
+                return GameplayPresenter.ACTION.LEFT;
+
+            case ArrowRight :
+                return GameplayPresenter.ACTION.RIGHT;
+        }
+
+        // ler carateres
+        if (key.getCharacter() == null){
+            return GameplayPresenter.ACTION.NOTHING;
+        }
+
+        switch (key.getCharacter()){
+            case 'w' :
+                return GameplayPresenter.ACTION.UP;
+
+            case 's' :
+                return GameplayPresenter.ACTION.DOWN;
+
+            case 'a' :
+                return GameplayPresenter.ACTION.LEFT;
+
+            case 'd' :
+                return GameplayPresenter.ACTION.RIGHT;
+        }
+
+        return GameplayPresenter.ACTION.NOTHING;
     }
 }

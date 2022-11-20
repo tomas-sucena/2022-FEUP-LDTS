@@ -14,4 +14,9 @@ public class DungeonPresenter extends Presenter<Dungeon> {
 
         linkPresenter = new LinkPresenter(model.getLink(), viewer.getLinkViewer());
     }
+
+    // methods
+    public void update(){
+
+    }
 }

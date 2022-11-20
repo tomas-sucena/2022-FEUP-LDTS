@@ -12,5 +12,6 @@ public class Game {
         GameplayViewer gameplayViewer = new GameplayViewer(400, 160);
 
         GameplayPresenter gameplayPresenter = new GameplayPresenter(gameplay, gameplayViewer);
+        gameplayPresenter.update();
     }
 }
