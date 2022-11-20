@@ -9,4 +9,21 @@ public class LinkPresenter extends Presenter<Link> {
     public LinkPresenter(Link model, LinkViewer viewer){
         super(model, viewer);
     }
+
+    // methods
+    public void moveUp(){
+        model.up(1);
+    }
+
+    public void moveDown(){
+        model.down(1);
+    }
+
+    public void moveLeft(){
+        model.left(1);
+    }
+
+    public void moveRight(){
+        model.right(1);
+    }
 }
