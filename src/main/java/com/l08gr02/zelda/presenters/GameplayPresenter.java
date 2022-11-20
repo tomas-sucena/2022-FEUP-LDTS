@@ -15,4 +15,7 @@ public class GameplayPresenter {
         this.viewer = viewer;
     }
 
+    // methods
+
+
 }
