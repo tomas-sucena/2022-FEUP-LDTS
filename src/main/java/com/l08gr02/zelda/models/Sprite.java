@@ -1,4 +1,4 @@
-package com.l08gr02.zelda.models.elements;
+package com.l08gr02.zelda.models;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -7,7 +7,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class Sprite {
-
     private static BufferedImage spriteSheet;
     private static final int TILE_SIZE = 32;
 
