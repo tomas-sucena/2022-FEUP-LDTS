@@ -1,6 +1,7 @@
 package com.l08gr02.zelda.presenters.dungeon;
 
 import com.l08gr02.zelda.models.dungeon.Dungeon;
+import com.l08gr02.zelda.presenters.GameplayPresenter;
 import com.l08gr02.zelda.presenters.Presenter;
 import com.l08gr02.zelda.presenters.elements.LinkPresenter;
 import com.l08gr02.zelda.viewers.dungeon.DungeonViewer;
@@ -16,7 +17,7 @@ public class DungeonPresenter extends Presenter<Dungeon> {
     }
 
     // methods
-    public void update(){
-
+    public void update(GameplayPresenter.ACTION action){
+        linkPresenter.update(action);
     }
 }

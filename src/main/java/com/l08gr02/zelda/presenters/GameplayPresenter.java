@@ -4,6 +4,8 @@ import com.l08gr02.zelda.models.Gameplay;
 import com.l08gr02.zelda.presenters.dungeon.DungeonPresenter;
 import com.l08gr02.zelda.viewers.GameplayViewer;
 
+import java.io.IOException;
+
 public class GameplayPresenter {
     private Gameplay model;
     private GameplayViewer viewer;
@@ -19,9 +21,9 @@ public class GameplayPresenter {
     }
 
     // methods
-    public void update(){
-        while (true){
-            dungeonPresenter.update();
+    public void update() throws IOException {
+        while (viewer.getAction() != ACTION.QUIT){
+            dungeonPresenter.update(viewer.getAction());
         }
     }
 

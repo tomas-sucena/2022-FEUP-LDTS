@@ -55,7 +55,7 @@ public class GameplayViewer {
         return dungeonViewer;
     }
 
-    public GameplayPresenter.ACTION readInput() throws IOException {
+    public GameplayPresenter.ACTION getAction() throws IOException {
         KeyStroke key = screen.pollInput();
 
         switch (key.getKeyType()){
