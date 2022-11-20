@@ -18,4 +18,8 @@ public class DungeonViewer implements Viewer<Dungeon> {
     public void draw(TextGraphics graphics, Dungeon dungeon){
         linkViewer.draw(graphics, dungeon.getLink());
     }
+
+    public LinkViewer getLinkViewer() {
+        return linkViewer;
+    }
 }

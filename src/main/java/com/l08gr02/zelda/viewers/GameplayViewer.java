@@ -46,4 +46,7 @@ public class GameplayViewer {
         return graphics;
     }
 
+    public DungeonViewer getDungeonViewer() {
+        return dungeonViewer;
+    }
 }
