@@ -1,5 +1,6 @@
 package com.l08gr02.zelda.presenters.elements;
 
+import com.googlecode.lanterna.graphics.TextGraphics;
 import com.l08gr02.zelda.models.elements.Link;
 import com.l08gr02.zelda.presenters.GameplayPresenter;
 import com.l08gr02.zelda.presenters.Presenter;
@@ -28,7 +29,8 @@ public class LinkPresenter extends Presenter<Link> {
         model.right(1);
     }
 
-    public void update(GameplayPresenter.ACTION action){
+    @Override
+    public void update(TextGraphics graphics, GameplayPresenter.ACTION action){
         switch (action){
             case UP : {
                 moveUp();
@@ -46,6 +48,8 @@ public class LinkPresenter extends Presenter<Link> {
                 moveRight();
             }
         }
+
+        viewer.draw(graphics, model);
     }
 
 }

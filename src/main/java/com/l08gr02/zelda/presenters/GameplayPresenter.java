@@ -22,8 +22,16 @@ public class GameplayPresenter {
 
     // methods
     public void update() throws IOException {
-        while (viewer.getAction() != ACTION.QUIT){
-            dungeonPresenter.update(viewer.getAction());
+        while (true){
+            viewer.getScreen().clear();
+
+            ACTION action = viewer.getAction();
+            if (action == ACTION.QUIT){
+                break;
+            }
+
+            dungeonPresenter.update(viewer.getGraphics(), action);
+            viewer.getScreen().refresh();
         }
     }
 

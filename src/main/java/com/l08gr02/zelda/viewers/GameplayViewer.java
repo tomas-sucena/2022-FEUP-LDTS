@@ -55,6 +55,11 @@ public class GameplayViewer {
     public GameplayPresenter.ACTION getAction() throws IOException {
         KeyStroke key = screen.pollInput();
 
+        if (key == null){
+            return GameplayPresenter.ACTION.NOTHING;
+        }
+
+        // ler não carateres
         switch (key.getKeyType()){
             case EOF :
                 return GameplayPresenter.ACTION.QUIT;
@@ -93,4 +98,5 @@ public class GameplayViewer {
 
         return GameplayPresenter.ACTION.NOTHING;
     }
+
 }

@@ -16,6 +16,8 @@ public class DungeonViewer implements Viewer<Dungeon> {
     // methods
     @Override
     public void draw(TextGraphics graphics, Dungeon dungeon){
+        //graphics.
+
         linkViewer.draw(graphics, dungeon.getLink());
     }
 
