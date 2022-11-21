@@ -1,6 +1,7 @@
 package com.l08gr02.zelda.viewers.dungeon;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
+import com.googlecode.lanterna.screen.Screen;
 import com.l08gr02.zelda.models.dungeon.Dungeon;
 import com.l08gr02.zelda.viewers.Viewer;
 import com.l08gr02.zelda.viewers.elements.LinkViewer;
@@ -15,10 +16,8 @@ public class DungeonViewer implements Viewer<Dungeon> {
 
     // methods
     @Override
-    public void draw(TextGraphics graphics, Dungeon dungeon){
-        //graphics.
-
-        linkViewer.draw(graphics, dungeon.getLink());
+    public void draw(Screen screen, Dungeon dungeon){
+        linkViewer.draw(screen, dungeon.getLink());
     }
 
     public LinkViewer getLinkViewer() {
