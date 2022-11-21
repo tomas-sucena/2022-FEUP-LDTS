@@ -1,6 +1,7 @@
 package com.l08gr02.zelda.presenters.dungeon;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
+import com.googlecode.lanterna.screen.Screen;
 import com.l08gr02.zelda.models.dungeon.Dungeon;
 import com.l08gr02.zelda.presenters.GameplayPresenter;
 import com.l08gr02.zelda.presenters.Presenter;
@@ -19,8 +20,8 @@ public class DungeonPresenter extends Presenter<Dungeon> {
 
     // methods
     @Override
-    public void update(TextGraphics graphics, GameplayPresenter.ACTION action){
-        viewer.draw(graphics, model);
-        linkPresenter.update(graphics, action);
+    public void update(Screen screen, GameplayPresenter.ACTION action){
+        viewer.draw(screen, model);
+        linkPresenter.update(screen, action);
     }
 }

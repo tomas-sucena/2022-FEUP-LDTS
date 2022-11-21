@@ -30,7 +30,7 @@ public class GameplayPresenter {
                 break;
             }
 
-            dungeonPresenter.update(viewer.getGraphics(), action);
+            dungeonPresenter.update(viewer.getScreen(), action);
             viewer.getScreen().refresh();
         }
     }

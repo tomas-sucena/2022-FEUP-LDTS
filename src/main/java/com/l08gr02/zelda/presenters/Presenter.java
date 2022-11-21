@@ -1,6 +1,6 @@
 package com.l08gr02.zelda.presenters;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
+import com.googlecode.lanterna.screen.Screen;
 import com.l08gr02.zelda.viewers.Viewer;
 
 public abstract class Presenter<T> {
@@ -14,5 +14,5 @@ public abstract class Presenter<T> {
     }
 
     // methods
-    public abstract void update(TextGraphics graphics, GameplayPresenter.ACTION action);
+    public abstract void update(Screen screen, GameplayPresenter.ACTION action);
 }

@@ -17,12 +17,12 @@ public class Sprite {
 
     private Color[][] pixels;
 
-    public static BufferedImage loadSprite(String type,String file) {
+    public static BufferedImage loadSprite(String type, String file) {
 
         BufferedImage sprite = null;
 
         try {
-            sprite = ImageIO.read(new File("../../../../resources/models/" + type + "/" + file + ".png"));
+            sprite = ImageIO.read(new File("src/main/resources/models/" + type + "/" + file + ".png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -43,6 +43,7 @@ public class Sprite {
         BufferedImage sprite = getSprite(xGrid, yGrid, type, file);
         height = sprite.getHeight();
         width = sprite.getWidth();
+        pixels = new Color[height][width];
         for(int i = 0; i < height; i++){
             for(int j = 0; j < width; j++){
                 pixels[i][j] = new Color(sprite.getRGB(i,j));
