@@ -43,7 +43,7 @@ public class LinkPresenter extends Presenter<Link> {
                 break;
             }
             case RIGHT : {
-                moveDown();
+                moveRight();
             }
         }
     }
