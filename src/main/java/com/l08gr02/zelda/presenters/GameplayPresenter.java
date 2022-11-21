@@ -23,13 +23,12 @@ public class GameplayPresenter {
     // methods
     public void update() throws IOException {
         while (true){
-            viewer.getScreen().clear();
-
             ACTION action = viewer.getAction();
             if (action == ACTION.QUIT){
                 break;
             }
 
+            viewer.getScreen().clear();
             dungeonPresenter.update(viewer.getGraphics(), action);
             viewer.getScreen().refresh();
         }
