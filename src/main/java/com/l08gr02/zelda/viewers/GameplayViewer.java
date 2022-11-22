@@ -36,7 +36,7 @@ public class GameplayViewer {
         graphics = screen.newTextGraphics();
 
         // desenhar o mapa
-        dungeonViewer = new DungeonViewer();
+        dungeonViewer = new DungeonViewer(tWidth, tHeight);
     }
 
     // methods
