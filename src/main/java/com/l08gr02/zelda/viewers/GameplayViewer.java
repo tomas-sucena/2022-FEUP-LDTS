@@ -75,6 +75,9 @@ public class GameplayViewer {
 
             case ArrowRight :
                 return GameplayPresenter.ACTION.RIGHT;
+
+            case Escape :
+                return GameplayPresenter.ACTION.QUIT;
         }
 
         // ler carateres
@@ -94,6 +97,9 @@ public class GameplayViewer {
 
             case 'd' :
                 return GameplayPresenter.ACTION.RIGHT;
+
+            case 'q':
+                return GameplayPresenter.ACTION.QUIT;
         }
 
         return GameplayPresenter.ACTION.NOTHING;
