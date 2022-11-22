@@ -7,7 +7,7 @@ import com.l08gr02.zelda.viewers.GameplayViewer;
 import java.io.IOException;
 
 public class GameplayPresenter {
-    private Gameplay model;
+    private final Gameplay model;
     private GameplayViewer viewer;
     private DungeonPresenter dungeonPresenter;
     public enum ACTION {UP, DOWN, LEFT, RIGHT, QUIT, NOTHING};
@@ -25,6 +25,7 @@ public class GameplayPresenter {
         while (true){
             ACTION action = viewer.getAction();
             if (action == ACTION.QUIT){
+                viewer.getScreen().close();
                 break;
             }
 
