@@ -17,6 +17,7 @@ public class Sprite {
 
     private Color[][] pixels;
 
+    // methods
     public static BufferedImage loadSprite(String type, String file) {
 
         BufferedImage sprite = null;
