@@ -26,8 +26,6 @@ public class DungeonViewer implements Viewer<Dungeon> {
         graphics.setBackgroundColor(TextColor.Factory.fromString("#336699"));
         graphics.fillRectangle(new TerminalPosition(0, 0),
                 new TerminalSize(tWidth, tHeight), ' ');
-
-        linkViewer.draw(graphics, dungeon.getLink());
     }
 
     public LinkViewer getLinkViewer() {

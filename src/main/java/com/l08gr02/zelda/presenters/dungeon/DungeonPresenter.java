@@ -20,7 +20,7 @@ public class DungeonPresenter extends Presenter<Dungeon> {
     // methods
     @Override
     public void update(TextGraphics graphics, GameplayPresenter.ACTION action){
-        viewer.draw(graphics, model);
         linkPresenter.update(graphics, action);
+        viewer.draw(graphics, model);
     }
 }
