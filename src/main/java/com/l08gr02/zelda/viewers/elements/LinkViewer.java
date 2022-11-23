@@ -22,11 +22,11 @@ public class LinkViewer implements Viewer<Link> {
     // method
     @Override
     public void draw(TextGraphics graphics, Link link){
-        int x;
         int y = link.getPosition().getY() - 32;
         Color pixels[][] = sprite.getPixels();
+
         for(int i = 0; i < sprite.getHeight(); i++){
-            x = link.getPosition().getX();
+            int x = link.getPosition().getX();
             for(int j = 0; j < sprite.getWidth(); j++){
                 graphics.setCharacter(y, x, new TextCharacter(' ').withBackgroundColor(new TextColor.RGB(pixels[i][j].getRed(), pixels[i][j].getBlue(), pixels[i][j].getGreen())));
                 x++;
@@ -34,4 +34,5 @@ public class LinkViewer implements Viewer<Link> {
             y++;
         }
     }
+
 }
