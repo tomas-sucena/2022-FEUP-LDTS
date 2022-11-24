@@ -24,6 +24,7 @@ This project was developed by Andreia Silva (up202108769@up.pt), Gonçalo Nadais
 - **The Pattern.** 
 
 We have applied the Game Loop pattern.
+
 "A game loop runs continuously during gameplay. Each turn of the loop, it processes user input without blocking, updates the game state, and renders the game. It tracks the passage of time to control the rate of gameplay."
 
 - **Implementation.** Show how the pattern roles, operations and associations were mapped to the concrete design classes. Illustrate it with a UML class diagram, and refer to the corresponding source code with links to the relevant lines (these should be [relative links](https://help.github.com/en/articles/about-readmes#relative-links-and-image-paths-in-readme-files). When doing this, always point to the latest version of the code.
@@ -85,10 +86,6 @@ A way to improve the code would be to move the `isPlatformSegmentSolid()` method
 - Link to mutation testing report.
 
 ### SELF-EVALUATION
-
-> In this section describe how the work regarding the project was divided between the students. In the event that members of the group do not agree on a work distribution, the group should send an email to the teacher explaining the disagreement.
-
-**Example**:
 
 - Andreia Silva: 33.3%
 - Gonçalo Nadais de Pinho: 33.3%
