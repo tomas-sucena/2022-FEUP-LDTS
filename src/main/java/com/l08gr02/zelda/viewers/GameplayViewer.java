@@ -7,10 +7,14 @@ import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
+import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
 import com.l08gr02.zelda.presenters.GameplayPresenter;
 import com.l08gr02.zelda.viewers.dungeon.DungeonViewer;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
+
 
 public class GameplayViewer {
     private final Screen screen;
@@ -21,9 +25,15 @@ public class GameplayViewer {
     public GameplayViewer(int tWidth, int tHeight) throws IOException {
         TerminalSize tSize = new TerminalSize(tWidth, tHeight);
 
-        // criar o terminal
+        // Criar o terminal
         Terminal terminal = new DefaultTerminalFactory()
                 .setInitialTerminalSize(tSize).createTerminal();
+        ((AWTTerminalFrame)terminal).addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                e.getWindow().dispose();
+            }
+        });
 
         // criar o screen
         screen = new TerminalScreen(terminal);
