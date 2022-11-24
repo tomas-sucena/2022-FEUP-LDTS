@@ -1,4 +1,3 @@
-/* ADAPTADO DO TESTE DO PROF ANDRÉ RESTIVO */
 package com.l08gr02.zelda.models;
 
 import com.l08gr02.zelda.models.elements.Position;
@@ -7,6 +6,7 @@ import net.jqwik.api.Property;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/* ADAPTADO DE UM EXEMPLO DO PROF ANDRÉ RESTIVO */
 class PositionTest {
     private Position position;
 
