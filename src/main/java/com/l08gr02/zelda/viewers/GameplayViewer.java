@@ -61,23 +61,17 @@ public class GameplayViewer {
 
         // ler não carateres
         switch (key.getKeyType()){
-            case EOF :
-                return GameplayPresenter.ACTION.QUIT;
+            case EOF -> {return GameplayPresenter.ACTION.QUIT;}
 
-            case ArrowUp :
-                return GameplayPresenter.ACTION.UP;
+            case ArrowUp -> {return GameplayPresenter.ACTION.UP;}
 
-            case ArrowDown :
-                return GameplayPresenter.ACTION.DOWN;
+            case ArrowDown -> {return GameplayPresenter.ACTION.DOWN;}
 
-            case ArrowLeft :
-                return GameplayPresenter.ACTION.LEFT;
+            case ArrowLeft -> {return GameplayPresenter.ACTION.LEFT;}
 
-            case ArrowRight :
-                return GameplayPresenter.ACTION.RIGHT;
+            case ArrowRight -> {return GameplayPresenter.ACTION.RIGHT;}
 
-            case Escape :
-                return GameplayPresenter.ACTION.QUIT;
+            case Escape -> {return GameplayPresenter.ACTION.QUIT;}
         }
 
         // ler carateres
@@ -86,20 +80,15 @@ public class GameplayViewer {
         }
 
         switch (key.getCharacter()){
-            case 'w' :
-                return GameplayPresenter.ACTION.UP;
+            case 'w' -> {return GameplayPresenter.ACTION.UP;}
 
-            case 's' :
-                return GameplayPresenter.ACTION.DOWN;
+            case 's' -> {return GameplayPresenter.ACTION.DOWN;}
 
-            case 'a' :
-                return GameplayPresenter.ACTION.LEFT;
+            case 'a' -> {return GameplayPresenter.ACTION.LEFT;}
 
-            case 'd' :
-                return GameplayPresenter.ACTION.RIGHT;
+            case 'd' -> {return GameplayPresenter.ACTION.RIGHT;}
 
-            case 'q':
-                return GameplayPresenter.ACTION.QUIT;
+            case 'q'-> {return GameplayPresenter.ACTION.QUIT;}
         }
 
         return GameplayPresenter.ACTION.NOTHING;

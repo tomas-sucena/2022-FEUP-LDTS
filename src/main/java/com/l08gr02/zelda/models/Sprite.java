@@ -19,7 +19,6 @@ public class Sprite {
 
     // methods
     public static BufferedImage loadSprite(String type, String file) {
-
         BufferedImage sprite = null;
 
         try {

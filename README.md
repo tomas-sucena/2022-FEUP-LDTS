@@ -7,14 +7,15 @@ After saving Hyrule once again, Link decides to take a well-earned nap. However,
 
 This project was developed by Andreia Silva (up202108769@up.pt), Gonçalo Nadais de Pinho (up202108672@up.pt) and Tomás Sucena Lopes (up202108701@up.pt) for LDTS 2022⁄23.
 
+-----
 ### IMPLEMENTED FEATURES
 
 - **Movement** - Link can move in four directions: up (ARROW UP/W), down (ARROW DOWN/S), left (ARROW LEFT/A) and right (ARROW RIGHT/D).
-
+-----
 ### PLANNED FEATURES
 
 - **Attack** - When you press the SPACE bar, Link will fiercely swing his sword. Use this to defend yourself against the Exceptions.
-
+-----
 ### DESIGN
 
 > This section should be organized in different subsections, each describing a different design problem that you had to solve during the project. Each subsection should be organized in four different parts:
