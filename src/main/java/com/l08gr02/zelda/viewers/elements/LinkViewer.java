@@ -16,14 +16,14 @@ public class LinkViewer implements Viewer<Link> {
     // constructor
     public LinkViewer(){
         sprite = new Sprite();
-        sprite.setPixels(0,0,"Link","knight");
+        sprite.setPixels(0,0,"Link","retro");
     }
 
     // method
     @Override
     public void draw(TextGraphics graphics, Link link){
         int x = link.getPosition().getX();
-        int y = link.getPosition().getY() - 32;
+        int y = link.getPosition().getY();
 
         Color pixels[][] = sprite.getPixels();
 

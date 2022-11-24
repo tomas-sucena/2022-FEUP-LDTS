@@ -10,7 +10,7 @@ This project was developed by Andreia Silva (up202108769@up.pt), Gonçalo Nadais
 -----
 ### IMPLEMENTED FEATURES
 
-- **Movement** - Link can move in four directions: up (ARROW UP/W), down (ARROW DOWN/S), left (ARROW LEFT/A) and right (ARROW RIGHT/D).
+- **Movement** - Link can move in four directions: up (:arrow_up: or W), down (ARROW DOWN/S), left (ARROW LEFT/A) and right (ARROW RIGHT/D).
 -----
 ### PLANNED FEATURES
 

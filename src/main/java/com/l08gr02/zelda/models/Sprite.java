@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
 
 public class Sprite {
     private static BufferedImage spriteSheet;
-    private static final int TILE_SIZE = 32;
+    private static final int TILE_SIZE = 24;
 
     private int height;
 
