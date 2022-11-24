@@ -10,11 +10,12 @@ This project was developed by Andreia Silva (up202108769@up.pt), Gonçalo Nadais
 -----
 ### IMPLEMENTED FEATURES
 
-- **Movement** - Link can move in four directions: up (:arrow_up: or W), down (ARROW DOWN/S), left (ARROW LEFT/A) and right (ARROW RIGHT/D).
+- **Movement** - Link can move in four directions: up (:arrow_up_small: or W), down (:arrow_down_small: or S), left (:arrow_backward: or A) and right (:arrow_forward: or D).
 -----
 ### PLANNED FEATURES
 
-- **Attack** - When you press the SPACE bar, Link will fiercely swing his sword. Use this to defend yourself against the Exceptions.
+- **Attack:crossed_swords:** - When you press the SPACE bar, Link will fiercely swing his sword. Use this to defend yourself against the Exceptions.
+- **Shoot:bow_and_arrow:** - Press the left mouse button to make Link shoot his trusty bow. His arrows may be limited, but they sure are lethal!
 -----
 ### DESIGN
 
