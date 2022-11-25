@@ -27,6 +27,7 @@ public class PresenterTest {
 
         // ASSERT
         Mockito.verify(graphics.setBackgroundColor(TextColor.Factory.fromString("#336699")), Mockito.times(1));
+        Mockito.verify(graphics.fillRectangle(new TerminalPosition(0, 0),new TerminalSize(tWidth, tHeight), ' '), Mockito.times(1));
     }
 
 }
