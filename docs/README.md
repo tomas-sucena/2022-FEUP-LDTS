@@ -49,9 +49,9 @@ As such, we applied the Composite pattern, which, succinctly, allows us to view 
 
 Classes that share properties inherit/implement a superclass/interface, respectively. For instance:
 
-- **Models:** All elements inherit the Element abstract class. Moreover, elements that can move inherit the MovingElement abstract class, which in turn also extends Elements.
-- **Presenters:** The dungeon and element presenters both extend the Presenter abstract class. This class defines the abstract method ```update(graphics, action)```
-- **Viewers:** The dungeon and element viewers implement the Viewer interface, which defines the ```draw(graphics, model)``` function
+- **Models -** All elements inherit the Element abstract class. Moreover, elements that can move inherit the MovingElement abstract class, which in turn also extends Elements.
+- **Presenters -** The dungeon and element presenters both extend the Presenter abstract class. This class defines the abstract method ```update(graphics, action)```
+- **Viewers -** The dungeon and element viewers implement the Viewer interface, which defines the ```draw(graphics, model)``` function
 
 The classes that serve as the basis of our Composite pattern can be found in the following files:
 
@@ -67,7 +67,7 @@ Using the Composite pattern, we have achieved the following:
 - Our code is easier to interpret, as the purpose of most classes can be pinpointed if we examine the classes it extends or the interfaces it implements.
 - Unit testing is more efficient, as we can test several classes at a time (provided they share the same properties)
 
-##
+###
 
 #### THE SOLID PRINCIPLES MUST BE RESPECTED
 
@@ -85,33 +85,22 @@ To find out more about MVP, click [here](https://www.geeksforgeeks.org/mvp-model
 
 **Implementation**
 
-Classes that share methods inherit/implement a superclass/interface, respectively. For instance:
+Classes are divided in one of three subtypes:
 
-- **Models:** All elements inherit the Element abstract class. Moreover, elements that can move inherit the MovingElement abstract class, which in turn also extends Elements.
-- **Presenters:** The dungeon and element presenters both extend the Presenter abstract class. This class defines the abstract method ```update(graphics, action)```
-- **Viewers:** The dungeon and element viewers implement the Viewer interface, which defines the ```draw(graphics, model)``` function
-
-The classes that serve as the basis of our Composite pattern can be found in the following files:
-
-- [Element](https://github.com/FEUP-LDTS-2022/project-l08gr02/blob/master/src/main/java/com/l08gr02/zelda/models/elements/Element.java) (abstract class)
-- [MovingElement](https://github.com/FEUP-LDTS-2022/project-l08gr02/blob/master/src/main/java/com/l08gr02/zelda/models/elements/MovingElement.java) (abstract class)
-- [Presenter](https://github.com/FEUP-LDTS-2022/project-l08gr02/blob/master/src/main/java/com/l08gr02/zelda/presenters/Presenter.java) (abstract class)
-- [Viewer](https://github.com/FEUP-LDTS-2022/project-l08gr02/blob/master/src/main/java/com/l08gr02/zelda/viewers/Viewer.java) (interface)
-
-In addition, the UML class diagram above further illustrates how we approached this design pattern.
+- **Models -** Contain the data of the game and functions that can alter it
+- **Presenter -** Function as the "*middle man*" between the Models and the Viewers. They are responsible for appropriately calling all methods defined in the Models (to update the game data) and the Viewers (to update the GUI)
+- **Viewers:** According to the current data (which is provided to them by the Presenters), display the game on the screen
 
 **Consequences**
 
-Using the Composite pattern, we have achieved the following:
+The following benefits were made possible by using the MVP pattern:
 
-- Our code is easier to interpret, as the purpose of most classes can be pinpointed if we examine the classes it extends or the interfaces it implements.
-- Unit testing is more efficient, as we can test several classes at a time (provided they share the same properties)
+- It is significantly easier to add new features
+- Refactoring our code is more accessible
 
 ------
 
 ### TESTING
-
-- Screenshot of coverage report.
 
 ------
 
