@@ -16,8 +16,8 @@ public class PresenterTest {
     @Test
     void DungeonPresenterTest(){
         // ARRANGE
-        Dungeon model = Mockito.mock(Dungeon.class);
-        DungeonViewer viewer = Mockito.mock(DungeonViewer.class);
+        Dungeon model = new Dungeon();
+        DungeonViewer viewer = new DungeonViewer(400,160;
 
         presenter = new DungeonPresenter(model, viewer);
         graphics = Mockito.mock(TextGraphics.class);
@@ -26,7 +26,7 @@ public class PresenterTest {
         presenter.update(graphics, GameplayPresenter.ACTION.NOTHING);
 
         // ASSERT
-        Mockito.verify(viewer, Mockito.times(1)).draw(graphics, model);
+        Mockito.verify(graphics.setBackgroundColor(TextColor.Factory.fromString("#336699")), Mockito.times(1));
     }
 
 }
