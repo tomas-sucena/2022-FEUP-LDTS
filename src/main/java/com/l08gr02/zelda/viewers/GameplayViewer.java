@@ -15,6 +15,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
 
+
 public class GameplayViewer {
     private final Screen screen;
     private final TextGraphics graphics;
