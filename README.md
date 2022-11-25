@@ -12,7 +12,7 @@ This project was developed by Andreia Silva (up202108769@up.pt), Gonçalo Nadais
 
 The following UML diagram represents how the various game classes interact with each other:
 
-![img](https://github.com/FEUP-LDTS-2022/project-l08gr02/tree/master/docs/christmas_pika.png)
+![alt text](https://github.com/FEUP-LDTS-2022/project-l08gr02/tree/master/docs/christmas_pika.png)
 
 -----
 ### IMPLEMENTED FEATURES
