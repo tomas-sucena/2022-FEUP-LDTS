@@ -17,7 +17,7 @@ public class PresenterTest {
     void DungeonPresenterTest(){
         // ARRANGE
         Dungeon model = new Dungeon();
-        DungeonViewer viewer = new DungeonViewer(400,160;
+        DungeonViewer viewer = new DungeonViewer(400,160);
 
         presenter = new DungeonPresenter(model, viewer);
         graphics = Mockito.mock(TextGraphics.class);
