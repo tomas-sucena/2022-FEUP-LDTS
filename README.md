@@ -8,9 +8,12 @@ After saving Hyrule once again, Link decides to take a well-earned nap. However,
 This project was developed by Andreia Silva (up202108769@up.pt), Gonçalo Nadais de Pinho (up202108672@up.pt) and Tomás Sucena Lopes (up202108701@up.pt) for LDTS 2022⁄23.
 
 -----
-###UML Class Diagram
+### UML Class Diagram
 
-The following UML diagram represents how the various game classes interact with each other.
+The following UML diagram represents how the various game classes interact with each other:
+
+![img](https://github.com/FEUP-LDTS-2022/project-l08gr02/tree/master/docs/christmas_pika.png)
+
 -----
 ### IMPLEMENTED FEATURES
 
@@ -53,9 +56,7 @@ The classes that serve as the basis of our Composite pattern can be found in the
 - [Presenter](https://github.com/FEUP-LDTS-2022/project-l08gr02/blob/master/src/main/java/com/l08gr02/zelda/presenters/Presenter.java) (abstract class)
 - [Viewer](https://github.com/FEUP-LDTS-2022/project-l08gr02/blob/master/src/main/java/com/l08gr02/zelda/viewers/Viewer.java) (interface)
 
-In addition, the UML diagram below further illustrates how we approached this design pattern.
-
-![img](https://www.fe.up.pt/~arestivo/page/img/examples/lpoo/state.svg)
+In addition, the UML class diagram above further illustrates how we approached this design pattern.
 
 **Consequences**
 
@@ -63,8 +64,6 @@ Using the Composite pattern, we have achieved the following:
 
 - Our code is easier to interpret, as the purpose of most classes can be pinpointed if we examine the classes it extends or the interfaces it implements.
 - Unit testing is more efficient, as we can test several classes at a time (provided they share the same properties)
-
-#### KNOWN CODE SMELLS AND REFACTORING SUGGESTIONS
 
 ------
 
@@ -77,7 +76,7 @@ Using the Composite pattern, we have achieved the following:
 
 ### SELF-EVALUATION
 
-- Andreia Silva: TBD
-- Gonçalo Nadais de Pinho: TBD
-- Tomás Sucena Lopes: TBD
+- **Andreia Silva:** TBD
+- **Gonçalo Nadais de Pinho:** TBD
+- **Tomás Sucena Lopes:** TBD
 
