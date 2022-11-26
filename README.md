@@ -12,4 +12,4 @@ This project was developed by Andreia Silva (up202108769@up.pt), Gonçalo Nadais
 
 The following UML diagram represents how the various game classes interact with each other:
 
-![UML Class diagram](docs/UML.png)
+![UML Class diagram](docs/images/UML.png)

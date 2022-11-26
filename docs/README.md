@@ -12,7 +12,7 @@ This project was developed by Andreia Silva (up202108769@up.pt), Gonçalo Nadais
 
 The following UML diagram represents how the various game classes interact with each other:
 
-![UML Class diagram](UML.png)
+![UML Class diagram](images/UML.png)
 
 -----
 ### IMPLEMENTED FEATURES
@@ -67,7 +67,7 @@ Using the Composite pattern, we have achieved the following:
 - Our code is easier to interpret, as the purpose of most classes can be pinpointed if we examine the classes it extends or the interfaces it implements.
 - Unit testing is more efficient, as we can test several classes at a time (provided they share the same properties)
 
-###
+##
 
 #### THE SOLID PRINCIPLES MUST BE RESPECTED
 
@@ -81,7 +81,7 @@ We applied the MVP (Model-View-Presenter) architectural pattern, wherein the Pre
 
 To find out more about MVP, click [here](https://www.geeksforgeeks.org/mvp-model-view-presenter-architecture-pattern-in-android-with-example/).
 
-![MVP illustrated](<img src="https://github.com/FEUP-LDTS-2022/project-l08gr02/tree/master/docs/MVP.png" width="200" />)
+![MVP illustrated](images/MVP.png)
 
 **Implementation**
 
@@ -89,7 +89,7 @@ Classes are divided in one of three subtypes:
 
 - **Models -** Contain the data of the game and functions that can alter it
 - **Presenter -** Function as the "*middle man*" between the Models and the Viewers. They are responsible for appropriately calling all methods defined in the Models (to update the game data) and the Viewers (to update the GUI)
-- **Viewers:** According to the current data (which is provided to them by the Presenters), display the game on the screen
+- **Viewers:** Display the game on the screen, according to the current data (which is provided to them by the Presenters)
 
 **Consequences**
 
