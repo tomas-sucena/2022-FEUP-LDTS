@@ -87,7 +87,7 @@ To find out more about MVP, click [here](https://www.geeksforgeeks.org/mvp-model
 
 Classes are divided in one of three subtypes:
 
-- **Models -** Contain the data of the game and functions that can alter it
+- **Models -** Contain the data of the game and methods that can alter it
 - **Presenter -** Function as the "*middle man*" between the Models and the Viewers. They are responsible for appropriately calling all methods defined in the Models (to update the game data) and the Viewers (to update the GUI)
 - **Viewers:** Display the game on the screen, according to the current data (which is provided to them by the Presenters)
 
