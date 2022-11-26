@@ -9,13 +9,13 @@ This project was developed by Andreia Silva (up202108769@up.pt), Gonçalo Nadais
 
 -----
 
-### Controls🎮
+## Controls🎮
 
 - **Arrow keys** OR **WASD -** Move
 
 -----
 
-### UML Class Diagram
+## UML Class Diagram
 
 The following UML diagram represents how the various game classes interact with each other:
 
