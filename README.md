@@ -8,6 +8,12 @@ After saving Hyrule once again, Link decides to take a well-earned nap. However,
 This project was developed by Andreia Silva (up202108769@up.pt), Gonçalo Nadais de Pinho (up202108672@up.pt) and Tomás Sucena Lopes (up202108701@up.pt) for LDTS 2022⁄23.
 
 -----
+
+### Controls🎮
+-**Arrow keys** OR **WASD** - Move
+
+-----
+
 ### UML Class Diagram
 
 The following UML diagram represents how the various game classes interact with each other:
