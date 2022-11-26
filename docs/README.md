@@ -35,6 +35,38 @@ The following UML diagram represents how the various game classes interact with 
 
 > For further insight into our implementation of the design patterns, please consult the UML Class diagram above
 
+#### THE SOLID PRINCIPLES MUST BE RESPECTED
+
+**Problem in Context**
+
+In 2000, Robert C. Martin published five design principles that would revolutionise object-oriented programming as we know it: the SOLID principles. Among many other benefits, applying these principles increases code reusability and assures the structure of a project does not collapse every time a new feature is added. Because of this, we had to brainstorm a way to structure our code without defying SOLID.
+
+**The Pattern**
+
+We applied the MVP (Model-View-Presenter) architectural pattern, wherein the Presenter establishes the connection between the data (Model) and the *User Interface* (Viewers). It is a variation of the more widely known MVC (Model-View-Controller) pattern.
+
+To find out more about MVP, click [here](https://www.geeksforgeeks.org/mvp-model-view-presenter-architecture-pattern-in-android-with-example/).
+
+![MVP illustrated](images/MVP.png)
+
+**Implementation**
+
+Classes are divided in three subtypes:
+
+- **Models -** Contain the data of the game and methods that can alter it
+- **Presenter -** Function as the "*middle man*" between the Models and the Viewers. They are responsible for appropriately calling all methods defined in the Models (to update the game data) and the Viewers (to update the GUI), as well as handing data to the Viewers
+- **Viewers:** Display the game on the screen, according to the current data (which is provided to them by the Presenters)
+
+**Consequences**
+
+The following benefits were made possible by using the MVP pattern:
+
+- It is significantly easier to add new features, considering that we only need to focus on which category it falls into (Model, Viewer or Presenter)
+- Refactoring our code is more accessible
+
+
+##
+
 #### ALL ELEMENTS SHOULD BEHAVE SIMILARLY
 
 **Problem in Context**
@@ -66,37 +98,6 @@ Using the Composite pattern, we have achieved the following:
 
 - Our code is easier to interpret, as the purpose of most classes can be pinpointed if we examine the classes it extends or the interfaces it implements.
 - Unit testing is more efficient, as we can test several classes at a time (provided they share the same properties)
-
-##
-
-#### THE SOLID PRINCIPLES MUST BE RESPECTED
-
-**Problem in Context**
-
-In 2000, Robert C. Martin published five design principles that would revolutionise object-oriented programming as we know it: the SOLID principles. Among many other benefits, applying these principles increases code reusability and assures the structure of a project does not collapse every time a new feature is added. Because of this, we had to brainstorm a way to structure our code without defying SOLID.
-
-**The Pattern**
-
-We applied the MVP (Model-View-Presenter) architectural pattern, wherein the Presenter establishes the connection between the data (Model) and the *User Interface* (Viewers). It is a variation of the more widely known MVC (Model-View-Controller) pattern.
-
-To find out more about MVP, click [here](https://www.geeksforgeeks.org/mvp-model-view-presenter-architecture-pattern-in-android-with-example/).
-
-![MVP illustrated](images/MVP.png)
-
-**Implementation**
-
-Classes are divided in one of three subtypes:
-
-- **Models -** Contain the data of the game and functions that can alter it
-- **Presenter -** Function as the "*middle man*" between the Models and the Viewers. They are responsible for appropriately calling all methods defined in the Models (to update the game data) and the Viewers (to update the GUI)
-- **Viewers:** Display the game on the screen, according to the current data (which is provided to them by the Presenters)
-
-**Consequences**
-
-The following benefits were made possible by using the MVP pattern:
-
-- It is significantly easier to add new features
-- Refactoring our code is more accessible
 
 ------
 
