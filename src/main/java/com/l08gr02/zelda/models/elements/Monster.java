@@ -1,10 +1,10 @@
 package com.l08gr02.zelda.models.elements;
 
-public class Link extends MovingElement {
+public class Monster extends MovingElement {
     // constructor
-    public Link(int x, int y){
+    public Monster(int x, int y){
         super(x, y);
-        hearts = 3;
+        hearts = 2;
     }
 
     // methods

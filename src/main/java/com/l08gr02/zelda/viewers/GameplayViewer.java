@@ -71,7 +71,7 @@ public class GameplayViewer {
 
         // ler não carateres
         switch (key.getKeyType()){
-            case EOF -> {return GameplayPresenter.ACTION.QUIT;}
+            case EOF, Escape -> {return GameplayPresenter.ACTION.QUIT;}
 
             case ArrowUp -> {return GameplayPresenter.ACTION.UP;}
 
@@ -81,7 +81,6 @@ public class GameplayViewer {
 
             case ArrowRight -> {return GameplayPresenter.ACTION.RIGHT;}
 
-            case Escape -> {return GameplayPresenter.ACTION.QUIT;}
         }
 
         // ler carateres
