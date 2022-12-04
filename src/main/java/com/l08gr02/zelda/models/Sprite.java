@@ -8,8 +8,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class Sprite {
-    private static BufferedImage spriteSheet;
-    private static final int TILE_SIZE = 24;
+    private final BufferedImage spriteSheet;
+    private final int TILE_SIZE;
 
     private int height;
 
@@ -17,8 +17,14 @@ public class Sprite {
 
     private Color[][] pixels;
 
+    // constructor
+    public Sprite(int TILE_SIZE, String type, String file){
+        this.TILE_SIZE = TILE_SIZE;
+        spriteSheet = loadSprite(type, file);
+    }
+
     // methods
-    public static BufferedImage loadSprite(String type, String file) {
+    public BufferedImage loadSprite(String type, String file) {
         BufferedImage sprite = null;
 
         try {
@@ -30,17 +36,12 @@ public class Sprite {
         return sprite;
     }
 
-    public static BufferedImage getSprite(int xGrid, int yGrid, String type, String file) {
-
-        if (spriteSheet == null) {
-            spriteSheet = loadSprite(type,file);
-        }
-
+    public BufferedImage getSprite(int xGrid, int yGrid) {
         return spriteSheet.getSubimage(xGrid * TILE_SIZE, yGrid * TILE_SIZE, TILE_SIZE, TILE_SIZE);
     }
 
-    public void setPixels(int xGrid, int yGrid, String type, String file){
-        BufferedImage sprite = getSprite(xGrid, yGrid, type, file);
+    public void setPixels(int xGrid, int yGrid){
+        BufferedImage sprite = getSprite(xGrid, yGrid);
         height = sprite.getHeight();
         width = sprite.getWidth();
         pixels = new Color[height][width];

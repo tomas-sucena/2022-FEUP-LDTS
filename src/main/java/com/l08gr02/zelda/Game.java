@@ -4,10 +4,6 @@ import com.l08gr02.zelda.models.Gameplay;
 import com.l08gr02.zelda.presenters.GameplayPresenter;
 import com.l08gr02.zelda.viewers.GameplayViewer;
 
-import java.awt.*;
-import java.io.IOException;
-import java.net.URISyntaxException;
-
 public class Game {
     public static void main(String[] args) {
         try {
@@ -17,12 +13,8 @@ public class Game {
             GameplayPresenter gameplayPresenter = new GameplayPresenter(gameplay, gameplayViewer);
             gameplayPresenter.update();
         }
-        catch (IOException e){
+        catch (Exception e){
             e.printStackTrace();
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        } catch (FontFormatException e) {
-            throw new RuntimeException(e);
         }
     }
 

@@ -13,8 +13,8 @@ public class LinkViewer implements Viewer<Link> {
 
     // constructor
     public LinkViewer(){
-        sprite = new Sprite();
-        sprite.setPixels(0,0,"Link","retro");
+        sprite = new Sprite(24, "Link", "retro");
+        sprite.setPixels(0,0);
     }
 
     // method

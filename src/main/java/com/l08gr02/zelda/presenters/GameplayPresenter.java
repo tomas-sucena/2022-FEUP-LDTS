@@ -6,6 +6,8 @@ import com.l08gr02.zelda.viewers.GameplayViewer;
 
 import java.io.IOException;
 
+import static java.lang.Thread.sleep;
+
 public class GameplayPresenter {
     private final Gameplay model;
     private GameplayViewer viewer;
@@ -21,7 +23,7 @@ public class GameplayPresenter {
     }
 
     // methods
-    public void update() throws IOException {
+    public void update() throws IOException, InterruptedException {
         while (true){
             ACTION action = viewer.getAction();
             if (action == ACTION.QUIT){
@@ -32,6 +34,8 @@ public class GameplayPresenter {
             viewer.getScreen().clear();
             dungeonPresenter.update(viewer.getGraphics(), action);
             viewer.getScreen().refresh();
+
+            sleep(10);
         }
     }
 
