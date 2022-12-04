@@ -31,22 +31,17 @@ public class LinkPresenter extends Presenter<Link> {
 
     @Override
     public void update(TextGraphics graphics, GameplayPresenter.ACTION action){
+        LinkViewer viewer_v2 = (LinkViewer) viewer;
+        viewer_v2.setSprite(action);
+
         switch (action){
-            case UP : {
-                moveUp();
-                break;
-            }
-            case DOWN : {
-                moveDown();
-                break;
-            }
-            case LEFT : {
-                moveLeft();
-                break;
-            }
-            case RIGHT : {
-                moveRight();
-            }
+            case UP -> {moveUp();}
+
+            case DOWN -> {moveDown();}
+
+            case LEFT -> {moveLeft();}
+
+            case RIGHT -> {moveRight();}
         }
 
         viewer.draw(graphics, model);

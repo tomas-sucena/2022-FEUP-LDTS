@@ -4,22 +4,24 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.l08gr02.zelda.models.Sprite;
 import com.l08gr02.zelda.models.elements.Link;
+import com.l08gr02.zelda.presenters.GameplayPresenter;
 import com.l08gr02.zelda.viewers.Viewer;
 
 import java.awt.*;
 
 public class LinkViewer implements Viewer<Link> {
     private Sprite sprite;
+    private int xGrid = 0, yGrid = 1;
 
     // constructor
     public LinkViewer(){
         sprite = new Sprite(24, "Link", "retro");
-        sprite.setPixels(0,0);
+        sprite.setPixels(xGrid, yGrid);
     }
 
     // method
     @Override
-    public void draw(TextGraphics graphics, Link link){
+    public void draw(TextGraphics graphics, Link link) {
         int x = link.getPosition().getX();
         int y = link.getPosition().getY();
 
@@ -30,6 +32,21 @@ public class LinkViewer implements Viewer<Link> {
                 graphics.setBackgroundColor(new TextColor.RGB(pixels[i][j].getRed(), pixels[i][j].getGreen(),pixels[i][j].getBlue()));
                 graphics.setCharacter(x + i, y + j, ' ');
             }
+        }
+    }
+
+    public void setSprite(GameplayPresenter.ACTION action){
+        switch (action) {
+            case UP -> {yGrid = 4;}
+
+            case DOWN -> {yGrid = 1;}
+        }
+
+        if (xGrid == 8){
+            xGrid = 0;
+        }
+        else{
+            xGrid++;
         }
     }
 

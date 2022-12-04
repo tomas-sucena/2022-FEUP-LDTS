@@ -11,9 +11,7 @@ public class Sprite {
     private final BufferedImage spriteSheet;
     private final int TILE_SIZE;
 
-    private int height;
-
-    private int width;
+    private int width, height;
 
     private Color[][] pixels;
 
@@ -61,6 +59,6 @@ public class Sprite {
     }
 
     public int getWidth() {
-            return width;
+        return width;
     }
 }
