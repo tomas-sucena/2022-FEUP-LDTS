@@ -29,7 +29,7 @@ public class LinkViewer implements Viewer<Link> {
 
         for(int i = 0; i < sprite.getHeight(); i++){
             for(int j = 0; j < sprite.getWidth(); j++){
-                graphics.setBackgroundColor(new TextColor.RGB(pixels[i][j].getRed(), pixels[i][j].getBlue(), pixels[i][j].getGreen()));
+                graphics.setBackgroundColor(new TextColor.RGB(pixels[i][j].getRed(), pixels[i][j].getGreen(),pixels[i][j].getBlue()));
                 graphics.setCharacter(x + i, y + j, ' ');
             }
         }
