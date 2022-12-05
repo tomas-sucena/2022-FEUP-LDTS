@@ -3,6 +3,8 @@ package com.l08gr02.zelda.presenters;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.l08gr02.zelda.viewers.Viewer;
 
+import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
+
 public abstract class Presenter<T> {
     protected T model;
     protected Viewer<T> viewer;
@@ -14,5 +16,5 @@ public abstract class Presenter<T> {
     }
 
     // methods
-    public abstract void update(TextGraphics graphics, GameplayPresenter.ACTION action);
+    public abstract void update(TextGraphics graphics, ACTION action);
 }

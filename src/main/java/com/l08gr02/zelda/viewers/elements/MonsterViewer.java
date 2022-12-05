@@ -5,11 +5,15 @@ import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
+import com.l08gr02.zelda.models.Sprite;
 import com.l08gr02.zelda.models.elements.Monster;
-import com.l08gr02.zelda.models.elements.MovingElement;
-import com.l08gr02.zelda.viewers.Viewer;
+import com.l08gr02.zelda.viewers.SpriteViewer;
 
-public class MonsterViewer implements Viewer<Monster> {
+import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
+
+public class MonsterViewer implements SpriteViewer<Monster> {
+    private Sprite sprite;
+
     // method
     @Override
     public void draw(TextGraphics graphics, Monster monster) {
@@ -21,5 +25,10 @@ public class MonsterViewer implements Viewer<Monster> {
         graphics.setForegroundColor(TextColor.Factory.fromString("#FF0000"));
         graphics.enableModifiers(SGR.BOLD);
         graphics.putString(new TerminalPosition(x, y), "T");
+    }
+
+    @Override
+    public void setSprite(ACTION action) {
+
     }
 }

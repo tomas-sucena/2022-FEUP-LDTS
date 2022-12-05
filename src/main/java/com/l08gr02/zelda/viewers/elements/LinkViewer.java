@@ -4,13 +4,13 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.l08gr02.zelda.models.Sprite;
 import com.l08gr02.zelda.models.elements.Link;
-import com.l08gr02.zelda.viewers.Viewer;
+import com.l08gr02.zelda.viewers.SpriteViewer;
 
 import java.awt.*;
 
 import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
 
-public class LinkViewer implements Viewer<Link> {
+public class LinkViewer implements SpriteViewer<Link> {
     private Sprite sprite;
     private int xGrid = 0, yGrid = 0;
 
@@ -36,6 +36,7 @@ public class LinkViewer implements Viewer<Link> {
         }
     }
 
+    @Override
     public void setSprite(ACTION action){
         switch (action) {
             case UP -> {yGrid = 4;}

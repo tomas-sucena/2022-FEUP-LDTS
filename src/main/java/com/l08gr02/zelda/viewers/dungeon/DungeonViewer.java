@@ -8,6 +8,10 @@ import com.l08gr02.zelda.models.Sprite;
 import com.l08gr02.zelda.models.dungeon.Dungeon;
 import com.l08gr02.zelda.viewers.Viewer;
 import com.l08gr02.zelda.viewers.elements.LinkViewer;
+import com.l08gr02.zelda.viewers.elements.MonsterViewer;
+import com.l08gr02.zelda.viewers.elements.TileViewer;
+
+import java.util.List;
 
 public class DungeonViewer implements Viewer<Dungeon> {
     private Sprite sprite;

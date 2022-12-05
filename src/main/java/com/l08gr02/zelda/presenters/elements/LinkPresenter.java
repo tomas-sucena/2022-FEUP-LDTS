@@ -2,9 +2,10 @@ package com.l08gr02.zelda.presenters.elements;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.l08gr02.zelda.models.elements.Link;
-import com.l08gr02.zelda.presenters.GameplayPresenter;
 import com.l08gr02.zelda.presenters.Presenter;
 import com.l08gr02.zelda.viewers.elements.LinkViewer;
+
+import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
 
 public class LinkPresenter extends Presenter<Link> {
     // constructor
@@ -30,7 +31,7 @@ public class LinkPresenter extends Presenter<Link> {
     }
 
     @Override
-    public void update(TextGraphics graphics, GameplayPresenter.ACTION action){
+    public void update(TextGraphics graphics, ACTION action){
         LinkViewer viewer_v2 = (LinkViewer) viewer;
         viewer_v2.setSprite(action);
 
