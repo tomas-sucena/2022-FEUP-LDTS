@@ -40,6 +40,9 @@ public class Dungeon {
     }
 
     public void readMap(){
+        monsters = new ArrayList<>();
+        tiles = new ArrayList<>();
+
         for (int y = 0; y < map.size(); y++){
             String line = map.get(y);
 
@@ -50,11 +53,11 @@ public class Dungeon {
 
     public void readChar(String line, int x, int y){
         switch (line.charAt(x)) {
-            case 'X' -> {link = new Link(x, y);}
+            case 'L' -> {link = new Link(x, y);}
 
-            case 'M' -> {monsters.add(new Monster(x, y));}
+            //case 'M' -> {monsters.add(new Monster(x, y));}
 
-            case ' ' -> {tiles.add(new Tile(x, y));}
+            //case ' ' -> {tiles.add(new Tile(x, y));}
         }
     }
 
