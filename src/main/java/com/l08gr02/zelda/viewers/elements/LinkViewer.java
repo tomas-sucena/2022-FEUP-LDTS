@@ -16,7 +16,7 @@ public class LinkViewer implements SpriteViewer<Link> {
 
     // constructor
     public LinkViewer(){
-        sprite = new Sprite(24, "Link", "retro");
+        sprite = new Sprite(16, "Link", "character");
         sprite.setPixels(xGrid, yGrid);
     }
 

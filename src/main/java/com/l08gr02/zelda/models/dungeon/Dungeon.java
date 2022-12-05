@@ -1,8 +1,8 @@
 package com.l08gr02.zelda.models.dungeon;
 
+import com.l08gr02.zelda.models.elements.Element;
 import com.l08gr02.zelda.models.elements.Link;
 import com.l08gr02.zelda.models.elements.Monster;
-import com.l08gr02.zelda.models.elements.Tile;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -15,7 +15,7 @@ public class Dungeon {
     private List<String> map;
     private Link link;
     private List<Monster> monsters;
-    private List<Tile> tiles;
+    private List<Element> tiles;
 
     // constructor
     public Dungeon() throws IOException {
@@ -29,6 +29,10 @@ public class Dungeon {
     // methods
     public Link getLink() {
         return link;
+    }
+
+    public List<Element> getTiles(){
+        return tiles;
     }
 
     public void createMap(BufferedReader reader) throws IOException {
@@ -52,12 +56,14 @@ public class Dungeon {
     }
 
     public void readChar(String line, int x, int y){
-        switch (line.charAt(x)) {
+        char c = line.charAt(x);
+
+        switch (c) {
             case 'L' -> {link = new Link(x, y);}
 
             //case 'M' -> {monsters.add(new Monster(x, y));}
 
-            //case ' ' -> {tiles.add(new Tile(x, y));}
+            //default -> {tiles.add(new Tile(x, y, c));}
         }
     }
 
