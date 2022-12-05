@@ -12,12 +12,14 @@ import com.l08gr02.zelda.viewers.dungeon.DungeonViewer;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.io.IOException;
+
 public class PresenterTest {
     private Presenter presenter;
     private TextGraphics graphics;
 
     @Test
-    void DungeonPresenterTest(){
+    void DungeonPresenterTest() throws IOException {
         // ARRANGE
         Dungeon model = new Dungeon();
         DungeonViewer viewer = new DungeonViewer(400,160);
