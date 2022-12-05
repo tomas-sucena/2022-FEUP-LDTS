@@ -4,17 +4,20 @@ import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.terminal.Terminal;
+import com.l08gr02.zelda.models.Sprite;
 import com.l08gr02.zelda.models.dungeon.Dungeon;
 import com.l08gr02.zelda.viewers.Viewer;
 import com.l08gr02.zelda.viewers.elements.LinkViewer;
 
 public class DungeonViewer implements Viewer<Dungeon> {
+    private Sprite sprite;
     private int tWidth, tHeight;
     private LinkViewer linkViewer;
 
     // constructor
     public DungeonViewer(int tWidth, int tHeight){
+        sprite = new Sprite(16, "Dungeon", "Overworld");
+
         this.tWidth = tWidth; this.tHeight = tHeight;
 
         linkViewer = new LinkViewer();
