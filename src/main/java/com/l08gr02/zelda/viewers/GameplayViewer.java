@@ -11,6 +11,8 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
+import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
+
 public class GameplayViewer {
     private final GUI gui;
     private DungeonViewer dungeonViewer;
@@ -41,41 +43,41 @@ public class GameplayViewer {
         KeyStroke key = gui.getScreen().pollInput();
 
         if (key == null){
-            return GameplayPresenter.ACTION.NOTHING;
+            return ACTION.NOTHING;
         }
 
         // ler não carateres
         switch (key.getKeyType()){
-            case EOF, Escape -> {return GameplayPresenter.ACTION.QUIT;}
+            case EOF, Escape -> {return ACTION.QUIT;}
 
-            case ArrowUp -> {return GameplayPresenter.ACTION.UP;}
+            case ArrowUp -> {return ACTION.UP;}
 
-            case ArrowDown -> {return GameplayPresenter.ACTION.DOWN;}
+            case ArrowDown -> {return ACTION.DOWN;}
 
-            case ArrowLeft -> {return GameplayPresenter.ACTION.LEFT;}
+            case ArrowLeft -> {return ACTION.LEFT;}
 
-            case ArrowRight -> {return GameplayPresenter.ACTION.RIGHT;}
+            case ArrowRight -> {return ACTION.RIGHT;}
 
         }
 
         // ler carateres
         if (key.getCharacter() == null){
-            return GameplayPresenter.ACTION.NOTHING;
+            return ACTION.NOTHING;
         }
 
         switch (key.getCharacter()){
-            case 'w' -> {return GameplayPresenter.ACTION.UP;}
+            case 'w' -> {return ACTION.UP;}
 
-            case 's' -> {return GameplayPresenter.ACTION.DOWN;}
+            case 's' -> {return ACTION.DOWN;}
 
-            case 'a' -> {return GameplayPresenter.ACTION.LEFT;}
+            case 'a' -> {return ACTION.LEFT;}
 
-            case 'd' -> {return GameplayPresenter.ACTION.RIGHT;}
+            case 'd' -> {return ACTION.RIGHT;}
 
-            case 'q'-> {return GameplayPresenter.ACTION.QUIT;}
+            case 'q'-> {return ACTION.QUIT;}
         }
 
-        return GameplayPresenter.ACTION.NOTHING;
+        return ACTION.NOTHING;
     }
 
 }

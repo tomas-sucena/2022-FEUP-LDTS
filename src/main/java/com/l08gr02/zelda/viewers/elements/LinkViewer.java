@@ -4,14 +4,15 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.l08gr02.zelda.models.Sprite;
 import com.l08gr02.zelda.models.elements.Link;
-import com.l08gr02.zelda.presenters.GameplayPresenter;
 import com.l08gr02.zelda.viewers.Viewer;
 
 import java.awt.*;
 
+import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
+
 public class LinkViewer implements Viewer<Link> {
     private Sprite sprite;
-    private int xGrid = 0, yGrid = 1;
+    private int xGrid = 0, yGrid = 0;
 
     // constructor
     public LinkViewer(){
@@ -35,7 +36,7 @@ public class LinkViewer implements Viewer<Link> {
         }
     }
 
-    public void setSprite(GameplayPresenter.ACTION action){
+    public void setSprite(ACTION action){
         switch (action) {
             case UP -> {yGrid = 4;}
 
@@ -45,9 +46,11 @@ public class LinkViewer implements Viewer<Link> {
         if (xGrid == 8){
             xGrid = 0;
         }
-        else{
+        else if (action != ACTION.NOTHING){
             xGrid++;
         }
+
+        sprite.setPixels(xGrid, yGrid);
     }
 
 }

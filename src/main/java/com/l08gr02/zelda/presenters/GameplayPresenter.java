@@ -35,7 +35,7 @@ public class GameplayPresenter {
             dungeonPresenter.update(viewer.getGraphics(), action);
             viewer.getScreen().refresh();
 
-            sleep(10);
+            sleep(50);
         }
     }
 
