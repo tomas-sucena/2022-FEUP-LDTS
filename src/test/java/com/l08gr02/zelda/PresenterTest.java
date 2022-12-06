@@ -28,7 +28,7 @@ public class PresenterTest {
         graphics = Mockito.mock(TextGraphics.class);
 
         // ACT
-        presenter.update(graphics, GameplayPresenter.ACTION.NOTHING);
+        //presenter.update(graphics, GameplayPresenter.ACTION.NOTHING);
 
         // ASSERT
         Mockito.verify(graphics.setBackgroundColor(TextColor.Factory.fromString("#336699")), Mockito.times(1));

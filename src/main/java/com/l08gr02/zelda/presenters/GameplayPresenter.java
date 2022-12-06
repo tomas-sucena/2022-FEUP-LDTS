@@ -5,6 +5,7 @@ import com.l08gr02.zelda.presenters.dungeon.DungeonPresenter;
 import com.l08gr02.zelda.viewers.GameplayViewer;
 
 import java.io.IOException;
+import java.util.List;
 
 import static java.lang.Thread.sleep;
 
@@ -25,14 +26,15 @@ public class GameplayPresenter {
     // methods
     public void update() throws IOException, InterruptedException {
         while (true){
-            ACTION action = viewer.getAction();
-            if (action == ACTION.QUIT){
+            List<ACTION> actions = viewer.getActions();
+
+            if (actions.contains(ACTION.QUIT)){
                 viewer.getScreen().close();
                 break;
             }
 
             viewer.getScreen().clear();
-            dungeonPresenter.update(viewer.getGraphics(), action);
+            dungeonPresenter.update(viewer.getGraphics(), actions);
             viewer.getScreen().refresh();
 
             sleep(50);

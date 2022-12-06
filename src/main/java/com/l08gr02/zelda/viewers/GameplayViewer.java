@@ -1,17 +1,18 @@
 package com.l08gr02.zelda.viewers;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.screen.Screen;
 import com.l08gr02.zelda.gui.GUI;
-import com.l08gr02.zelda.presenters.GameplayPresenter;
 import com.l08gr02.zelda.viewers.dungeon.DungeonViewer;
 
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.LinkedList;
+import java.util.List;
 
 import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
+import static java.awt.event.KeyEvent.*;
 
 public class GameplayViewer {
     private final GUI gui;
@@ -39,45 +40,24 @@ public class GameplayViewer {
         return dungeonViewer;
     }
 
-    public GameplayPresenter.ACTION getAction() throws IOException {
-        KeyStroke key = gui.getScreen().pollInput();
+    public List<ACTION> getActions() {
+        List<ACTION> actions = new LinkedList<>();
 
-        if (key == null){
-            return ACTION.NOTHING;
+        for (Integer i : gui.getPressedKeys()){
+            switch (i) {
+                case VK_Q, VK_ESCAPE -> {actions.add(ACTION.QUIT);}
+
+                case VK_UP, VK_W -> {actions.add(ACTION.UP);}
+
+                case VK_DOWN, VK_S -> {actions.add(ACTION.DOWN);}
+
+                case VK_LEFT, VK_A -> {actions.add(ACTION.LEFT);}
+
+                case VK_RIGHT, VK_D -> {actions.add(ACTION.RIGHT);}
+            }
         }
 
-        // ler não carateres
-        switch (key.getKeyType()){
-            case EOF, Escape -> {return ACTION.QUIT;}
-
-            case ArrowUp -> {return ACTION.UP;}
-
-            case ArrowDown -> {return ACTION.DOWN;}
-
-            case ArrowLeft -> {return ACTION.LEFT;}
-
-            case ArrowRight -> {return ACTION.RIGHT;}
-
-        }
-
-        // ler carateres
-        if (key.getCharacter() == null){
-            return ACTION.NOTHING;
-        }
-
-        switch (key.getCharacter()){
-            case 'w' -> {return ACTION.UP;}
-
-            case 's' -> {return ACTION.DOWN;}
-
-            case 'a' -> {return ACTION.LEFT;}
-
-            case 'd' -> {return ACTION.RIGHT;}
-
-            case 'q'-> {return ACTION.QUIT;}
-        }
-
-        return ACTION.NOTHING;
+        return actions;
     }
 
 }

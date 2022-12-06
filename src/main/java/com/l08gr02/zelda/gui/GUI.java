@@ -7,23 +7,33 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
+import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
 
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.HashSet;
+import java.util.Set;
 
 public class GUI {
     private int tWidth, tHeight, fontSize;
     private Screen screen;
     private TextGraphics graphics;
+    private Set<Integer> pressedKeys;
 
     // constructor
     public GUI(int tWidth, int tHeight, int fontSize) throws URISyntaxException, IOException, FontFormatException {
         this.tWidth = tWidth;
         this.tHeight = tHeight;
         this.fontSize = fontSize;
+
+        pressedKeys = new HashSet<>();
 
         // criar o screen
         screen = new TerminalScreen(createTerminal());
@@ -45,6 +55,10 @@ public class GUI {
         return graphics;
     }
 
+    public Set<Integer> getPressedKeys() {
+        return pressedKeys;
+    }
+
     private Terminal createTerminal() throws URISyntaxException, IOException, FontFormatException {
         // definir o tamanho do terminal
         TerminalSize tSize = new TerminalSize(tWidth, tHeight);
@@ -52,20 +66,38 @@ public class GUI {
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory()
                 .setInitialTerminalSize(tSize);
 
-        /*((AWTTerminalFrame)terminal).addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                e.getWindow().dispose();
-            }
-        });*/
-
         // criar a fonte
         AWTTerminalFontConfiguration fontConfig = loadFont();
 
         terminalFactory.setForceAWTOverSwing(true);
         terminalFactory.setTerminalEmulatorFontConfiguration(fontConfig);
 
-        return terminalFactory.createTerminal();
+        // adicionar os listeners
+        Terminal terminal = terminalFactory.createTerminal();
+        addListeners(terminal);
+
+        return terminal;
+    }
+
+    public void addListeners(Terminal terminal){
+        ((AWTTerminalFrame) terminal).getComponent(0).addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                pressedKeys.add(e.getKeyCode());
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                pressedKeys.remove(e.getKeyCode());
+            }
+        });
+
+        ((AWTTerminalFrame)terminal).addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                e.getWindow().dispose();
+            }
+        });
     }
 
     private AWTTerminalFontConfiguration loadFont() throws URISyntaxException, FontFormatException, IOException {

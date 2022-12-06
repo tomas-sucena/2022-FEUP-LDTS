@@ -5,6 +5,8 @@ import com.l08gr02.zelda.models.elements.Link;
 import com.l08gr02.zelda.presenters.Presenter;
 import com.l08gr02.zelda.viewers.elements.LinkViewer;
 
+import java.util.List;
+
 import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
 
 public class LinkPresenter extends Presenter<Link> {
@@ -31,21 +33,22 @@ public class LinkPresenter extends Presenter<Link> {
     }
 
     @Override
-    public void update(TextGraphics graphics, ACTION action){
-        LinkViewer viewer_v2 = (LinkViewer) viewer;
-        viewer_v2.setSprite(action);
+    public void update(TextGraphics graphics, List<ACTION> actions){
+        for (ACTION action : actions){
+            ((LinkViewer) viewer).setSprite(action);
 
-        switch (action){
-            case UP -> {moveUp();}
+            switch (action){
+                case UP -> {moveUp();}
 
-            case DOWN -> {moveDown();}
+                case DOWN -> {moveDown();}
 
-            case LEFT -> {moveLeft();}
+                case LEFT -> {moveLeft();}
 
-            case RIGHT -> {moveRight();}
+                case RIGHT -> {moveRight();}
+            }
+
+            viewer.draw(graphics, model);
         }
-
-        viewer.draw(graphics, model);
     }
 
 }
