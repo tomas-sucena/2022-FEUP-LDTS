@@ -42,6 +42,7 @@ public class GameplayViewer {
 
     public List<ACTION> getActions() {
         List<ACTION> actions = new LinkedList<>();
+        actions.add(ACTION.NOTHING);
 
         for (Integer i : gui.getPressedKeys()){
             switch (i) {
