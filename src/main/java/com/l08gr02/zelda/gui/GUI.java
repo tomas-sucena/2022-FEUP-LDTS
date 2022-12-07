@@ -92,10 +92,10 @@ public class GUI {
             }
         });
 
-        ((AWTTerminalFrame)terminal).addWindowListener(new WindowAdapter() {
+        ((AWTTerminalFrame) terminal).addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                e.getWindow().dispose();
+                System.exit(0);
             }
         });
     }

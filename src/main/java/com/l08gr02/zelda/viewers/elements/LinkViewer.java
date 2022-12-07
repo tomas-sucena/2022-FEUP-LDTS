@@ -7,8 +7,6 @@ import com.l08gr02.zelda.models.elements.Link;
 import com.l08gr02.zelda.viewers.SpriteViewer;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
 
@@ -19,9 +17,10 @@ public class LinkViewer implements SpriteViewer<Link> {
 
     // constructor
     public LinkViewer(){
-        hearts = new Sprite(16,"gfx","objects");
         sprite = new Sprite(16, "Link", "character");
         sprite.setPixels(xGrid, yGrid);
+
+        hearts = new Sprite(16,"gfx","objects");
     }
 
     // method
@@ -52,7 +51,6 @@ public class LinkViewer implements SpriteViewer<Link> {
         float life = link.getHearts();
 
         hearts.setPixels(4,0);
-
         Color pixels[][] = hearts.getPixels();
 
         // desenhar os corações inteiros

@@ -34,7 +34,7 @@ public class Sprite {
         return width;
     }
 
-    public BufferedImage loadSprite(String type, String file) {
+    public BufferedImage loadSprite(String type, String file){
         BufferedImage sprite = null;
 
         try {
@@ -46,11 +46,11 @@ public class Sprite {
         return sprite;
     }
 
-    public BufferedImage getSprite(int xGrid, int yGrid) {
+    public BufferedImage getSprite(int xGrid, int yGrid){
         return spriteSheet.getSubimage(xGrid * TILE_SIZE, yGrid * TILE_SIZE, TILE_SIZE, TILE_SIZE);
     }
 
-    public void setPixels(int xGrid, int yGrid){
+    public void setPixels(int xGrid, int yGrid) {
         BufferedImage sprite = getSprite(xGrid, yGrid);
         height = sprite.getHeight();
         width = sprite.getWidth();
