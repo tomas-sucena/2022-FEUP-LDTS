@@ -29,7 +29,6 @@ public class LinkViewer implements SpriteViewer<Link> {
     public void draw(TextGraphics graphics, Link link) {
         int x = link.getPosition().getX();
         int y = link.getPosition().getY();
-        drawLife(graphics, link);
 
         Color pixels[][] = sprite.getPixels();
 
@@ -39,7 +38,14 @@ public class LinkViewer implements SpriteViewer<Link> {
                 graphics.setCharacter(x + i, y + j, ' ');
             }
         }
-        link.heal((float)0.25);
+
+        drawLife(graphics, link);
+
+        link.heal((float) 0.25);
+
+        if (link.getHearts() > 8){
+            link.takeDamage((float) 5);
+        }
     }
 
     public void drawLife(TextGraphics graphics, Link link){
