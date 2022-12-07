@@ -32,6 +32,9 @@ public abstract class MovingElement extends Element {
     public void takeDamage(float heartsLost) {
         hearts -= heartsLost;
     }
+    public void heal(float heartsGained) {
+        hearts += heartsGained;
+    }
 
     public abstract void attack();
 }
