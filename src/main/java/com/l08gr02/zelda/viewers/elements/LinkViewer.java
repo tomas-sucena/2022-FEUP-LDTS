@@ -39,6 +39,7 @@ public class LinkViewer implements SpriteViewer<Link> {
                 graphics.setCharacter(x + i, y + j, ' ');
             }
         }
+        link.takeDamage((float)0.25);
     }
 
     public void drawLife(TextGraphics graphics, Link link){
