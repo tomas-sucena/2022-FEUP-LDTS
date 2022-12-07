@@ -22,6 +22,18 @@ public class Sprite {
     }
 
     // methods
+    public Color[][] getPixels() {
+        return pixels;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
     public BufferedImage loadSprite(String type, String file) {
         BufferedImage sprite = null;
 
@@ -50,15 +62,4 @@ public class Sprite {
         }
     }
 
-    public Color[][] getPixels() {
-        return pixels;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public int getWidth() {
-        return width;
-    }
 }

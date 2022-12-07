@@ -50,24 +50,29 @@ public class LinkViewer implements SpriteViewer<Link> {
 
     public void drawLife(TextGraphics graphics, Link link){
         float life = link.getHearts();
-        int hearty = (int) life;
+
         hearts.setPixels(4,0);
+
         Color pixels[][] = hearts.getPixels();
-        for(int i = 0; i<hearty;i++){
-            for(int j = 0; j < sprite.getHeight(); j++){
-                for(int k = 0; k < sprite.getWidth(); k++){
+
+        // desenhar os corações inteiros
+        for (int i = 0; i < (int) life; i++){
+            for (int j = 0; j < sprite.getHeight(); j++){
+                for (int k = 0; k < sprite.getWidth(); k++){
                     graphics.setBackgroundColor(new TextColor.RGB(pixels[j][k].getRed(), pixels[j][k].getGreen(),pixels[j][k].getBlue()));
-                    graphics.setCharacter(i*16+j,k, ' ');
+                    graphics.setCharacter(i * 16 + j, k, ' ');
                 }
             }
         }
-        if(life%1 != 0){
-            hearts.setPixels(8 - (int)(life%1 *4),0);
+
+        // desenhar o coração não inteiro, caso exista
+        if (life % 1 != 0){
+            hearts.setPixels(8 - (int) (life % 1 * 4),0);
             pixels = hearts.getPixels();
-            for(int j = 0; j < sprite.getHeight(); j++){
-                for(int k = 0; k < sprite.getWidth(); k++){
+            for (int j = 0; j < sprite.getHeight(); j++){
+                for (int k = 0; k < sprite.getWidth(); k++){
                     graphics.setBackgroundColor(new TextColor.RGB(pixels[j][k].getRed(), pixels[j][k].getGreen(),pixels[j][k].getBlue()));
-                    graphics.setCharacter(hearty*16+j,k, ' ');
+                    graphics.setCharacter((int) life * 16 + j, k, ' ');
                 }
             }
         }
