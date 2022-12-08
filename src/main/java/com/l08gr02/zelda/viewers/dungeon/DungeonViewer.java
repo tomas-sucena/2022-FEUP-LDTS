@@ -34,9 +34,9 @@ public class DungeonViewer implements Viewer<Dungeon> {
     // methods
     @Override
     public void draw(TextGraphics graphics, Dungeon dungeon){
-        for (Element el : dungeon.getTiles()){
-
-        }
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#336699"));
+        graphics.fillRectangle(new TerminalPosition(0, 0),
+                new TerminalSize(tWidth, tHeight), ' ');
     }
 
     public LinkViewer getLinkViewer() {
