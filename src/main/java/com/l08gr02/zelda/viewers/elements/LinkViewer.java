@@ -114,7 +114,7 @@ public class LinkViewer implements SpriteViewer<Link> {
         if (xGrid == 5){
             xGrid = 0;
         }
-        else if (action != ACTION.NOTHING){
+        else if (action != ACTION.NOTHING && action != ACTION.SPRINT){
             xGrid++;
         }
 
