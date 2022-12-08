@@ -10,15 +10,12 @@ import java.awt.*;
 
 import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
 
-public class LinkViewer implements SpriteViewer<Link> {
-    private Sprite sprite;
+public class LinkViewer extends SpriteViewer<Link> {
     private Sprite heartSprite;
-    private int xGrid = 0, yGrid = 0;
 
     // constructor
     public LinkViewer(){
-        sprite = new Sprite(44, 44, "Link", "spritesheet");
-        sprite.setPixels(xGrid, yGrid);
+        super(new Sprite(44, 44, "Link", "spritesheet"));
 
         heartSprite = new Sprite(16, 16,"gfx","objects");
     }
@@ -26,26 +23,7 @@ public class LinkViewer implements SpriteViewer<Link> {
     // methods
     @Override
     public void draw(TextGraphics graphics, Link link) {
-        int x = link.getPosition().getX();
-        int y = link.getPosition().getY();
-
-        Color pixels[][] = sprite.getPixels();
-
-        for(int i = 0; i < sprite.getHeight(); i++){
-            for(int j = 0; j < sprite.getWidth(); j++){
-                int R = pixels[i][j].getRed();
-                int G = pixels[i][j].getGreen();
-                int B = pixels[i][j].getBlue();
-
-                // verificar se o pixel é transparente
-                if (R == 131 && G == 131 && B == 131){
-                    continue;
-                }
-
-                graphics.setBackgroundColor(new TextColor.RGB(R, G, B));
-                graphics.setCharacter(x + i, y + j, ' ');
-            }
-        }
+        super.draw(graphics, link);
 
         drawLife(graphics, link);
     }

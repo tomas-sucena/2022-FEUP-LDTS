@@ -8,14 +8,14 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 import com.l08gr02.zelda.models.Sprite;
 import com.l08gr02.zelda.models.elements.Monster;
 import com.l08gr02.zelda.viewers.SpriteViewer;
+import com.l08gr02.zelda.viewers.Viewer;
 
 import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
 
-public class MonsterViewer implements SpriteViewer<Monster> {
+public class MonsterViewer implements Viewer<Monster> {
     private Sprite sprite;
 
     // method
-    @Override
     public void draw(TextGraphics graphics, Monster monster) {
         int x = monster.getPosition().getX();
         int y =  monster.getPosition().getY();
@@ -27,7 +27,6 @@ public class MonsterViewer implements SpriteViewer<Monster> {
         graphics.putString(new TerminalPosition(x, y), "T");
     }
 
-    @Override
     public void setSprite(ACTION action) {
 
     }
