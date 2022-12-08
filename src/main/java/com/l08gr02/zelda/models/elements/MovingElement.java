@@ -2,6 +2,7 @@ package com.l08gr02.zelda.models.elements;
 
 public abstract class MovingElement extends Element {
     protected float hearts;
+    protected int speed;
 
     // constructors
     public MovingElement(int x, int y){
@@ -9,6 +10,18 @@ public abstract class MovingElement extends Element {
     }
 
     // methods
+    public float getHearts(){
+        return hearts;
+    }
+
+    public int getSpeed(){
+        return speed;
+    }
+
+    public void setSpeed(int speed){
+        this.speed = speed;
+    }
+
     public void up(int i){
         setPosition(getPosition().up(i));
     }
@@ -25,13 +38,10 @@ public abstract class MovingElement extends Element {
         setPosition(getPosition().right(i));
     }
 
-    public float getHearts(){
-        return hearts;
-    }
-
     public void takeDamage(float heartsLost) {
         hearts -= heartsLost;
     }
+
     public void heal(float heartsGained) {
         hearts += heartsGained;
     }

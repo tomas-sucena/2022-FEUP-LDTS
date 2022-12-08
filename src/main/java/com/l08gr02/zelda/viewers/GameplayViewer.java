@@ -55,6 +55,8 @@ public class GameplayViewer {
                 case VK_LEFT, VK_A -> {actions.add(ACTION.LEFT);}
 
                 case VK_RIGHT, VK_D -> {actions.add(ACTION.RIGHT);}
+
+                case VK_SHIFT -> {actions.add(ACTION.SPRINT);}
             }
         }
 

@@ -17,19 +17,27 @@ public class LinkPresenter extends Presenter<Link> {
 
     // methods
     public void moveUp(){
-        model.up(1);
+        model.up(model.getSpeed());
     }
 
     public void moveDown(){
-        model.down(1);
+        model.down(model.getSpeed());
     }
 
     public void moveLeft(){
-        model.left(1);
+        model.left(model.getSpeed());
     }
 
     public void moveRight(){
-        model.right(1);
+        model.right(model.getSpeed());
+    }
+
+    public void walk(){
+        model.walk();
+    }
+
+    public void sprint(){
+        model.sprint();
     }
 
     @Override
@@ -45,10 +53,14 @@ public class LinkPresenter extends Presenter<Link> {
                 case LEFT -> {moveLeft();}
 
                 case RIGHT -> {moveRight();}
+
+                case SPRINT -> {sprint();}
             }
 
             viewer.draw(graphics, model);
         }
+
+        walk();
     }
 
 }
