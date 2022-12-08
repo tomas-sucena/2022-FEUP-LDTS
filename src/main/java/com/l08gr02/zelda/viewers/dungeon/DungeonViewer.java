@@ -9,6 +9,7 @@ import com.l08gr02.zelda.models.dungeon.Dungeon;
 import com.l08gr02.zelda.models.elements.Element;
 import com.l08gr02.zelda.models.elements.Heart;
 import com.l08gr02.zelda.models.elements.Heart;
+import com.l08gr02.zelda.models.elements.Tile;
 import com.l08gr02.zelda.viewers.Viewer;
 import com.l08gr02.zelda.viewers.elements.LinkViewer;
 import com.l08gr02.zelda.viewers.elements.MonsterViewer;
@@ -44,6 +45,23 @@ public class DungeonViewer implements Viewer<Dungeon> {
         graphics.setBackgroundColor(TextColor.Factory.fromString("#336699"));
         graphics.fillRectangle(new TerminalPosition(0, 0),
                 new TerminalSize(tWidth, tHeight), ' ');
+        List<Tile> tiles = dungeon.getTiles();
+        for(Tile tile: tiles){
+            Sprite tileSprite = tile.getSprite();
+            Color[][] pixels = tileSprite.getPixels();
+            int x = tile.getPosition().getX();
+            int y = tile.getPosition().getY();
+            for (int i = 0; i < tileSprite.getHeight(); i++) {
+                for (int j = 0; j < tileSprite.getWidth(); j++) {
+                    int R = pixels[i][j].getRed();
+                    int G = pixels[i][j].getGreen();
+                    int B = pixels[i][j].getBlue();
+                    graphics.setBackgroundColor(new TextColor.RGB(R, G, B));
+                    graphics.setCharacter(x + i, y + j, ' ');
+                }
+            }
+
+        }
         drawHearts(graphics, dungeon);
     }
 

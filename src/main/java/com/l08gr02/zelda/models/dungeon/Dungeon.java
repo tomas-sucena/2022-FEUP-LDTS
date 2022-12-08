@@ -1,9 +1,6 @@
 package com.l08gr02.zelda.models.dungeon;
 
-import com.l08gr02.zelda.models.elements.Element;
-import com.l08gr02.zelda.models.elements.Heart;
-import com.l08gr02.zelda.models.elements.Link;
-import com.l08gr02.zelda.models.elements.Monster;
+import com.l08gr02.zelda.models.elements.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -13,10 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Dungeon {
+    private int ignore = 0;
     private List<String> map;
     private Link link;
     private List<Monster> monsters;
-    private List<Element> tiles;
+    private List<Tile> tiles;
 
     private List<Heart> hearts;
 
@@ -27,7 +25,6 @@ public class Dungeon {
 
         createMap(reader);
         readMap();
-        hearts.add(new Heart(100,100));
     }
 
     // methods
@@ -35,7 +32,7 @@ public class Dungeon {
         return link;
     }
 
-    public List<Element> getTiles(){
+    public List<Tile> getTiles(){
         return tiles;
     }
 
@@ -68,9 +65,10 @@ public class Dungeon {
 
             //case 'M' -> {monsters.add(new Monster(x, y));}
 
-            //case 'H' -> {hearts.add(new Heart(x,y));}
+            case 'H' -> {hearts.add(new Heart(x,y));}
 
-            //default -> {tiles.add(new Tile(x, y, c));}
+            case ' ' ->{ignore++;}
+            default -> {tiles.add(new Tile(x, y, c));}
         }
     }
 
