@@ -14,13 +14,14 @@ public class LinkViewer implements SpriteViewer<Link> {
     private Sprite sprite;
     private Sprite heartSprite;
     private int xGrid = 0, yGrid = 0;
+    private final static String TRANSPARENCY = "#828282";
 
     // constructor
     public LinkViewer(){
-        sprite = new Sprite(34, "Link", "spritesheet");
+        sprite = new Sprite(44, 44, "Link", "spritesheet");
         sprite.setPixels(xGrid, yGrid);
 
-        heartSprite = new Sprite(16,"gfx","objects");
+        heartSprite = new Sprite(16, 16,"gfx","objects");
     }
 
     // method
@@ -33,18 +34,21 @@ public class LinkViewer implements SpriteViewer<Link> {
 
         for(int i = 0; i < sprite.getHeight(); i++){
             for(int j = 0; j < sprite.getWidth(); j++){
-                graphics.setBackgroundColor(new TextColor.RGB(pixels[i][j].getRed(), pixels[i][j].getGreen(),pixels[i][j].getBlue()));
+                int R = pixels[i][j].getRed();
+                int G = pixels[i][j].getGreen();
+                int B = pixels[i][j].getBlue();
+
+                // verificar se o pixel é transparente
+                if (R == 131 && G == 131 && B == 131){
+                    continue;
+                }
+
+                graphics.setBackgroundColor(new TextColor.RGB(R, G, B));
                 graphics.setCharacter(x + i, y + j, ' ');
             }
         }
 
         drawLife(graphics, link);
-
-        link.heal((float) 0.25);
-
-        if (link.getHearts() > 8){
-            link.takeDamage((float) 5);
-        }
     }
 
     public void drawLife(TextGraphics graphics, Link link){

@@ -9,15 +9,13 @@ import javax.imageio.ImageIO;
 
 public class Sprite {
     private final BufferedImage spriteSheet;
-    private final int TILE_SIZE;
-
     private int width, height;
-
     private Color[][] pixels;
 
     // constructor
-    public Sprite(int TILE_SIZE, String type, String file){
-        this.TILE_SIZE = TILE_SIZE;
+    public Sprite(int width, int height, String type, String file){
+        this.width = width; this.height = height;
+
         spriteSheet = loadSprite(type, file);
     }
 
@@ -47,13 +45,12 @@ public class Sprite {
     }
 
     public BufferedImage getSprite(int xGrid, int yGrid){
-        return spriteSheet.getSubimage(xGrid * TILE_SIZE, yGrid * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+        return spriteSheet.getSubimage(xGrid * width, yGrid * height, width, height);
     }
 
     public void setPixels(int xGrid, int yGrid) {
         BufferedImage sprite = getSprite(xGrid, yGrid);
-        height = sprite.getHeight();
-        width = sprite.getWidth();
+
         pixels = new Color[height][width];
         for(int i = 0; i < height; i++){
             for(int j = 0; j < width; j++){

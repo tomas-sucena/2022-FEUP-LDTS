@@ -21,7 +21,7 @@ public class DungeonViewer implements Viewer<Dungeon> {
 
     // constructor
     public DungeonViewer(int tWidth, int tHeight){
-        sprite = new Sprite(16, "Dungeon", "Overworld");
+        sprite = new Sprite(16, 16,"Dungeon", "Overworld");
 
         this.tWidth = tWidth; this.tHeight = tHeight;
 
