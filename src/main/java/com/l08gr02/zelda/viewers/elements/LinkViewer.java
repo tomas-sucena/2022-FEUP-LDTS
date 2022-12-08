@@ -61,7 +61,15 @@ public class LinkViewer implements SpriteViewer<Link> {
         for (int i = 0; i < (int) life; i++){
             for (int j = 0; j < heartSprite.getHeight(); j++){
                 for (int k = 0; k < heartSprite.getWidth(); k++){
-                    graphics.setBackgroundColor(new TextColor.RGB(pixels[j][k].getRed(), pixels[j][k].getGreen(),pixels[j][k].getBlue()));
+                    int R = pixels[j][k].getRed();
+                    int G = pixels[j][k].getGreen();
+                    int B = pixels[j][k].getBlue();
+
+                    // verificar se o pixel é transparente
+                    if (R == 131 && G == 131 && B == 131){
+                        continue;
+                    }
+                    graphics.setBackgroundColor(new TextColor.RGB(R,G,B));
                     graphics.setCharacter(i * 16 + j, k, ' ');
                 }
             }
@@ -74,7 +82,15 @@ public class LinkViewer implements SpriteViewer<Link> {
 
             for (int j = 0; j < heartSprite.getHeight(); j++){
                 for (int k = 0; k < heartSprite.getWidth(); k++){
-                    graphics.setBackgroundColor(new TextColor.RGB(pixels[j][k].getRed(), pixels[j][k].getGreen(),pixels[j][k].getBlue()));
+                    int R = pixels[j][k].getRed();
+                    int G = pixels[j][k].getGreen();
+                    int B = pixels[j][k].getBlue();
+
+                    // verificar se o pixel é transparente
+                    if (R == 131 && G == 131 && B == 131){
+                        continue;
+                    }
+                    graphics.setBackgroundColor(new TextColor.RGB(R,G,B));
                     graphics.setCharacter((int) life * 16 + j, k, ' ');
                 }
             }
