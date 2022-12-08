@@ -13,7 +13,7 @@ public class GameplayPresenter {
     private final Gameplay model;
     private GameplayViewer viewer;
     private DungeonPresenter dungeonPresenter;
-    public enum ACTION {UP, DOWN, LEFT, RIGHT, SPRINT, QUIT, NOTHING};
+    public enum ACTION {UP, DOWN, LEFT, RIGHT, SPRINT, ATTACK, QUIT, NOTHING};
 
     // constructor
     public GameplayPresenter(Gameplay model, GameplayViewer viewer) {

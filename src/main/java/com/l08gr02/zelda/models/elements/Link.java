@@ -1,7 +1,7 @@
 package com.l08gr02.zelda.models.elements;
 
 public class Link extends MovingElement {
-    private static int WALK_SPEED = 1, SPRINT_SPEED = 3;
+    private static int WALK_SPEED = 2, SPRINT_SPEED = 4;
 
     // constructor
     public Link(int x, int y){

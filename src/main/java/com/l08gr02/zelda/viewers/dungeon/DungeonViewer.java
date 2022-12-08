@@ -8,10 +8,12 @@ import com.l08gr02.zelda.models.Sprite;
 import com.l08gr02.zelda.models.dungeon.Dungeon;
 import com.l08gr02.zelda.models.elements.Element;
 import com.l08gr02.zelda.models.elements.Heart;
+import com.l08gr02.zelda.models.elements.Heart;
 import com.l08gr02.zelda.viewers.Viewer;
 import com.l08gr02.zelda.viewers.elements.LinkViewer;
 import com.l08gr02.zelda.viewers.elements.MonsterViewer;
 
+import java.awt.*;
 import java.awt.*;
 import java.util.List;
 
@@ -39,9 +41,9 @@ public class DungeonViewer implements Viewer<Dungeon> {
     // methods
     @Override
     public void draw(TextGraphics graphics, Dungeon dungeon){
-        for (Element el : dungeon.getTiles()){
-
-        }
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#336699"));
+        graphics.fillRectangle(new TerminalPosition(0, 0),
+                new TerminalSize(tWidth, tHeight), ' ');
         drawHearts(graphics, dungeon);
     }
 

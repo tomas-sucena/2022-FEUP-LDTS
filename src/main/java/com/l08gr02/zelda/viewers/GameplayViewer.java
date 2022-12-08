@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
 import static java.awt.event.KeyEvent.*;
@@ -44,6 +45,16 @@ public class GameplayViewer {
         List<ACTION> actions = new LinkedList<>();
         actions.add(ACTION.NOTHING);
 
+        Set<Integer> keys = gui.getPressedKeys();
+
+        if (keys.contains(VK_Q) || keys.contains(VK_ESCAPE)){
+            actions.add(ACTION.QUIT);
+        }
+
+        if (keys.contains(VK_Q) || keys.contains(VK_ESCAPE)){
+            actions.add(ACTION.QUIT);
+        }
+
         for (Integer i : gui.getPressedKeys()){
             switch (i) {
                 case VK_Q, VK_ESCAPE -> {actions.add(ACTION.QUIT);}
@@ -57,6 +68,8 @@ public class GameplayViewer {
                 case VK_RIGHT, VK_D -> {actions.add(ACTION.RIGHT);}
 
                 case VK_SHIFT -> {actions.add(ACTION.SPRINT);}
+
+                case VK_SPACE -> {actions.add(ACTION.ATTACK);}
             }
         }
 

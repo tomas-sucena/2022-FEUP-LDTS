@@ -14,7 +14,6 @@ public class LinkViewer implements SpriteViewer<Link> {
     private Sprite sprite;
     private Sprite heartSprite;
     private int xGrid = 0, yGrid = 0;
-    private final static String TRANSPARENCY = "#828282";
 
     // constructor
     public LinkViewer(){
@@ -69,6 +68,7 @@ public class LinkViewer implements SpriteViewer<Link> {
                     if (R == 131 && G == 131 && B == 131){
                         continue;
                     }
+
                     graphics.setBackgroundColor(new TextColor.RGB(R,G,B));
                     graphics.setCharacter(i * 16 + j, k, ' ');
                 }
@@ -107,6 +107,8 @@ public class LinkViewer implements SpriteViewer<Link> {
             case LEFT -> {yGrid = 2;}
 
             case RIGHT -> {yGrid = 3;}
+
+            case ATTACK -> {yGrid = 4;}
         }
 
         if (xGrid == 5){

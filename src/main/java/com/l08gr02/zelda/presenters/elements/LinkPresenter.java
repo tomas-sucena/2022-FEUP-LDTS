@@ -56,9 +56,9 @@ public class LinkPresenter extends Presenter<Link> {
 
                 case SPRINT -> {sprint();}
             }
-
-            viewer.draw(graphics, model);
         }
+
+        viewer.draw(graphics, model);
 
         walk();
     }
