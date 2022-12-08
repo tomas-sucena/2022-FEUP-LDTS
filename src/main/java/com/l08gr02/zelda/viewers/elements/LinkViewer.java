@@ -79,7 +79,7 @@ public class LinkViewer implements SpriteViewer<Link> {
 
     @Override
     public void setSprite(ACTION action){
-        switch (action) {
+         switch (action) {
             case UP -> {yGrid = 1;}
 
             case DOWN -> {yGrid = 0;}
@@ -89,7 +89,7 @@ public class LinkViewer implements SpriteViewer<Link> {
             case RIGHT -> {yGrid = 3;}
         }
 
-        if (xGrid == 4){
+        if (xGrid == 5){
             xGrid = 0;
         }
         else if (action != ACTION.NOTHING){
