@@ -1,6 +1,7 @@
 package com.l08gr02.zelda.models.dungeon;
 
 import com.l08gr02.zelda.models.elements.Element;
+import com.l08gr02.zelda.models.elements.Heart;
 import com.l08gr02.zelda.models.elements.Link;
 import com.l08gr02.zelda.models.elements.Monster;
 
@@ -17,6 +18,8 @@ public class Dungeon {
     private List<Monster> monsters;
     private List<Element> tiles;
 
+    private List<Heart> hearts;
+
     // constructor
     public Dungeon() throws IOException {
         URL resource = Dungeon.class.getResource("/models/Dungeon/map.txt");
@@ -24,6 +27,7 @@ public class Dungeon {
 
         createMap(reader);
         readMap();
+        hearts.add(new Heart(100,100));
     }
 
     // methods
@@ -46,6 +50,7 @@ public class Dungeon {
     public void readMap(){
         monsters = new ArrayList<>();
         tiles = new ArrayList<>();
+        hearts = new ArrayList<>();
 
         for (int y = 0; y < map.size(); y++){
             String line = map.get(y);
@@ -63,8 +68,13 @@ public class Dungeon {
 
             //case 'M' -> {monsters.add(new Monster(x, y));}
 
+            //case 'H' -> {hearts.add(new Heart(x,y));}
+
             //default -> {tiles.add(new Tile(x, y, c));}
         }
     }
 
+    public List<Heart> getHearts() {
+        return hearts;
+    }
 }
