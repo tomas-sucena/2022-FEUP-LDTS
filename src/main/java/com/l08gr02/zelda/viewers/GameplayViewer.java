@@ -45,7 +45,7 @@ public class GameplayViewer {
         List<ACTION> actions = new LinkedList<>();
         actions.add(ACTION.NOTHING);
 
-        Set<Integer> keys = gui.getPressedKeys();
+        /*Set<Integer> keys = gui.getPressedKeys();
 
         if (keys.contains(VK_Q) || keys.contains(VK_ESCAPE)){
             actions.add(ACTION.QUIT);
@@ -53,7 +53,7 @@ public class GameplayViewer {
 
         if (keys.contains(VK_Q) || keys.contains(VK_ESCAPE)){
             actions.add(ACTION.QUIT);
-        }
+        }*/
 
         for (Integer i : gui.getPressedKeys()){
             switch (i) {
