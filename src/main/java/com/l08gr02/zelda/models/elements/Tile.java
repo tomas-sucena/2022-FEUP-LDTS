@@ -4,8 +4,10 @@ import com.l08gr02.zelda.models.Sprite;
 
 import java.awt.*;
 
-public class Tile extends Element{
+public class Tile extends Element {
     private Sprite sprite;
+
+    // constructor
     public Tile(int x, int y, char c) {
         super(x, y);
         sprite = new Sprite(16,16,"Dungeon", "Overworld");
@@ -14,6 +16,7 @@ public class Tile extends Element{
         }
     }
 
+    // method
     public Sprite getSprite() {
         return sprite;
     }
