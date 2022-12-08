@@ -23,7 +23,7 @@ public class LinkViewer implements SpriteViewer<Link> {
         heartSprite = new Sprite(16, 16,"gfx","objects");
     }
 
-    // method
+    // methods
     @Override
     public void draw(TextGraphics graphics, Link link) {
         int x = link.getPosition().getX();

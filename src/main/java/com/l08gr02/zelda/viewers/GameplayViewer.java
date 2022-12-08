@@ -45,32 +45,36 @@ public class GameplayViewer {
         List<ACTION> actions = new LinkedList<>();
         actions.add(ACTION.NOTHING);
 
-        /*Set<Integer> keys = gui.getPressedKeys();
+        Set<Integer> keys = gui.getPressedKeys();
 
+        // casos especiais
         if (keys.contains(VK_Q) || keys.contains(VK_ESCAPE)){
             actions.add(ACTION.QUIT);
+            return actions;
+        }
+        else if (keys.contains(VK_SPACE)){
+            actions.add(ACTION.ATTACK);
+            return actions;
         }
 
-        if (keys.contains(VK_Q) || keys.contains(VK_ESCAPE)){
-            actions.add(ACTION.QUIT);
-        }*/
+        if (keys.contains(VK_SHIFT)){
+            actions.add(ACTION.SPRINT);
+        }
 
-        for (Integer i : gui.getPressedKeys()){
-            switch (i) {
-                case VK_Q, VK_ESCAPE -> {actions.add(ACTION.QUIT);}
+        if (keys.contains(VK_UP) || keys.contains(VK_W)){
+            actions.add(ACTION.UP);
+        }
 
-                case VK_UP, VK_W -> {actions.add(ACTION.UP);}
+        if (keys.contains(VK_DOWN) || keys.contains(VK_S)){
+            actions.add(ACTION.DOWN);
+        }
 
-                case VK_DOWN, VK_S -> {actions.add(ACTION.DOWN);}
+        if (keys.contains(VK_LEFT) || keys.contains(VK_A)){
+            actions.add(ACTION.LEFT);
+        }
 
-                case VK_LEFT, VK_A -> {actions.add(ACTION.LEFT);}
-
-                case VK_RIGHT, VK_D -> {actions.add(ACTION.RIGHT);}
-
-                case VK_SHIFT -> {actions.add(ACTION.SPRINT);}
-
-                case VK_SPACE -> {actions.add(ACTION.ATTACK);}
-            }
+        if (keys.contains(VK_RIGHT) || keys.contains(VK_D)){
+            actions.add(ACTION.RIGHT);
         }
 
         return actions;
