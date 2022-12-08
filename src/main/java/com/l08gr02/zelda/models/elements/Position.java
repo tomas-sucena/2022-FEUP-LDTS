@@ -1,5 +1,7 @@
 package com.l08gr02.zelda.models.elements;
 
+import java.util.Random;
+
 public class Position {
     private final int x, y;
 
@@ -37,6 +39,32 @@ public class Position {
     public Position right(int i){
         return new Position(x + i, y);
     }
+
+    public Position getRandomNeighbour(){
+        Random rnd = new Random();
+        int genMove = rnd.nextInt(4);
+        Position newpos = new Position(this.x,this.y);
+        switch(genMove){
+            case 0:
+                newpos.up(1);
+                break;
+            case 1:
+                newpos.down(1);
+                break;
+            case 2:
+                newpos.left(1);
+                break;
+            case 3:
+                newpos.right(1);
+                break;
+            }
+        return newpos;
+    }
+
+    public boolean isEmpty(){
+        return true;
+    }
+
 
     @Override
     public boolean equals(Object obj) {

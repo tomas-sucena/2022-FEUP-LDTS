@@ -35,5 +35,4 @@ public abstract class MovingElement extends Element {
 
     public abstract void attack();
 
-    public boolean checkValidMove(Position pos){return true;}
 }
