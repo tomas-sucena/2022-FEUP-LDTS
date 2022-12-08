@@ -25,52 +25,43 @@ public class LinkViewer extends SpriteViewer<Link> {
     public void draw(TextGraphics graphics, Link link) {
         super.draw(graphics, link);
 
-        drawLife(graphics, link);
+        drawHealthBar(graphics, link);
     }
 
-    public void drawLife(TextGraphics graphics, Link link){
+    public void drawHealthBar(TextGraphics graphics, Link link){
         heartSprite.setPixels(4,0);
-        Color pixels[][] = heartSprite.getPixels();
 
         float life = link.getHearts();
 
         // desenhar os corações inteiros
         for (int i = 0; i < (int) life; i++){
-            for (int j = 0; j < heartSprite.getHeight(); j++){
-                for (int k = 0; k < heartSprite.getWidth(); k++){
-                    int R = pixels[j][k].getRed();
-                    int G = pixels[j][k].getGreen();
-                    int B = pixels[j][k].getBlue();
-
-                    // verificar se o pixel é transparente
-                    if (R == 131 && G == 131 && B == 131){
-                        continue;
-                    }
-
-                    graphics.setBackgroundColor(new TextColor.RGB(R,G,B));
-                    graphics.setCharacter(i * 16 + j, k, ' ');
-                }
-            }
+            drawHeart(graphics, i);
         }
 
         // desenhar o coração não inteiro, caso exista
         if (life % 1 != 0){
             heartSprite.setPixels(8 - (int) (life % 1 * 4),0);
-            pixels = heartSprite.getPixels();
 
-            for (int j = 0; j < heartSprite.getHeight(); j++){
-                for (int k = 0; k < heartSprite.getWidth(); k++){
-                    int R = pixels[j][k].getRed();
-                    int G = pixels[j][k].getGreen();
-                    int B = pixels[j][k].getBlue();
+            drawHeart(graphics, (int) life);
+        }
+    }
 
-                    // verificar se o pixel é transparente
-                    if (R == 131 && G == 131 && B == 131){
-                        continue;
-                    }
-                    graphics.setBackgroundColor(new TextColor.RGB(R,G,B));
-                    graphics.setCharacter((int) life * 16 + j, k, ' ');
+    public void drawHeart(TextGraphics graphics, int n){
+        Color[][] pixels = heartSprite.getPixels();
+
+        for (int i = 0; i < heartSprite.getHeight(); i++) {
+            for (int j = 0; j < heartSprite.getWidth(); j++) {
+                int R = pixels[i][j].getRed();
+                int G = pixels[i][j].getGreen();
+                int B = pixels[i][j].getBlue();
+
+                // verificar se o pixel é transparente
+                if (R == 131 && G == 131 && B == 131) {
+                    continue;
                 }
+
+                graphics.setBackgroundColor(new TextColor.RGB(R, G, B));
+                graphics.setCharacter(n * 16 + i, j, ' ');
             }
         }
     }

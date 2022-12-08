@@ -4,7 +4,6 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.l08gr02.zelda.models.Sprite;
 import com.l08gr02.zelda.models.elements.Element;
-import com.l08gr02.zelda.models.elements.Link;
 
 import java.awt.*;
 
