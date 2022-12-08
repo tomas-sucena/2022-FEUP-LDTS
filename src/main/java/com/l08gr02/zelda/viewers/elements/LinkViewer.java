@@ -12,15 +12,15 @@ import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
 
 public class LinkViewer implements SpriteViewer<Link> {
     private Sprite sprite;
-    private Sprite hearts ;
+    private Sprite heartSprite;
     private int xGrid = 0, yGrid = 0;
 
     // constructor
     public LinkViewer(){
-        sprite = new Sprite(16, "Link", "character");
+        sprite = new Sprite(34, "Link", "spritesheet");
         sprite.setPixels(xGrid, yGrid);
 
-        hearts = new Sprite(16,"gfx","objects");
+        heartSprite = new Sprite(16,"gfx","objects");
     }
 
     // method
@@ -48,15 +48,15 @@ public class LinkViewer implements SpriteViewer<Link> {
     }
 
     public void drawLife(TextGraphics graphics, Link link){
-        float life = link.getHearts();
+        heartSprite.setPixels(4,0);
+        Color pixels[][] = heartSprite.getPixels();
 
-        hearts.setPixels(4,0);
-        Color pixels[][] = hearts.getPixels();
+        float life = link.getHearts();
 
         // desenhar os corações inteiros
         for (int i = 0; i < (int) life; i++){
-            for (int j = 0; j < sprite.getHeight(); j++){
-                for (int k = 0; k < sprite.getWidth(); k++){
+            for (int j = 0; j < heartSprite.getHeight(); j++){
+                for (int k = 0; k < heartSprite.getWidth(); k++){
                     graphics.setBackgroundColor(new TextColor.RGB(pixels[j][k].getRed(), pixels[j][k].getGreen(),pixels[j][k].getBlue()));
                     graphics.setCharacter(i * 16 + j, k, ' ');
                 }
@@ -65,10 +65,11 @@ public class LinkViewer implements SpriteViewer<Link> {
 
         // desenhar o coração não inteiro, caso exista
         if (life % 1 != 0){
-            hearts.setPixels(8 - (int) (life % 1 * 4),0);
-            pixels = hearts.getPixels();
-            for (int j = 0; j < sprite.getHeight(); j++){
-                for (int k = 0; k < sprite.getWidth(); k++){
+            heartSprite.setPixels(8 - (int) (life % 1 * 4),0);
+            pixels = heartSprite.getPixels();
+
+            for (int j = 0; j < heartSprite.getHeight(); j++){
+                for (int k = 0; k < heartSprite.getWidth(); k++){
                     graphics.setBackgroundColor(new TextColor.RGB(pixels[j][k].getRed(), pixels[j][k].getGreen(),pixels[j][k].getBlue()));
                     graphics.setCharacter((int) life * 16 + j, k, ' ');
                 }
@@ -79,12 +80,16 @@ public class LinkViewer implements SpriteViewer<Link> {
     @Override
     public void setSprite(ACTION action){
         switch (action) {
-            case UP -> {yGrid = 4;}
+            case UP -> {yGrid = 1;}
 
-            case DOWN -> {yGrid = 1;}
+            case DOWN -> {yGrid = 0;}
+
+            case LEFT -> {yGrid = 2;}
+
+            case RIGHT -> {yGrid = 3;}
         }
 
-        if (xGrid == 8){
+        if (xGrid == 4){
             xGrid = 0;
         }
         else if (action != ACTION.NOTHING){
