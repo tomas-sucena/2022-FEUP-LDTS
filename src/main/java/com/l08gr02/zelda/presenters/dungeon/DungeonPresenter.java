@@ -14,12 +14,14 @@ import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
 public class DungeonPresenter extends Presenter<Dungeon> {
     private LinkPresenter linkPresenter;
     private List<MonsterPresenter> monsterPresenters;
+    private boolean startup;
 
     // constructor
     public DungeonPresenter(Dungeon model, DungeonViewer viewer) {
         super(model, viewer);
 
         linkPresenter = new LinkPresenter(model.getLink(), viewer.getLinkViewer());
+        startup = false;
     }
 
     // methods
