@@ -12,6 +12,7 @@ This project was developed by Andreia Silva (up202108769@up.pt), Gonçalo Nadais
 ## Controls🎮
 
 - **Arrow keys** OR **WASD -** Move
+- **SHIFT -** Sprint 
 
 -----
 
