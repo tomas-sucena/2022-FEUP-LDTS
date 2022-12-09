@@ -36,9 +36,8 @@ public class DungeonViewer implements Viewer<Dungeon> {
 
     // methods
     @Override
-    public void draw(TextGraphics graphics, Dungeon dungeon){
+    public void draw(TextGraphics graphics, Dungeon dungeon) {
         drawTiles(graphics, dungeon.getTiles());
-
         drawHearts(graphics, dungeon);
     }
 
@@ -67,34 +66,34 @@ public class DungeonViewer implements Viewer<Dungeon> {
     }
 
     public void drawHearts(TextGraphics graphics, Dungeon dungeon) {
-        heart.setPixels(heartCount + 4, 8);
-        heartCount++;
-        if (heartCount == 4) {
-            heartCount = 0;
-        }
-        Color pixels[][] = heart.getPixels();
-        List<Heart> hearts = dungeon.getHearts();
+            heart.setPixels(heartCount + 4, 8);
+            heartCount++;
+            if (heartCount == 4) {
+                heartCount = 0;
+            }
+            Color pixels[][] = heart.getPixels();
+            List<Heart> hearts = dungeon.getHearts();
 
-        for (int k = 0; k < hearts.size(); k++) {
-            int x = hearts.get(k).getPosition().getX();
-            int y = hearts.get(k).getPosition().getY();
-            for (int i = 0; i < sprite.getHeight(); i++) {
-                for (int j = 0; j < sprite.getWidth(); j++) {
-                    int R = pixels[i][j].getRed();
-                    int G = pixels[i][j].getGreen();
-                    int B = pixels[i][j].getBlue();
+            for (int k = 0; k < hearts.size(); k++) {
+                int x = hearts.get(k).getPosition().getX();
+                int y = hearts.get(k).getPosition().getY();
+                for (int i = 0; i < sprite.getHeight(); i++) {
+                    for (int j = 0; j < sprite.getWidth(); j++) {
+                        int R = pixels[i][j].getRed();
+                        int G = pixels[i][j].getGreen();
+                        int B = pixels[i][j].getBlue();
 
-                    // verificar se o pixel é transparente
-                    if (R == 131 && G == 131 && B == 131) {
-                        continue;
+                        // verificar se o pixel é transparente
+                        if (R == 131 && G == 131 && B == 131) {
+                            continue;
+                        }
+
+                        graphics.setBackgroundColor(new TextColor.RGB(R, G, B));
+                        graphics.setCharacter(x + i, y + j, ' ');
                     }
-
-                    graphics.setBackgroundColor(new TextColor.RGB(R, G, B));
-                    graphics.setCharacter(x + i, y + j, ' ');
                 }
             }
         }
-    }
 
     public LinkViewer getLinkViewer() {
         return linkViewer;

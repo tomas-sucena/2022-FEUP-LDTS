@@ -23,7 +23,7 @@ public class GameplayPresenter {
 
     // methods
     public void update() throws IOException, InterruptedException {
-        int FPS = 60;
+        int FPS = 30;
         int frameTime = 1000 / FPS;
 
         while (true){
