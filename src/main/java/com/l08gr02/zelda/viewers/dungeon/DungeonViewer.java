@@ -37,11 +37,33 @@ public class DungeonViewer implements Viewer<Dungeon> {
     // methods
     @Override
     public void draw(TextGraphics graphics, Dungeon dungeon){
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#336699"));
-        graphics.fillRectangle(new TerminalPosition(0, 0),
-                new TerminalSize(tWidth, tHeight), ' ');
+        drawTiles(graphics, dungeon.getTiles());
 
         drawHearts(graphics, dungeon);
+    }
+
+    public void drawTiles(TextGraphics graphics, List<Tile> tiles){
+        for(Tile tile: tiles){
+            int x = tile.getPosition().getX();
+            int y = tile.getPosition().getY();
+            Sprite tileSprite = tile.getSprite();
+            Color[][] pixels = tileSprite.getPixels();
+            for (int i = 0; i < tileSprite.getHeight(); i++) {
+                for (int j = 0; j < tileSprite.getWidth(); j++) {
+                    int R = pixels[i][j].getRed();
+                    int G = pixels[i][j].getGreen();
+                    int B = pixels[i][j].getBlue();
+
+                    // verificar se o pixel é transparente
+                    if (R == 131 && G == 131 && B == 131) {
+                        continue;
+                    }
+
+                    graphics.setBackgroundColor(new TextColor.RGB(R, G, B));
+                    graphics.setCharacter(x + i, y + j, ' ');
+                }
+            }
+        }
     }
 
     public void drawHearts(TextGraphics graphics, Dungeon dungeon) {
