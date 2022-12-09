@@ -41,7 +41,6 @@ public class LinkViewer extends SpriteViewer<Link> {
         // desenhar o coração não inteiro, caso exista
         if (life % 1 != 0){
             heartSprite.setPixels(8 - (int) (life % 1 * 4),0);
-
             drawHeart(graphics, (int) life);
         }
     }

@@ -7,8 +7,6 @@ import com.l08gr02.zelda.viewers.GameplayViewer;
 import java.io.IOException;
 import java.util.List;
 
-import static java.lang.Thread.sleep;
-
 public class GameplayPresenter {
     private final Gameplay model;
     private GameplayViewer viewer;
@@ -25,7 +23,12 @@ public class GameplayPresenter {
 
     // methods
     public void update() throws IOException, InterruptedException {
+        int FPS = 60;
+        int frameTime = 1000 / FPS;
+
         while (true){
+            long startTime = System.currentTimeMillis();
+
             List<ACTION> actions = viewer.getActions();
 
             if (actions.contains(ACTION.QUIT)){
@@ -37,8 +40,13 @@ public class GameplayPresenter {
             dungeonPresenter.update(viewer.getGraphics(), actions);
             viewer.getScreen().refresh();
 
-            sleep(50);
+            sleep(frameTime - startTime);
         }
+    }
+
+    public void sleep(long sleepTime) throws InterruptedException {
+        if (sleepTime > 0)
+            Thread.sleep(sleepTime);
     }
 
 }

@@ -42,6 +42,8 @@ public class LinkPresenter extends Presenter<Link> {
 
     @Override
     public void update(TextGraphics graphics, List<ACTION> actions){
+        walk();
+
         for (ACTION action : actions){
             ((LinkViewer) viewer).setSprite(action);
 
@@ -59,8 +61,6 @@ public class LinkPresenter extends Presenter<Link> {
         }
 
         viewer.draw(graphics, model);
-
-        walk();
     }
 
 }
