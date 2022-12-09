@@ -47,4 +47,5 @@ public abstract class MovingElement extends Element {
     }
 
     public abstract void attack();
+
 }
