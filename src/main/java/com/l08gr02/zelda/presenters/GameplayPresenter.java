@@ -1,9 +1,12 @@
 package com.l08gr02.zelda.presenters;
 
 import com.l08gr02.zelda.models.Gameplay;
+import com.l08gr02.zelda.models.Music;
 import com.l08gr02.zelda.presenters.dungeon.DungeonPresenter;
 import com.l08gr02.zelda.viewers.GameplayViewer;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.util.List;
 
@@ -11,18 +14,23 @@ public class GameplayPresenter {
     private final Gameplay model;
     private GameplayViewer viewer;
     private DungeonPresenter dungeonPresenter;
+    private Music music;
     public enum ACTION {UP, DOWN, LEFT, RIGHT, SPRINT, ATTACK, QUIT, NOTHING};
 
     // constructor
-    public GameplayPresenter(Gameplay model, GameplayViewer viewer) {
+    public GameplayPresenter(Gameplay model, GameplayViewer viewer) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         this.model = model;
         this.viewer = viewer;
 
         dungeonPresenter = new DungeonPresenter(model.getDungeon(), viewer.getDungeonViewer());
+
+        music = new Music("overworld");
     }
 
     // methods
     public void update() throws IOException, InterruptedException {
+        music.play();
+
         int FPS = 60;
         int frameTime = 1000 / FPS;
 
@@ -42,6 +50,8 @@ public class GameplayPresenter {
 
             sleep(frameTime - startTime);
         }
+
+        music.stop();
     }
 
     public void sleep(long sleepTime) throws InterruptedException {
