@@ -14,7 +14,9 @@ public class Dungeon {
     private List<String> map;
     private Link link;
     private List<Monster> monsters;
-    private List<Tile> tiles;
+    private List<StaticTile> stiles;
+
+    private List<AnimatedTile> atiles;
 
     private List<Heart> hearts;
 
@@ -32,8 +34,9 @@ public class Dungeon {
         return link;
     }
 
-    public List<Tile> getTiles(){
-        return tiles;
+    public List<AnimatedTile> getAtiles(){return atiles;}
+    public List<StaticTile> getStiles(){
+        return stiles;
     }
 
     public void createMap(BufferedReader reader) throws IOException {
@@ -46,7 +49,8 @@ public class Dungeon {
 
     public void readMap(){
         monsters = new ArrayList<>();
-        tiles = new ArrayList<>();
+        stiles = new ArrayList<>();
+        atiles = new ArrayList<>();
         hearts = new ArrayList<>();
 
         for (int y = 0; y < map.size(); y++){
@@ -67,8 +71,10 @@ public class Dungeon {
 
             case 'H' -> {hearts.add(new Heart(x,y));}
 
+            case 'W' -> {atiles.add(new AnimatedTile(x,y,c));}
+
             case ' ' ->{ignore++;}
-            default -> {tiles.add(new Tile(x, y, c));}
+            default -> {stiles.add(new StaticTile(x, y, c));}
         }
     }
 
