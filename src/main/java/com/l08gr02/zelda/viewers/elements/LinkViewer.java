@@ -33,6 +33,10 @@ public class LinkViewer extends SpriteViewer<Link> {
     }
 
     // methods
+    public boolean isAttacking() {
+        return attacking;
+    }
+
     @Override
     public void draw(TextGraphics graphics, Link link) {
         super.draw(graphics, link);
@@ -104,7 +108,24 @@ public class LinkViewer extends SpriteViewer<Link> {
                 setDirection(action);
             }
 
-            case ATTACK -> {yGrid = attackYs.get(direction);}
+            case ATTACK -> {
+                if (!attacking){
+                    attacking = true;
+                    xGrid = -1;
+                }
+
+                yGrid = attackYs.get(direction);
+
+                if (xGrid < 4){
+                    xGrid++;
+                }
+                else{
+                    attacking = false;
+
+                    yGrid -= 4;
+                    xGrid = 0;
+                }
+            }
         }
 
         sprite.setPixels(xGrid, yGrid);
