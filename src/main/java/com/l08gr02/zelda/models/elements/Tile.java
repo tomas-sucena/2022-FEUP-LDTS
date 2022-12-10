@@ -4,8 +4,8 @@ import com.l08gr02.zelda.models.Sprite;
 
 import java.awt.*;
 
-public class Tile extends Element {
-    private Sprite sprite;
+public abstract class Tile extends Element {
+    protected Sprite sprite;
 
     // constructor
     public Tile(int x, int y, char c) {
@@ -13,6 +13,7 @@ public class Tile extends Element {
         sprite = new Sprite(16,16,"Dungeon", "Overworld");
         switch(c){
             case 'd' -> {sprite.setPixels(0,0);}
+
         }
     }
 
