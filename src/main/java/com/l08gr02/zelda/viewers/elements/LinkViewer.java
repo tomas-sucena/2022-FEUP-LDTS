@@ -7,17 +7,28 @@ import com.l08gr02.zelda.models.elements.Link;
 import com.l08gr02.zelda.viewers.SpriteViewer;
 
 import java.awt.*;
+import java.util.Map;
 
 import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
+import static java.util.Map.entry;
 
 public class LinkViewer extends SpriteViewer<Link> {
     private Sprite heartSprite;
+    private ACTION direction;
+    private final static Map<ACTION, Integer> attackYs = Map.ofEntries(
+            entry(ACTION.UP, 5),
+            entry(ACTION.DOWN, 4),
+            entry(ACTION.LEFT, 6),
+            entry(ACTION.RIGHT, 7)
+    );
 
     // constructor
     public LinkViewer(){
         super(new Sprite(44, 44, "Link", "spritesheet"));
 
         heartSprite = new Sprite(16, 16,"gfx","objects");
+
+        direction = ACTION.DOWN;
     }
 
     // methods
@@ -68,18 +79,18 @@ public class LinkViewer extends SpriteViewer<Link> {
     @Override
     public void setSprite(ACTION action){
          switch (action) {
-            case UP -> {yGrid = 1;}
+            case UP -> {yGrid = 1; setDirection(action);}
 
-            case DOWN -> {yGrid = 0;}
+            case DOWN -> {yGrid = 0; setDirection(action);}
 
-            case LEFT -> {yGrid = 2;}
+            case LEFT -> {yGrid = 2; setDirection(action);}
 
-            case RIGHT -> {yGrid = 3;}
+            case RIGHT -> {yGrid = 3; setDirection(action);}
 
-            case ATTACK -> {yGrid = 4;}
+            case ATTACK -> {yGrid = attackYs.get(direction);}
         }
 
-        if (xGrid == 5){
+        if (xGrid == 4){
             xGrid = 0;
         }
         else if (action != ACTION.NOTHING && action != ACTION.SPRINT){
@@ -87,6 +98,10 @@ public class LinkViewer extends SpriteViewer<Link> {
         }
 
         sprite.setPixels(xGrid, yGrid);
+    }
+
+    public void setDirection(ACTION direction){
+        this.direction = direction;
     }
 
 }
