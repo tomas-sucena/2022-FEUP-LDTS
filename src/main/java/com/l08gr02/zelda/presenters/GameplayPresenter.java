@@ -28,8 +28,8 @@ public class GameplayPresenter {
     }
 
     // methods
-    public void update() throws IOException, InterruptedException, UnsupportedAudioFileException, LineUnavailableException {
-        //music.play();
+    public void update() throws IOException, InterruptedException {
+        music.play();
 
         int FPS = 60;
         int frameTime = 1000 / FPS;
@@ -51,7 +51,7 @@ public class GameplayPresenter {
             sleep(frameTime - startTime);
         }
 
-        //music.stop();
+        music.stop();
     }
 
     public void sleep(long sleepTime) throws InterruptedException {

@@ -12,12 +12,14 @@ import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
 
 public class LinkPresenter extends Presenter<Link> {
     private SoundEffect walkSFX;
+    private SoundEffect swordSFX;
 
     // constructor
     public LinkPresenter(Link model, LinkViewer viewer){
         super(model, viewer);
 
         walkSFX = new SoundEffect("walk_grass");
+        swordSFX = new SoundEffect("sword");
     }
 
     // methods
@@ -78,6 +80,11 @@ public class LinkPresenter extends Presenter<Link> {
         }
 
         viewer.draw(graphics, model);
+
+        // refactoring temporário
+        if (actions.contains(ACTION.ATTACK)){
+            swordSFX.play();
+        }
     }
 
 }
