@@ -21,6 +21,7 @@ public class LinkViewer extends SpriteViewer<Link> {
             entry(ACTION.LEFT, 6),
             entry(ACTION.RIGHT, 7)
     );
+    private boolean attacking;
 
     // constructor
     public LinkViewer(){
@@ -78,23 +79,32 @@ public class LinkViewer extends SpriteViewer<Link> {
 
     @Override
     public void setSprite(ACTION action){
-         switch (action) {
-            case UP -> {yGrid = 1; setDirection(action);}
+        switch (action) {
+            case UP -> {
+                yGrid = 1;
+                xGrid = (xGrid >= 7) ? 0 : xGrid + 1;
+                setDirection(action);
+            }
 
-            case DOWN -> {yGrid = 0; setDirection(action);}
+            case DOWN -> {
+                yGrid = 0;
+                xGrid = (xGrid >= 7) ? 0 : xGrid + 1;
+                setDirection(action);
+            }
 
-            case LEFT -> {yGrid = 2; setDirection(action);}
+            case LEFT -> {
+                yGrid = 2;
+                xGrid = (xGrid >= 5) ? 0 : xGrid + 1;
+                setDirection(action);
+            }
 
-            case RIGHT -> {yGrid = 3; setDirection(action);}
+            case RIGHT -> {
+                yGrid = 3;
+                xGrid = (xGrid >= 5) ? 0 : xGrid + 1;
+                setDirection(action);
+            }
 
             case ATTACK -> {yGrid = attackYs.get(direction);}
-        }
-
-        if (xGrid == 4){
-            xGrid = 0;
-        }
-        else if (action != ACTION.NOTHING && action != ACTION.SPRINT){
-            xGrid++;
         }
 
         sprite.setPixels(xGrid, yGrid);
