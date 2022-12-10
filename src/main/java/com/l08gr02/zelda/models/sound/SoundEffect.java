@@ -5,13 +5,14 @@ import java.io.IOException;
 
 public class SoundEffect extends Sound {
     // constructor
-    public SoundEffect(String file) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+    public SoundEffect(String file) {
         super("sfx", file);
     }
 
     // method
     @Override
-    public void play() {
-        clip.start();
+    public void play() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+        super.play();
+        super.stop();
     }
 }

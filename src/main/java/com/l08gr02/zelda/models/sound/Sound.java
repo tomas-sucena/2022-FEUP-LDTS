@@ -7,24 +7,30 @@ import java.io.IOException;
 public abstract class Sound {
     protected Clip clip;
     private AudioInputStream song;
+    private String songPath;
 
     // constructor
-    public Sound(String type, String file) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
-        song = loadSong(type, file);
-
-        clip = AudioSystem.getClip();
-        clip.open(song);
+    public Sound(String type, String file) {
+        songPath = "src/main/resources/sound/" + type + "/" + file + ".wav";
     }
 
     // methods
-    public AudioInputStream loadSong(String type, String file) throws UnsupportedAudioFileException, IOException {
-        return AudioSystem.getAudioInputStream(new File("src/main/resources/sound/" + type + "/" + file + ".wav"));
+    public AudioInputStream loadSong() throws UnsupportedAudioFileException, IOException {
+        return AudioSystem.getAudioInputStream(new File(songPath));
     }
 
-    public void stop(){
+    public void play() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        song = loadSong();
+
+        clip.open(song);
+        clip.start();
+    }
+
+    public void stop() throws IOException {
         clip.stop();
         clip.close();
+
+        song.close();
     }
 
-    public abstract void play();
 }
