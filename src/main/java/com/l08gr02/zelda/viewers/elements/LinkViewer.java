@@ -7,10 +7,8 @@ import com.l08gr02.zelda.models.elements.Link;
 import com.l08gr02.zelda.viewers.SpriteViewer;
 
 import java.awt.*;
-import java.util.Map;
 
 import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
-import static java.util.Map.entry;
 
 public class LinkViewer extends SpriteViewer<Link> {
     private Sprite heartSprite;
@@ -99,8 +97,8 @@ public class LinkViewer extends SpriteViewer<Link> {
                 if (!attacking){
                     attacking = true;
 
-                    xGrid = -1;
                     yGrid += 4;
+                    xGrid = -1;
                 }
 
                 if (xGrid < 4){
