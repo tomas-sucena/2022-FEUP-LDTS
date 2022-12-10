@@ -1,18 +1,17 @@
 package com.l08gr02.zelda.models.sound;
 
 import javax.sound.sampled.*;
-import java.io.IOException;
 
 public class Music extends Sound {
     // constructor
-    public Music(String file) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+    public Music(String file) {
         super("music", file);
     }
 
     // method
     @Override
     public void play() {
-        clip.start();
+        super.play();
         clip.loop(Clip.LOOP_CONTINUOUSLY);
     }
 }

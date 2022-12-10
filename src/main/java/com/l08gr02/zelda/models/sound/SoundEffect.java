@@ -1,8 +1,5 @@
 package com.l08gr02.zelda.models.sound;
 
-import javax.sound.sampled.*;
-import java.io.IOException;
-
 public class SoundEffect extends Sound {
     // constructor
     public SoundEffect(String file) {
@@ -11,8 +8,7 @@ public class SoundEffect extends Sound {
 
     // method
     @Override
-    public void play() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+    public void play() {
         super.play();
-        super.stop();
     }
 }

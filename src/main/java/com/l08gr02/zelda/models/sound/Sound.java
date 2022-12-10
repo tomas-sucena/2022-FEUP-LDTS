@@ -19,10 +19,21 @@ public abstract class Sound {
         return AudioSystem.getAudioInputStream(new File(songPath));
     }
 
-    public void play() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+    public Clip loadClip() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         song = loadSong();
 
-        clip.open(song);
+        return AudioSystem.getClip();
+    }
+
+    public void play() {
+        try {
+            clip = loadClip();
+            clip.open(song);
+        }
+        catch (UnsupportedAudioFileException | LineUnavailableException | IOException e){
+            e.printStackTrace();
+        }
+
         clip.start();
     }
 
