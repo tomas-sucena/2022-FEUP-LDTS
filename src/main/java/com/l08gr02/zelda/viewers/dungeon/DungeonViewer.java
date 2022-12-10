@@ -9,6 +9,7 @@ import com.l08gr02.zelda.models.dungeon.Dungeon;
 import com.l08gr02.zelda.models.elements.Heart;
 import com.l08gr02.zelda.models.elements.Tile;
 import com.l08gr02.zelda.viewers.Viewer;
+import com.l08gr02.zelda.viewers.elements.HeartViewer;
 import com.l08gr02.zelda.viewers.elements.LinkViewer;
 import com.l08gr02.zelda.viewers.elements.MonsterViewer;
 
@@ -17,21 +18,21 @@ import java.util.List;
 
 public class DungeonViewer implements Viewer<Dungeon> {
     private Sprite sprite;
-    private Sprite heart;
     private int tWidth, tHeight;
-    private int heartCount = 0;
+
     private LinkViewer linkViewer;
+    private HeartViewer heartViewer;
     private List<MonsterViewer> monsterViewers;
 
     // constructor
     public DungeonViewer(int tWidth, int tHeight){
         sprite = new Sprite(16, 16,"Dungeon", "Overworld");
-        heart = new Sprite(16,16,"gfx","objects");
 
         this.tWidth = tWidth; this.tHeight = tHeight;
 
         // criar os viewers
         linkViewer = new LinkViewer();
+        heartViewer = new HeartViewer();
     }
 
     // methods
@@ -66,33 +67,12 @@ public class DungeonViewer implements Viewer<Dungeon> {
     }
 
     public void drawHearts(TextGraphics graphics, Dungeon dungeon) {
-            heart.setPixels(heartCount + 4, 8);
-            heartCount++;
-            if (heartCount == 4) {
-                heartCount = 0;
-            }
-            Color pixels[][] = heart.getPixels();
             List<Heart> hearts = dungeon.getHearts();
 
-            for (int k = 0; k < hearts.size(); k++) {
-                int x = hearts.get(k).getPosition().getX();
-                int y = hearts.get(k).getPosition().getY();
-                for (int i = 0; i < sprite.getHeight(); i++) {
-                    for (int j = 0; j < sprite.getWidth(); j++) {
-                        int R = pixels[i][j].getRed();
-                        int G = pixels[i][j].getGreen();
-                        int B = pixels[i][j].getBlue();
-
-                        // verificar se o pixel é transparente
-                        if (R == 131 && G == 131 && B == 131) {
-                            continue;
-                        }
-
-                        graphics.setBackgroundColor(new TextColor.RGB(R, G, B));
-                        graphics.setCharacter(x + i, y + j, ' ');
-                    }
-                }
+            for (Heart heart: hearts) {
+                heartViewer.draw(graphics, heart);
             }
+            heartViewer.incrementHeartCount();
         }
 
     public LinkViewer getLinkViewer() {
