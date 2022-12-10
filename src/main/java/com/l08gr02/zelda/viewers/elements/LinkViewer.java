@@ -14,13 +14,6 @@ import static java.util.Map.entry;
 
 public class LinkViewer extends SpriteViewer<Link> {
     private Sprite heartSprite;
-    private ACTION direction;
-    private final static Map<ACTION, Integer> attackYs = Map.ofEntries(
-            entry(ACTION.UP, 5),
-            entry(ACTION.DOWN, 4),
-            entry(ACTION.LEFT, 6),
-            entry(ACTION.RIGHT, 7)
-    );
     private boolean attacking;
 
     // constructor
@@ -28,8 +21,6 @@ public class LinkViewer extends SpriteViewer<Link> {
         super(new Sprite(44, 44, "Link", "spritesheet"));
 
         heartSprite = new Sprite(16, 16,"gfx","objects");
-
-        direction = ACTION.DOWN;
     }
 
     // methods
@@ -87,34 +78,30 @@ public class LinkViewer extends SpriteViewer<Link> {
             case UP -> {
                 yGrid = 1;
                 xGrid = (xGrid >= 7) ? 0 : xGrid + 1;
-                setDirection(action);
             }
 
             case DOWN -> {
                 yGrid = 0;
                 xGrid = (xGrid >= 7) ? 0 : xGrid + 1;
-                setDirection(action);
             }
 
             case LEFT -> {
                 yGrid = 2;
                 xGrid = (xGrid >= 5) ? 0 : xGrid + 1;
-                setDirection(action);
             }
 
             case RIGHT -> {
                 yGrid = 3;
                 xGrid = (xGrid >= 5) ? 0 : xGrid + 1;
-                setDirection(action);
             }
 
             case ATTACK -> {
                 if (!attacking){
                     attacking = true;
-                    xGrid = -1;
-                }
 
-                yGrid = attackYs.get(direction);
+                    xGrid = -1;
+                    yGrid += 4;
+                }
 
                 if (xGrid < 4){
                     xGrid++;
@@ -129,10 +116,6 @@ public class LinkViewer extends SpriteViewer<Link> {
         }
 
         sprite.setPixels(xGrid, yGrid);
-    }
-
-    public void setDirection(ACTION direction){
-        this.direction = direction;
     }
 
 }
