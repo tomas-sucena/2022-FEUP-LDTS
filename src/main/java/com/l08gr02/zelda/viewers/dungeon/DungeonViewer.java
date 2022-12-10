@@ -1,7 +1,5 @@
 package com.l08gr02.zelda.viewers.dungeon;
 
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.l08gr02.zelda.models.Sprite;
@@ -19,7 +17,6 @@ import java.util.List;
 public class DungeonViewer implements Viewer<Dungeon> {
     private Sprite sprite;
     private int tWidth, tHeight;
-
     private LinkViewer linkViewer;
     private HeartViewer heartViewer;
     private List<MonsterViewer> monsterViewers;
@@ -67,13 +64,14 @@ public class DungeonViewer implements Viewer<Dungeon> {
     }
 
     public void drawHearts(TextGraphics graphics, Dungeon dungeon) {
-            List<Heart> hearts = dungeon.getHearts();
+        List<Heart> hearts = dungeon.getHearts();
 
-            for (Heart heart: hearts) {
-                heartViewer.draw(graphics, heart);
-            }
-            heartViewer.incrementHeartCount();
+        for (Heart heart: hearts) {
+            heartViewer.draw(graphics, heart);
         }
+
+        heartViewer.incrementHeartCount();
+    }
 
     public LinkViewer getLinkViewer() {
         return linkViewer;

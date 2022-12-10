@@ -44,6 +44,14 @@ public class LinkPresenter extends Presenter<Link> {
     public void update(TextGraphics graphics, List<ACTION> actions){
         walk();
 
+        // verificar se o Link está a atacar
+        if (((LinkViewer) viewer).isAttacking()){
+            ((LinkViewer) viewer).setSprite(ACTION.ATTACK);
+            viewer.draw(graphics, model);
+
+            return;
+        }
+
         for (ACTION action : actions){
             ((LinkViewer) viewer).setSprite(action);
 

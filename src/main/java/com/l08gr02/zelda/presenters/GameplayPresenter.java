@@ -1,7 +1,7 @@
 package com.l08gr02.zelda.presenters;
 
 import com.l08gr02.zelda.models.Gameplay;
-import com.l08gr02.zelda.models.Music;
+import com.l08gr02.zelda.models.sound.Music;
 import com.l08gr02.zelda.presenters.dungeon.DungeonPresenter;
 import com.l08gr02.zelda.viewers.GameplayViewer;
 

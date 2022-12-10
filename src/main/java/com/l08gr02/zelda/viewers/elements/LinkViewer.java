@@ -7,31 +7,25 @@ import com.l08gr02.zelda.models.elements.Link;
 import com.l08gr02.zelda.viewers.SpriteViewer;
 
 import java.awt.*;
-import java.util.Map;
 
 import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
-import static java.util.Map.entry;
 
 public class LinkViewer extends SpriteViewer<Link> {
     private Sprite heartSprite;
-    private ACTION direction;
-    private final static Map<ACTION, Integer> attackYs = Map.ofEntries(
-            entry(ACTION.UP, 5),
-            entry(ACTION.DOWN, 4),
-            entry(ACTION.LEFT, 6),
-            entry(ACTION.RIGHT, 7)
-    );
+    private boolean attacking;
 
     // constructor
     public LinkViewer(){
         super(new Sprite(44, 44, "Link", "spritesheet"));
 
         heartSprite = new Sprite(16, 16,"gfx","objects");
-
-        direction = ACTION.DOWN;
     }
 
     // methods
+    public boolean isAttacking() {
+        return attacking;
+    }
+
     @Override
     public void draw(TextGraphics graphics, Link link) {
         super.draw(graphics, link);
@@ -78,30 +72,48 @@ public class LinkViewer extends SpriteViewer<Link> {
 
     @Override
     public void setSprite(ACTION action){
-         switch (action) {
-            case UP -> {yGrid = 1; setDirection(action);}
+        switch (action) {
+            case UP -> {
+                yGrid = 1;
+                xGrid = (xGrid >= 7) ? 0 : xGrid + 1;
+            }
 
-            case DOWN -> {yGrid = 0; setDirection(action);}
+            case DOWN -> {
+                yGrid = 0;
+                xGrid = (xGrid >= 7) ? 0 : xGrid + 1;
+            }
 
-            case LEFT -> {yGrid = 2; setDirection(action);}
+            case LEFT -> {
+                yGrid = 2;
+                xGrid = (xGrid >= 5) ? 0 : xGrid + 1;
+            }
 
-            case RIGHT -> {yGrid = 3; setDirection(action);}
+            case RIGHT -> {
+                yGrid = 3;
+                xGrid = (xGrid >= 5) ? 0 : xGrid + 1;
+            }
 
-            case ATTACK -> {yGrid = attackYs.get(direction);}
-        }
+            case ATTACK -> {
+                if (!attacking){
+                    attacking = true;
 
-        if (xGrid == 4){
-            xGrid = 0;
-        }
-        else if (action != ACTION.NOTHING && action != ACTION.SPRINT){
-            xGrid++;
+                    yGrid += 4;
+                    xGrid = -1;
+                }
+
+                if (xGrid < 4){
+                    xGrid++;
+                }
+                else{
+                    attacking = false;
+
+                    yGrid -= 4;
+                    xGrid = 0;
+                }
+            }
         }
 
         sprite.setPixels(xGrid, yGrid);
-    }
-
-    public void setDirection(ACTION direction){
-        this.direction = direction;
     }
 
 }
