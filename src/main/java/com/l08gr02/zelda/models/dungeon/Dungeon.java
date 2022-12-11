@@ -48,11 +48,11 @@ public class Dungeon {
     }
 
     public void checkCollisions(){
-        for (Heart heart : hearts){
-            link.setColliding(link.collides(heart));
+        link.resetObstacles();
 
-            if (link.isColliding()){
-                break;
+        for (Heart heart : hearts){
+            if (link.getDistance(heart) <= 16){
+                link.addObstacle(heart);
             }
         }
     }

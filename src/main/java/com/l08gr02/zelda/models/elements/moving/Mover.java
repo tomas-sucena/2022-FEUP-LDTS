@@ -22,21 +22,21 @@ public abstract class Mover extends CollidingElement implements Movement {
 
     public void up(int i){
         setPosition(getPosition().up(i));
-        hitbox.y -= i;
+        setHitbox(getHitbox().up(i));
     }
 
     public void down(int i){
         setPosition(getPosition().down(i));
-        hitbox.y += i;
+        setHitbox(getHitbox().down(i));
     }
 
     public void left(int i){
         setPosition(getPosition().left(i));
-        hitbox.x -= i;
+        setHitbox(getHitbox().left(i));
     }
 
     public void right(int i){
         setPosition(getPosition().right(i));
-        hitbox.x += i;
+        setHitbox(getHitbox().right(i));
     }
 }

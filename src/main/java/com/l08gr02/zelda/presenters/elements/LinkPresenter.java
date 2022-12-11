@@ -1,6 +1,8 @@
 package com.l08gr02.zelda.presenters.elements;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
+import com.l08gr02.zelda.models.elements.CollidingElement;
+import com.l08gr02.zelda.models.elements.Hitbox;
 import com.l08gr02.zelda.models.elements.moving.Link;
 import com.l08gr02.zelda.models.sound.SoundEffect;
 import com.l08gr02.zelda.presenters.Presenter;
@@ -24,19 +26,35 @@ public class LinkPresenter extends Presenter<Link> {
 
     // methods
     public void moveUp() {
-        model.up(model.getSpeed());
+        Hitbox dummy = model.getHitbox().up(model.getSpeed());
+
+        if (canMove(dummy)){
+            model.up(model.getSpeed());
+        }
     }
 
     public void moveDown() {
-        model.down(model.getSpeed());
+        Hitbox dummy = model.getHitbox().down(model.getSpeed());
+
+        if (canMove(dummy)){
+            model.down(model.getSpeed());
+        }
     }
 
     public void moveLeft() {
-        model.left(model.getSpeed());
+        Hitbox dummy = model.getHitbox().left(model.getSpeed());
+
+        if (canMove(dummy)){
+            model.left(model.getSpeed());
+        }
     }
 
     public void moveRight() {
-        model.right(model.getSpeed());
+        Hitbox dummy = model.getHitbox().right(model.getSpeed());
+
+        if (canMove(dummy)){
+            model.right(model.getSpeed());
+        }
     }
 
     public void walk(){
@@ -45,6 +63,16 @@ public class LinkPresenter extends Presenter<Link> {
 
     public void sprint(){
         model.sprint();
+    }
+
+    public boolean canMove(Hitbox dummy){
+        for (CollidingElement el : model.getObstacles()){
+            if (dummy.intersects(el.getHitbox())){
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public void playSoundEffects(List<ACTION> actions){

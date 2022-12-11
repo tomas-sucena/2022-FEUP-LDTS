@@ -2,13 +2,18 @@ package com.l08gr02.zelda.models.elements;
 
 import com.l08gr02.zelda.models.elements.actions.Collision;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class CollidingElement extends Element implements Collision {
     protected Hitbox hitbox;
-    private boolean colliding;
+    private List<CollidingElement> obstacles;
 
-    // constructor
+    // constructors
     public CollidingElement(int x, int y){
         super(x, y);
+
+        obstacles = new ArrayList<>();
     }
 
     // method
@@ -16,15 +21,23 @@ public abstract class CollidingElement extends Element implements Collision {
         return hitbox;
     }
 
-    public boolean isColliding() {
-        return colliding;
+    public void setHitbox(Hitbox hitbox) {
+        this.hitbox = hitbox;
     }
 
-    public void setColliding(boolean colliding) {
-        this.colliding = colliding;
+    public List<CollidingElement> getObstacles() {
+        return obstacles;
     }
 
-    public boolean collides(CollidingElement el){
+    public void addObstacle(CollidingElement el){
+        obstacles.add(el);
+    }
+
+    public void resetObstacles(){
+        obstacles.clear();
+    }
+
+    public boolean collidesWith(CollidingElement el){
         return hitbox.intersects(el.getHitbox());
     }
 

@@ -9,6 +9,22 @@ public class Hitbox extends Rectangle {
     }
 
     // method
+    public Hitbox up(int i){
+        return new Hitbox(x, y - i, width, height);
+    }
+
+    public Hitbox down(int i){
+        return new Hitbox(x, y + i, width, height);
+    }
+
+    public Hitbox left(int i){
+        return new Hitbox(x - i, y, width, height);
+    }
+
+    public Hitbox right(int i){
+        return new Hitbox(x + i, y, width, height);
+    }
+
     @Override
     public boolean intersects(Rectangle b) {
         int tw = this.width;

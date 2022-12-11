@@ -17,4 +17,11 @@ public abstract class Element {
         this.pos = pos;
     }
 
+    public float getDistance(Element el){
+        float distX = pos.getX() - el.getPosition().getX();
+        float distY = pos.getY() - el.getPosition().getY();
+
+        return (float) Math.sqrt(Math.pow(distX, 2) + Math.pow(distY, 2));
+    }
+
 }
