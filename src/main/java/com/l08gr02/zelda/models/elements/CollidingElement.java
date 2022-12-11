@@ -16,8 +16,16 @@ public abstract class CollidingElement extends Element implements Collision {
         return hitbox;
     }
 
+    public boolean isColliding() {
+        return colliding;
+    }
+
+    public void setColliding(boolean colliding) {
+        this.colliding = colliding;
+    }
+
     public boolean collides(CollidingElement el){
-        return this.hitbox.intersects(el.getHitbox());
+        return hitbox.intersects(el.getHitbox());
     }
 
 }

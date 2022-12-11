@@ -47,9 +47,15 @@ public class Dungeon {
         return hearts;
     }
 
-    /*public void checkCollisions(){
-        for (AnimatedTile)
-    }*/
+    public void checkCollisions(){
+        for (Heart heart : hearts){
+            link.setColliding(link.collides(heart));
+
+            if (link.isColliding()){
+                break;
+            }
+        }
+    }
 
     public void createMap(BufferedReader reader) throws IOException {
         map = new ArrayList<>();
