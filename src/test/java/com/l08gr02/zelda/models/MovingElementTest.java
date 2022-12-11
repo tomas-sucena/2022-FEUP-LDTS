@@ -1,7 +1,7 @@
 package com.l08gr02.zelda.models;
 
-import com.l08gr02.zelda.models.elements.Link;
-import com.l08gr02.zelda.models.elements.MovingElement;
+import com.l08gr02.zelda.models.elements.moving.Link;
+import com.l08gr02.zelda.models.elements.moving.MovingElement;
 import com.l08gr02.zelda.models.elements.Position;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,6 +1,10 @@
 package com.l08gr02.zelda.models.dungeon;
 
-import com.l08gr02.zelda.models.elements.*;
+import com.l08gr02.zelda.models.elements.moving.Link;
+import com.l08gr02.zelda.models.elements.moving.Monster;
+import com.l08gr02.zelda.models.elements.tiles.AnimatedTile;
+import com.l08gr02.zelda.models.elements.tiles.Heart;
+import com.l08gr02.zelda.models.elements.tiles.StaticTile;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

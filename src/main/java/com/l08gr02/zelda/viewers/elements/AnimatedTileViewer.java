@@ -1,7 +1,7 @@
 package com.l08gr02.zelda.viewers.elements;
 
 import com.l08gr02.zelda.models.Sprite;
-import com.l08gr02.zelda.models.elements.AnimatedTile;
+import com.l08gr02.zelda.models.elements.tiles.AnimatedTile;
 import com.l08gr02.zelda.presenters.GameplayPresenter;
 import com.l08gr02.zelda.viewers.SpriteViewer;
 

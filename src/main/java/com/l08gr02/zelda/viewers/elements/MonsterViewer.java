@@ -6,8 +6,7 @@ import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.l08gr02.zelda.models.Sprite;
-import com.l08gr02.zelda.models.elements.Monster;
-import com.l08gr02.zelda.viewers.SpriteViewer;
+import com.l08gr02.zelda.models.elements.moving.Monster;
 import com.l08gr02.zelda.viewers.Viewer;
 
 import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;

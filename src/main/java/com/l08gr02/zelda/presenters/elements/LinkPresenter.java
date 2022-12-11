@@ -1,7 +1,7 @@
 package com.l08gr02.zelda.presenters.elements;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
-import com.l08gr02.zelda.models.elements.Link;
+import com.l08gr02.zelda.models.elements.moving.Link;
 import com.l08gr02.zelda.models.sound.SoundEffect;
 import com.l08gr02.zelda.presenters.Presenter;
 import com.l08gr02.zelda.viewers.elements.LinkViewer;
@@ -25,22 +25,18 @@ public class LinkPresenter extends Presenter<Link> {
     // methods
     public void moveUp() {
         model.up(model.getSpeed());
-        walkSFX.play();
     }
 
     public void moveDown() {
         model.down(model.getSpeed());
-        walkSFX.play();
     }
 
     public void moveLeft() {
         model.left(model.getSpeed());
-        walkSFX.play();
     }
 
     public void moveRight() {
         model.right(model.getSpeed());
-        walkSFX.play();
     }
 
     public void walk(){
@@ -49,6 +45,16 @@ public class LinkPresenter extends Presenter<Link> {
 
     public void sprint(){
         model.sprint();
+    }
+
+    public void playSoundEffects(List<ACTION> actions){
+        if (actions.contains(ACTION.ATTACK)){
+            swordSFX.play();
+        }
+        else if (actions.contains(ACTION.UP) || actions.contains(ACTION.DOWN) ||
+                 actions.contains(ACTION.LEFT) || actions.contains(ACTION.RIGHT)){
+            walkSFX.play();
+        }
     }
 
     @Override
@@ -81,10 +87,7 @@ public class LinkPresenter extends Presenter<Link> {
 
         viewer.draw(graphics, model);
 
-        // refactoring temporário
-        if (actions.contains(ACTION.ATTACK)){
-            swordSFX.play();
-        }
+        playSoundEffects(actions);
     }
 
 }

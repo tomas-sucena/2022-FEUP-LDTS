@@ -1,17 +1,14 @@
 package com.l08gr02.zelda.viewers.dungeon;
 
-import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.l08gr02.zelda.models.Sprite;
 import com.l08gr02.zelda.models.dungeon.Dungeon;
-import com.l08gr02.zelda.models.elements.AnimatedTile;
-import com.l08gr02.zelda.models.elements.Heart;
-import com.l08gr02.zelda.models.elements.StaticTile;
-import com.l08gr02.zelda.models.elements.Tile;
+import com.l08gr02.zelda.models.elements.tiles.AnimatedTile;
+import com.l08gr02.zelda.models.elements.tiles.Heart;
+import com.l08gr02.zelda.models.elements.tiles.StaticTile;
 import com.l08gr02.zelda.viewers.Viewer;
 import com.l08gr02.zelda.viewers.elements.*;
 
-import java.awt.*;
 import java.util.List;
 
 public class DungeonViewer implements Viewer<Dungeon> {

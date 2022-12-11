@@ -3,7 +3,7 @@ package com.l08gr02.zelda.viewers.elements;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.l08gr02.zelda.models.Sprite;
-import com.l08gr02.zelda.models.elements.Link;
+import com.l08gr02.zelda.models.elements.moving.Link;
 import com.l08gr02.zelda.viewers.SpriteViewer;
 
 import java.awt.*;
