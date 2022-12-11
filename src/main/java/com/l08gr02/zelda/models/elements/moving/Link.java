@@ -1,14 +1,14 @@
 package com.l08gr02.zelda.models.elements.moving;
 
-import java.awt.*;
+import com.l08gr02.zelda.models.elements.Hitbox;
 
-public class Link extends MovingElement {
+public class Link extends Fighter {
     private static int WALK_SPEED = 2, SPRINT_SPEED = 4;
 
     // constructor
     public Link(int x, int y){
         super(x, y);
-        hitbox = new Rectangle(x + 15, y + 24, 16, 16);
+        hitbox = new Hitbox(x + 15, y + 24, 16, 16);
 
         hearts = 3;
         speed = WALK_SPEED;

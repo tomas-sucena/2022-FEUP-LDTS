@@ -3,8 +3,8 @@ package com.l08gr02.zelda.models.elements.moving;
 import com.l08gr02.zelda.models.elements.Element;
 
 public abstract class MovingElement extends Element {
-    protected float hearts;
     protected int speed;
+    protected boolean colliding;
 
     // constructors
     public MovingElement(int x, int y){
@@ -12,16 +12,20 @@ public abstract class MovingElement extends Element {
     }
 
     // methods
-    public float getHearts(){
-        return hearts;
-    }
-
     public int getSpeed(){
         return speed;
     }
 
     public void setSpeed(int speed){
         this.speed = speed;
+    }
+
+    public boolean canMove(){
+        return !colliding;
+    }
+
+    public void collides(MovingElement mv){
+        colliding = this.hitbox.intersects(mv.hitbox);
     }
 
     public void up(int i){
@@ -43,15 +47,5 @@ public abstract class MovingElement extends Element {
         setPosition(getPosition().right(i));
         hitbox.x += i;
     }
-
-    public void takeDamage(float heartsLost) {
-        hearts -= heartsLost;
-    }
-
-    public void heal(float heartsGained) {
-        hearts += heartsGained;
-    }
-
-    public abstract void attack();
-
+    
 }

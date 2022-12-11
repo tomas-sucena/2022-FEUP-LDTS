@@ -14,14 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Dungeon {
-    private int ignore = 0;
     private List<String> map;
     private Link link;
     private List<Monster> monsters;
     private List<StaticTile> stiles;
-
     private List<AnimatedTile> atiles;
-
     private List<Heart> hearts;
 
     // constructor
@@ -34,13 +31,24 @@ public class Dungeon {
     }
 
     // methods
-    public Link getLink() {
+    public Link getLink(){
         return link;
     }
 
-    public List<AnimatedTile> getAtiles(){return atiles;}
+    public List<AnimatedTile> getAtiles(){
+        return atiles;
+    }
+
     public List<StaticTile> getStiles(){
         return stiles;
+    }
+
+    public List<Heart> getHearts(){
+        return hearts;
+    }
+
+    public void checkCollisions(){
+        for (AnimatedTile)
     }
 
     public void createMap(BufferedReader reader) throws IOException {
@@ -89,7 +97,4 @@ public class Dungeon {
         }
     }
 
-    public List<Heart> getHearts() {
-        return hearts;
-    }
 }
