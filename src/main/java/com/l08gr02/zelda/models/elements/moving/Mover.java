@@ -1,13 +1,13 @@
 package com.l08gr02.zelda.models.elements.moving;
 
-import com.l08gr02.zelda.models.elements.Element;
+import com.l08gr02.zelda.models.elements.CollidingElement;
+import com.l08gr02.zelda.models.elements.actions.Movement;
 
-public abstract class MovingElement extends Element {
-    protected int speed;
-    protected boolean colliding;
+public abstract class Mover extends CollidingElement implements Movement {
+    private int speed;
 
-    // constructors
-    public MovingElement(int x, int y){
+    // constructor
+    public Mover(int x, int y) {
         super(x, y);
     }
 
@@ -18,14 +18,6 @@ public abstract class MovingElement extends Element {
 
     public void setSpeed(int speed){
         this.speed = speed;
-    }
-
-    public boolean canMove(){
-        return !colliding;
-    }
-
-    public void collides(MovingElement mv){
-        colliding = this.hitbox.intersects(mv.hitbox);
     }
 
     public void up(int i){
@@ -47,5 +39,4 @@ public abstract class MovingElement extends Element {
         setPosition(getPosition().right(i));
         hitbox.x += i;
     }
-    
 }

@@ -12,7 +12,6 @@ public abstract class Tile extends Element {
     // constructor
     public Tile(int x, int y, char c) {
         super(x, y);
-        hitbox = new Hitbox(x, y, 16, 16);
 
         sprite = new Sprite(16,16,"Dungeon", "Overworld");
         switch(c){

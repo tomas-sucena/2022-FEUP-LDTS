@@ -2,7 +2,6 @@ package com.l08gr02.zelda.models.elements;
 
 public abstract class Element {
     private Position pos;
-    protected Hitbox hitbox;
 
     // constructors
     public Element(int x, int y){
@@ -17,4 +16,5 @@ public abstract class Element {
     public void setPosition(Position pos){
         this.pos = pos;
     }
+
 }

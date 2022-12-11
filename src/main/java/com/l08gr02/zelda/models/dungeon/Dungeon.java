@@ -47,9 +47,9 @@ public class Dungeon {
         return hearts;
     }
 
-    public void checkCollisions(){
+    /*public void checkCollisions(){
         for (AnimatedTile)
-    }
+    }*/
 
     public void createMap(BufferedReader reader) throws IOException {
         map = new ArrayList<>();

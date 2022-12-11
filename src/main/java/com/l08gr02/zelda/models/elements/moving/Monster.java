@@ -2,7 +2,6 @@ package com.l08gr02.zelda.models.elements.moving;
 
 
 import com.l08gr02.zelda.models.elements.Position;
-import com.l08gr02.zelda.models.elements.moving.MovingElement;
 
 public class Monster extends Fighter {
     // constructor

@@ -1,7 +1,10 @@
 package com.l08gr02.zelda.models.elements.moving;
 
-public abstract class Fighter extends MovingElement implements Fight {
+import com.l08gr02.zelda.models.elements.actions.Fighting;
+
+public abstract class Fighter extends Mover implements Fighting {
     protected float hearts;
+    protected int speed;
 
     // constructor
     public Fighter(int x, int y){

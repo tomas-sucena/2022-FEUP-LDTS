@@ -1,7 +1,7 @@
 package com.l08gr02.zelda.models;
 
+import com.l08gr02.zelda.models.elements.moving.Fighter;
 import com.l08gr02.zelda.models.elements.moving.Link;
-import com.l08gr02.zelda.models.elements.moving.MovingElement;
 import com.l08gr02.zelda.models.elements.Position;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,7 +13,7 @@ public class MovingElementTest {
     private int x, y;
     private Position pos;
     private static Random rng = new Random();
-    private MovingElement mover;
+    private Fighter mover;
 
     @BeforeEach
     void init(){
