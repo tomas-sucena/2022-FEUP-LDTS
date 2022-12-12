@@ -1,19 +1,19 @@
 package com.l08gr02.zelda.models;
 
-import com.l08gr02.zelda.models.elements.moving.Fighter;
 import com.l08gr02.zelda.models.elements.moving.Link;
 import com.l08gr02.zelda.models.elements.Position;
+import com.l08gr02.zelda.models.elements.moving.Mover;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MovingElementTest {
+public class MoverTest {
     private int x, y;
     private Position pos;
     private static Random rng = new Random();
-    private Fighter mover;
+    private Mover mover;
 
     @BeforeEach
     void init(){
