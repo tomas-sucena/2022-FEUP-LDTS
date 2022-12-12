@@ -31,6 +31,9 @@ public class StaticTileViewer extends SpriteViewer<StaticTile> {
                 new TerminalSize(16, 16), ' ');
 
         // desenhar a textura da relva
+        drawTexture(graphics, new Position(x + 4, y + 4));
+        drawTexture(graphics, new Position(x + 7, y + 12));
+
         graphics.setBackgroundColor(TextColor.Factory.fromString("#6ADD4B"));
         graphics.fillRectangle(new TerminalPosition(x + 1, y + 11),
                 new TerminalSize(1, 1), ' ');
@@ -40,9 +43,6 @@ public class StaticTileViewer extends SpriteViewer<StaticTile> {
         graphics.setBackgroundColor(TextColor.Factory.fromString("#29973B"));
         graphics.fillRectangle(new TerminalPosition(x + 14, y + 5),
                 new TerminalSize(1, 1), ' ');
-
-        drawTexture(graphics, new Position(x + 4, y + 4));
-        drawTexture(graphics, new Position(x + 7, y + 12));
     }
 
     public void drawTexture(TextGraphics graphics, Position pos){

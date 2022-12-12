@@ -3,7 +3,7 @@ package com.l08gr02.zelda.presenters.dungeon;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.l08gr02.zelda.models.dungeon.Dungeon;
 import com.l08gr02.zelda.models.elements.CollidingElement;
-import com.l08gr02.zelda.models.elements.Hitbox;
+import com.l08gr02.zelda.models.elements.moving.Link;
 import com.l08gr02.zelda.models.elements.moving.Mover;
 import com.l08gr02.zelda.models.elements.tiles.Heart;
 import com.l08gr02.zelda.presenters.Presenter;
@@ -44,7 +44,12 @@ public class DungeonPresenter extends Presenter<Dungeon> {
         List<CollidingElement> obstacles = new LinkedList<>();
 
         for (Heart heart : model.getHearts()){
-            obstacles.add(heart);
+            if (mover.collidesWith(heart)){
+                ((Link) mover).heal(1);
+                model.getHearts().remove(heart);
+
+                break;
+            }
         }
 
         mover.setObstacles(obstacles);

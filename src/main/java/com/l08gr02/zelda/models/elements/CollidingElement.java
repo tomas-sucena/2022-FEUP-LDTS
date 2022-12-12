@@ -2,7 +2,6 @@ package com.l08gr02.zelda.models.elements;
 
 import com.l08gr02.zelda.models.elements.actions.Collision;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -34,8 +33,8 @@ public abstract class CollidingElement extends Element implements Collision {
         this.obstacles = obstacles;
     }
 
-    public void resetObstacles(){
-        obstacles.clear();
+    public boolean collidesWith(CollidingElement el){
+        return hitbox.intersects(el.getHitbox());
     }
 
 }
