@@ -1,8 +1,5 @@
 package com.l08gr02.zelda.viewers.dungeon;
 
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.l08gr02.zelda.models.dungeon.Dungeon;
 import com.l08gr02.zelda.models.elements.tiles.AnimatedTile;
@@ -32,12 +29,12 @@ public class DungeonViewer implements Viewer<Dungeon> {
     }
 
     // methods
+    public LinkViewer getLinkViewer() {
+        return linkViewer;
+    }
+
     @Override
     public void draw(TextGraphics graphics, Dungeon dungeon) {
-        /*graphics.setBackgroundColor(TextColor.Factory.fromString("#00AA00"));
-        graphics.fillRectangle(new TerminalPosition(0, 0),
-                new TerminalSize(tWidth, tHeight), ' ');*/
-
         drawStaticTiles(graphics, dungeon.getStiles());
         drawAnimatedTiles(graphics, dungeon.getAtiles());
         drawHearts(graphics, dungeon);
@@ -65,8 +62,5 @@ public class DungeonViewer implements Viewer<Dungeon> {
 
         heartViewer.incrementHeartCount();
     }
-
-    public LinkViewer getLinkViewer() {
-        return linkViewer;
-    }
+    
 }
