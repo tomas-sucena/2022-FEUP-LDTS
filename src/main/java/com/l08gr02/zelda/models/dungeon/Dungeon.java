@@ -1,5 +1,6 @@
 package com.l08gr02.zelda.models.dungeon;
 
+import com.l08gr02.zelda.models.elements.Hitbox;
 import com.l08gr02.zelda.models.elements.moving.Link;
 import com.l08gr02.zelda.models.elements.moving.Monster;
 import com.l08gr02.zelda.models.elements.tiles.AnimatedTile;
@@ -48,13 +49,19 @@ public class Dungeon {
     }
 
     public void checkCollisions(){
+        Hitbox biggerHitbox = link.getBiggerHitbox();
+
+        // verificar se o Link está a colidir
         link.resetObstacles();
 
         for (Heart heart : hearts){
-            if (link.getDistance(heart) <= 16){
+            if (biggerHitbox.intersects(heart.getHitbox())){
                 link.addObstacle(heart);
             }
         }
+
+        // verificar se os monstros estão a colidir
+        // ...
     }
 
     public void createMap(BufferedReader reader) throws IOException {

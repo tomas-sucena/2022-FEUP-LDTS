@@ -16,7 +16,7 @@ public abstract class CollidingElement extends Element implements Collision {
         obstacles = new ArrayList<>();
     }
 
-    // method
+    // methods
     public Hitbox getHitbox() {
         return hitbox;
     }
@@ -35,10 +35,6 @@ public abstract class CollidingElement extends Element implements Collision {
 
     public void resetObstacles(){
         obstacles.clear();
-    }
-
-    public boolean collidesWith(CollidingElement el){
-        return hitbox.intersects(el.getHitbox());
     }
 
 }
