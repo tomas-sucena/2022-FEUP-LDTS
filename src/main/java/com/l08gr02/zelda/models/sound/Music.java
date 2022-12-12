@@ -13,5 +13,10 @@ public class Music extends Sound {
     public void play() {
         super.play();
         clip.loop(Clip.LOOP_CONTINUOUSLY);
+
+        // reduzir o volume da música
+        FloatControl soundController = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+        soundController.setValue(-7.0f);
     }
+
 }
