@@ -48,22 +48,6 @@ public class Dungeon {
         return hearts;
     }
 
-    public void checkCollisions(){
-        Hitbox biggerHitbox = link.getBiggerHitbox();
-
-        // verificar se o Link está a colidir
-        link.resetObstacles();
-
-        for (Heart heart : hearts){
-            if (biggerHitbox.intersects(heart.getHitbox())){
-                link.addObstacle(heart);
-            }
-        }
-
-        // verificar se os monstros estão a colidir
-        // ...
-    }
-
     public void createMap(BufferedReader reader) throws IOException {
         map = new ArrayList<>();
 

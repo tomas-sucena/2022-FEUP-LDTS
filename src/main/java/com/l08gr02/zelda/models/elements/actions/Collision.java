@@ -9,6 +9,5 @@ public interface Collision {
     Hitbox getHitbox();
     void setHitbox(Hitbox hitbox);
     List<CollidingElement> getObstacles();
-    void addObstacle(CollidingElement el);
-    void resetObstacles();
+    void setObstacles(List<CollidingElement> obstacles);
 }
