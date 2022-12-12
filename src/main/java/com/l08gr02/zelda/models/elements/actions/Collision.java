@@ -10,4 +10,5 @@ public interface Collision {
     void setHitbox(Hitbox hitbox);
     List<CollidingElement> getObstacles();
     void setObstacles(List<CollidingElement> obstacles);
+    boolean collidesWith(CollidingElement el);
 }

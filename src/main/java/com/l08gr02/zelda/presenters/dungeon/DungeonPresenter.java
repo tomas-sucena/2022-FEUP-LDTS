@@ -6,6 +6,7 @@ import com.l08gr02.zelda.models.elements.CollidingElement;
 import com.l08gr02.zelda.models.elements.moving.Link;
 import com.l08gr02.zelda.models.elements.moving.Mover;
 import com.l08gr02.zelda.models.elements.tiles.Heart;
+import com.l08gr02.zelda.models.sound.SoundEffect;
 import com.l08gr02.zelda.presenters.Presenter;
 import com.l08gr02.zelda.presenters.elements.LinkPresenter;
 import com.l08gr02.zelda.presenters.elements.MonsterPresenter;
@@ -19,12 +20,15 @@ import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
 public class DungeonPresenter extends Presenter<Dungeon> {
     private LinkPresenter linkPresenter;
     private List<MonsterPresenter> monsterPresenters;
+    private SoundEffect healingSFX;
 
     // constructor
     public DungeonPresenter(Dungeon model, DungeonViewer viewer) {
         super(model, viewer);
 
         linkPresenter = new LinkPresenter(model.getLink(), viewer.getLinkViewer());
+
+        healingSFX = new SoundEffect("heart");
     }
 
     // methods
@@ -46,6 +50,7 @@ public class DungeonPresenter extends Presenter<Dungeon> {
         for (Heart heart : model.getHearts()){
             if (mover.collidesWith(heart)){
                 ((Link) mover).heal(1);
+                healingSFX.play();
                 model.getHearts().remove(heart);
 
                 break;
