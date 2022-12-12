@@ -22,7 +22,6 @@ public class DungeonViewer implements Viewer<Dungeon> {
     private int heartCount = 0;
     private LinkViewer linkViewer;
     private List<MonsterViewer> monsterViewers;
-
     // constructor
     public DungeonViewer(int tWidth, int tHeight){
         sprite = new Sprite(16, 16,"Dungeon", "Overworld");
@@ -32,6 +31,8 @@ public class DungeonViewer implements Viewer<Dungeon> {
 
         // criar os viewers
         linkViewer = new LinkViewer();
+
+        //monsterviewers = new MonsterViewer();
     }
 
     // methods
@@ -98,5 +99,9 @@ public class DungeonViewer implements Viewer<Dungeon> {
 
     public LinkViewer getLinkViewer() {
         return linkViewer;
+    }
+
+    public List<MonsterViewer> getMonsterViewer() {
+        return monsterViewers;
     }
 }

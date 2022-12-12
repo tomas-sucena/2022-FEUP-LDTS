@@ -1,12 +1,21 @@
 package com.l08gr02.zelda.models.elements;
 
 
+import com.l08gr02.zelda.presenters.GameplayPresenter;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Random;
 
 public class Monster extends MovingElement {
+    private static int WALK_SPEED=1;
+    private int actionLockCounter=0;
+    public List<GameplayPresenter.ACTION> actions = new LinkedList<>();
     // constructor
     public Monster(int x, int y){
         super(x, y);
         hearts = 2;
+        speed = WALK_SPEED;
     }
 
     // methods
@@ -17,12 +26,22 @@ public class Monster extends MovingElement {
     public void sleep(){
     }
 
+    public List<GameplayPresenter.ACTION> getactions(){
+        return actions;
+    }
+
     public void move(){
-        Position newpos;
-        while(true){
-            newpos = this.getPosition().getRandomNeighbour();
-            if(newpos.isEmpty()) break;
+        actionLockCounter++;
+        if(actionLockCounter>120){
+            Random rnd = new Random();
+            int genMove = rnd.nextInt(4);
+            switch(genMove){
+                case 0 -> actions.add(GameplayPresenter.ACTION.UP);
+                case 1 -> actions.add(GameplayPresenter.ACTION.DOWN);
+                case 2 -> actions.add(GameplayPresenter.ACTION.LEFT);
+                case 3 -> actions.add(GameplayPresenter.ACTION.RIGHT);
+            }
+            actionLockCounter=0;
         }
-        this.setPosition(newpos);
     }
 }

@@ -13,7 +13,7 @@ import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
 
 public class DungeonPresenter extends Presenter<Dungeon> {
     private LinkPresenter linkPresenter;
-    private List<MonsterPresenter> monsterPresenters;
+    private MonsterPresenter monsterPresenter;
 
     // constructor
     public DungeonPresenter(Dungeon model, DungeonViewer viewer) {
@@ -27,5 +27,6 @@ public class DungeonPresenter extends Presenter<Dungeon> {
     public void update(TextGraphics graphics, List<ACTION> actions){
         viewer.draw(graphics, model);
         linkPresenter.update(graphics, actions);
+        //monsterPresenter.update(graphics,monster.getactions());
     }
 }

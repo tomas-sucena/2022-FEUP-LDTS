@@ -45,18 +45,10 @@ public class Position {
         int genMove = rnd.nextInt(4);
         Position newpos = new Position(this.x,this.y);
         switch(genMove){
-            case 0:
-                newpos.up(1);
-                break;
-            case 1:
-                newpos.down(1);
-                break;
-            case 2:
-                newpos.left(1);
-                break;
-            case 3:
-                newpos.right(1);
-                break;
+            case 0 -> newpos.up(1);
+            case 1 -> newpos.down(1);
+            case 2 -> newpos.left(1);
+            case 3 -> newpos.right(1);
             }
         return newpos;
     }

@@ -32,6 +32,7 @@ public class Dungeon {
         return link;
     }
 
+
     public List<Tile> getTiles(){
         return tiles;
     }
@@ -63,7 +64,7 @@ public class Dungeon {
         switch (c) {
             case 'L' -> {link = new Link(x, y);}
 
-            //case 'M' -> {monsters.add(new Monster(x, y));}
+            case 'M' -> {monsters.add(new Monster(x, y));}
 
             case 'H' -> {hearts.add(new Heart(x,y));}
 
