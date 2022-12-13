@@ -86,6 +86,10 @@ public class DungeonPresenter extends Presenter<Dungeon> {
         mover.setObstacles(obstacles);
 
         // verificar se os monstros estão a colidir
-        // ...
+        obstacles.clear();
+
+        for (Monster monster : model.getMonsters()){
+
+        }
     }
 }

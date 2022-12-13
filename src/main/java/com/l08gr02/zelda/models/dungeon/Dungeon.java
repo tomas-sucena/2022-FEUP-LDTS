@@ -24,7 +24,7 @@ public class Dungeon {
 
     // constructor
     public Dungeon() throws IOException {
-        URL resource = Dungeon.class.getResource("/models/Dungeon/map.txt");
+        URL resource = Dungeon.class.getResource("/models/dungeon/map.txt");
         BufferedReader reader = new BufferedReader(new FileReader(resource.getFile()));
 
         createMap(reader);

@@ -11,13 +11,13 @@ import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
 public class MonsterViewer extends SpriteViewer<Monster> {
     // construtor
     public MonsterViewer(Camera camera){
-        super(new Sprite(30,30,"gfx","log"), camera);
+        super(new Sprite(32,32,"monsters","log"), camera);
     }
 
     // métodos
     @Override
     public void draw(TextGraphics graphics, Monster monster){
-        super.draw(graphics,monster);
+        super.draw(graphics, monster);
     }
 
     @Override
@@ -30,15 +30,9 @@ public class MonsterViewer extends SpriteViewer<Monster> {
             case LEFT -> {yGrid = 3;}
 
             case RIGHT -> {yGrid = 2;}
-
         }
 
-        if (xGrid == 4){
-            xGrid = 0;
-        }
-        else if (action != ACTION.NOTHING){
-            xGrid++;
-        }
+        xGrid = (xGrid >= 3) ? 0 : xGrid + 1;
 
         sprite.setPixels(xGrid, yGrid);
     }

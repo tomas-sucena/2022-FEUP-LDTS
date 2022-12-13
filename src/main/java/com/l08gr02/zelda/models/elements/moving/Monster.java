@@ -10,14 +10,14 @@ import java.util.Random;
 import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
 
 public class Monster extends Fighter {
-    private static int WALK_SPEED=1;
+    private static int WALK_SPEED = 1;
     private int actionLockCounter=0;
     private List<ACTION> actions = new LinkedList<>();
 
     // construtor
     public Monster(int x, int y){
         super(x, y);
-        setHitbox(new Hitbox(x, y, 30, 30));
+        setHitbox(new Hitbox(x, y, 32, 32));
 
         hearts = 2;
         speed = WALK_SPEED;
