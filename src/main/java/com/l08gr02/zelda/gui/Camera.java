@@ -11,7 +11,7 @@ public class Camera extends Mover {
     // construtor
     public Camera(int x, int y, int tWidth, int tHeight) {
         super(x, y);
-        hitbox = new Hitbox(x, y, tWidth, tHeight);
+        setHitbox(new Hitbox(x, y, tWidth, tHeight));
 
         xLim = x + tWidth;
         yLim = y + tHeight;
@@ -54,6 +54,7 @@ public class Camera extends Mover {
 
             setPosition(new Position(hitbox.x, hitbox.y));
         }
+
     }
 
 }

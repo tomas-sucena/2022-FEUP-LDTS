@@ -43,8 +43,6 @@ public class DungeonViewer implements Viewer<Dungeon> {
 
     @Override
     public void draw(TextGraphics graphics, Dungeon dungeon) {
-        System.out.println(camera.getPosition());
-
         drawStaticTiles(graphics, dungeon.getStiles());
         drawAnimatedTiles(graphics, dungeon.getAtiles());
         drawHearts(graphics, dungeon);
@@ -62,7 +60,8 @@ public class DungeonViewer implements Viewer<Dungeon> {
         for (StaticTile tile: tiles){
             if (camera.collidesWith(tile)){
                 staticTileViewer = new StaticTileViewer(tile.getSprite());
-                staticTileViewer.draw(graphics,tile);
+                staticTileViewer.setCamera(camera);
+                staticTileViewer.draw(graphics, tile);
             }
         }
     }

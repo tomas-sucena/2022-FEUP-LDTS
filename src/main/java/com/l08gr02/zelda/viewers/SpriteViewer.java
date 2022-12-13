@@ -11,7 +11,7 @@ import java.awt.*;
 import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
 
 public abstract class SpriteViewer<T extends Element> implements Viewer<T> {
-    private Camera camera;
+    protected Camera camera;
     protected Sprite sprite;
     protected int xGrid = 0, yGrid = 0;
 

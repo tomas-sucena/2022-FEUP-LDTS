@@ -23,8 +23,8 @@ public class StaticTileViewer extends SpriteViewer<StaticTile> {
 
     @Override
     public void draw(TextGraphics graphics, StaticTile stile) {
-        int x = stile.getPosition().getX();
-        int y = stile.getPosition().getY();
+        int x = stile.getPosition().getX() - camera.getPosition().getX();
+        int y = stile.getPosition().getY() - camera.getPosition().getY();
 
         graphics.setBackgroundColor(TextColor.Factory.fromString("#3ABE41"));
         graphics.fillRectangle(new TerminalPosition(x, y),
