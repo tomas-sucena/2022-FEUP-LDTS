@@ -19,8 +19,8 @@ public class Monster extends Fighter {
         super(x, y);
         setHitbox(new Hitbox(x, y, 32, 32));
 
-        hearts = 2;
-        speed = WALK_SPEED;
+        setHearts(2);
+        setSpeed(WALK_SPEED);
     }
 
     // métodos

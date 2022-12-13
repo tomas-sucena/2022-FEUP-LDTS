@@ -10,8 +10,7 @@ public class Link extends Fighter {
         super(x, y);
         setHitbox(new Hitbox(x + 15, y + 24, 14, 10));
 
-        hearts = 3;
-        speed = WALK_SPEED;
+        setHearts(3);
     }
 
     // methods

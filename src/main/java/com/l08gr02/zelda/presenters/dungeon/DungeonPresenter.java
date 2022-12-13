@@ -86,10 +86,32 @@ public class DungeonPresenter extends Presenter<Dungeon> {
         mover.setObstacles(obstacles);
 
         // verificar se os monstros estão a colidir
-        obstacles.clear();
+        for (int i = 0; i < model.getMonsters().size() / 2; i++){
+            obstacles.clear();
 
-        for (Monster monster : model.getMonsters()){
+            mover = model.getMonsters().get(i);
 
+            for (int j = 0; j < model.getMonsters().size(); j++){
+                Monster monster = model.getMonsters().get(j);
+
+                if (i != j && mover.collidesWith(monster)){
+                    obstacles.add(monster);
+                }
+            }
+
+            mover.setObstacles(obstacles);
+        }
+
+        for (Heart heart : model.getHearts()){
+            for (Monster monster : model.getMonsters()){
+                if (monster.collidesWith(heart)){
+                    monster.heal(1);
+                    model.getHearts().remove(heart);
+
+                    break;
+                }
+            }
         }
     }
+
 }

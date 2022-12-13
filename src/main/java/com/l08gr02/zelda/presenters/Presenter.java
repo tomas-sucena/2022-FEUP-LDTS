@@ -11,12 +11,12 @@ public abstract class Presenter<T> {
     protected T model;
     protected Viewer<T> viewer;
 
-    // constructor
+    // construtor
     public Presenter(T model, Viewer<T> viewer){
         this.model = model;
         this.viewer = viewer;
     }
 
-    // methods
+    // métodos
     public abstract void update(TextGraphics graphics, List<ACTION> actions);
 }
