@@ -22,6 +22,9 @@ public class GameplayPresenter {
         this.model = model;
         this.viewer = viewer;
 
+        // definir o Link como o ator que a câmara vai filmar
+        viewer.getCamera().setActor(model.getDungeon().getLink());
+
         dungeonPresenter = new DungeonPresenter(model.getDungeon(), viewer.getDungeonViewer());
 
         music = new Music("overworld");
@@ -47,6 +50,9 @@ public class GameplayPresenter {
             viewer.getScreen().clear();
             dungeonPresenter.update(viewer.getGraphics(), actions);
             viewer.getScreen().refresh();
+
+            // mover a câmara
+            viewer.getCamera().film();
 
             sleep(frameTime - startTime);
         }

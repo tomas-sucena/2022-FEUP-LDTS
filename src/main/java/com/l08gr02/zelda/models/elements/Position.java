@@ -75,4 +75,10 @@ public class Position {
 
         return (x == p.getX() && y == p.getY());
     }
+
+    @Override
+    public String toString(){
+        return x + " " + y;
+    }
+
 }

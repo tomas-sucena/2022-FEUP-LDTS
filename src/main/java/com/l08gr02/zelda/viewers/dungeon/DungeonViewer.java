@@ -5,13 +5,14 @@ import com.l08gr02.zelda.models.dungeon.Dungeon;
 import com.l08gr02.zelda.models.elements.tiles.AnimatedTile;
 import com.l08gr02.zelda.models.elements.tiles.Heart;
 import com.l08gr02.zelda.models.elements.tiles.StaticTile;
+import com.l08gr02.zelda.gui.Camera;
 import com.l08gr02.zelda.viewers.Viewer;
 import com.l08gr02.zelda.viewers.elements.*;
 
 import java.util.List;
 
 public class DungeonViewer implements Viewer<Dungeon> {
-    private int tWidth, tHeight;
+    private Camera camera;
     private LinkViewer linkViewer;
     private HeartViewer heartViewer;
     private StaticTileViewer staticTileViewer;
@@ -19,13 +20,18 @@ public class DungeonViewer implements Viewer<Dungeon> {
     private List<MonsterViewer> monsterViewers;
 
     // constructor
-    public DungeonViewer(int tWidth, int tHeight){
-        this.tWidth = tWidth; this.tHeight = tHeight;
+    public DungeonViewer(Camera camera){
+        this.camera = camera;
 
         // criar os viewers
         linkViewer = new LinkViewer();
+        linkViewer.setCamera(camera);
+
         heartViewer = new HeartViewer();
+        heartViewer.setCamera(camera);
+
         animatedTileViewer = new AnimatedTileViewer();
+        animatedTileViewer.setCamera(camera);
     }
 
     // methods

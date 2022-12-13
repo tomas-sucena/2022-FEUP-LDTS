@@ -22,10 +22,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class GUI {
-    private int tWidth, tHeight, fontSize;
-    private Screen screen;
-    private TextGraphics graphics;
-    private Set<Integer> pressedKeys;
+    private final int tWidth, tHeight, fontSize;
+    private final Screen screen;
+    private final TextGraphics graphics;
+    private final Set<Integer> pressedKeys;
 
     // constructor
     public GUI(int tWidth, int tHeight, int fontSize) throws URISyntaxException, IOException, FontFormatException {

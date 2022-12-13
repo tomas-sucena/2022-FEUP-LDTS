@@ -9,14 +9,14 @@ public abstract class CollidingElement extends Element implements Collision {
     protected Hitbox hitbox;
     private List<CollidingElement> obstacles;
 
-    // constructors
+    // construtor
     public CollidingElement(int x, int y){
         super(x, y);
 
         obstacles = new LinkedList<>();
     }
 
-    // methods
+    // métodos
     public Hitbox getHitbox() {
         return hitbox;
     }
