@@ -5,9 +5,10 @@ import com.l08gr02.zelda.gui.Camera;
 import com.l08gr02.zelda.models.dungeon.Dungeon;
 import com.l08gr02.zelda.models.elements.CollidingElement;
 import com.l08gr02.zelda.models.elements.moving.Link;
-import com.l08gr02.zelda.models.elements.moving.Monster;
+import com.l08gr02.zelda.models.elements.moving.monsters.Monster;
 import com.l08gr02.zelda.models.elements.moving.Mover;
 import com.l08gr02.zelda.models.elements.tiles.Heart;
+import com.l08gr02.zelda.models.sound.Sound;
 import com.l08gr02.zelda.models.sound.SoundEffect;
 import com.l08gr02.zelda.presenters.Presenter;
 import com.l08gr02.zelda.presenters.elements.LinkPresenter;
@@ -24,7 +25,7 @@ import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
 public class DungeonPresenter extends Presenter<Dungeon> {
     private LinkPresenter linkPresenter;
     private List<MonsterPresenter> monsterPresenters;
-    private SoundEffect healingSFX;
+    private SoundEffect healingSFX, damagedSFX, lowHP;
 
     // constructor
     public DungeonPresenter(Dungeon model, DungeonViewer viewer, Camera camera) {
@@ -39,6 +40,8 @@ public class DungeonPresenter extends Presenter<Dungeon> {
         }
 
         healingSFX = new SoundEffect("heart");
+        damagedSFX = new SoundEffect("link hurt");
+        lowHP = new SoundEffect("low hp");
     }
 
     // methods
@@ -75,7 +78,11 @@ public class DungeonPresenter extends Presenter<Dungeon> {
         for (Monster monster : model.getMonsters()){
             if (mover.collidesWith(monster)){
                 ((Link) mover).takeDamage((float) 0.75);
-                healingSFX.play();
+                damagedSFX.play();
+
+                if (((Link) mover).getHearts() <= 1){
+                    lowHP.play();
+                }
 
                 obstacles.add(monster);
 

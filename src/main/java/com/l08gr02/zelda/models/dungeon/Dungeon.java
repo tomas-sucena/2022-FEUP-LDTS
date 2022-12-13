@@ -1,7 +1,8 @@
 package com.l08gr02.zelda.models.dungeon;
 
 import com.l08gr02.zelda.models.elements.moving.Link;
-import com.l08gr02.zelda.models.elements.moving.Monster;
+import com.l08gr02.zelda.models.elements.moving.monsters.Log;
+import com.l08gr02.zelda.models.elements.moving.monsters.Monster;
 import com.l08gr02.zelda.models.elements.tiles.AnimatedTile;
 import com.l08gr02.zelda.models.elements.tiles.Heart;
 import com.l08gr02.zelda.models.elements.tiles.StaticTile;
@@ -86,7 +87,7 @@ public class Dungeon {
             }
 
             case 'M' -> {
-                monsters.add(new Monster(x, y));
+                monsters.add(new Log(x, y));
                 stiles.add(new StaticTile(x, y, c));
             }
 

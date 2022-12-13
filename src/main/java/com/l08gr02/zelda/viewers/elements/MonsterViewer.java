@@ -3,7 +3,7 @@ package com.l08gr02.zelda.viewers.elements;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.l08gr02.zelda.gui.Camera;
 import com.l08gr02.zelda.models.Sprite;
-import com.l08gr02.zelda.models.elements.moving.Monster;
+import com.l08gr02.zelda.models.elements.moving.monsters.Monster;
 import com.l08gr02.zelda.viewers.SpriteViewer;
 
 import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
