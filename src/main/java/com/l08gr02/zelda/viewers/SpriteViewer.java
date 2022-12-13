@@ -34,7 +34,7 @@ public abstract class SpriteViewer<T extends Element> implements Viewer<T> {
                 int B = pixels[i][j].getBlue();
 
                 // verificar se o pixel é transparente
-                if (R == 131 && G == 131 && B == 131) {
+                if ((R == 131 && G == 131 && B == 131) || (R==0 && G==0 && B==0)) {
                     continue;
                 }
 

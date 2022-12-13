@@ -21,7 +21,7 @@ public class DungeonViewer implements Viewer<Dungeon> {
     private int tWidth, tHeight;
     private int heartCount = 0;
     private LinkViewer linkViewer;
-    private List<MonsterViewer> monsterViewers;
+    private MonsterViewer monsterViewer;
     // constructor
     public DungeonViewer(int tWidth, int tHeight){
         sprite = new Sprite(16, 16,"Dungeon", "Overworld");
@@ -31,8 +31,8 @@ public class DungeonViewer implements Viewer<Dungeon> {
 
         // criar os viewers
         linkViewer = new LinkViewer();
+        monsterViewer = new MonsterViewer();
 
-        //monsterviewers = new MonsterViewer();
     }
 
     // methods
@@ -41,6 +41,9 @@ public class DungeonViewer implements Viewer<Dungeon> {
         drawTiles(graphics, dungeon.getTiles());
 
         drawHearts(graphics, dungeon);
+        /*for(int i =0; i<dungeon.getMonsters().size();i++){
+            monsterViewers.add(new MonsterViewer());
+        }*/
     }
 
     public void drawTiles(TextGraphics graphics, List<Tile> tiles){
@@ -101,7 +104,7 @@ public class DungeonViewer implements Viewer<Dungeon> {
         return linkViewer;
     }
 
-    public List<MonsterViewer> getMonsterViewer() {
-        return monsterViewers;
+    public MonsterViewer getMonsterViewer() {
+        return monsterViewer;
     }
 }

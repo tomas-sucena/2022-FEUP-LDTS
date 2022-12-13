@@ -13,7 +13,7 @@ public class Dungeon {
     private int ignore = 0;
     private List<String> map;
     private Link link;
-    private List<Monster> monsters;
+    private Monster monsters;
     private List<Tile> tiles;
 
     private List<Heart> hearts;
@@ -36,6 +36,7 @@ public class Dungeon {
     public List<Tile> getTiles(){
         return tiles;
     }
+    public Monster getMonster(){ return monsters; }
 
     public void createMap(BufferedReader reader) throws IOException {
         map = new ArrayList<>();
@@ -46,7 +47,7 @@ public class Dungeon {
     }
 
     public void readMap(){
-        monsters = new ArrayList<>();
+        //monsters = new ArrayList<>();
         tiles = new ArrayList<>();
         hearts = new ArrayList<>();
 
@@ -64,7 +65,7 @@ public class Dungeon {
         switch (c) {
             case 'L' -> {link = new Link(x, y);}
 
-            case 'M' -> {monsters.add(new Monster(x, y));}
+            case 'M' -> {monsters=(new Monster(x, y));}
 
             case 'H' -> {hearts.add(new Heart(x,y));}
 

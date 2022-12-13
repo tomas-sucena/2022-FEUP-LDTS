@@ -16,7 +16,7 @@ import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
 public class MonsterViewer extends SpriteViewer<Monster> {
 
     public MonsterViewer(){
-        super(new Sprite(44,44,"gfx","log"));
+        super(new Sprite(30,30,"gfx","log"));
     }
 
     // method
@@ -41,9 +41,9 @@ public class MonsterViewer extends SpriteViewer<Monster> {
 
             case DOWN -> {yGrid = 0;}
 
-            case LEFT -> {yGrid = 2;}
+            case LEFT -> {yGrid = 3;}
 
-            case RIGHT -> {yGrid = 3;}
+            case RIGHT -> {yGrid = 2;}
 
         }
 

@@ -20,6 +20,7 @@ public class DungeonPresenter extends Presenter<Dungeon> {
         super(model, viewer);
 
         linkPresenter = new LinkPresenter(model.getLink(), viewer.getLinkViewer());
+        monsterPresenter = new MonsterPresenter(model.getMonster(),viewer.getMonsterViewer());
     }
 
     // methods
@@ -27,6 +28,7 @@ public class DungeonPresenter extends Presenter<Dungeon> {
     public void update(TextGraphics graphics, List<ACTION> actions){
         viewer.draw(graphics, model);
         linkPresenter.update(graphics, actions);
-        //monsterPresenter.update(graphics,monster.getactions());
+        monsterPresenter.update(graphics);
+
     }
 }
