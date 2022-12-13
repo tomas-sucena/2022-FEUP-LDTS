@@ -1,9 +1,11 @@
 package com.l08gr02.zelda.presenters.dungeon;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
+import com.l08gr02.zelda.gui.Camera;
 import com.l08gr02.zelda.models.dungeon.Dungeon;
 import com.l08gr02.zelda.models.elements.CollidingElement;
 import com.l08gr02.zelda.models.elements.moving.Link;
+import com.l08gr02.zelda.models.elements.moving.Monster;
 import com.l08gr02.zelda.models.elements.moving.Mover;
 import com.l08gr02.zelda.models.elements.tiles.Heart;
 import com.l08gr02.zelda.models.sound.SoundEffect;
@@ -11,6 +13,8 @@ import com.l08gr02.zelda.presenters.Presenter;
 import com.l08gr02.zelda.presenters.elements.LinkPresenter;
 import com.l08gr02.zelda.presenters.elements.MonsterPresenter;
 import com.l08gr02.zelda.viewers.dungeon.DungeonViewer;
+import com.l08gr02.zelda.viewers.elements.LinkViewer;
+import com.l08gr02.zelda.viewers.elements.MonsterViewer;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -23,10 +27,16 @@ public class DungeonPresenter extends Presenter<Dungeon> {
     private SoundEffect healingSFX;
 
     // constructor
-    public DungeonPresenter(Dungeon model, DungeonViewer viewer) {
+    public DungeonPresenter(Dungeon model, DungeonViewer viewer, Camera camera) {
         super(model, viewer);
 
-        linkPresenter = new LinkPresenter(model.getLink(), viewer.getLinkViewer());
+        // criar os presenters
+        linkPresenter = new LinkPresenter(model.getLink(), new LinkViewer(camera));
+        monsterPresenters = new LinkedList<>();
+
+        for (Monster monster : model.getMonsters()){
+            monsterPresenters.add(new MonsterPresenter(monster, new MonsterViewer(camera)));
+        }
 
         healingSFX = new SoundEffect("heart");
     }
@@ -39,7 +49,12 @@ public class DungeonPresenter extends Presenter<Dungeon> {
 
         viewer.draw(graphics, model);
         linkPresenter.update(graphics, actions);
+
+        for (MonsterPresenter monsterPresenter : monsterPresenters){
+            monsterPresenter.update(graphics, actions);
+        }
     }
+
 
     public void checkCollisions(){
         Mover mover = model.getLink();

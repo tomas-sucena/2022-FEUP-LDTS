@@ -2,6 +2,7 @@ package com.l08gr02.zelda.viewers.elements;
 
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
+import com.l08gr02.zelda.gui.Camera;
 import com.l08gr02.zelda.models.Sprite;
 import com.l08gr02.zelda.models.elements.moving.Link;
 import com.l08gr02.zelda.viewers.SpriteViewer;
@@ -15,8 +16,8 @@ public class LinkViewer extends SpriteViewer<Link> {
     private boolean attacking;
 
     // constructor
-    public LinkViewer(){
-        super(new Sprite(44, 44, "Link", "spritesheet"));
+    public LinkViewer(Camera camera){
+        super(new Sprite(44, 44, "Link", "spritesheet"), camera);
 
         heartSprite = new Sprite(16, 16,"gfx","objects");
     }

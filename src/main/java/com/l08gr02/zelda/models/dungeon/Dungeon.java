@@ -1,6 +1,5 @@
 package com.l08gr02.zelda.models.dungeon;
 
-import com.l08gr02.zelda.models.elements.Hitbox;
 import com.l08gr02.zelda.models.elements.moving.Link;
 import com.l08gr02.zelda.models.elements.moving.Monster;
 import com.l08gr02.zelda.models.elements.tiles.AnimatedTile;
@@ -12,6 +11,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Dungeon {
@@ -48,6 +48,10 @@ public class Dungeon {
         return hearts;
     }
 
+    public List<Monster> getMonsters(){
+        return monsters;
+    }
+
     public void createMap(BufferedReader reader) throws IOException {
         map = new ArrayList<>();
 
@@ -57,10 +61,10 @@ public class Dungeon {
     }
 
     public void readMap(){
-        monsters = new ArrayList<>();
+        monsters = new LinkedList<>();
         stiles = new ArrayList<>();
         atiles = new ArrayList<>();
-        hearts = new ArrayList<>();
+        hearts = new LinkedList<>();
 
         for (int y = 0; y < map.size(); y++){
             String line = map.get(y);
@@ -81,7 +85,7 @@ public class Dungeon {
                 stiles.add(new StaticTile(x, y, c));
             }
 
-            //case 'M' -> {monsters.add(new Monster(x, y));}
+            case 'M' -> {monsters.add(new Monster(x, y));}
 
             case 'H' -> {
                 hearts.add(new Heart(x, y));

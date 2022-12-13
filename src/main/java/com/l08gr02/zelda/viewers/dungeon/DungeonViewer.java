@@ -13,34 +13,20 @@ import java.util.List;
 
 public class DungeonViewer implements Viewer<Dungeon> {
     private Camera camera;
-    private LinkViewer linkViewer;
     private HeartViewer heartViewer;
     private StaticTileViewer staticTileViewer;
     private AnimatedTileViewer animatedTileViewer;
-    private List<MonsterViewer> monsterViewers;
 
     // constructor
-    public DungeonViewer(){
+    public DungeonViewer(Camera camera){
+        this.camera = camera;
+
         // criar os viewers
-        linkViewer = new LinkViewer();
-        heartViewer = new HeartViewer();
-        animatedTileViewer = new AnimatedTileViewer();
+        heartViewer = new HeartViewer(camera);
+        animatedTileViewer = new AnimatedTileViewer(camera);
     }
 
     // methods
-    public void setCamera(Camera camera) {
-        this.camera = camera;
-
-        // passar a câmara aos viewers
-        linkViewer.setCamera(camera);
-        heartViewer.setCamera(camera);
-        animatedTileViewer.setCamera(camera);
-    }
-
-    public LinkViewer getLinkViewer() {
-        return linkViewer;
-    }
-
     @Override
     public void draw(TextGraphics graphics, Dungeon dungeon) {
         drawStaticTiles(graphics, dungeon.getStiles());
@@ -56,11 +42,11 @@ public class DungeonViewer implements Viewer<Dungeon> {
             }
         }
     }
+
     public void drawStaticTiles(TextGraphics graphics, List<StaticTile> tiles){
         for (StaticTile tile: tiles){
             if (camera.collidesWith(tile)){
-                staticTileViewer = new StaticTileViewer(tile.getSprite());
-                staticTileViewer.setCamera(camera);
+                staticTileViewer = new StaticTileViewer(tile.getSprite(), camera);
                 staticTileViewer.draw(graphics, tile);
             }
         }
@@ -77,5 +63,5 @@ public class DungeonViewer implements Viewer<Dungeon> {
 
         heartViewer.incrementHeartCount();
     }
-    
+
 }

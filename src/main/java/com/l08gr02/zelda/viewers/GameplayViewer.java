@@ -19,7 +19,6 @@ import static java.awt.event.KeyEvent.*;
 public class GameplayViewer {
     private final GUI gui;
     private final Camera camera;
-    private DungeonViewer dungeonViewer;
 
     // constructor
     public GameplayViewer(int tWidth, int tHeight) throws IOException, URISyntaxException, FontFormatException {
@@ -28,10 +27,6 @@ public class GameplayViewer {
 
         // criar a câmara
         camera = new Camera(0, 0, tWidth, tHeight);
-
-        // desenhar o mapa
-        dungeonViewer = new DungeonViewer();
-        dungeonViewer.setCamera(camera);
     }
 
     // methods
@@ -45,10 +40,6 @@ public class GameplayViewer {
 
     public TextGraphics getGraphics() {
         return gui.getGraphics();
-    }
-
-    public DungeonViewer getDungeonViewer() {
-        return dungeonViewer;
     }
 
     public List<ACTION> getActions() {
