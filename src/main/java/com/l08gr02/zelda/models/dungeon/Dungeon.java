@@ -85,7 +85,10 @@ public class Dungeon {
                 stiles.add(new StaticTile(x, y, c));
             }
 
-            case 'M' -> {monsters.add(new Monster(x, y));}
+            case 'M' -> {
+                monsters.add(new Monster(x, y));
+                stiles.add(new StaticTile(x, y, c));
+            }
 
             case 'H' -> {
                 hearts.add(new Heart(x, y));

@@ -42,7 +42,7 @@ public class MonsterPresenter extends Presenter<Monster> {
         viewer.draw(graphics, model);
         actionLockCounter++;
 
-        if(actionLockCounter>60) {
+        if(actionLockCounter > 60) {
             Random rnd = new Random();
             genMove = rnd.nextInt(4);
             actionLockCounter=0;

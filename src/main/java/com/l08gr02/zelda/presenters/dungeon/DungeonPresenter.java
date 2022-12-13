@@ -72,6 +72,17 @@ public class DungeonPresenter extends Presenter<Dungeon> {
             }
         }
 
+        for (Monster monster : model.getMonsters()){
+            if (mover.collidesWith(monster)){
+                ((Link) mover).takeDamage((float) 0.75);
+                healingSFX.play();
+
+                obstacles.add(monster);
+
+                break;
+            }
+        }
+
         mover.setObstacles(obstacles);
 
         // verificar se os monstros estão a colidir

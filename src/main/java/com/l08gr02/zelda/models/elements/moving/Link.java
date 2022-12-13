@@ -8,7 +8,7 @@ public class Link extends Fighter {
     // constructor
     public Link(int x, int y){
         super(x, y);
-        hitbox = new Hitbox(x + 15, y + 24, 14, 10);
+        setHitbox(new Hitbox(x + 15, y + 24, 14, 10));
 
         hearts = 3;
         speed = WALK_SPEED;
