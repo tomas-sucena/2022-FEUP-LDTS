@@ -30,7 +30,8 @@ public class GameplayViewer {
         camera = new Camera(0, 0, tWidth, tHeight);
 
         // desenhar o mapa
-        dungeonViewer = new DungeonViewer(camera);
+        dungeonViewer = new DungeonViewer();
+        dungeonViewer.setCamera(camera);
     }
 
     // methods

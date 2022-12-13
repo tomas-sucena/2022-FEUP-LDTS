@@ -34,7 +34,7 @@ public class Camera extends Mover {
 
             setPosition(new Position(hitbox.x, hitbox.y));
         }
-        else if (actor.getHitbox().y > yLim){
+        else if (actor.getHitbox().y + actor.getHitbox().height > yLim){
             hitbox.y += hitbox.height;
             yLim += hitbox.height;
 

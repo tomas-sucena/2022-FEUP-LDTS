@@ -20,21 +20,23 @@ public class DungeonViewer implements Viewer<Dungeon> {
     private List<MonsterViewer> monsterViewers;
 
     // constructor
-    public DungeonViewer(Camera camera){
-        this.camera = camera;
-
+    public DungeonViewer(){
         // criar os viewers
         linkViewer = new LinkViewer();
-        linkViewer.setCamera(camera);
-
         heartViewer = new HeartViewer();
-        heartViewer.setCamera(camera);
-
         animatedTileViewer = new AnimatedTileViewer();
-        animatedTileViewer.setCamera(camera);
     }
 
     // methods
+    public void setCamera(Camera camera) {
+        this.camera = camera;
+
+        // passar a câmara aos viewers
+        linkViewer.setCamera(camera);
+        heartViewer.setCamera(camera);
+        animatedTileViewer.setCamera(camera);
+    }
+
     public LinkViewer getLinkViewer() {
         return linkViewer;
     }
