@@ -6,6 +6,6 @@ import com.l08gr02.zelda.models.elements.Hitbox;
 public class Heart extends CollidingElement {
     public Heart(int x, int y) {
         super(x, y);
-        hitbox = new Hitbox(x, y, 16, 16);
+        setHitbox(new Hitbox(x, y, 16, 16));
     }
 }

@@ -43,6 +43,8 @@ public class DungeonViewer implements Viewer<Dungeon> {
 
     @Override
     public void draw(TextGraphics graphics, Dungeon dungeon) {
+        System.out.println(camera.getPosition());
+
         drawStaticTiles(graphics, dungeon.getStiles());
         drawAnimatedTiles(graphics, dungeon.getAtiles());
         drawHearts(graphics, dungeon);
@@ -50,14 +52,18 @@ public class DungeonViewer implements Viewer<Dungeon> {
 
     public void drawAnimatedTiles(TextGraphics graphics, List<AnimatedTile> tiles) {
         for (AnimatedTile tile : tiles){
-            animatedTileViewer.draw(graphics, tile);
-            animatedTileViewer.setSprite();
+            if (camera.collidesWith(tile)){
+                animatedTileViewer.draw(graphics, tile);
+                animatedTileViewer.setSprite();
+            }
         }
     }
     public void drawStaticTiles(TextGraphics graphics, List<StaticTile> tiles){
-        for(StaticTile tile: tiles){
-            staticTileViewer = new StaticTileViewer(tile.getSprite());
-            staticTileViewer.draw(graphics,tile);
+        for (StaticTile tile: tiles){
+            if (camera.collidesWith(tile)){
+                staticTileViewer = new StaticTileViewer(tile.getSprite());
+                staticTileViewer.draw(graphics,tile);
+            }
         }
     }
 
@@ -65,7 +71,9 @@ public class DungeonViewer implements Viewer<Dungeon> {
         List<Heart> hearts = dungeon.getHearts();
 
         for (Heart heart: hearts) {
-            heartViewer.draw(graphics, heart);
+            if (camera.collidesWith(heart)){
+                heartViewer.draw(graphics, heart);
+            }
         }
 
         heartViewer.incrementHeartCount();

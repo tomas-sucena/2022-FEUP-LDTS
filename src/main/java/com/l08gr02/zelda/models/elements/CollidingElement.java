@@ -6,7 +6,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 public abstract class CollidingElement extends Element implements Collision {
-    protected Hitbox hitbox;
     private List<CollidingElement> obstacles;
 
     // construtor
@@ -17,24 +16,12 @@ public abstract class CollidingElement extends Element implements Collision {
     }
 
     // métodos
-    public Hitbox getHitbox() {
-        return hitbox;
-    }
-
-    public void setHitbox(Hitbox hitbox) {
-        this.hitbox = hitbox;
-    }
-
     public List<CollidingElement> getObstacles() {
         return obstacles;
     }
 
     public void setObstacles(List<CollidingElement> obstacles) {
         this.obstacles = obstacles;
-    }
-
-    public boolean collidesWith(CollidingElement el){
-        return hitbox.intersects(el.getHitbox());
     }
 
 }
