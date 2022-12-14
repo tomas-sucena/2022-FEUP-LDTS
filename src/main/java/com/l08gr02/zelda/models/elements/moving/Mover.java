@@ -3,8 +3,11 @@ package com.l08gr02.zelda.models.elements.moving;
 import com.l08gr02.zelda.models.elements.CollidingElement;
 import com.l08gr02.zelda.models.elements.actions.Movement;
 
+import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
+
 public abstract class Mover extends CollidingElement implements Movement {
     private int speed;
+    private ACTION direction;
 
     // construtor
     public Mover(int x, int y) {
@@ -20,6 +23,14 @@ public abstract class Mover extends CollidingElement implements Movement {
     @Override
     public void setSpeed(int speed){
         this.speed = speed;
+    }
+
+    public ACTION getDirection() {
+        return direction;
+    }
+
+    public void setDirection(ACTION direction) {
+        this.direction = direction;
     }
 
     @Override

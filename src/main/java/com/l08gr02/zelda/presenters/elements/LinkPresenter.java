@@ -9,9 +9,8 @@ import java.util.List;
 
 import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
 
-public class LinkPresenter extends MoverPresenter<Link> {
-    private SoundEffect walkSFX;
-    private SoundEffect swordSFX;
+public class LinkPresenter extends FighterPresenter<Link> {
+    private SoundEffect walkSFX, swordSFX, lowHP;
 
     // constructor
     public LinkPresenter(Link model, LinkViewer viewer){
@@ -19,6 +18,9 @@ public class LinkPresenter extends MoverPresenter<Link> {
 
         walkSFX = new SoundEffect("walk_grass");
         swordSFX = new SoundEffect("sword");
+        healingSFX = new SoundEffect("heart");
+        damagedSFX = new SoundEffect("link hurt");
+        lowHP = new SoundEffect("low hp");
     }
 
     // métodos
@@ -41,6 +43,15 @@ public class LinkPresenter extends MoverPresenter<Link> {
     }
 
     @Override
+    public void takeDamage(float heartsLost){
+        super.takeDamage(heartsLost);
+
+        if (model.getHearts() <= 1){
+            lowHP.play();
+        }
+    }
+
+    @Override
     public void update(TextGraphics graphics, List<ACTION> actions) {
         walk();
 
@@ -48,6 +59,7 @@ public class LinkPresenter extends MoverPresenter<Link> {
         if (((LinkViewer) viewer).isAttacking()){
             ((LinkViewer) viewer).setSprite(ACTION.ATTACK);
             viewer.draw(graphics, model);
+            attack();
 
             return;
         }
@@ -65,6 +77,8 @@ public class LinkPresenter extends MoverPresenter<Link> {
                 case RIGHT -> {moveRight();}
 
                 case SPRINT -> {sprint();}
+
+                case ATTACK -> {attack();}
             }
         }
 

@@ -25,7 +25,6 @@ import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
 public class DungeonPresenter extends Presenter<Dungeon> {
     private LinkPresenter linkPresenter;
     private List<MonsterPresenter> monsterPresenters;
-    private SoundEffect healingSFX, damagedSFX, lowHP;
 
     // constructor
     public DungeonPresenter(Dungeon model, DungeonViewer viewer, Camera camera) {
@@ -38,10 +37,6 @@ public class DungeonPresenter extends Presenter<Dungeon> {
         for (Monster monster : model.getMonsters()){
             monsterPresenters.add(new MonsterPresenter(monster, new MonsterViewer(camera)));
         }
-
-        healingSFX = new SoundEffect("heart");
-        damagedSFX = new SoundEffect("link hurt");
-        lowHP = new SoundEffect("low hp");
     }
 
     // methods
@@ -67,8 +62,7 @@ public class DungeonPresenter extends Presenter<Dungeon> {
 
         for (Heart heart : model.getHearts()){
             if (mover.collidesWith(heart)){
-                ((Link) mover).heal(1);
-                healingSFX.play();
+                linkPresenter.heal(1);
                 model.getHearts().remove(heart);
 
                 break;
@@ -77,13 +71,7 @@ public class DungeonPresenter extends Presenter<Dungeon> {
 
         for (Monster monster : model.getMonsters()){
             if (mover.collidesWith(monster)){
-                ((Link) mover).takeDamage((float) 0.75);
-                damagedSFX.play();
-
-                if (((Link) mover).getHearts() <= 1){
-                    lowHP.play();
-                }
-
+                linkPresenter.takeDamage((float) 0.75);
                 obstacles.add(monster);
 
                 break;

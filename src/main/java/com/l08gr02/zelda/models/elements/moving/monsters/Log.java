@@ -11,7 +11,7 @@ public class Log extends Monster {
     // construtor
     public Log(int x, int y){
         super(x, y);
-        setHitbox(new Hitbox(x, y, 32, 32));
+        setHitbox(new Hitbox(x + 8, y + 12, 16, 16));
 
         // definir os stats
         setHearts(2);
