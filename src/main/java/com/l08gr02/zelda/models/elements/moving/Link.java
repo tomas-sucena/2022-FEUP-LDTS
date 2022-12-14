@@ -27,8 +27,6 @@ public class Link extends Fighter {
 
     @Override
     public void attack() {
-        super.attack();
-
         // definir a hitbox da espada
         Hitbox swordHitbox = null;
 

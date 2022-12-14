@@ -5,14 +5,11 @@ import com.l08gr02.zelda.models.elements.actions.Fighting;
 
 public abstract class Fighter extends Mover implements Fighting {
     private float hearts;
-    private boolean attacking;
     private Hitbox attackHitbox;
 
     // construtor
     public Fighter(int x, int y){
         super(x, y);
-
-        attacking = false;
     }
 
     // métodos
@@ -45,12 +42,5 @@ public abstract class Fighter extends Mover implements Fighting {
     }
 
     @Override
-    public boolean isAttacking() {
-        return attacking;
-    }
-
-    @Override
-    public void attack(){
-        attacking = true;
-    }
+    public abstract void attack();
 }

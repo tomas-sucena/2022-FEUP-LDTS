@@ -5,6 +5,5 @@ public interface Fighting {
     void setHearts(float hearts);
     void takeDamage(float heartsLost);
     void heal(float heartsGained);
-    boolean isAttacking();
     void attack();
 }

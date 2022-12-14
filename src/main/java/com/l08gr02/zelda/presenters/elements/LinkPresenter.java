@@ -24,6 +24,10 @@ public class LinkPresenter extends FighterPresenter<Link> {
     }
 
     // métodos
+    public boolean isAttacking(){
+        return ((LinkViewer) viewer).isAttacking();
+    }
+
     public void walk(){
         model.walk();
     }

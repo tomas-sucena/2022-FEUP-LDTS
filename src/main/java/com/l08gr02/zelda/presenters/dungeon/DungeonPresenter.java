@@ -56,7 +56,6 @@ public class DungeonPresenter extends Presenter<Dungeon> {
 
     public void checkCollisions(){
         Link link = model.getLink();
-        System.out.println(link.isAttacking());
 
         // verificar se o Link está a colidir
         List<CollidingElement> obstacles = new LinkedList<>();
@@ -71,7 +70,6 @@ public class DungeonPresenter extends Presenter<Dungeon> {
         }
 
         for (Monster monster : model.getMonsters()){
-            System.out.println(link.collidesWith(monster));
             if (link.collidesWith(monster)){
                 linkPresenter.takeDamage((float) 0.75);
                 obstacles.add(monster);
@@ -111,7 +109,7 @@ public class DungeonPresenter extends Presenter<Dungeon> {
         }
 
         // verificar se o Link está a atacar
-        if (link.isAttacking()){
+        if (linkPresenter.isAttacking()){
             for (MonsterPresenter monsterPresenter : monsterPresenters){
                 Monster monster = monsterPresenter.getModel();
 
