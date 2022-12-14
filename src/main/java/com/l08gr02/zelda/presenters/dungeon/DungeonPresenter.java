@@ -55,13 +55,14 @@ public class DungeonPresenter extends Presenter<Dungeon> {
 
 
     public void checkCollisions(){
-        Mover mover = model.getLink();
+        Link link = model.getLink();
+        System.out.println(link.isAttacking());
 
         // verificar se o Link está a colidir
         List<CollidingElement> obstacles = new LinkedList<>();
 
         for (Heart heart : model.getHearts()){
-            if (mover.collidesWith(heart)){
+            if (link.collidesWith(heart)){
                 linkPresenter.heal(1);
                 model.getHearts().remove(heart);
 
@@ -70,7 +71,8 @@ public class DungeonPresenter extends Presenter<Dungeon> {
         }
 
         for (Monster monster : model.getMonsters()){
-            if (mover.collidesWith(monster)){
+            System.out.println(link.collidesWith(monster));
+            if (link.collidesWith(monster)){
                 linkPresenter.takeDamage((float) 0.75);
                 obstacles.add(monster);
 
@@ -78,23 +80,23 @@ public class DungeonPresenter extends Presenter<Dungeon> {
             }
         }
 
-        mover.setObstacles(obstacles);
+        link.setObstacles(obstacles);
 
         // verificar se os monstros estão a colidir
         for (int i = 0; i < model.getMonsters().size() / 2; i++){
             obstacles.clear();
 
-            mover = model.getMonsters().get(i);
+            Monster m = model.getMonsters().get(i);
 
             for (int j = 0; j < model.getMonsters().size(); j++){
                 Monster monster = model.getMonsters().get(j);
 
-                if (i != j && mover.collidesWith(monster)){
+                if (i != j && m.collidesWith(monster)){
                     obstacles.add(monster);
                 }
             }
 
-            mover.setObstacles(obstacles);
+            m.setObstacles(obstacles);
         }
 
         for (Heart heart : model.getHearts()){
@@ -107,6 +109,20 @@ public class DungeonPresenter extends Presenter<Dungeon> {
                 }
             }
         }
+
+        // verificar se o Link está a atacar
+        if (link.isAttacking()){
+            for (MonsterPresenter monsterPresenter : monsterPresenters){
+                Monster monster = monsterPresenter.getModel();
+
+                if (monster.getHitbox().intersects(link.getAttackHitbox())){
+                    monster.takeDamage(1);
+                }
+            }
+        }
+
+        model.getMonsters().removeIf(monster -> monster.getHearts() <= 0);
+        monsterPresenters.removeIf(monsterPresenter -> monsterPresenter.getModel().getHearts() <= 0);
     }
 
 }

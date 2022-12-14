@@ -53,6 +53,10 @@ public class Dungeon {
         return monsters;
     }
 
+    public void setMonsters(List<Monster> monsters) {
+        this.monsters = monsters;
+    }
+
     public void createMap(BufferedReader reader) throws IOException {
         map = new ArrayList<>();
 

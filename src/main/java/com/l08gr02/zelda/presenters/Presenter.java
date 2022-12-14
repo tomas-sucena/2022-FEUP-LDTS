@@ -18,5 +18,9 @@ public abstract class Presenter<T> {
     }
 
     // métodos
+    public T getModel() {
+        return model;
+    }
+
     public abstract void update(TextGraphics graphics, List<ACTION> actions);
 }

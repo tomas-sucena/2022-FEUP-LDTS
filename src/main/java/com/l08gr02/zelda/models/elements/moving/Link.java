@@ -2,6 +2,8 @@ package com.l08gr02.zelda.models.elements.moving;
 
 import com.l08gr02.zelda.models.elements.Hitbox;
 
+import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
+
 public class Link extends Fighter {
     private static int WALK_SPEED = 2, SPRINT_SPEED = 4;
 
@@ -11,6 +13,7 @@ public class Link extends Fighter {
         setHitbox(new Hitbox(x + 15, y + 24, 14, 10));
 
         setHearts(3);
+        setDirection(ACTION.DOWN);
     }
 
     // métodos
@@ -33,13 +36,13 @@ public class Link extends Fighter {
         int y = getPosition().getY();
 
         switch (getDirection()){
-            case UP -> {swordHitbox = new Hitbox(x, y, 44, 4);}
+            case UP -> {swordHitbox = new Hitbox(x + 4, y + 4, 38, 8);}
 
-            case DOWN -> {swordHitbox = new Hitbox(x, y + 40, 44, 4);}
+            case DOWN -> {swordHitbox = new Hitbox(x, y + 36, 44, 8);}
 
-            case LEFT -> {swordHitbox = new Hitbox(x, y, 4, 44);}
+            case LEFT -> {swordHitbox = new Hitbox(x, y, 8, 44);}
 
-            case RIGHT -> {swordHitbox = new Hitbox(x + 40, y, 4, 44);}
+            case RIGHT -> {swordHitbox = new Hitbox(x + 36, y, 8, 44);}
         }
 
         setAttackHitbox(swordHitbox);
