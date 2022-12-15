@@ -18,6 +18,7 @@ public abstract class Tile extends Element {
         switch(c){
             case ' ' -> {sprite.setPixels(0,0);}
 
+            case 'B' -> {sprite.setPixels(20,20);}
         }
     }
 

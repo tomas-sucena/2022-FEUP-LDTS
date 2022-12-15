@@ -11,6 +11,8 @@ import com.l08gr02.zelda.models.elements.tiles.StaticTile;
 import com.l08gr02.zelda.presenters.GameplayPresenter;
 import com.l08gr02.zelda.viewers.SpriteViewer;
 
+import java.awt.*;
+
 public class StaticTileViewer extends SpriteViewer<StaticTile> {
 
     public StaticTileViewer(Sprite sprite, Camera camera) {
@@ -24,8 +26,32 @@ public class StaticTileViewer extends SpriteViewer<StaticTile> {
 
     @Override
     public void draw(TextGraphics graphics, StaticTile stile) {
-        int x = stile.getPosition().getX() - camera.getPosition().getX();
-        int y = stile.getPosition().getY() - camera.getPosition().getY();
+        switch (stile.getChar()){
+            case 'B'->{
+                int x = stile.getPosition().getX() - camera.getPosition().getX();
+                int y = stile.getPosition().getY() - camera.getPosition().getY();
+
+                Color pixels[][] = sprite.getPixels();
+
+                for (int i = 0; i < sprite.getHeight(); i++) {
+                    for (int j = 0; j < sprite.getWidth(); j++) {
+                        int R = pixels[i][j].getRed();
+                        int G = pixels[i][j].getGreen();
+                        int B = pixels[i][j].getBlue();
+
+                        // verificar se o pixel é transparente
+                        if (R == 131 && G == 131 && B == 131) {
+                            continue;
+                        }
+
+                        graphics.setBackgroundColor(new TextColor.RGB(R, G, B));
+                        graphics.setCharacter(x + i, y + j, ' ');
+                    }
+                }
+            }
+            default->{
+                int x = stile.getPosition().getX() - camera.getPosition().getX();
+                int y = stile.getPosition().getY() - camera.getPosition().getY();
 
         graphics.setBackgroundColor(TextColor.Factory.fromString("#3ABE41"));
         graphics.fillRectangle(new TerminalPosition(x, y),
