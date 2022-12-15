@@ -27,6 +27,4 @@ public abstract class Monster extends Fighter {
 
     @Override
     public abstract void attack();
-
-    public abstract void move();
 }

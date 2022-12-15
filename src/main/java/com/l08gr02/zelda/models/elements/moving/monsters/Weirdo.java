@@ -2,15 +2,15 @@ package com.l08gr02.zelda.models.elements.moving.monsters;
 
 import com.l08gr02.zelda.models.elements.Hitbox;
 
-public class Log extends Monster {
+public class Weirdo extends Monster {
     // construtor
-    public Log(int x, int y){
+    public Weirdo(int x, int y){
         super(x, y);
         setHitbox(new Hitbox(x + 8, y + 12, 16, 16));
 
         // definir os stats
-        setHearts(2);
-        WALK_SPEED = 1;
+        setHearts(3);
+        WALK_SPEED = 2;
 
         setSpeed(WALK_SPEED);
     }

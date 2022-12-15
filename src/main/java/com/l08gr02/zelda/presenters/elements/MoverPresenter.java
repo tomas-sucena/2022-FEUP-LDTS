@@ -18,47 +18,47 @@ public abstract class MoverPresenter<T extends Mover> extends Presenter<T> {
     }
 
     // métodos
-    public void moveUp() {
+    public void moveUp(int speed) {
         model.setDirection(ACTION.UP);
 
         // verificar se o modelo se pode mover sem colidir
-        Hitbox dummy = model.getHitbox().up(model.getSpeed());
+        Hitbox dummy = model.getHitbox().up(speed);
 
         if (canMove(dummy)){
-            model.up(model.getSpeed());
+            model.up(speed);
         }
     }
 
-    public void moveDown() {
+    public void moveDown(int speed) {
         model.setDirection(ACTION.DOWN);
 
         // verificar se o modelo se pode mover sem colidir
-        Hitbox dummy = model.getHitbox().down(model.getSpeed());
+        Hitbox dummy = model.getHitbox().down(speed);
 
         if (canMove(dummy)){
-            model.down(model.getSpeed());
+            model.down(speed);
         }
     }
 
-    public void moveLeft() {
+    public void moveLeft(int speed) {
         model.setDirection(ACTION.LEFT);
 
         // verificar se o modelo se pode mover sem colidir
-        Hitbox dummy = model.getHitbox().left(model.getSpeed());
+        Hitbox dummy = model.getHitbox().left(speed);
 
         if (canMove(dummy)){
-            model.left(model.getSpeed());
+            model.left(speed);
         }
     }
 
-    public void moveRight() {
+    public void moveRight(int speed) {
         model.setDirection(ACTION.RIGHT);
 
         // verificar se o modelo se pode mover sem colidir
-        Hitbox dummy = model.getHitbox().right(model.getSpeed());
+        Hitbox dummy = model.getHitbox().right(speed);
 
         if (canMove(dummy)){
-            model.right(model.getSpeed());
+            model.right(speed);
         }
     }
 

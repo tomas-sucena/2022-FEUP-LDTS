@@ -1,10 +1,10 @@
 package com.l08gr02.zelda.presenters.dungeon;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.gui2.Direction;
 import com.l08gr02.zelda.gui.Camera;
 import com.l08gr02.zelda.models.dungeon.Dungeon;
 import com.l08gr02.zelda.models.elements.CollidingElement;
+import com.l08gr02.zelda.models.elements.Hitbox;
 import com.l08gr02.zelda.models.elements.moving.Link;
 import com.l08gr02.zelda.models.elements.moving.monsters.Monster;
 import com.l08gr02.zelda.models.elements.tiles.Heart;
@@ -54,15 +54,53 @@ public class DungeonPresenter extends Presenter<Dungeon> {
     }
 
 
-    public void checkCollisions(){
+    private void checkCollisions(){
+        checkLinkCollisions();
+
+        // verificar se os monstros estão a colidir
+        for (Monster monster : model.getMonsters()){
+            checkMonsterCollisions(monster);
+        }
+
+        // verificar se o Link está a atacar
+        if (!linkPresenter.isAttacking()) {
+            return;
+        }
+
+        Link link = model.getLink();
+        Hitbox swordHitbox = link.getAttackHitbox();
+
+        for (MonsterPresenter monsterPresenter : monsterPresenters){
+            Monster monster = monsterPresenter.getModel();
+
+            if (!monster.getHitbox().intersects(swordHitbox)){
+                continue;
+            }
+
+            monsterPresenter.takeDamage(1, link.getDirection());
+        }
+
+        model.getMonsters().removeIf(monster -> monster.getHearts() <= 0);
+        monsterPresenters.removeIf(monsterPresenter -> monsterPresenter.getModel().getHearts() <= 0);
+    }
+
+    private void checkLinkCollisions(){
         Link link = model.getLink();
 
-        // verificar se o Link está a colidir
-        List<CollidingElement> obstacles = new LinkedList<>();
+        List<CollidingElement> linkObstacles = new LinkedList<>();
 
         for (StaticTile stile : model.getStiles()){
-            if (stile.isCollidable() && link.collidesWith(stile)){
-                obstacles.add(stile);
+            if (!stile.isCollidable()){
+                continue;
+            }
+
+            linkObstacles.add(stile);
+        }
+
+        for (Monster monster : model.getMonsters()){
+            if (link.collidesWith(monster)){
+                linkPresenter.takeDamage((float) 0.75, monster.getDirection());
+                linkObstacles.add(monster);
 
                 break;
             }
@@ -77,71 +115,44 @@ public class DungeonPresenter extends Presenter<Dungeon> {
             }
         }
 
-        for (Monster monster : model.getMonsters()){
-            if (link.collidesWith(monster)){
-                linkPresenter.takeDamage((float) 0.75);
-                obstacles.add(monster);
+        link.setObstacles(linkObstacles);
+    }
+
+    private void checkMonsterCollisions(Monster monster){
+        List<CollidingElement> monsterObstacles = new LinkedList<>();
+
+        for (Monster m : model.getMonsters()){
+            if (monster == m || !monster.collidesWith(m)){
+                continue;
+            }
+
+            ACTION direction = monster.getDirection();
+
+            // mudar a direção dos monstros que colidem
+            monster.setDirection(m.getDirection());
+            m.setDirection(direction);
+
+            break;
+        }
+
+        for (StaticTile stile : model.getStiles()){
+            if (!stile.isCollidable()){
+                continue;
+            }
+
+            monsterObstacles.add(stile);
+        }
+
+        for (Heart heart : model.getHearts()){
+            if (monster.collidesWith(heart)){
+                monster.heal(1);
+                model.getHearts().remove(heart);
 
                 break;
             }
         }
 
-        link.setObstacles(obstacles);
-
-        // verificar se os monstros estão a colidir
-        for (int i = 0; i < model.getMonsters().size(); i++){
-            List<CollidingElement> obst = new LinkedList<>();
-
-            Monster m = model.getMonsters().get(i);
-
-            for (int j = 0; j < model.getMonsters().size(); j++){
-                Monster monster = model.getMonsters().get(j);
-
-                if (i != j && m.collidesWith(monster)){
-                    ACTION direction = m.getDirection();
-
-                    m.setDirection(monster.getDirection());
-                    monster.setDirection(direction);
-                }
-            }
-
-            for (StaticTile stile : model.getStiles()){
-                if (stile.isCollidable() && m.collidesWith(stile)){
-                    obst.add(stile);
-
-                    break;
-                }
-            }
-
-            m.setObstacles(obst);
-        }
-
-        for (Iterator<Heart> it = model.getHearts().iterator(); it.hasNext();){
-            Heart heart = it.next();
-
-            for (Monster monster : model.getMonsters()){
-                if (monster.collidesWith(heart)){
-                    monster.heal(1);
-                    model.getHearts().remove(it);
-
-                    break;
-                }
-            }
-        }
-
-        // verificar se o Link está a atacar
-        if (linkPresenter.isAttacking()){
-            for (MonsterPresenter monsterPresenter : monsterPresenters){
-                Monster monster = monsterPresenter.getModel();
-
-                if (monster.getHitbox().intersects(link.getAttackHitbox())){
-                    monster.takeDamage(1);
-                }
-            }
-        }
-
-        model.getMonsters().removeIf(monster -> monster.getHearts() <= 0);
-        monsterPresenters.removeIf(monsterPresenter -> monsterPresenter.getModel().getHearts() <= 0);
+        monster.setObstacles(monsterObstacles);
     }
 
 }

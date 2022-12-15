@@ -47,8 +47,8 @@ public class LinkPresenter extends FighterPresenter<Link> {
     }
 
     @Override
-    public void takeDamage(float heartsLost){
-        super.takeDamage(heartsLost);
+    public void takeDamage(float heartsLost, ACTION attackDirection){
+        super.takeDamage(heartsLost, attackDirection);
 
         if (model.getHearts() <= 1){
             lowHP.play();
@@ -57,6 +57,7 @@ public class LinkPresenter extends FighterPresenter<Link> {
 
     @Override
     public void update(TextGraphics graphics, List<ACTION> actions) {
+        super.decreaseImmunity();
         walk();
 
         // verificar se o Link está a atacar
@@ -72,13 +73,13 @@ public class LinkPresenter extends FighterPresenter<Link> {
             ((LinkViewer) viewer).setSprite(action);
 
             switch (action){
-                case UP -> {moveUp();}
+                case UP -> {moveUp(model.getSpeed());}
 
-                case DOWN -> {moveDown();}
+                case DOWN -> {moveDown(model.getSpeed());}
 
-                case LEFT -> {moveLeft();}
+                case LEFT -> {moveLeft(model.getSpeed());}
 
-                case RIGHT -> {moveRight();}
+                case RIGHT -> {moveRight(model.getSpeed());}
 
                 case SPRINT -> {sprint();}
 
