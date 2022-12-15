@@ -87,20 +87,25 @@ public class Dungeon {
         switch (c) {
             case 'L' -> {
                 link = new Link(x, y);
-                stiles.add(new StaticTile(x, y, c));
+                stiles.add(new StaticTile(x, y, ' '));
             }
 
             case 'M' -> {
                 monsters.add(new Log(x, y));
-                stiles.add(new StaticTile(x, y, c));
+                stiles.add(new StaticTile(x, y, ' '));
             }
 
             case 'H' -> {
                 hearts.add(new Heart(x, y));
-                stiles.add(new StaticTile(x, y, c));
+                stiles.add(new StaticTile(x, y, ' '));
             }
 
             case 'W' -> {atiles.add(new AnimatedTile(x, y, c));}
+
+            case 'B' -> {
+                stiles.add(new StaticTile(x, y, ' '));
+                stiles.add(new StaticTile(x, y, c));
+            }
 
             default -> {stiles.add(new StaticTile(x, y, c));}
         }

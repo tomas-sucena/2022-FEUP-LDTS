@@ -1,15 +1,14 @@
 package com.l08gr02.zelda.presenters.dungeon;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
+import com.googlecode.lanterna.gui2.Direction;
 import com.l08gr02.zelda.gui.Camera;
 import com.l08gr02.zelda.models.dungeon.Dungeon;
 import com.l08gr02.zelda.models.elements.CollidingElement;
 import com.l08gr02.zelda.models.elements.moving.Link;
 import com.l08gr02.zelda.models.elements.moving.monsters.Monster;
-import com.l08gr02.zelda.models.elements.moving.Mover;
 import com.l08gr02.zelda.models.elements.tiles.Heart;
-import com.l08gr02.zelda.models.sound.Sound;
-import com.l08gr02.zelda.models.sound.SoundEffect;
+import com.l08gr02.zelda.models.elements.tiles.StaticTile;
 import com.l08gr02.zelda.presenters.Presenter;
 import com.l08gr02.zelda.presenters.elements.LinkPresenter;
 import com.l08gr02.zelda.presenters.elements.MonsterPresenter;
@@ -17,6 +16,7 @@ import com.l08gr02.zelda.viewers.dungeon.DungeonViewer;
 import com.l08gr02.zelda.viewers.elements.LinkViewer;
 import com.l08gr02.zelda.viewers.elements.MonsterViewer;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -60,6 +60,14 @@ public class DungeonPresenter extends Presenter<Dungeon> {
         // verificar se o Link está a colidir
         List<CollidingElement> obstacles = new LinkedList<>();
 
+        for (StaticTile stile : model.getStiles()){
+            if (stile.isCollidable() && link.collidesWith(stile)){
+                obstacles.add(stile);
+
+                break;
+            }
+        }
+
         for (Heart heart : model.getHearts()){
             if (link.collidesWith(heart)){
                 linkPresenter.heal(1);
@@ -81,8 +89,8 @@ public class DungeonPresenter extends Presenter<Dungeon> {
         link.setObstacles(obstacles);
 
         // verificar se os monstros estão a colidir
-        for (int i = 0; i < model.getMonsters().size() / 2; i++){
-            obstacles.clear();
+        for (int i = 0; i < model.getMonsters().size(); i++){
+            List<CollidingElement> obst = new LinkedList<>();
 
             Monster m = model.getMonsters().get(i);
 
@@ -90,18 +98,31 @@ public class DungeonPresenter extends Presenter<Dungeon> {
                 Monster monster = model.getMonsters().get(j);
 
                 if (i != j && m.collidesWith(monster)){
-                    obstacles.add(monster);
+                    ACTION direction = m.getDirection();
+
+                    m.setDirection(monster.getDirection());
+                    monster.setDirection(direction);
                 }
             }
 
-            m.setObstacles(obstacles);
+            for (StaticTile stile : model.getStiles()){
+                if (stile.isCollidable() && m.collidesWith(stile)){
+                    obst.add(stile);
+
+                    break;
+                }
+            }
+
+            m.setObstacles(obst);
         }
 
-        for (Heart heart : model.getHearts()){
+        for (Iterator<Heart> it = model.getHearts().iterator(); it.hasNext();){
+            Heart heart = it.next();
+
             for (Monster monster : model.getMonsters()){
                 if (monster.collidesWith(heart)){
                     monster.heal(1);
-                    model.getHearts().remove(heart);
+                    model.getHearts().remove(it);
 
                     break;
                 }

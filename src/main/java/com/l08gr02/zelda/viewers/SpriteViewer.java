@@ -18,8 +18,6 @@ public abstract class SpriteViewer<T extends Element> implements Viewer<T> {
     // constructor
     public SpriteViewer(Sprite sprite, Camera camera){
         this.sprite = sprite;
-        sprite.setPixels(xGrid, yGrid);
-
         this.camera = camera;
     }
 
