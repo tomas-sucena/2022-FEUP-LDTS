@@ -21,12 +21,15 @@ public class GameplayViewer {
     private final Camera camera;
 
     // constructor
-    public GameplayViewer(int tWidth, int tHeight) throws IOException, URISyntaxException, FontFormatException {
+    public GameplayViewer(int width, int height, int TILE_SIZE) throws IOException, URISyntaxException, FontFormatException {
+        int tWidth = width * TILE_SIZE;
+        int tHeight = height * TILE_SIZE;
+
         // criar o GUI
         gui = new GUI(tWidth, tHeight, 6);
 
         // criar a câmara
-        camera = new Camera(0, 0, tWidth, tHeight);
+        camera = new Camera(0, 0, tWidth, tHeight, TILE_SIZE);
     }
 
     // methods

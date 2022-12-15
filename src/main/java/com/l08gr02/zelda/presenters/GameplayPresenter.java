@@ -30,6 +30,7 @@ public class GameplayPresenter {
 
         // criar o presenter
         Camera camera = viewer.getCamera();
+        camera.setLimits(model.getDungeon().getMap());
 
         dungeonPresenter = new DungeonPresenter(model.getDungeon(), new DungeonViewer(camera), camera);
 

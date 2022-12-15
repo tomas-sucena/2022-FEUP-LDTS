@@ -10,7 +10,7 @@ public class Game {
 
         try {
             Gameplay gameplay = new Gameplay();
-            GameplayViewer gameplayViewer = new GameplayViewer(20 * TILE_SIZE, 10 * TILE_SIZE);
+            GameplayViewer gameplayViewer = new GameplayViewer(20, 10, TILE_SIZE);
 
             GameplayPresenter gameplayPresenter = new GameplayPresenter(gameplay, gameplayViewer);
             gameplayPresenter.update();

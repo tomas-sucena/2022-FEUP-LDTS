@@ -37,6 +37,10 @@ public class Dungeon {
         return link;
     }
 
+    public List<String> getMap(){
+        return map;
+    }
+
     public List<AnimatedTile> getAtiles(){
         return atiles;
     }

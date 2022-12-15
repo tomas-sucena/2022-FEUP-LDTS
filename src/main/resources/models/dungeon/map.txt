@@ -1,7 +1,7 @@
 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB#
 B   H                          H       B#
-B                       BBBBBBBBBBBBBBBB#
-B         L                        M   B#
+B    L                  BBBBBBBBBBBBBBBB#
+B                                  M   B#
 B  M                      BBBBBBBBBBBBBB#
 B                                      B#
 B          H                           B#
@@ -18,6 +18,3 @@ B     B     M    B          B      M   B#
 B     BBBBBBBBBBBB          B          B#
 B          H                           B#
 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB#
-
-
-
