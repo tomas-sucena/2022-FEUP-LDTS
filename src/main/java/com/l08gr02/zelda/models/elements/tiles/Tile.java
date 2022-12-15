@@ -8,16 +8,19 @@ import java.awt.*;
 
 public abstract class Tile extends Element {
     protected Sprite sprite;
+    protected char c;
 
     // constructor
     public Tile(int x, int y, char c) {
         super(x, y);
+        this.c = 0;
         setHitbox(new Hitbox(x, y, 16, 16));
 
         sprite = new Sprite(16,16,"Dungeon", "Overworld");
         switch(c){
             case ' ' -> {sprite.setPixels(0,0);}
 
+            case 'B' -> {sprite.setPixels(20,20);}
         }
     }
 
@@ -25,4 +28,6 @@ public abstract class Tile extends Element {
     public Sprite getSprite() {
         return sprite;
     }
+
+    public char getChar(){ return c; }
 }

@@ -11,6 +11,8 @@ import com.l08gr02.zelda.models.elements.tiles.StaticTile;
 import com.l08gr02.zelda.presenters.GameplayPresenter;
 import com.l08gr02.zelda.viewers.SpriteViewer;
 
+import java.awt.*;
+
 public class StaticTileViewer extends SpriteViewer<StaticTile> {
 
     public StaticTileViewer(Sprite sprite, Camera camera) {
@@ -24,26 +26,53 @@ public class StaticTileViewer extends SpriteViewer<StaticTile> {
 
     @Override
     public void draw(TextGraphics graphics, StaticTile stile) {
-        int x = stile.getPosition().getX() - camera.getPosition().getX();
-        int y = stile.getPosition().getY() - camera.getPosition().getY();
+        switch (stile.getChar()){
+            case 'B'->{
+                int x = stile.getPosition().getX() - camera.getPosition().getX();
+                int y = stile.getPosition().getY() - camera.getPosition().getY();
 
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#3ABE41"));
-        graphics.fillRectangle(new TerminalPosition(x, y),
-                new TerminalSize(16, 16), ' ');
+                Color pixels[][] = sprite.getPixels();
 
-        // desenhar a textura da relva
-        drawTexture(graphics, new Position(x + 4, y + 4));
-        drawTexture(graphics, new Position(x + 7, y + 12));
+                for (int i = 0; i < sprite.getHeight(); i++) {
+                    for (int j = 0; j < sprite.getWidth(); j++) {
+                        int R = pixels[i][j].getRed();
+                        int G = pixels[i][j].getGreen();
+                        int B = pixels[i][j].getBlue();
 
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#6ADD4B"));
-        graphics.fillRectangle(new TerminalPosition(x + 1, y + 11),
-                new TerminalSize(1, 1), ' ');
-        graphics.fillRectangle(new TerminalPosition(x + 14, y + 3),
-                new TerminalSize(1, 2), ' ');
+                        // verificar se o pixel é transparente
+                        if (R == 131 && G == 131 && B == 131) {
+                            continue;
+                        }
 
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#29973B"));
-        graphics.fillRectangle(new TerminalPosition(x + 14, y + 5),
-                new TerminalSize(1, 1), ' ');
+                        graphics.setBackgroundColor(new TextColor.RGB(R, G, B));
+                        graphics.setCharacter(x + i, y + j, ' ');
+                    }
+                }
+            }
+            default->{
+                int x = stile.getPosition().getX() - camera.getPosition().getX();
+                int y = stile.getPosition().getY() - camera.getPosition().getY();
+
+                graphics.setBackgroundColor(TextColor.Factory.fromString("#3ABE41"));
+                graphics.fillRectangle(new TerminalPosition(x, y),
+                        new TerminalSize(16, 16), ' ');
+
+                // desenhar a textura da relva
+                drawTexture(graphics, new Position(x + 4, y + 4));
+                drawTexture(graphics, new Position(x + 7, y + 12));
+
+                graphics.setBackgroundColor(TextColor.Factory.fromString("#6ADD4B"));
+                graphics.fillRectangle(new TerminalPosition(x + 1, y + 11),
+                        new TerminalSize(1, 1), ' ');
+                graphics.fillRectangle(new TerminalPosition(x + 14, y + 3),
+                        new TerminalSize(1, 2), ' ');
+
+                graphics.setBackgroundColor(TextColor.Factory.fromString("#29973B"));
+                graphics.fillRectangle(new TerminalPosition(x + 14, y + 5),
+                        new TerminalSize(1, 1), ' ');
+            }
+        }
+
     }
 
     public void drawTexture(TextGraphics graphics, Position pos){

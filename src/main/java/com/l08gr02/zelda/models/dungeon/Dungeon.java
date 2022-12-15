@@ -22,6 +22,7 @@ public class Dungeon {
     private List<StaticTile> stiles;
     private List<AnimatedTile> atiles;
     private List<Heart> hearts;
+    private List<StaticTile> bushes;
 
     // constructor
     public Dungeon() throws IOException {
@@ -97,6 +98,8 @@ public class Dungeon {
             }
 
             case 'W' -> {atiles.add(new AnimatedTile(x, y, c));}
+
+            //case 'B' -> {stiles.add(new StaticTile(x,y,c));}
 
             default -> {stiles.add(new StaticTile(x, y, c));}
         }

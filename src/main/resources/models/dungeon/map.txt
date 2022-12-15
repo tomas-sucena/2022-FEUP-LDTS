@@ -1,20 +1,20 @@
-                                                        #
-   M                                                    #
-                                                        #
-          L                                             #
-                                                        #
-                                                        #
-          H                                             #
-                                                        #
-                                                        #
-                                                        #
-                                                        #
-                                                        #
-                                                        #
-          H                                             #
-                                                        #
-                                                        #
-                                                        #
-                                                        #
-                                                        #
-                                                        #
+BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB#
+B   H                          H      B#
+B                       BBBBBBBBBBBBBBB#
+B         L                        M  B#
+B  M                      BBBBBBBBBBBBB#
+B                                     B#
+B          H                          B#
+B                        M            B#
+B                                     B#
+B                                     B#
+B       B       H                     B#
+B       M         B           M       B#
+B                                     B#
+B     BBBBBBBBBBBB          BBBBBBBBBBB#
+B     B                     B    M    B#
+B     B     BBBBBB          B         B#
+B     B     M    B          B      M  B#
+B     BBBBBBBBBBBB          B         B#
+B          H                          B#
+BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB#
