@@ -11,7 +11,7 @@ import java.util.Queue;
 public class Camera extends Element {
     private Mover actor;
     private int tWidth, tHeight;
-    //private Queue<Hitbox> photoshoot;
+    private Queue<Hitbox> photoshoot;
 
     // construtor
     public Camera(int x, int y, int tWidth, int tHeight) {
@@ -21,32 +21,10 @@ public class Camera extends Element {
         this.tWidth = tWidth;
         this.tHeight = tHeight;
 
-        //photoshoot = new LinkedList<>();
+        photoshoot = new LinkedList<>();
     }
 
     // métodos
-    public void setActor(Mover actor){
-        this.actor = actor;
-
-        film();
-    }
-
-    public void film(){
-        Hitbox actorHitbox = actor.getHitbox();
-
-        int x = actorHitbox.x - tWidth / 2;
-        int y = actorHitbox.y - tHeight / 2;
-
-        // evitar que a câmara filme fora do mapa
-        if (x < 0 || y < 0){
-            return;
-        }
-
-        setPosition(new Position(x, y));
-        hitbox.setLocation(x, y);
-    }
-
-    /* câmara dinâmica
     public void setActor(Mover actor){
         this.actor = actor;
 
@@ -65,9 +43,9 @@ public class Camera extends Element {
     public void film(){
         photoshoot.add(actor.getHitbox());
 
-        if (photoshoot.size() >= 20){
+        if (photoshoot.size() >= 3){
             followActor();
         }
-    }*/
+    }
 
 }
