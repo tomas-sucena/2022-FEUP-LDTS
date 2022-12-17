@@ -1,10 +1,9 @@
 package com.l08gr02.zelda.viewers.elements;
 
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.l08gr02.zelda.gui.Camera;
+import com.l08gr02.zelda.gui.GUI;
 import com.l08gr02.zelda.models.Sprite;
 import com.l08gr02.zelda.models.elements.moving.Link;
 import com.l08gr02.zelda.viewers.SpriteViewer;
@@ -30,30 +29,31 @@ public class LinkViewer extends SpriteViewer<Link> {
     }
 
     @Override
-    public void draw(TextGraphics graphics, Link link) {
-        super.draw(graphics, link);
+    public void draw(GUI gui, Link link) {
+        super.draw(gui, link);
 
-        drawHealthBar(graphics, link);
+        drawHealthBar(gui, link);
     }
 
-    public void drawHealthBar(TextGraphics graphics, Link link){
+    public void drawHealthBar(GUI gui, Link link){
         heartSprite.setPixels(4,0);
 
         float life = link.getHearts();
 
         // desenhar os corações inteiros
         for (int i = 0; i < (int) life; i++){
-            drawHeart(graphics, i);
+            drawHeart(gui, i);
         }
 
         // desenhar o coração não inteiro, caso exista
         if (life % 1 != 0){
             heartSprite.setPixels(8 - (int) (life % 1 * 4),0);
-            drawHeart(graphics, (int) life);
+            drawHeart(gui, (int) life);
         }
     }
 
-    public void drawHeart(TextGraphics graphics, int n){
+    public void drawHeart(GUI gui, int n){
+        TextGraphics graphics = gui.getGraphics();
         Color[][] pixels = heartSprite.getPixels();
 
         for (int i = 0; i < heartSprite.getHeight(); i++) {

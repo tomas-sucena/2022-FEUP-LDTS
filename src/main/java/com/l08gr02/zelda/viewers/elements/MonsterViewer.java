@@ -1,7 +1,6 @@
 package com.l08gr02.zelda.viewers.elements;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
-import com.l08gr02.zelda.gui.Camera;
+import com.l08gr02.zelda.gui.GUI;
 import com.l08gr02.zelda.models.Sprite;
 import com.l08gr02.zelda.models.elements.moving.monsters.Monster;
 import com.l08gr02.zelda.viewers.SpriteViewer;
@@ -10,14 +9,14 @@ import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
 
 public class MonsterViewer extends SpriteViewer<Monster> {
     // construtor
-    public MonsterViewer(Camera camera){
-        super(new Sprite(32,32,"monsters","log"), camera);
+    public MonsterViewer(){
+        super(new Sprite(32,32,"monsters","log"));
     }
 
     // métodos
     @Override
-    public void draw(TextGraphics graphics, Monster monster){
-        super.draw(graphics, monster);
+    public void draw(GUI gui, Monster monster){
+        super.draw(gui, monster);
     }
 
     @Override

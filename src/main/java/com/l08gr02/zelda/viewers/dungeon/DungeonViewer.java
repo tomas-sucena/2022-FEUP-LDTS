@@ -1,6 +1,7 @@
 package com.l08gr02.zelda.viewers.dungeon;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
+import com.l08gr02.zelda.gui.GUI;
 import com.l08gr02.zelda.models.dungeon.Dungeon;
 import com.l08gr02.zelda.models.elements.tiles.AnimatedTile;
 import com.l08gr02.zelda.models.elements.tiles.Heart;
@@ -28,7 +29,9 @@ public class DungeonViewer implements Viewer<Dungeon> {
 
     // methods
     @Override
-    public void draw(TextGraphics graphics, Dungeon dungeon) {
+    public void draw(GUI gui, Dungeon dungeon) {
+        TextGraphics graphics = gui.getGraphics();
+
         drawStaticTiles(graphics, dungeon.getStiles());
         drawAnimatedTiles(graphics, dungeon.getAtiles());
         drawHearts(graphics, dungeon);

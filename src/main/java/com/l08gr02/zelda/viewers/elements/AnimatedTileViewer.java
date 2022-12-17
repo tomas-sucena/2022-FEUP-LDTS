@@ -12,8 +12,8 @@ public class AnimatedTileViewer extends SpriteViewer<AnimatedTile> {
     private int count = 0;
 
     // construtor
-    public AnimatedTileViewer(Camera camera) {
-        super(new Sprite(32,32,"Dungeon", "Overworld"), camera);
+    public AnimatedTileViewer() {
+        super(new Sprite(32,32,"Dungeon", "Overworld"));
         sprite.setPixels(8,0);
     }
 

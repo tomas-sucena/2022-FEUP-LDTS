@@ -5,13 +5,12 @@ import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.l08gr02.zelda.gui.Camera;
+import com.l08gr02.zelda.gui.GUI;
 import com.l08gr02.zelda.models.Sprite;
 import com.l08gr02.zelda.models.elements.Position;
 import com.l08gr02.zelda.models.elements.tiles.StaticTile;
 import com.l08gr02.zelda.presenters.GameplayPresenter;
 import com.l08gr02.zelda.viewers.SpriteViewer;
-
-import java.awt.*;
 
 public class StaticTileViewer extends SpriteViewer<StaticTile> {
     public StaticTileViewer(Sprite sprite, Camera camera) {
@@ -24,10 +23,13 @@ public class StaticTileViewer extends SpriteViewer<StaticTile> {
     }
 
     @Override
-    public void draw(TextGraphics graphics, StaticTile stile) {
+    public void draw(GUI gui, StaticTile stile) {
+        TextGraphics graphics = gui.getGraphics();
+        Camera camera = gui.getCamera();
+
         switch (stile.getChar()){
             case 'B' -> {
-                super.draw(graphics, stile);
+                super.draw(gui, stile);
             }
             default->{
                 int x = stile.getPosition().getX() - camera.getPosition().getX();

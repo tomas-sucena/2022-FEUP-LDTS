@@ -29,7 +29,7 @@ public class GameplayViewer {
 
     // methods
     public Camera getCamera() {
-        return camera;
+        return gui.getCamera();
     }
 
     public Screen getScreen() {
