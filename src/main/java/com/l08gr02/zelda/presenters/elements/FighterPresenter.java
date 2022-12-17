@@ -50,6 +50,20 @@ public abstract class FighterPresenter<T extends Fighter> extends MoverPresenter
         }
     }
 
+    public void bump(ACTION direction){
+        switch (direction){
+            case UP -> direction = ACTION.DOWN;
+
+            case DOWN -> direction = ACTION.UP;
+
+            case LEFT -> direction = ACTION.RIGHT;
+
+            case RIGHT -> direction = ACTION.LEFT;
+        }
+
+        takeDamage((float) 0.75, direction);
+    }
+
     public void attack(){
         model.attack();
     }

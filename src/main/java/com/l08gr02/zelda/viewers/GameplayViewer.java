@@ -4,7 +4,6 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
 import com.l08gr02.zelda.gui.Camera;
 import com.l08gr02.zelda.gui.GUI;
-import com.l08gr02.zelda.viewers.dungeon.DungeonViewer;
 
 import java.awt.*;
 import java.io.IOException;
@@ -18,7 +17,6 @@ import static java.awt.event.KeyEvent.*;
 
 public class GameplayViewer {
     private final GUI gui;
-    private final Camera camera;
 
     // constructor
     public GameplayViewer(int width, int height, int TILE_SIZE) throws IOException, URISyntaxException, FontFormatException {
@@ -26,10 +24,7 @@ public class GameplayViewer {
         int tHeight = height * TILE_SIZE;
 
         // criar o GUI
-        gui = new GUI(tWidth, tHeight, 6);
-
-        // criar a câmara
-        camera = new Camera(0, 0, tWidth, tHeight, TILE_SIZE);
+        gui = new GUI(tWidth, tHeight, TILE_SIZE,6);
     }
 
     // methods

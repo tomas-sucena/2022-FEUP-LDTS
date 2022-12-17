@@ -22,21 +22,17 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class GUI {
-    private final int tWidth, tHeight, fontSize;
     private final Screen screen;
     private final TextGraphics graphics;
+    private final Camera camera;
     private final Set<Integer> pressedKeys;
 
     // constructor
-    public GUI(int tWidth, int tHeight, int fontSize) throws URISyntaxException, IOException, FontFormatException {
-        this.tWidth = tWidth;
-        this.tHeight = tHeight;
-        this.fontSize = fontSize;
-
+    public GUI(int tWidth, int tHeight, int TILE_SIZE, int fontSize) throws URISyntaxException, IOException, FontFormatException {
         pressedKeys = new HashSet<>();
 
         // criar o screen
-        screen = new TerminalScreen(createTerminal());
+        screen = new TerminalScreen(createTerminal(tWidth, tHeight, fontSize));
 
         screen.setCursorPosition(null); // não precisamos do rato
         screen.startScreen();
@@ -44,6 +40,9 @@ public class GUI {
 
         // criar os graphics
         graphics = screen.newTextGraphics();
+
+        // criar a câmara
+        camera = new Camera(0, 0, tWidth, tHeight, TILE_SIZE);
     }
 
     // methods
@@ -55,11 +54,15 @@ public class GUI {
         return graphics;
     }
 
+    public Camera getCamera(){
+        return camera;
+    }
+
     public Set<Integer> getPressedKeys() {
         return pressedKeys;
     }
 
-    private Terminal createTerminal() throws URISyntaxException, IOException, FontFormatException {
+    private Terminal createTerminal(int tWidth, int tHeight, int fontSize) throws URISyntaxException, IOException, FontFormatException {
         // definir o tamanho do terminal
         TerminalSize tSize = new TerminalSize(tWidth, tHeight);
 
@@ -67,7 +70,7 @@ public class GUI {
                 .setInitialTerminalSize(tSize);
 
         // criar a fonte
-        AWTTerminalFontConfiguration fontConfig = loadFont();
+        AWTTerminalFontConfiguration fontConfig = loadFont(fontSize);
 
         terminalFactory.setForceAWTOverSwing(true);
         terminalFactory.setTerminalEmulatorFontConfiguration(fontConfig);
@@ -100,7 +103,7 @@ public class GUI {
         });
     }
 
-    private AWTTerminalFontConfiguration loadFont() throws URISyntaxException, FontFormatException, IOException {
+    private AWTTerminalFontConfiguration loadFont(int fontSize) throws URISyntaxException, FontFormatException, IOException {
         URL resource = getClass().getClassLoader().getResource("fonts/font1.0.ttf");
         File fontFile = new File(resource.toURI());
         Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);

@@ -1,6 +1,6 @@
 package com.l08gr02.zelda.presenters;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
+import com.l08gr02.zelda.gui.GUI;
 import com.l08gr02.zelda.viewers.Viewer;
 
 import java.util.List;
@@ -22,5 +22,5 @@ public abstract class Presenter<T> {
         return model;
     }
 
-    public abstract void update(TextGraphics graphics, List<ACTION> actions);
+    public abstract void update(GUI gui, List<ACTION> actions);
 }

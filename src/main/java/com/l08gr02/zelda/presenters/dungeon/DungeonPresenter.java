@@ -99,7 +99,7 @@ public class DungeonPresenter extends Presenter<Dungeon> {
 
         for (Monster monster : model.getMonsters()){
             if (link.collidesWith(monster)){
-                linkPresenter.takeDamage((float) 0.75, monster.getDirection());
+                linkPresenter.bump(link.getDirection());
                 linkObstacles.add(monster);
 
                 break;
