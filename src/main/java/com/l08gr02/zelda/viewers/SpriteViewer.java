@@ -47,6 +47,6 @@ public abstract class SpriteViewer<T extends Element> implements Viewer<T> {
             }
         }
     }
-
+    
     public abstract void setSprite(ACTION action);
 }

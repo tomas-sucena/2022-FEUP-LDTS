@@ -7,8 +7,6 @@ import com.l08gr02.zelda.models.elements.moving.Mover;
 import com.l08gr02.zelda.presenters.Presenter;
 import com.l08gr02.zelda.viewers.Viewer;
 
-import java.util.List;
-
 import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
 
 public abstract class MoverPresenter<T extends Mover> extends Presenter<T> {
@@ -72,5 +70,6 @@ public abstract class MoverPresenter<T extends Mover> extends Presenter<T> {
         return true;
     }
 
-    public abstract void update(GUI gui, List<ACTION> actions);
+    @Override
+    public abstract void update(GUI gui);
 }

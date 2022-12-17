@@ -5,6 +5,7 @@ import com.l08gr02.zelda.gui.GUI;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -30,7 +31,7 @@ public class GameplayViewer {
     }
 
     public List<ACTION> getActions() {
-        List<ACTION> actions = new LinkedList<>();
+        List<ACTION> actions = new ArrayList<>();
         actions.add(ACTION.NOTHING);
 
         Set<Integer> keys = gui.getPressedKeys();

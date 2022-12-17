@@ -70,10 +70,10 @@ public class Dungeon {
     }
 
     public void readMap(){
-        monsters = new LinkedList<>();
+        monsters = new ArrayList<>();
         stiles = new ArrayList<>();
         atiles = new ArrayList<>();
-        hearts = new LinkedList<>();
+        hearts = new ArrayList<>();
 
         for (int y = 0; y < map.size(); y++){
             String line = map.get(y);

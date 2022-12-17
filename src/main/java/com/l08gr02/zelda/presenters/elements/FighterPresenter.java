@@ -5,8 +5,6 @@ import com.l08gr02.zelda.models.elements.moving.Fighter;
 import com.l08gr02.zelda.models.sound.SoundEffect;
 import com.l08gr02.zelda.viewers.Viewer;
 
-import java.util.List;
-
 import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
 
 public abstract class FighterPresenter<T extends Fighter> extends MoverPresenter<T> {
@@ -72,5 +70,6 @@ public abstract class FighterPresenter<T extends Fighter> extends MoverPresenter
         immunityFrames -= (immunityFrames > 0) ? 1 : 0;
     }
 
-    public abstract void update(GUI gui, List<ACTION> actions);
+    @Override
+    public abstract void update(GUI gui);
 }

@@ -1,6 +1,5 @@
 package com.l08gr02.zelda.viewers.dungeon;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
 import com.l08gr02.zelda.gui.GUI;
 import com.l08gr02.zelda.models.dungeon.Dungeon;
 import com.l08gr02.zelda.models.elements.tiles.AnimatedTile;

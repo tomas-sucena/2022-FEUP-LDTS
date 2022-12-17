@@ -5,16 +5,20 @@ import com.l08gr02.zelda.models.dungeon.Dungeon;
 import com.l08gr02.zelda.models.elements.CollidingElement;
 import com.l08gr02.zelda.models.elements.Hitbox;
 import com.l08gr02.zelda.models.elements.moving.Link;
+import com.l08gr02.zelda.models.elements.moving.monsters.Log;
 import com.l08gr02.zelda.models.elements.moving.monsters.Monster;
 import com.l08gr02.zelda.models.elements.tiles.Heart;
 import com.l08gr02.zelda.models.elements.tiles.StaticTile;
 import com.l08gr02.zelda.presenters.Presenter;
 import com.l08gr02.zelda.presenters.elements.LinkPresenter;
-import com.l08gr02.zelda.presenters.elements.MonsterPresenter;
+import com.l08gr02.zelda.presenters.elements.monsters.LogPresenter;
+import com.l08gr02.zelda.presenters.elements.monsters.MonsterPresenter;
+import com.l08gr02.zelda.presenters.elements.monsters.MonsterPresenterFactory;
 import com.l08gr02.zelda.viewers.dungeon.DungeonViewer;
 import com.l08gr02.zelda.viewers.elements.LinkViewer;
-import com.l08gr02.zelda.viewers.elements.MonsterViewer;
+import com.l08gr02.zelda.viewers.elements.monsters.LogViewer;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -30,27 +34,26 @@ public class DungeonPresenter extends Presenter<Dungeon> {
 
         // criar os presenters
         linkPresenter = new LinkPresenter(model.getLink(), new LinkViewer());
-        monsterPresenters = new LinkedList<>();
-
-        for (Monster monster : model.getMonsters()){
-            monsterPresenters.add(new MonsterPresenter(monster, new MonsterViewer()));
-        }
+        monsterPresenters = new MonsterPresenterFactory().createPresenters(model);
     }
 
     // methods
     @Override
-    public void update(GUI gui, List<ACTION> actions) {
+    public void update(GUI gui) {
         // verificar as colisões
         checkCollisions();
 
         viewer.draw(gui, model);
-        linkPresenter.update(gui, actions);
+        linkPresenter.update(gui);
 
         for (MonsterPresenter monsterPresenter : monsterPresenters){
-            monsterPresenter.update(gui, actions);
+            monsterPresenter.update(gui);
         }
     }
 
+    public void setLinkActions(List<ACTION> actions){
+        linkPresenter.setActions(actions);
+    }
 
     private void checkCollisions(){
         checkLinkCollisions();
@@ -69,7 +72,7 @@ public class DungeonPresenter extends Presenter<Dungeon> {
         Hitbox swordHitbox = link.getAttackHitbox();
 
         for (MonsterPresenter monsterPresenter : monsterPresenters){
-            Monster monster = monsterPresenter.getModel();
+            Monster monster = (Monster) monsterPresenter.getModel();
 
             if (!monster.getHitbox().intersects(swordHitbox)){
                 continue;
@@ -79,13 +82,13 @@ public class DungeonPresenter extends Presenter<Dungeon> {
         }
 
         model.getMonsters().removeIf(monster -> monster.getHearts() <= 0);
-        monsterPresenters.removeIf(monsterPresenter -> monsterPresenter.getModel().getHearts() <= 0);
+        //monsterPresenters.removeIf(monsterPresenter -> monsterPresenter.getModel().getHearts() <= 0);
     }
 
     private void checkLinkCollisions(){
         Link link = model.getLink();
 
-        List<CollidingElement> linkObstacles = new LinkedList<>();
+        List<CollidingElement> linkObstacles = new ArrayList<>();
 
         for (StaticTile stile : model.getStiles()){
             if (!stile.isCollidable()){
@@ -117,7 +120,7 @@ public class DungeonPresenter extends Presenter<Dungeon> {
     }
 
     private void checkMonsterCollisions(Monster monster){
-        List<CollidingElement> monsterObstacles = new LinkedList<>();
+        List<CollidingElement> monsterObstacles = new ArrayList<>();
 
         for (Monster m : model.getMonsters()){
             if (monster == m || !monster.collidesWith(m)){

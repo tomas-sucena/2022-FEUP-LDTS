@@ -5,7 +5,7 @@ import com.l08gr02.zelda.models.elements.Hitbox;
 import com.l08gr02.zelda.models.elements.Position;
 import com.l08gr02.zelda.models.elements.moving.Mover;
 
-import java.util.LinkedList;
+import java.util.ArrayDeque;
 import java.util.List;
 import java.util.Queue;
 
@@ -24,7 +24,7 @@ public class Camera extends Element {
         this.tHeight = tHeight;
         this.TILE_SIZE = TILE_SIZE;
 
-        photoshoot = new LinkedList<>();
+        photoshoot = new ArrayDeque<>();
     }
 
     // métodos

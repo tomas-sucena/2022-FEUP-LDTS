@@ -1,5 +1,6 @@
 package com.l08gr02.zelda.models.elements;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class Position {
@@ -59,13 +60,18 @@ public class Position {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null || getClass() != obj.getClass()){
+        if (obj == null || !(obj instanceof Position)){
             return false;
         }
 
         Position p = (Position) obj;
 
         return (x == p.getX() && y == p.getY());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 
     @Override

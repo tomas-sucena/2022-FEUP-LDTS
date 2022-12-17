@@ -10,6 +10,7 @@ import java.util.List;
 import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
 
 public class LinkPresenter extends FighterPresenter<Link> {
+    private List<ACTION> actions;
     private SoundEffect walkSFX, swordSFX, lowHP;
 
     // constructor
@@ -23,7 +24,11 @@ public class LinkPresenter extends FighterPresenter<Link> {
         lowHP = new SoundEffect("low hp");
     }
 
-    // métodos
+    // methods
+    public void setActions(List<ACTION> actions) {
+        this.actions = actions;
+    }
+
     public boolean isAttacking(){
         return ((LinkViewer) viewer).isAttacking();
     }
@@ -56,13 +61,16 @@ public class LinkPresenter extends FighterPresenter<Link> {
     }
 
     @Override
-    public void update(GUI gui, List<ACTION> actions) {
+    public void update(GUI gui) {
         super.decreaseImmunity();
+
         walk();
 
         // verificar se o Link está a atacar
-        if (((LinkViewer) viewer).isAttacking()){
-            ((LinkViewer) viewer).setSprite(ACTION.ATTACK);
+        LinkViewer linkViewer = (LinkViewer) viewer;
+
+        if (linkViewer.isAttacking()){
+            linkViewer.setSprite(ACTION.ATTACK);
             viewer.draw(gui, model);
             attack();
 
@@ -70,20 +78,20 @@ public class LinkPresenter extends FighterPresenter<Link> {
         }
 
         for (ACTION action : actions){
-            ((LinkViewer) viewer).setSprite(action);
+            linkViewer.setSprite(action);
 
             switch (action){
-                case UP -> {moveUp(model.getSpeed());}
+                case UP -> moveUp(model.getSpeed());
 
-                case DOWN -> {moveDown(model.getSpeed());}
+                case DOWN -> moveDown(model.getSpeed());
 
-                case LEFT -> {moveLeft(model.getSpeed());}
+                case LEFT -> moveLeft(model.getSpeed());
 
-                case RIGHT -> {moveRight(model.getSpeed());}
+                case RIGHT -> moveRight(model.getSpeed());
 
-                case SPRINT -> {sprint();}
+                case SPRINT -> sprint();
 
-                case ATTACK -> {attack();}
+                case ATTACK -> attack();
             }
         }
 

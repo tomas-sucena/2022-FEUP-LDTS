@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.util.List;
 
 public class GameplayPresenter {
-    private final Gameplay model;
     private GameplayViewer viewer;
     private DungeonPresenter dungeonPresenter;
     private Music music;
@@ -22,7 +21,6 @@ public class GameplayPresenter {
 
     // constructor
     public GameplayPresenter(Gameplay model, GameplayViewer viewer) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
-        this.model = model;
         this.viewer = viewer;
 
         // definir o Link como o ator que a câmara vai filmar
@@ -56,7 +54,8 @@ public class GameplayPresenter {
             }
 
             screen.clear();
-            dungeonPresenter.update(viewer.getGUI(), actions);
+            dungeonPresenter.setLinkActions(actions);
+            dungeonPresenter.update(viewer.getGUI());
             screen.refresh();
 
             // mover a câmara

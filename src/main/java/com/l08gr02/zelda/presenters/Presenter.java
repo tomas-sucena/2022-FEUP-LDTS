@@ -3,10 +3,6 @@ package com.l08gr02.zelda.presenters;
 import com.l08gr02.zelda.gui.GUI;
 import com.l08gr02.zelda.viewers.Viewer;
 
-import java.util.List;
-
-import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
-
 public abstract class Presenter<T> {
     protected T model;
     protected Viewer<T> viewer;
@@ -22,5 +18,5 @@ public abstract class Presenter<T> {
         return model;
     }
 
-    public abstract void update(GUI gui, List<ACTION> actions);
+    public abstract void update(GUI gui);
 }
