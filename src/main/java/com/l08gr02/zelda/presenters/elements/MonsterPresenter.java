@@ -1,6 +1,6 @@
 package com.l08gr02.zelda.presenters.elements;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
+import com.l08gr02.zelda.gui.GUI;
 import com.l08gr02.zelda.models.elements.moving.monsters.Monster;
 import com.l08gr02.zelda.viewers.elements.MonsterViewer;
 
@@ -21,7 +21,7 @@ public class MonsterPresenter extends FighterPresenter<Monster> {
 
     // métodos
     @Override
-    public void update(TextGraphics graphics, List<ACTION> actions) {
+    public void update(GUI gui, List<ACTION> actions) {
         super.decreaseImmunity();
 
         actionLockCounter++;
@@ -40,7 +40,7 @@ public class MonsterPresenter extends FighterPresenter<Monster> {
         }
 
         ((MonsterViewer) viewer).setSprite(action);
-        viewer.draw(graphics, model);
+        viewer.draw(gui, model);
     }
 
 }

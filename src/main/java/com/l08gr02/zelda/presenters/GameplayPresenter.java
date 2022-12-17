@@ -1,8 +1,8 @@
 package com.l08gr02.zelda.presenters;
 
+import com.googlecode.lanterna.screen.Screen;
 import com.l08gr02.zelda.gui.Camera;
 import com.l08gr02.zelda.models.Gameplay;
-import com.l08gr02.zelda.models.dungeon.Dungeon;
 import com.l08gr02.zelda.models.sound.Music;
 import com.l08gr02.zelda.presenters.dungeon.DungeonPresenter;
 import com.l08gr02.zelda.viewers.GameplayViewer;
@@ -26,13 +26,12 @@ public class GameplayPresenter {
         this.viewer = viewer;
 
         // definir o Link como o ator que a câmara vai filmar
-        viewer.getCamera().setActor(model.getDungeon().getLink());
+        Camera camera = viewer.getGUI().getCamera();
+        camera.setActor(model.getDungeon().getLink());
 
         // criar o presenter
-        Camera camera = viewer.getCamera();
         camera.setLimits(model.getDungeon().getMap());
-
-        dungeonPresenter = new DungeonPresenter(model.getDungeon(), new DungeonViewer(camera), camera);
+        dungeonPresenter = new DungeonPresenter(model.getDungeon(), new DungeonViewer());
 
         music = new Music("overworld");
     }
@@ -44,22 +43,24 @@ public class GameplayPresenter {
         int FPS = 60;
         int frameTime = 1000 / FPS;
 
+        Screen screen = viewer.getGUI().getScreen();
+
         while (true){
             long startTime = System.currentTimeMillis();
 
             List<ACTION> actions = viewer.getActions();
 
             if (actions.contains(ACTION.QUIT)){
-                viewer.getScreen().close();
+                screen.close();
                 break;
             }
 
-            viewer.getScreen().clear();
-            dungeonPresenter.update(viewer.getGraphics(), actions);
-            viewer.getScreen().refresh();
+            screen.clear();
+            dungeonPresenter.update(viewer.getGUI(), actions);
+            screen.refresh();
 
             // mover a câmara
-            viewer.getCamera().film();
+            viewer.getGUI().getCamera().film();
 
             sleep(frameTime - startTime);
         }

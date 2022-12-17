@@ -1,6 +1,6 @@
 package com.l08gr02.zelda.presenters.elements;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
+import com.l08gr02.zelda.gui.GUI;
 import com.l08gr02.zelda.models.elements.moving.Link;
 import com.l08gr02.zelda.models.sound.SoundEffect;
 import com.l08gr02.zelda.viewers.elements.LinkViewer;
@@ -56,14 +56,14 @@ public class LinkPresenter extends FighterPresenter<Link> {
     }
 
     @Override
-    public void update(TextGraphics graphics, List<ACTION> actions) {
+    public void update(GUI gui, List<ACTION> actions) {
         super.decreaseImmunity();
         walk();
 
         // verificar se o Link está a atacar
         if (((LinkViewer) viewer).isAttacking()){
             ((LinkViewer) viewer).setSprite(ACTION.ATTACK);
-            viewer.draw(graphics, model);
+            viewer.draw(gui, model);
             attack();
 
             return;
@@ -87,7 +87,7 @@ public class LinkPresenter extends FighterPresenter<Link> {
             }
         }
 
-        viewer.draw(graphics, model);
+        viewer.draw(gui, model);
 
         playSoundEffects(actions);
     }

@@ -6,61 +6,54 @@ import com.l08gr02.zelda.models.dungeon.Dungeon;
 import com.l08gr02.zelda.models.elements.tiles.AnimatedTile;
 import com.l08gr02.zelda.models.elements.tiles.Heart;
 import com.l08gr02.zelda.models.elements.tiles.StaticTile;
-import com.l08gr02.zelda.gui.Camera;
 import com.l08gr02.zelda.viewers.Viewer;
 import com.l08gr02.zelda.viewers.elements.*;
 
 import java.util.List;
 
 public class DungeonViewer implements Viewer<Dungeon> {
-    private Camera camera;
     private HeartViewer heartViewer;
     private StaticTileViewer staticTileViewer;
     private AnimatedTileViewer animatedTileViewer;
 
     // constructor
-    public DungeonViewer(Camera camera){
-        this.camera = camera;
-
-        // criar os viewers
-        heartViewer = new HeartViewer(camera);
-        animatedTileViewer = new AnimatedTileViewer(camera);
+    public DungeonViewer(){
+        heartViewer = new HeartViewer();
+        animatedTileViewer = new AnimatedTileViewer();
     }
 
     // methods
     @Override
     public void draw(GUI gui, Dungeon dungeon) {
-        TextGraphics graphics = gui.getGraphics();
-
-        drawStaticTiles(graphics, dungeon.getStiles());
-        drawAnimatedTiles(graphics, dungeon.getAtiles());
-        drawHearts(graphics, dungeon);
+        drawStaticTiles(gui, dungeon.getStiles());
+        drawAnimatedTiles(gui, dungeon.getAtiles());
+        drawHearts(gui, dungeon);
     }
 
-    public void drawAnimatedTiles(TextGraphics graphics, List<AnimatedTile> tiles) {
+    public void drawAnimatedTiles(GUI gui, List<AnimatedTile> tiles) {
         for (AnimatedTile tile : tiles){
-            if (camera.collidesWith(tile)){
-                animatedTileViewer.draw(graphics, tile);
+            if (gui.getCamera().collidesWith(tile)){
+                animatedTileViewer.draw(gui, tile);
                 animatedTileViewer.setSprite();
             }
         }
     }
 
-    public void drawStaticTiles(TextGraphics graphics, List<StaticTile> tiles){
+    public void drawStaticTiles(GUI gui, List<StaticTile> tiles){
         for (StaticTile tile: tiles){
-            if (camera.collidesWith(tile)){
-                staticTileViewer = new StaticTileViewer(tile.getSprite(), camera);
-                staticTileViewer.draw(graphics, tile);
+            if (gui.getCamera().collidesWith(tile)){
+                staticTileViewer = new StaticTileViewer(tile.getSprite());
+                staticTileViewer.draw(gui, tile);
             }
         }
     }
 
-    public void drawHearts(TextGraphics graphics, Dungeon dungeon) {
+    public void drawHearts(GUI gui, Dungeon dungeon) {
         List<Heart> hearts = dungeon.getHearts();
 
         for (Heart heart: hearts) {
-            if (camera.collidesWith(heart)){
-                heartViewer.draw(graphics, heart);
+            if (gui.getCamera().collidesWith(heart)){
+                heartViewer.draw(gui, heart);
             }
         }
 

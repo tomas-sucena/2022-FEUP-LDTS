@@ -1,8 +1,5 @@
 package com.l08gr02.zelda.viewers;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.screen.Screen;
-import com.l08gr02.zelda.gui.Camera;
 import com.l08gr02.zelda.gui.GUI;
 
 import java.awt.*;
@@ -28,16 +25,8 @@ public class GameplayViewer {
     }
 
     // methods
-    public Camera getCamera() {
-        return gui.getCamera();
-    }
-
-    public Screen getScreen() {
-        return gui.getScreen();
-    }
-
-    public TextGraphics getGraphics() {
-        return gui.getGraphics();
+    public GUI getGUI() {
+        return gui;
     }
 
     public List<ACTION> getActions() {

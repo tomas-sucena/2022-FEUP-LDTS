@@ -1,7 +1,6 @@
 package com.l08gr02.zelda.presenters.dungeon;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
-import com.l08gr02.zelda.gui.Camera;
+import com.l08gr02.zelda.gui.GUI;
 import com.l08gr02.zelda.models.dungeon.Dungeon;
 import com.l08gr02.zelda.models.elements.CollidingElement;
 import com.l08gr02.zelda.models.elements.Hitbox;
@@ -16,7 +15,6 @@ import com.l08gr02.zelda.viewers.dungeon.DungeonViewer;
 import com.l08gr02.zelda.viewers.elements.LinkViewer;
 import com.l08gr02.zelda.viewers.elements.MonsterViewer;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -27,29 +25,29 @@ public class DungeonPresenter extends Presenter<Dungeon> {
     private List<MonsterPresenter> monsterPresenters;
 
     // constructor
-    public DungeonPresenter(Dungeon model, DungeonViewer viewer, Camera camera) {
+    public DungeonPresenter(Dungeon model, DungeonViewer viewer) {
         super(model, viewer);
 
         // criar os presenters
-        linkPresenter = new LinkPresenter(model.getLink(), new LinkViewer(camera));
+        linkPresenter = new LinkPresenter(model.getLink(), new LinkViewer());
         monsterPresenters = new LinkedList<>();
 
         for (Monster monster : model.getMonsters()){
-            monsterPresenters.add(new MonsterPresenter(monster, new MonsterViewer(camera)));
+            monsterPresenters.add(new MonsterPresenter(monster, new MonsterViewer()));
         }
     }
 
     // methods
     @Override
-    public void update(TextGraphics graphics, List<ACTION> actions) {
+    public void update(GUI gui, List<ACTION> actions) {
         // verificar as colisões
         checkCollisions();
 
-        viewer.draw(graphics, model);
-        linkPresenter.update(graphics, actions);
+        viewer.draw(gui, model);
+        linkPresenter.update(gui, actions);
 
         for (MonsterPresenter monsterPresenter : monsterPresenters){
-            monsterPresenter.update(graphics, actions);
+            monsterPresenter.update(gui, actions);
         }
     }
 

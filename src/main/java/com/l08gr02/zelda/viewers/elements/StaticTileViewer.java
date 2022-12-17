@@ -13,8 +13,8 @@ import com.l08gr02.zelda.presenters.GameplayPresenter;
 import com.l08gr02.zelda.viewers.SpriteViewer;
 
 public class StaticTileViewer extends SpriteViewer<StaticTile> {
-    public StaticTileViewer(Sprite sprite, Camera camera) {
-        super(sprite, camera);
+    public StaticTileViewer(Sprite sprite) {
+        super(sprite);
     }
 
     @Override

@@ -29,7 +29,7 @@ public abstract class SpriteViewer<T extends Element> implements Viewer<T> {
         int x = model.getPosition().getX() - camera.getPosition().getX();
         int y = model.getPosition().getY() - camera.getPosition().getY();
 
-        Color pixels[][] = sprite.getPixels();
+        Color[][] pixels = sprite.getPixels();
 
         for (int i = 0; i < sprite.getHeight(); i++) {
             for (int j = 0; j < sprite.getWidth(); j++) {

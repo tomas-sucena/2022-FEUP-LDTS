@@ -13,7 +13,7 @@ public class Camera extends Element {
     private Mover actor;
     private final int tWidth, tHeight, TILE_SIZE;
     private int xLim, yLim;
-    private Queue<Hitbox> photoshoot;
+    private final Queue<Hitbox> photoshoot;
 
     // construtor
     public Camera(int x, int y, int tWidth, int tHeight, int TILE_SIZE) {
@@ -41,14 +41,16 @@ public class Camera extends Element {
     }
 
     private void followActor(){
+        Hitbox photo = photoshoot.remove();
+
         // definir o novo valor de x
-        int nextX = photoshoot.peek().x - tWidth / 2;
+        int nextX = photo.x - tWidth / 2;
         int currX = getPosition().getX();
 
         nextX = (nextX < 0 || nextX + tWidth > xLim) ? currX : nextX;
 
         // definir o novo valor de y
-        int nextY = photoshoot.remove().y - tHeight / 2;
+        int nextY = photo.y - tHeight / 2;
         int currY = getPosition().getY();
 
         nextY = (nextY < 0 || nextY + tHeight > yLim) ? currY : nextY;

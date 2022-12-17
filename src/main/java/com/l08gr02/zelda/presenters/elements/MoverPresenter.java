@@ -1,6 +1,6 @@
 package com.l08gr02.zelda.presenters.elements;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
+import com.l08gr02.zelda.gui.GUI;
 import com.l08gr02.zelda.models.elements.CollidingElement;
 import com.l08gr02.zelda.models.elements.Hitbox;
 import com.l08gr02.zelda.models.elements.moving.Mover;
@@ -72,5 +72,5 @@ public abstract class MoverPresenter<T extends Mover> extends Presenter<T> {
         return true;
     }
 
-    public abstract void update(TextGraphics graphics, List<ACTION> actions);
+    public abstract void update(GUI gui, List<ACTION> actions);
 }
