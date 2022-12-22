@@ -10,16 +10,16 @@ import com.l08gr02.zelda.viewers.Viewer;
 import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
 
 public abstract class MoverPresenter<T extends Mover> extends Presenter<T> {
-    // construtor
+    // constructor
     public MoverPresenter(T model, Viewer<T> viewer){
         super(model, viewer);
     }
 
-    // métodos
+    // methods
     public void moveUp(int speed) {
         model.setDirection(ACTION.UP);
 
-        // verificar se o modelo se pode mover sem colidir
+        // verify if the model can move without colliding
         Hitbox dummy = model.getHitbox().up(speed);
 
         if (canMove(dummy)){
@@ -30,7 +30,7 @@ public abstract class MoverPresenter<T extends Mover> extends Presenter<T> {
     public void moveDown(int speed) {
         model.setDirection(ACTION.DOWN);
 
-        // verificar se o modelo se pode mover sem colidir
+        // verify if the model can move without colliding
         Hitbox dummy = model.getHitbox().down(speed);
 
         if (canMove(dummy)){
@@ -41,7 +41,7 @@ public abstract class MoverPresenter<T extends Mover> extends Presenter<T> {
     public void moveLeft(int speed) {
         model.setDirection(ACTION.LEFT);
 
-        // verificar se o modelo se pode mover sem colidir
+        // verify if the model can move without colliding
         Hitbox dummy = model.getHitbox().left(speed);
 
         if (canMove(dummy)){
@@ -52,7 +52,7 @@ public abstract class MoverPresenter<T extends Mover> extends Presenter<T> {
     public void moveRight(int speed) {
         model.setDirection(ACTION.RIGHT);
 
-        // verificar se o modelo se pode mover sem colidir
+        // verify if the model can move without colliding
         Hitbox dummy = model.getHitbox().right(speed);
 
         if (canMove(dummy)){

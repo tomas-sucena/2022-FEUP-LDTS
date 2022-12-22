@@ -12,6 +12,12 @@ public abstract class MonsterPresenter<T extends Monster> extends FighterPresent
     }
 
     // methods
+    protected boolean mustUpdate(GUI gui){
+        super.decreaseImmunity();
+
+        return model.collidesWith(gui.getCamera());
+    }
+
     @Override
     public abstract void update(GUI gui);
 }

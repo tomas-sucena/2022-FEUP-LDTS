@@ -3,10 +3,7 @@ package com.l08gr02.zelda.presenters.elements.monsters;
 import com.l08gr02.zelda.gui.GUI;
 import com.l08gr02.zelda.models.elements.moving.Mover;
 import com.l08gr02.zelda.models.elements.moving.monsters.Log;
-import com.l08gr02.zelda.presenters.GameplayPresenter;
 import com.l08gr02.zelda.viewers.elements.monsters.LogViewer;
-
-import static java.lang.Math.abs;
 
 public class LogPresenter extends MonsterPresenter<Log> {
     private Mover target;
@@ -21,22 +18,35 @@ public class LogPresenter extends MonsterPresenter<Log> {
         this.target = target;
     }
 
-    @Override
-    public void update(GUI gui){
-        /*int diff_x = target.getPosition().getX() - model.getPosition().getX();
+    public void chaseTarget(){
         int diff_y = target.getPosition().getY() - model.getPosition().getY();
 
-        int new_x = model.getPosition().getX();
-        int new_y = model.getPosition().getY();
-
-        if (abs(diff_x) > abs(diff_y)) {
-            new_x += (diff_x > 0) ? 1 : -1;
+        if (diff_y > 0){
+            moveDown(model.getSpeed());
         }
-        else {
-            new_y += (diff_y > 0) ? 1 : -1;
-        }*/
+        else if (diff_y < 0){
+            moveUp(model.getSpeed());
+        }
 
-        ((LogViewer) viewer).setSprite(GameplayPresenter.ACTION.LEFT);
+        int diff_x = target.getPosition().getX() - model.getPosition().getX();
+
+        if (diff_x > 0){
+            moveRight(model.getSpeed());
+        }
+        else if (diff_x < 0){
+            moveLeft(model.getSpeed());
+        }
+    }
+
+    @Override
+    public void update(GUI gui) {
+        if (!mustUpdate(gui)){
+            return;
+        }
+
+        chaseTarget();
+
+        ((LogViewer) viewer).setSprite(model.getDirection());
         viewer.draw(gui, model);
     }
 
