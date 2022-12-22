@@ -30,10 +30,5 @@ public class HeartViewerTest {
         heartViewer.draw(gui,heart);
         Mockito.verify(heartViewer,Mockito.times(1)).draw(gui, heart);
     }
-
-    /*@Test
-    void graphicsTest(){
-        heartViewer.drawt(gui,heart,tg);
-        Mockito.verify(tg, Mockito.times(2));
-    }*/
+    
 }

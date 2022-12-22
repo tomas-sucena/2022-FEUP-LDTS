@@ -1,5 +1,6 @@
 package com.l08gr02.zelda.Viewers;
 
+import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.l08gr02.zelda.gui.GUI;
 import com.l08gr02.zelda.gui.LanternaGUI;
@@ -30,9 +31,9 @@ public class SpriteViewerTest {
     }
 
     @Test
-    void drawTest(){
+    void drawTest() {
         spriteViewer.drawt(gui, heart);
         Mockito.verify(tg, Mockito.times(108)).setBackgroundColor(Mockito.any());
-        Mockito.verify(tg, Mockito.times(1)).setCharacter(Mockito.any(), Mockito.any());
     }
 }
+
