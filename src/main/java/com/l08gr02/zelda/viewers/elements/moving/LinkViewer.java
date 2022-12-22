@@ -1,4 +1,4 @@
-package com.l08gr02.zelda.viewers.elements;
+package com.l08gr02.zelda.viewers.elements.moving;
 
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -10,7 +10,7 @@ import java.awt.*;
 
 import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
 
-public class LinkViewer extends SpriteViewer<Link> {
+public class LinkViewer extends MoverViewer<Link> {
     private final Sprite heartSprite;
     private boolean attacking;
 

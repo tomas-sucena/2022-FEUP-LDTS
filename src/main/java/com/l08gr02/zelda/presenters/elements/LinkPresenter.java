@@ -3,7 +3,7 @@ package com.l08gr02.zelda.presenters.elements;
 import com.l08gr02.zelda.gui.GUI;
 import com.l08gr02.zelda.models.elements.moving.Link;
 import com.l08gr02.zelda.models.sound.SoundEffect;
-import com.l08gr02.zelda.viewers.elements.LinkViewer;
+import com.l08gr02.zelda.viewers.elements.moving.LinkViewer;
 
 import java.util.List;
 

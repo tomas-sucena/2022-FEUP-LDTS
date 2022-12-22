@@ -13,7 +13,7 @@ import com.l08gr02.zelda.presenters.elements.LinkPresenter;
 import com.l08gr02.zelda.presenters.elements.monsters.MonsterPresenter;
 import com.l08gr02.zelda.presenters.elements.monsters.MonsterPresenterFactory;
 import com.l08gr02.zelda.viewers.dungeon.DungeonViewer;
-import com.l08gr02.zelda.viewers.elements.LinkViewer;
+import com.l08gr02.zelda.viewers.elements.moving.LinkViewer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +28,6 @@ public class DungeonPresenter extends Presenter<Dungeon> {
     public DungeonPresenter(Dungeon model, DungeonViewer viewer) {
         super(model, viewer);
 
-        // criar os presenters
         linkPresenter = new LinkPresenter(model.getLink(), new LinkViewer());
         monsterPresenters = new MonsterPresenterFactory().createPresenters(model);
     }
@@ -36,7 +35,6 @@ public class DungeonPresenter extends Presenter<Dungeon> {
     // methods
     @Override
     public void update(GUI gui) {
-        // verificar as colisões
         checkCollisions();
 
         viewer.draw(gui, model);
@@ -54,7 +52,7 @@ public class DungeonPresenter extends Presenter<Dungeon> {
     private void checkCollisions(){
         checkLinkCollisions();
 
-        // verificar se os monstros estão a colidir
+        // verify if the monsters are colliding
         for (Monster monster : model.getMonsters()){
             checkMonsterCollisions(monster);
         }
@@ -78,7 +76,7 @@ public class DungeonPresenter extends Presenter<Dungeon> {
         }
 
         model.getMonsters().removeIf(monster -> monster.getHearts() <= 0);
-        //monsterPresenters.removeIf(monsterPresenter -> monsterPresenter.getModel().getHearts() <= 0);
+        monsterPresenters.removeIf(monsterPresenter -> monsterPresenter.getModel().getHearts() <= 0);
     }
 
     private void checkLinkCollisions(){

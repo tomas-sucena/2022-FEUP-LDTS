@@ -9,11 +9,8 @@ import com.l08gr02.zelda.models.elements.Element;
 
 import java.awt.*;
 
-import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
-
 public abstract class SpriteViewer<T extends Element> extends ElementViewer<T> {
     protected Sprite sprite;
-    protected int xGrid = 0, yGrid = 0;
 
     // constructor
     public SpriteViewer(Sprite sprite){
@@ -51,6 +48,5 @@ public abstract class SpriteViewer<T extends Element> extends ElementViewer<T> {
             }
         }
     }
-    
-    public abstract void setSprite(ACTION action);
+
 }

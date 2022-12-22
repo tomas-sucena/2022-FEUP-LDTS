@@ -18,6 +18,10 @@ public abstract class MonsterPresenter<T extends Monster> extends FighterPresent
         return model.collidesWith(gui.getCamera());
     }
 
+    public T getModel() {
+        return model;
+    }
+
     @Override
     public abstract void update(GUI gui);
 }

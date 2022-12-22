@@ -3,7 +3,7 @@ package com.l08gr02.zelda.presenters.elements.monsters;
 import com.l08gr02.zelda.gui.GUI;
 import com.l08gr02.zelda.models.elements.moving.Mover;
 import com.l08gr02.zelda.models.elements.moving.monsters.Log;
-import com.l08gr02.zelda.viewers.elements.monsters.LogViewer;
+import com.l08gr02.zelda.viewers.elements.moving.monsters.LogViewer;
 
 public class LogPresenter extends MonsterPresenter<Log> {
     private Mover target;

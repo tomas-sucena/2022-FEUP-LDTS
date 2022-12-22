@@ -4,8 +4,8 @@ import com.l08gr02.zelda.models.dungeon.Dungeon;
 import com.l08gr02.zelda.models.elements.moving.monsters.Log;
 import com.l08gr02.zelda.models.elements.moving.monsters.Monster;
 import com.l08gr02.zelda.models.elements.moving.monsters.Weirdo;
-import com.l08gr02.zelda.viewers.elements.monsters.LogViewer;
-import com.l08gr02.zelda.viewers.elements.monsters.WeirdoViewer;
+import com.l08gr02.zelda.viewers.elements.moving.monsters.LogViewer;
+import com.l08gr02.zelda.viewers.elements.moving.monsters.WeirdoViewer;
 
 import java.util.ArrayList;
 import java.util.List;

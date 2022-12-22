@@ -4,6 +4,7 @@ import com.l08gr02.zelda.models.elements.Element;
 import com.l08gr02.zelda.models.elements.moving.Link;
 import com.l08gr02.zelda.models.elements.moving.monsters.Log;
 import com.l08gr02.zelda.models.elements.moving.monsters.Monster;
+import com.l08gr02.zelda.models.elements.tiles.Bush;
 import com.l08gr02.zelda.models.elements.tiles.Grass;
 import com.l08gr02.zelda.models.elements.tiles.Heart;
 
@@ -24,6 +25,8 @@ public class Dungeon {
     // constructor
     public Dungeon() throws IOException {
         URL resource = Dungeon.class.getResource("/models/dungeon/map.txt");
+        assert resource != null;
+
         BufferedReader reader = new BufferedReader(new FileReader(resource.getFile()));
 
         createMap(reader);
@@ -94,8 +97,8 @@ public class Dungeon {
             }
 
             case 'B' -> {
-                //tiles.add(new Bush(x, y, ' '));
                 tiles.add(new Grass(x, y));
+                tiles.add(new Bush(x, y));
             }
 
             default -> tiles.add(new Grass(x, y));

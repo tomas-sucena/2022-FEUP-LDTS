@@ -1,4 +1,4 @@
-package com.l08gr02.zelda.viewers.elements.monsters;
+package com.l08gr02.zelda.viewers.elements.moving.monsters;
 
 import com.l08gr02.zelda.models.Sprite;
 import com.l08gr02.zelda.models.elements.moving.monsters.Weirdo;

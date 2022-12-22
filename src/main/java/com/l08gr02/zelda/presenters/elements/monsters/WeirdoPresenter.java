@@ -2,7 +2,7 @@ package com.l08gr02.zelda.presenters.elements.monsters;
 
 import com.l08gr02.zelda.gui.GUI;
 import com.l08gr02.zelda.models.elements.moving.monsters.Weirdo;
-import com.l08gr02.zelda.viewers.elements.monsters.WeirdoViewer;
+import com.l08gr02.zelda.viewers.elements.moving.monsters.WeirdoViewer;
 
 import java.util.Random;
 
