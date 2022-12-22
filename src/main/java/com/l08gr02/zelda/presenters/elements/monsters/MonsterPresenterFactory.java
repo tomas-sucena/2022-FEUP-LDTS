@@ -18,7 +18,7 @@ public class MonsterPresenterFactory {
         for (Monster monster : dungeon.getMonsters()){
             if (monster instanceof Log){
                 LogPresenter logPresenter = new LogPresenter((Log) monster, new LogViewer());
-                //logPresenter.setTarget(dungeon.getLink());
+                logPresenter.setTarget(dungeon.getLink());
 
                 monsterPresenters.add(logPresenter);
                 continue;

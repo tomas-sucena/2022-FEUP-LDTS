@@ -18,9 +18,7 @@ public class WeirdoPresenter extends MonsterPresenter<Weirdo> {
     // methods
     @Override
     public void update(GUI gui) {
-        super.decreaseImmunity();
-
-        if (!model.collidesWith(gui.getCamera())){
+        if (!mustUpdate(gui)){
             return;
         }
 
