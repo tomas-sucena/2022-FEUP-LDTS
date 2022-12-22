@@ -75,7 +75,7 @@ When considering how we wanted to program the distinct elements that compose our
 
 **The Pattern**
 
-As such, we applied the Composite pattern, which, succinctly, allows us to view a group of similar objects as a single instance of an object. Its formal definition can be found [here](https://refactoring.guru/design-patterns/composite).
+
 
 **Implementation**
 
@@ -94,7 +94,7 @@ The classes that serve as the basis of our Composite pattern can be found in the
 
 **Consequences**
 
-Using the Composite pattern, we have achieved the following:
+
 
 - Our code is easier to interpret, as the purpose of most classes can be pinpointed if we examine the classes it extends or the interfaces it implements.
 - Unit testing is more efficient, as we can test several classes at a time (provided they share the same properties)
@@ -107,7 +107,7 @@ Using the Composite pattern, we have achieved the following:
 
 ### SELF-EVALUATION
 
-- **Andreia Silva:** TBD
-- **Gonçalo Nadais de Pinho:** TBD
-- **Tomás Sucena Lopes:** TBD
+- **Andreia Silva:** 33.3%
+- **Gonçalo Nadais de Pinho:** 33.3%
+- **Tomás Sucena Lopes:** 33.3%
 

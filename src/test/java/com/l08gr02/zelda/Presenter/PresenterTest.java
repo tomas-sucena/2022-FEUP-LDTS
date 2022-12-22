@@ -1,4 +1,4 @@
-package com.l08gr02.zelda;
+package com.l08gr02.zelda.Presenter;
 
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
