@@ -1,8 +1,11 @@
 package com.l08gr02.zelda.models;
 
+import com.l08gr02.zelda.models.elements.Hitbox;
+import com.l08gr02.zelda.models.elements.moving.Fighter;
 import com.l08gr02.zelda.models.elements.moving.Link;
 import com.l08gr02.zelda.models.elements.Position;
 import com.l08gr02.zelda.models.elements.moving.Mover;
+import com.l08gr02.zelda.presenters.GameplayPresenter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
