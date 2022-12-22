@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id('net.ltgt.errorprone') version '3.0.1'
+    id 'info.solidsoft.pitest' version '1.9.0'
 }
 
 group 'com.l08gr02.zelda'
@@ -21,4 +22,8 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+pitest {
+    junit5PluginVersion = '1.0.0'
 }
