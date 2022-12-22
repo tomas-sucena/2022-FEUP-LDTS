@@ -20,52 +20,23 @@ public class LanternaGUITest {
         LanternaGUI gui = new LanternaGUI(tWidth, tHeight, 16, fontSize);
 
 
-        // Act
         Terminal terminal = gui.createTerminal(tWidth, tHeight, fontSize);
 
-        // Assert
         assertEquals(tWidth, terminal.getTerminalSize().getColumns());
         assertEquals(tHeight, terminal.getTerminalSize().getRows());
-        // TODO: add assertions to verify that the font configuration is correct and that the listeners are added
+
     }
 
     @Test
     public void testGetGraphics() throws Exception {
+        // Arrange
         LanternaGUI gui = new LanternaGUI(80, 25, 16, 12);
 
+        // Act
         TextGraphics graphics = gui.getGraphics();
 
+        // Assert
         assertTrue(graphics instanceof TextGraphics);
-    }
-
-    @Test
-    public void testClear() throws Exception {
-
-
-    }
-
-    @Test
-    public void testRefresh() throws Exception {
-        // Arrange
-        LanternaGUI gui = new LanternaGUI(80, 25, 16, 12);
-
-        // Act
-        gui.refresh();
-
-        // Assert
-        // TODO: add assertions to verify that the screen is refreshed
-    }
-
-    @Test
-    public void testClose() throws Exception {
-        // Arrange
-        LanternaGUI gui = new LanternaGUI(80, 25, 16, 12);
-
-        // Act
-        gui.close();
-
-        // Assert
-        // TODO: add assertions to verify that the screen is closed
     }
 
 }

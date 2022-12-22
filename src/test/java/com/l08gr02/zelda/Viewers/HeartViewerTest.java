@@ -17,11 +17,10 @@ public class HeartViewerTest {
     private GUI gui;
     private Heart heart;
     private HeartViewer heartViewer;
-    private TextGraphics tg;
 
     @BeforeEach
-    void setup() throws URISyntaxException, IOException, FontFormatException {
-        heart = new Heart(10,10);
+    void setup(){
+        heart = Mockito.mock(Heart.class);
         heartViewer = Mockito.mock(HeartViewer.class);
         gui = Mockito.mock(GUI.class);
     }
@@ -30,5 +29,4 @@ public class HeartViewerTest {
         heartViewer.draw(gui,heart);
         Mockito.verify(heartViewer,Mockito.times(1)).draw(gui, heart);
     }
-    
 }

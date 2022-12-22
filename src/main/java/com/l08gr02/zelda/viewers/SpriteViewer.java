@@ -48,7 +48,7 @@ public abstract class SpriteViewer<T extends Element> implements Viewer<T> {
         }
     }
 
-    public void drawt(GUI gui, T model) {
+    public void drawt(GUI gui, T model) { //For testing purposes only
         TextGraphics graphics = gui.getGraphics();
 
         int x = model.getPosition().getX();
