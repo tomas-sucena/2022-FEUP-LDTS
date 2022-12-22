@@ -45,7 +45,7 @@ public abstract class Mover extends CollidingElement implements Movement {
     public void down(int i){
         setPosition(getPosition().down(i));
 
-        // mover a hitbox
+        // move the hitbox
         setHitbox(getHitbox().down(i));
     }
 
@@ -53,7 +53,7 @@ public abstract class Mover extends CollidingElement implements Movement {
     public void left(int i){
         setPosition(getPosition().left(i));
 
-        // mover a hitbox
+        // move the hitbox
         setHitbox(getHitbox().left(i));
     }
 
@@ -61,7 +61,7 @@ public abstract class Mover extends CollidingElement implements Movement {
     public void right(int i){
         setPosition(getPosition().right(i));
 
-        // mover a hitbox
+        // move the hitbox
         setHitbox(getHitbox().right(i));
     }
 }

@@ -5,7 +5,6 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 import com.l08gr02.zelda.gui.GUI;
 import com.l08gr02.zelda.models.Sprite;
 import com.l08gr02.zelda.models.elements.moving.Link;
-import com.l08gr02.zelda.viewers.SpriteViewer;
 
 import java.awt.*;
 
@@ -39,12 +38,12 @@ public class LinkViewer extends SpriteViewer<Link> {
 
         float life = link.getHearts();
 
-        // desenhar os corações inteiros
+        // draw all whole hearts
         for (int i = 0; i < (int) life; i++){
             drawHeart(gui, i);
         }
 
-        // desenhar o coração não inteiro, caso exista
+        // draw the fragmented heart, if it exists
         if (life % 1 != 0){
             heartSprite.setPixels(8 - (int) (life % 1 * 4),0);
             drawHeart(gui, (int) life);
@@ -61,7 +60,7 @@ public class LinkViewer extends SpriteViewer<Link> {
                 int G = pixels[i][j].getGreen();
                 int B = pixels[i][j].getBlue();
 
-                // verificar se o pixel é transparente
+                // verify if the pixel is transparent
                 if (R == 131 && G == 131 && B == 131) {
                     continue;
                 }

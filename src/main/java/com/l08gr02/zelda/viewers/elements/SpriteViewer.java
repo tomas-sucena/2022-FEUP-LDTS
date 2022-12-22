@@ -1,4 +1,4 @@
-package com.l08gr02.zelda.viewers;
+package com.l08gr02.zelda.viewers.elements;
 
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -11,7 +11,7 @@ import java.awt.*;
 
 import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
 
-public abstract class SpriteViewer<T extends Element> implements Viewer<T> {
+public abstract class SpriteViewer<T extends Element> extends ElementViewer<T> {
     protected Sprite sprite;
     protected int xGrid = 0, yGrid = 0;
 
@@ -23,6 +23,10 @@ public abstract class SpriteViewer<T extends Element> implements Viewer<T> {
     // methods
     @Override
     public void draw(GUI gui, T model) {
+        if (!shouldDraw(gui, model)){
+            return;
+        }
+
         TextGraphics graphics = gui.getGraphics();
         Camera camera = gui.getCamera();
 
