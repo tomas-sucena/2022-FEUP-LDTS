@@ -1,12 +1,9 @@
 package com.l08gr02.zelda.viewers.elements;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
-import com.l08gr02.zelda.gui.Camera;
 import com.l08gr02.zelda.gui.GUI;
 import com.l08gr02.zelda.models.Sprite;
 import com.l08gr02.zelda.models.elements.tiles.Heart;
 import com.l08gr02.zelda.presenters.GameplayPresenter;
-import com.l08gr02.zelda.viewers.SpriteViewer;
 
 public class HeartViewer extends SpriteViewer<Heart> {
     private int heartcount = 0;

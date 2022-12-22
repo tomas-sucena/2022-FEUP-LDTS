@@ -3,23 +3,19 @@ package com.l08gr02.zelda.presenters.dungeon;
 import com.l08gr02.zelda.gui.GUI;
 import com.l08gr02.zelda.models.dungeon.Dungeon;
 import com.l08gr02.zelda.models.elements.CollidingElement;
+import com.l08gr02.zelda.models.elements.Element;
 import com.l08gr02.zelda.models.elements.Hitbox;
 import com.l08gr02.zelda.models.elements.moving.Link;
-import com.l08gr02.zelda.models.elements.moving.monsters.Log;
 import com.l08gr02.zelda.models.elements.moving.monsters.Monster;
 import com.l08gr02.zelda.models.elements.tiles.Heart;
-import com.l08gr02.zelda.models.elements.tiles.StaticTile;
 import com.l08gr02.zelda.presenters.Presenter;
 import com.l08gr02.zelda.presenters.elements.LinkPresenter;
-import com.l08gr02.zelda.presenters.elements.monsters.LogPresenter;
 import com.l08gr02.zelda.presenters.elements.monsters.MonsterPresenter;
 import com.l08gr02.zelda.presenters.elements.monsters.MonsterPresenterFactory;
 import com.l08gr02.zelda.viewers.dungeon.DungeonViewer;
 import com.l08gr02.zelda.viewers.elements.LinkViewer;
-import com.l08gr02.zelda.viewers.elements.monsters.LogViewer;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
@@ -90,12 +86,10 @@ public class DungeonPresenter extends Presenter<Dungeon> {
 
         List<CollidingElement> linkObstacles = new ArrayList<>();
 
-        for (StaticTile stile : model.getStiles()){
-            if (!stile.isCollidable()){
-                continue;
+        for (Element tile : model.getTiles()){
+            if (tile instanceof CollidingElement el){
+                linkObstacles.add(el);
             }
-
-            linkObstacles.add(stile);
         }
 
         for (Monster monster : model.getMonsters()){
@@ -136,12 +130,10 @@ public class DungeonPresenter extends Presenter<Dungeon> {
             break;
         }
 
-        for (StaticTile stile : model.getStiles()){
-            if (!stile.isCollidable()){
-                continue;
+        for (Element tile : model.getTiles()){
+            if (tile instanceof CollidingElement el){
+                monsterObstacles.add(el);
             }
-
-            monsterObstacles.add(stile);
         }
 
         for (Heart heart : model.getHearts()){

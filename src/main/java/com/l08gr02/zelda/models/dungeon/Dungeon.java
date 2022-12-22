@@ -1,26 +1,24 @@
 package com.l08gr02.zelda.models.dungeon;
 
+import com.l08gr02.zelda.models.elements.Element;
 import com.l08gr02.zelda.models.elements.moving.Link;
 import com.l08gr02.zelda.models.elements.moving.monsters.Log;
 import com.l08gr02.zelda.models.elements.moving.monsters.Monster;
-import com.l08gr02.zelda.models.elements.tiles.AnimatedTile;
+import com.l08gr02.zelda.models.elements.tiles.Grass;
 import com.l08gr02.zelda.models.elements.tiles.Heart;
-import com.l08gr02.zelda.models.elements.tiles.StaticTile;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class Dungeon {
     private List<String> map;
+    private List<Element> tiles;
     private Link link;
     private List<Monster> monsters;
-    private List<StaticTile> stiles;
-    private List<AnimatedTile> atiles;
     private List<Heart> hearts;
 
     // constructor
@@ -33,32 +31,24 @@ public class Dungeon {
     }
 
     // methods
-    public Link getLink(){
-        return link;
-    }
-
     public List<String> getMap(){
         return map;
     }
 
-    public List<AnimatedTile> getAtiles(){
-        return atiles;
+    public List<Element> getTiles() {
+        return tiles;
     }
 
-    public List<StaticTile> getStiles(){
-        return stiles;
-    }
-
-    public List<Heart> getHearts(){
-        return hearts;
+    public Link getLink(){
+        return link;
     }
 
     public List<Monster> getMonsters(){
         return monsters;
     }
 
-    public void setMonsters(List<Monster> monsters) {
-        this.monsters = monsters;
+    public List<Heart> getHearts(){
+        return hearts;
     }
 
     public void createMap(BufferedReader reader) throws IOException {
@@ -71,9 +61,8 @@ public class Dungeon {
 
     public void readMap(){
         monsters = new ArrayList<>();
-        stiles = new ArrayList<>();
-        atiles = new ArrayList<>();
         hearts = new ArrayList<>();
+        tiles = new ArrayList<>();
 
         for (int y = 0; y < map.size(); y++){
             String line = map.get(y);
@@ -91,27 +80,25 @@ public class Dungeon {
         switch (c) {
             case 'L' -> {
                 link = new Link(x, y);
-                stiles.add(new StaticTile(x, y, ' '));
+                tiles.add(new Grass(x, y));
             }
 
             case 'M' -> {
                 monsters.add(new Log(x, y));
-                stiles.add(new StaticTile(x, y, ' '));
+                tiles.add(new Grass(x, y));
             }
 
             case 'H' -> {
                 hearts.add(new Heart(x, y));
-                stiles.add(new StaticTile(x, y, ' '));
+                tiles.add(new Grass(x, y));
             }
-
-            case 'W' -> {atiles.add(new AnimatedTile(x, y, c));}
 
             case 'B' -> {
-                stiles.add(new StaticTile(x, y, ' '));
-                stiles.add(new StaticTile(x, y, c));
+                //tiles.add(new Bush(x, y, ' '));
+                tiles.add(new Grass(x, y));
             }
 
-            default -> {stiles.add(new StaticTile(x, y, c));}
+            default -> tiles.add(new Grass(x, y));
         }
     }
 
