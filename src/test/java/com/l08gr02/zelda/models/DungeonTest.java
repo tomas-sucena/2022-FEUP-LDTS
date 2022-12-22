@@ -11,6 +11,8 @@ public class DungeonTest {
     @Test
     void DungeonTest() throws IOException {
         Dungeon dungeon = new Dungeon();
+
+        //Testing map creation
         assertEquals(dungeon.getLink().getPosition().getX(),80);
         assertEquals(dungeon.getLink().getPosition().getY(),32);
         assertEquals(dungeon.getStiles().get(0).getPosition().getX(),0);
