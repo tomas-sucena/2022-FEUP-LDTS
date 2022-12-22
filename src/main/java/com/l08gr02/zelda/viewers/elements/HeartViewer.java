@@ -22,8 +22,8 @@ public class HeartViewer extends SpriteViewer<Heart> {
     }
 
     @Override
-    public void drawt(GUI gui, Heart model, TextGraphics graphics) {
-        super.drawt(gui, model, graphics);
+    public void drawt(GUI gui, Heart model) {
+        super.drawt(gui, model);
     }
 
     @Override

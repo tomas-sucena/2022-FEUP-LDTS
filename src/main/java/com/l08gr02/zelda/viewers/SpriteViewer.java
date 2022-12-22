@@ -48,12 +48,11 @@ public abstract class SpriteViewer<T extends Element> implements Viewer<T> {
         }
     }
 
-    public void drawt(GUI gui, T model, TextGraphics graphics) {
-        Camera camera = gui.getCamera();
-        graphics = gui.getGraphics();
+    public void drawt(GUI gui, T model) {
+        TextGraphics graphics = gui.getGraphics();
 
-        int x = model.getPosition().getX() - camera.getPosition().getX();
-        int y = model.getPosition().getY() - camera.getPosition().getY();
+        int x = model.getPosition().getX();
+        int y = model.getPosition().getY();
 
         Color[][] pixels = sprite.getPixels();
 

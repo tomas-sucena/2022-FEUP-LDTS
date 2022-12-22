@@ -9,8 +9,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class DungeonTest {
     @Test
     void DungeonTest() throws IOException {
-        /*Dungeon dungeon = new Dungeon();
+        Dungeon dungeon = new Dungeon();
         assertEquals(dungeon.getLink().getPosition().getX(),80);
-        assertEquals(dungeon.getLink().getPosition().getY(),32);*/
+        assertEquals(dungeon.getLink().getPosition().getY(),32);
     }
 }

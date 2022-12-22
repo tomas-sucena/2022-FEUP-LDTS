@@ -2,8 +2,9 @@ package com.l08gr02.zelda.Viewers;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.l08gr02.zelda.gui.GUI;
-import com.l08gr02.zelda.gui.LanternaGUI;
+import com.l08gr02.zelda.models.dungeon.Dungeon;
 import com.l08gr02.zelda.models.elements.tiles.Heart;
+import com.l08gr02.zelda.viewers.dungeon.DungeonViewer;
 import com.l08gr02.zelda.viewers.elements.HeartViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,31 +14,25 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-public class HeartViewerTest {
+public class DungeonViewerTest {
     private GUI gui;
-    private Heart heart;
-    private HeartViewer heartViewer;
+    private Dungeon dungeon;
+    private DungeonViewer dungeonViewer;
     private TextGraphics tg;
 
     @BeforeEach
     void setup() throws URISyntaxException, IOException, FontFormatException {
-        heart = new Heart(10,10);
-        heartViewer = Mockito.mock(HeartViewer.class);
+        dungeon = new Dungeon();
+        dungeonViewer = Mockito.mock(DungeonViewer.class);
         gui = Mockito.mock(GUI.class);
         tg = Mockito.mock(TextGraphics.class);
         Mockito.when(gui.getGraphics()).thenReturn(tg);
     }
     @Test
     void drawTest(){
-        heartViewer.draw(gui,heart);
-        Mockito.verify(heartViewer,Mockito.times(1)).draw(Mockito.any(), Mockito.any());
-        Mockito.verify(tg, Mockito.times(1)).setBackgroundColor(Mockito.any());
-        Mockito.verify(tg, Mockito.times(1)).setCharacter(Mockito.any(), Mockito.any());
+        dungeonViewer.draw(gui,dungeon);
+        Mockito.verify(dungeonViewer,Mockito.times(1)).drawStaticTiles(Mockito.any(), Mockito.any());
+        Mockito.verify(dungeonViewer,Mockito.times(1)).drawHearts(Mockito.any(), Mockito.any());
+        Mockito.verify(dungeonViewer,Mockito.times(1)).drawAnimatedTiles(Mockito.any(), Mockito.any());
     }
-
-    /*@Test
-    void graphicsTest(){
-        heartViewer.drawt(gui,heart,tg);
-        Mockito.verify(tg, Mockito.times(2));
-    }*/
 }
