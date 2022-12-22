@@ -5,7 +5,7 @@ import com.l08gr02.zelda.models.elements.Hitbox;
 import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
 
 public class Link extends Fighter {
-    private static int WALK_SPEED = 2, SPRINT_SPEED = 4;
+    private int WALK_SPEED = 2, SPRINT_SPEED = 4;
 
     // construtor
     public Link(int x, int y){

@@ -1,12 +1,12 @@
 package com.l08gr02.zelda.viewers;
 
 import com.l08gr02.zelda.gui.GUI;
+import com.l08gr02.zelda.gui.LanternaGUI;
 
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -22,7 +22,7 @@ public class GameplayViewer {
         int tHeight = height * TILE_SIZE;
 
         // criar o GUI
-        gui = new GUI(tWidth, tHeight, TILE_SIZE,6);
+        gui = new LanternaGUI(tWidth, tHeight, TILE_SIZE,6);
     }
 
     // methods

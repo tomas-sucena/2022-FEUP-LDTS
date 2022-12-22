@@ -2,6 +2,7 @@ package com.l08gr02.zelda.presenters;
 
 import com.googlecode.lanterna.screen.Screen;
 import com.l08gr02.zelda.gui.Camera;
+import com.l08gr02.zelda.gui.GUI;
 import com.l08gr02.zelda.models.Gameplay;
 import com.l08gr02.zelda.models.sound.Music;
 import com.l08gr02.zelda.presenters.dungeon.DungeonPresenter;
@@ -41,7 +42,7 @@ public class GameplayPresenter {
         int FPS = 60;
         int frameTime = 1000 / FPS;
 
-        Screen screen = viewer.getGUI().getScreen();
+        GUI gui = viewer.getGUI();
 
         while (true){
             long startTime = System.currentTimeMillis();
@@ -49,14 +50,14 @@ public class GameplayPresenter {
             List<ACTION> actions = viewer.getActions();
 
             if (actions.contains(ACTION.QUIT)){
-                screen.close();
+                gui.close();
                 break;
             }
 
-            screen.clear();
+            gui.clear();
             dungeonPresenter.setLinkActions(actions);
             dungeonPresenter.update(viewer.getGUI());
-            screen.refresh();
+            gui.refresh();
 
             // mover a câmara
             viewer.getGUI().getCamera().film();
