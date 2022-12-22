@@ -33,6 +33,6 @@ public class SpriteViewerTest {
     void drawTest(){
         spriteViewer.drawt(gui, heart);
         Mockito.verify(tg, Mockito.times(108)).setBackgroundColor(Mockito.any());
-
+        Mockito.verify(tg, Mockito.times(1)).setCharacter(Mockito.any(), Mockito.any());
     }
 }

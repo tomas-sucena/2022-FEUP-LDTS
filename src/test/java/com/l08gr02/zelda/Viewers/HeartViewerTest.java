@@ -24,15 +24,11 @@ public class HeartViewerTest {
         heart = new Heart(10,10);
         heartViewer = Mockito.mock(HeartViewer.class);
         gui = Mockito.mock(GUI.class);
-        tg = Mockito.mock(TextGraphics.class);
-        Mockito.when(gui.getGraphics()).thenReturn(tg);
     }
     @Test
     void drawTest(){
         heartViewer.draw(gui,heart);
-        Mockito.verify(heartViewer,Mockito.times(1)).draw(Mockito.any(), Mockito.any());
-        Mockito.verify(tg, Mockito.times(1)).setBackgroundColor(Mockito.any());
-        Mockito.verify(tg, Mockito.times(1)).setCharacter(Mockito.any(), Mockito.any());
+        Mockito.verify(heartViewer,Mockito.times(1)).draw(gui, heart);
     }
 
     /*@Test
