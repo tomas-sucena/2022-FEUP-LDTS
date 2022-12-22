@@ -23,7 +23,7 @@ public class LogPresenter extends MonsterPresenter<Log> {
 
     @Override
     public void update(GUI gui){
-        /*int diff_x = target.getPosition().getX() - model.getPosition().getX();
+        int diff_x = target.getPosition().getX() - model.getPosition().getX();
         int diff_y = target.getPosition().getY() - model.getPosition().getY();
 
         int new_x = model.getPosition().getX();
@@ -34,7 +34,7 @@ public class LogPresenter extends MonsterPresenter<Log> {
         }
         else {
             new_y += (diff_y > 0) ? 1 : -1;
-        }*/
+        }
 
         ((LogViewer) viewer).setSprite(GameplayPresenter.ACTION.LEFT);
         viewer.draw(gui, model);
