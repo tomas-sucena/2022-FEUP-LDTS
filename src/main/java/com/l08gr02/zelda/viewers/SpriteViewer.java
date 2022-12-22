@@ -47,6 +47,32 @@ public abstract class SpriteViewer<T extends Element> implements Viewer<T> {
             }
         }
     }
+
+    public void drawt(GUI gui, T model, TextGraphics graphics) {
+        Camera camera = gui.getCamera();
+        graphics = gui.getGraphics();
+
+        int x = model.getPosition().getX() - camera.getPosition().getX();
+        int y = model.getPosition().getY() - camera.getPosition().getY();
+
+        Color[][] pixels = sprite.getPixels();
+
+        for (int i = 0; i < sprite.getHeight(); i++) {
+            for (int j = 0; j < sprite.getWidth(); j++) {
+                int R = pixels[i][j].getRed();
+                int G = pixels[i][j].getGreen();
+                int B = pixels[i][j].getBlue();
+
+                // verificar se o pixel é transparente
+                if (R == 131 && G == 131 && B == 131) {
+                    continue;
+                }
+
+                graphics.setBackgroundColor(new TextColor.RGB(R, G, B));
+                graphics.setCharacter(x + i, y + j, ' ');
+            }
+        }
+    }
     
     public abstract void setSprite(ACTION action);
 }

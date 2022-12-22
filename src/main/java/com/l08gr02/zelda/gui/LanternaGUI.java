@@ -60,7 +60,7 @@ public class LanternaGUI extends GUI {
         screen.close();
     }
 
-    private Terminal createTerminal(int tWidth, int tHeight, int fontSize) throws URISyntaxException, IOException, FontFormatException {
+    public Terminal createTerminal(int tWidth, int tHeight, int fontSize) throws URISyntaxException, IOException, FontFormatException {
         // definir o tamanho do terminal
         TerminalSize tSize = new TerminalSize(tWidth, tHeight);
 

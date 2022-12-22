@@ -5,6 +5,8 @@ import com.l08gr02.zelda.models.elements.moving.Link;
 import com.l08gr02.zelda.models.elements.moving.monsters.Log;
 import com.l08gr02.zelda.models.elements.moving.monsters.Weirdo;
 import com.l08gr02.zelda.presenters.GameplayPresenter;
+import net.jqwik.api.ForAll;
+import net.jqwik.api.Property;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -45,14 +47,14 @@ public class FighterTest {
         link.attack();
         assertEquals(link.getAttackHitbox(), new Hitbox(10 + 4, 10 + 4, 38, 8));
 
-        //Testing health (we have already seen that he has 3 hearts)
-        link.takeDamage((float) 0.75);
-        assertEquals(link.getHearts(),2.25);
-        link.heal((float) 0.75);
-        assertEquals(link.getHearts(),3.0);
-        link.setHearts((float) 1234.5);
-        assertEquals(link.getHearts(),1234.5);
 
+    }
+
+    @Property
+    void HealthTest(@ForAll float x){
+        Link link = new Link(10,10);
+        link.heal(x);
+        assertEquals(link.getHearts(), 3.0f + x);
     }
 
     @Test
