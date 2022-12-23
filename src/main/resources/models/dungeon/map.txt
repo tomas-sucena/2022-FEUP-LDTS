@@ -1,20 +1,22 @@
-BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
-B   H                          H       B
-B    L                  BBBBBBBBBBBBBBBB
-B          W                        l  B
-B                         BBBBBBBBBBBBBB
-B                                      B
-B          H                           B
-B                        l             B
-B      W                               B
-B                                      B
-B       B       H                      B
-B       l         B           l        B
-B                                      B
-B     BBBBBBBBBBBB          BBBBBBBBBBBB
-B     B                     B    l     B
-B     B     BBBBBB          B          B
-B     B     l    B          B      l   B
-B     BBBBBBBBBBBB          B          B
-B          H                           B
-BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+12222222222222222222222222222222222222222222223
+4   H           l              H              4
+4                                             4
+4         L                        W          4
+4                  1222222222222222222222222226
+4                  4                          7
+4              l   4                          4
+4                  4     H                    4
+4      H           4     H             7      4
+4      H           4     H       l     4      4
+4   l  H           4     HHH           4      4
+4      HHH         4                 W 4      4
+4                  4   W       M       4      4
+4                  4                   4      4
+4        B         522222222222222222226      4
+4    l                                        4
+4                   l         B               4
+4                                             4
+4          W  H           l                   4
+4     B                              B        4
+4          H                                  4
+52222222222222222222222222222222222222222222226

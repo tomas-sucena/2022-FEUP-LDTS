@@ -106,12 +106,12 @@ public class Dungeon {
                 tiles.add(new Grass(x, y));
             }
 
-            case 'B' -> {
-                tiles.add(new Grass(x, y));
-                tiles.add(new Bush(x, y, 'B'));
-            }
+            case ' ' -> tiles.add(new Grass(x, y));
 
-            default -> tiles.add(new Grass(x, y));
+            default -> {
+                tiles.add(new Grass(x, y));
+                tiles.add(new Bush(x, y, c));
+            }
         }
     }
 
