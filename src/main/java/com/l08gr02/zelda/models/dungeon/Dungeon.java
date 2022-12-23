@@ -43,6 +43,10 @@ public class Dungeon {
         return link;
     }
 
+    public void setLink(Link link) {
+        this.link = link;
+    }
+
     public List<Monster> getMonsters(){
         return monsters;
     }
