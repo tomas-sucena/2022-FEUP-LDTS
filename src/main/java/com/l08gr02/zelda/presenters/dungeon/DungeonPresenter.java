@@ -55,7 +55,7 @@ public class DungeonPresenter extends Presenter<Dungeon> {
         linkPresenter.setActions(actions);
     }
 
-    private void checkCollisions(){
+    public void checkCollisions(){
         checkLinkCollisions();
 
         // verificar se os monstros estão a colidir
@@ -85,7 +85,7 @@ public class DungeonPresenter extends Presenter<Dungeon> {
         //monsterPresenters.removeIf(monsterPresenter -> monsterPresenter.getModel().getHearts() <= 0);
     }
 
-    private void checkLinkCollisions(){
+    public void checkLinkCollisions(){
         Link link = model.getLink();
 
         List<CollidingElement> linkObstacles = new ArrayList<>();
@@ -119,7 +119,7 @@ public class DungeonPresenter extends Presenter<Dungeon> {
         link.setObstacles(linkObstacles);
     }
 
-    private void checkMonsterCollisions(Monster monster){
+    public void checkMonsterCollisions(Monster monster){
         List<CollidingElement> monsterObstacles = new ArrayList<>();
 
         for (Monster m : model.getMonsters()){
