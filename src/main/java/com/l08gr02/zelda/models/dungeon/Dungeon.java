@@ -108,7 +108,7 @@ public class Dungeon {
 
             case 'B' -> {
                 tiles.add(new Grass(x, y));
-                tiles.add(new Bush(x, y));
+                tiles.add(new Bush(x, y, 'B'));
             }
 
             default -> tiles.add(new Grass(x, y));

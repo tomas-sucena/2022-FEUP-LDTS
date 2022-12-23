@@ -1,20 +1,20 @@
-BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB#
-B   H                          H       B#
-B    L                  BBBBBBBBBBBBBBBB#
-B          W                        l  B#
-B                         BBBBBBBBBBBBBB#
-B                                      B#
-B          H                           B#
-B                        l             B#
-B                                      B#
-B                                      B#
-B       B       H                      B#
-B       l         B           l        B#
-B                                      B#
-B     BBBBBBBBBBBB          BBBBBBBBBBBB#
-B     B                     B    l     B#
-B     B     BBBBBB          B          B#
-B     B     l    B          B      l   B#
-B     BBBBBBBBBBBB          B          B#
-B          H                           B#
-BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB#
+BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+B   H                          H       B
+B    L                  BBBBBBBBBBBBBBBB
+B          W                        l  B
+B                         BBBBBBBBBBBBBB
+B                                      B
+B          H                           B
+B                        l             B
+B      W                               B
+B                                      B
+B       B       H                      B
+B       l         B           l        B
+B                                      B
+B     BBBBBBBBBBBB          BBBBBBBBBBBB
+B     B                     B    l     B
+B     B     BBBBBB          B          B
+B     B     l    B          B      l   B
+B     BBBBBBBBBBBB          B          B
+B          H                           B
+BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
