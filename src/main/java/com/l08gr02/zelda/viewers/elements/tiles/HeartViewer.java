@@ -18,6 +18,11 @@ public class HeartViewer extends SpriteViewer<Heart> {
         super.draw(gui, heart);
     }
 
+    @Override
+    public void drawt(GUI gui, Heart model) {
+        super.drawt(gui, model);
+    } //For testing purposes only
+
     public void setHeartSprite(){
         sprite.setPixels(heartcount+4,8);
     }

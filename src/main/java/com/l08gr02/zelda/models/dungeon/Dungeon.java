@@ -34,6 +34,7 @@ public class Dungeon {
     }
 
     // methods
+
     public List<String> getMap(){
         return map;
     }
@@ -44,6 +45,10 @@ public class Dungeon {
 
     public Link getLink(){
         return link;
+    }
+
+    public void setLink(Link link) {
+        this.link = link;
     }
 
     public List<Monster> getMonsters(){
