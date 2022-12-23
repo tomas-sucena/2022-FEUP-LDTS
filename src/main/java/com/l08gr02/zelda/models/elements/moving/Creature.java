@@ -5,12 +5,12 @@ import com.l08gr02.zelda.models.elements.actions.Health;
 public abstract class Creature extends Mover implements Health {
     private float hearts;
 
-    // construtor
+    // constructor
     public Creature(int x, int y){
         super(x, y);
     }
 
-    // métodos
+    // methods
     @Override
     public float getHearts(){
         return hearts;

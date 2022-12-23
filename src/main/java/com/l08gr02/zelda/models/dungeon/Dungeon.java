@@ -4,6 +4,7 @@ import com.l08gr02.zelda.models.elements.Element;
 import com.l08gr02.zelda.models.elements.moving.Link;
 import com.l08gr02.zelda.models.elements.moving.monsters.Log;
 import com.l08gr02.zelda.models.elements.moving.monsters.Monster;
+import com.l08gr02.zelda.models.elements.moving.monsters.Weirdo;
 import com.l08gr02.zelda.models.elements.tiles.Bush;
 import com.l08gr02.zelda.models.elements.tiles.Grass;
 import com.l08gr02.zelda.models.elements.tiles.Heart;
@@ -90,8 +91,13 @@ public class Dungeon {
                 tiles.add(new Grass(x, y));
             }
 
-            case 'M' -> {
+            case 'l' -> {
                 monsters.add(new Log(x, y));
+                tiles.add(new Grass(x, y));
+            }
+
+            case 'W' -> {
+                monsters.add(new Weirdo(x, y));
                 tiles.add(new Grass(x, y));
             }
 

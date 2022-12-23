@@ -6,7 +6,7 @@ public class Weirdo extends Monster {
     // constructor
     public Weirdo(int x, int y){
         super(x, y);
-        setHitbox(new Hitbox(x + 8, y + 12, 16, 16));
+        setHitbox(new Hitbox(x + 8, y + 15, 8, 8));
 
         // define the stats
         setHearts(3);
