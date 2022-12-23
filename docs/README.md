@@ -99,6 +99,35 @@ The classes that serve as the basis of our Composite pattern can be found in the
 - Our code is easier to interpret, as the purpose of most classes can be pinpointed if we examine the classes it extends or the interfaces it implements.
 - Unit testing is more efficient, as we can test several classes at a time (provided they share the same properties)
 
+**The Pattern**
+
+We implemented the strategy pattern, implementing interfaces on multiple classes that difference only in their behavior.
+
+**Implementation**
+
+The following interfaces have methods that will be needed for multiple game caracters, but they will have different variants of the algorithm.     
+
+- Collision - Is implemented by Bush, CollidingElement, Creature, Fighter, Heart, Link, Log, Monster, Mover and Weirdo classes;
+- Fighting - Implemented by the Fighter and Link classes;
+- Health - The Creature abstract class implements the Health interface;
+- Movement - Implemented by the Mover abstract class.
+
+
+------
+
+### KNOWN CODE SMELLS
+
+**Object-Orientation Abusers:**
+- Switch Statements 
+  - This occurs more than once in our code: 
+  - Processing link instructions in the Link class or in the draw method on class BushViewer. 
+  - This code smell violates the Open-Closed Principle and one solution for it would be implementing new classes.    
+
+**Dispensables:**
+- Comments
+  - We use comments in some complex methods for a readers better understanding;
+- Lazy Classes
+  - For extend some classes, following the Open-Closed Principle, we created classes like Grass and Heart that do not do much.
 ------
 
 ### TESTING
