@@ -19,6 +19,11 @@ public class HeartViewer extends SpriteViewer<Heart> {
     }
 
     @Override
+    public void drawt(GUI gui, Heart model) {
+        super.drawt(gui, model);
+    } //For testing purposes only
+
+    @Override
     public void setSprite(GameplayPresenter.ACTION action) {
 
     }
