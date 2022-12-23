@@ -3,7 +3,7 @@ package com.l08gr02.zelda.Presenter;
 import com.l08gr02.zelda.models.elements.moving.Link;
 import com.l08gr02.zelda.presenters.GameplayPresenter;
 import com.l08gr02.zelda.presenters.elements.LinkPresenter;
-import com.l08gr02.zelda.viewers.elements.LinkViewer;
+import com.l08gr02.zelda.viewers.elements.moving.LinkViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -1,12 +1,10 @@
 package com.l08gr02.zelda.Viewers;
 
-import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.l08gr02.zelda.gui.GUI;
-import com.l08gr02.zelda.gui.LanternaGUI;
 import com.l08gr02.zelda.models.elements.tiles.Heart;
-import com.l08gr02.zelda.viewers.SpriteViewer;
-import com.l08gr02.zelda.viewers.elements.HeartViewer;
+import com.l08gr02.zelda.viewers.elements.SpriteViewer;
+import com.l08gr02.zelda.viewers.elements.tiles.HeartViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -35,6 +33,5 @@ public class SpriteViewerTest {
         spriteViewer.drawt(gui, heart);
         Mockito.verify(tg, Mockito.times(108)).setBackgroundColor(Mockito.any());
         Mockito.verify(tg, Mockito.times(1)).setCharacter(12,15,' ');
-
     }
 }

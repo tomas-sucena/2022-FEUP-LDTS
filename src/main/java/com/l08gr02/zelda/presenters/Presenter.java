@@ -14,5 +14,9 @@ public abstract class Presenter<T> {
     }
 
     // methods
+    public T getModel() {
+        return model;
+    }
+
     public abstract void update(GUI gui);
 }
