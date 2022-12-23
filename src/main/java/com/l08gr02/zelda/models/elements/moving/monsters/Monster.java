@@ -1,9 +1,9 @@
 package com.l08gr02.zelda.models.elements.moving.monsters;
 
 
-import com.l08gr02.zelda.models.elements.moving.Fighter;
+import com.l08gr02.zelda.models.elements.moving.Creature;
 
-public abstract class Monster extends Fighter {
+public abstract class Monster extends Creature {
     protected int WALK_SPEED;
 
     // constructor
@@ -11,7 +11,4 @@ public abstract class Monster extends Fighter {
         super(x, y);
     }
 
-    // methods
-    @Override
-    public abstract void attack();
 }

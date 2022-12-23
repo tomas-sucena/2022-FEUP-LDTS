@@ -34,7 +34,6 @@ public class Dungeon {
     }
 
     // methods
-
     public List<String> getMap(){
         return map;
     }

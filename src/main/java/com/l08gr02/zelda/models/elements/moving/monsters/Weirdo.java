@@ -15,9 +15,4 @@ public class Weirdo extends Monster {
         setSpeed(WALK_SPEED);
     }
 
-    // methods
-    @Override
-    public void attack() {
-    }
-
 }

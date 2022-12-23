@@ -1,6 +1,5 @@
 package com.l08gr02.zelda.presenters;
 
-import com.googlecode.lanterna.screen.Screen;
 import com.l08gr02.zelda.gui.Camera;
 import com.l08gr02.zelda.gui.GUI;
 import com.l08gr02.zelda.models.Gameplay;
@@ -24,12 +23,11 @@ public class GameplayPresenter {
     public GameplayPresenter(Gameplay model, GameplayViewer viewer) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         this.viewer = viewer;
 
-        // definir o Link como o ator que a câmara vai filmar
+        // define Link as the actor the camera will film
         Camera camera = viewer.getGUI().getCamera();
         camera.setActor(model.getDungeon().getLink());
-
-        // criar o presenter
         camera.setLimits(model.getDungeon().getMap());
+
         dungeonPresenter = new DungeonPresenter(model.getDungeon(), new DungeonViewer());
 
         music = new Music("overworld");

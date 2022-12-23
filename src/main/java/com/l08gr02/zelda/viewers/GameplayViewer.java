@@ -21,7 +21,6 @@ public class GameplayViewer {
         int tWidth = width * TILE_SIZE;
         int tHeight = height * TILE_SIZE;
 
-        // criar o GUI
         gui = new LanternaGUI(tWidth, tHeight, TILE_SIZE,6);
     }
 
@@ -36,7 +35,7 @@ public class GameplayViewer {
 
         Set<Integer> keys = gui.getPressedKeys();
 
-        // casos especiais
+        // special cases
         if (keys.contains(VK_Q) || keys.contains(VK_ESCAPE)){
             actions.add(ACTION.QUIT);
             return actions;

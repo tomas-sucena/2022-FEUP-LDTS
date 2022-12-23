@@ -13,7 +13,7 @@ public class Log extends Monster {
 
         // define the stats
         setHearts(2);
-        WALK_SPEED = 3;
+        WALK_SPEED = 2;
 
         setSpeed(WALK_SPEED);
     }
@@ -51,10 +51,6 @@ public class Log extends Monster {
         super.right(i);
 
         setSleepZone(getSleepZone().right(i));
-    }
-
-    @Override
-    public void attack() {
     }
 
 }
