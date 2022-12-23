@@ -94,8 +94,6 @@ The classes that serve as the basis of our Composite pattern can be found in the
 
 **Consequences**
 
-
-
 - Our code is easier to interpret, as the purpose of most classes can be pinpointed if we examine the classes it extends or the interfaces it implements.
 - Unit testing is more efficient, as we can test several classes at a time (provided they share the same properties)
 
