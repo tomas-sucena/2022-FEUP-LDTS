@@ -1,0 +1,214 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Camera</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.l08gr02.zelda.gui</a>
+</div>
+
+<h1>Coverage Summary for Class: Camera (com.l08gr02.zelda.gui)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Camera</td>
+<td class="coverageStat">
+  <span class="percent">
+    20%
+  </span>
+  <span class="absValue">
+    (1/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    26.1%
+  </span>
+  <span class="absValue">
+    (6/23)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">Camera$MockitoMock$59275889</td>
+  </tr>
+  <tr>
+    <td class="name">Camera$MockitoMock$59275889$auxiliary$1RoOTGHB</td>
+  </tr>
+  <tr>
+    <td class="name">Camera$MockitoMock$59275889$auxiliary$eJm3QTre</td>
+  </tr>
+  <tr>
+    <td class="name">Camera$MockitoMock$59275889$auxiliary$f8nPRDeg</td>
+  </tr>
+  <tr>
+    <td class="name">Camera$MockitoMock$59275889$auxiliary$FGGLVTSH</td>
+  </tr>
+  <tr>
+    <td class="name">Camera$MockitoMock$59275889$auxiliary$hhGT9b8P</td>
+  </tr>
+  <tr>
+    <td class="name">Camera$MockitoMock$59275889$auxiliary$kXBEfjQq</td>
+  </tr>
+  <tr>
+    <td class="name">Camera$MockitoMock$59275889$auxiliary$Up48Es27</td>
+  </tr>
+  <tr>
+    <td class="name">Camera$MockitoMock$59275889$auxiliary$W17eYMuG</td>
+  </tr>
+  <tr>
+    <td class="name">Camera$MockitoMock$59275889$auxiliary$XrjNYldS</td>
+  </tr>
+  <tr>
+    <td class="name">Camera$MockitoMock$59275889$auxiliary$Ybv0AICJ</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    20%
+  </span>
+  <span class="absValue">
+    (1/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    26.1%
+  </span>
+  <span class="absValue">
+    (6/23)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.l08gr02.zelda.gui;
+&nbsp;
+&nbsp;import com.l08gr02.zelda.models.elements.Element;
+&nbsp;import com.l08gr02.zelda.models.elements.Hitbox;
+&nbsp;import com.l08gr02.zelda.models.elements.Position;
+&nbsp;import com.l08gr02.zelda.models.elements.moving.Mover;
+&nbsp;
+&nbsp;import java.util.ArrayDeque;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Queue;
+&nbsp;
+&nbsp;public class Camera extends Element {
+&nbsp;    private Mover actor;
+&nbsp;    private final int tWidth, tHeight, TILE_SIZE;
+&nbsp;    private int xLim, yLim;
+&nbsp;    private final Queue&lt;Hitbox&gt; photoshoot;
+&nbsp;
+&nbsp;    // construtor
+&nbsp;    public Camera(int x, int y, int tWidth, int tHeight, int TILE_SIZE) {
+<b class="fc">&nbsp;        super(x, y);</b>
+<b class="fc">&nbsp;        setHitbox(new Hitbox(x, y, tWidth, tHeight));</b>
+&nbsp;
+<b class="fc">&nbsp;        this.tWidth = tWidth;</b>
+<b class="fc">&nbsp;        this.tHeight = tHeight;</b>
+<b class="fc">&nbsp;        this.TILE_SIZE = TILE_SIZE;</b>
+&nbsp;
+<b class="fc">&nbsp;        photoshoot = new ArrayDeque&lt;&gt;();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // métodos
+&nbsp;    public void setLimits(List&lt;String&gt; map){
+<b class="nc">&nbsp;        this.xLim = map.get(0).length() * TILE_SIZE;</b>
+<b class="nc">&nbsp;        this.yLim = map.size() * TILE_SIZE;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setActor(Mover actor){
+<b class="nc">&nbsp;        this.actor = actor;</b>
+&nbsp;
+<b class="nc">&nbsp;        photoshoot.add(actor.getHitbox());</b>
+<b class="nc">&nbsp;        followActor();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void followActor(){
+<b class="nc">&nbsp;        Hitbox photo = photoshoot.remove();</b>
+&nbsp;
+&nbsp;        // definir o novo valor de x
+<b class="nc">&nbsp;        int nextX = photo.x - tWidth / 2;</b>
+<b class="nc">&nbsp;        int currX = getPosition().getX();</b>
+&nbsp;
+<b class="nc">&nbsp;        nextX = (nextX &lt; 0 || nextX + tWidth &gt; xLim) ? currX : nextX;</b>
+&nbsp;
+&nbsp;        // definir o novo valor de y
+<b class="nc">&nbsp;        int nextY = photo.y - tHeight / 2;</b>
+<b class="nc">&nbsp;        int currY = getPosition().getY();</b>
+&nbsp;
+<b class="nc">&nbsp;        nextY = (nextY &lt; 0 || nextY + tHeight &gt; yLim) ? currY : nextY;</b>
+&nbsp;
+&nbsp;        // definir a nova posição da câmara
+<b class="nc">&nbsp;        setPosition(new Position(nextX, nextY));</b>
+<b class="nc">&nbsp;        getHitbox().setLocation(nextX, nextY);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void film(){
+<b class="nc">&nbsp;        photoshoot.add(actor.getHitbox());</b>
+&nbsp;
+<b class="nc">&nbsp;        if (photoshoot.size() &gt;= 2){</b>
+<b class="nc">&nbsp;            followActor();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-12-24 01:05</div>
+</div>
+</body>
+</html>

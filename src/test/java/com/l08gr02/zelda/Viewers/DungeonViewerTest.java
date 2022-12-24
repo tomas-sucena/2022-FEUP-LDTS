@@ -38,14 +38,8 @@ public class DungeonViewerTest {
     void GrassdrawTest(){
         dungeonViewer.draw(gui, dungeon);
         //Grass
-        Mockito.verify(tg,Mockito.times(2460)).setBackgroundColor(TextColor.Factory.fromString("#6ADD4B"));
-        Mockito.verify(tg,Mockito.times(820)).setBackgroundColor(TextColor.Factory.fromString("#3ABE41"));
-        Mockito.verify(tg,Mockito.times(2460)).setBackgroundColor(TextColor.Factory.fromString("#29973B"));
-    }
-    @Test
-    void BrushdrawTest(){
-        dungeonViewer.draw(gui, dungeon);
-        Mockito.verify(tg, Mockito.times(1)).setBackgroundColor(Mockito.any());
-        Mockito.verify(tg, Mockito.times(1)).setCharacter(2,7,' ');
+        Mockito.verify(tg,Mockito.times(3102)).setBackgroundColor(TextColor.Factory.fromString("#6ADD4B"));
+        Mockito.verify(tg,Mockito.times(1034)).setBackgroundColor(TextColor.Factory.fromString("#3ABE41"));
+        Mockito.verify(tg,Mockito.times(3102)).setBackgroundColor(TextColor.Factory.fromString("#29973B"));
     }
 }

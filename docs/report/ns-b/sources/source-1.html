@@ -1,0 +1,252 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > DungeonPresenter</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.l08gr02.zelda.presenters.dungeon</a>
+</div>
+
+<h1>Coverage Summary for Class: DungeonPresenter (com.l08gr02.zelda.presenters.dungeon)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">DungeonPresenter</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    16.7%
+  </span>
+  <span class="absValue">
+    (1/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    4.8%
+  </span>
+  <span class="absValue">
+    (3/63)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.l08gr02.zelda.presenters.dungeon;
+&nbsp;
+&nbsp;import com.l08gr02.zelda.gui.GUI;
+&nbsp;import com.l08gr02.zelda.models.dungeon.Dungeon;
+&nbsp;import com.l08gr02.zelda.models.elements.CollidingElement;
+&nbsp;import com.l08gr02.zelda.models.elements.Element;
+&nbsp;import com.l08gr02.zelda.models.elements.Hitbox;
+&nbsp;import com.l08gr02.zelda.models.elements.moving.Link;
+&nbsp;import com.l08gr02.zelda.models.elements.moving.monsters.Monster;
+&nbsp;import com.l08gr02.zelda.models.elements.tiles.Heart;
+&nbsp;import com.l08gr02.zelda.presenters.Presenter;
+&nbsp;import com.l08gr02.zelda.presenters.elements.LinkPresenter;
+&nbsp;import com.l08gr02.zelda.presenters.elements.monsters.MonsterPresenter;
+&nbsp;import com.l08gr02.zelda.presenters.elements.monsters.MonsterPresenterFactory;
+&nbsp;import com.l08gr02.zelda.viewers.dungeon.DungeonViewer;
+&nbsp;import com.l08gr02.zelda.viewers.elements.moving.LinkViewer;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
+&nbsp;
+&nbsp;public class DungeonPresenter extends Presenter&lt;Dungeon&gt; {
+&nbsp;    private LinkPresenter linkPresenter;
+&nbsp;    private List&lt;MonsterPresenter&gt; monsterPresenters;
+&nbsp;
+&nbsp;    // constructor
+&nbsp;    public DungeonPresenter(Dungeon model, DungeonViewer viewer) {
+<b class="fc">&nbsp;        super(model, viewer);</b>
+&nbsp;
+<b class="fc">&nbsp;        linkPresenter = new LinkPresenter(model.getLink(), new LinkViewer());</b>
+<b class="fc">&nbsp;        monsterPresenters = new MonsterPresenterFactory().createPresenters(model);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // methods
+&nbsp;    @Override
+&nbsp;    public void update(GUI gui) {
+<b class="nc">&nbsp;        checkCollisions();</b>
+&nbsp;
+<b class="nc">&nbsp;        viewer.draw(gui, model);</b>
+<b class="nc">&nbsp;        linkPresenter.update(gui);</b>
+&nbsp;
+<b class="nc">&nbsp;        for (MonsterPresenter monsterPresenter : monsterPresenters){</b>
+<b class="nc">&nbsp;            monsterPresenter.update(gui);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setLinkActions(List&lt;ACTION&gt; actions){
+<b class="nc">&nbsp;        linkPresenter.setActions(actions);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void checkCollisions(){
+<b class="nc">&nbsp;        checkLinkCollisions();</b>
+&nbsp;
+&nbsp;        // verify if the monsters are colliding
+<b class="nc">&nbsp;        for (Monster monster : model.getMonsters()){</b>
+<b class="nc">&nbsp;            checkMonsterCollisions(monster);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+&nbsp;        // verificar se o Link está a atacar
+<b class="nc">&nbsp;        if (!linkPresenter.isAttacking()) {</b>
+&nbsp;            return;
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        Link link = model.getLink();</b>
+<b class="nc">&nbsp;        Hitbox swordHitbox = link.getAttackHitbox();</b>
+&nbsp;
+<b class="nc">&nbsp;        for (MonsterPresenter monsterPresenter : monsterPresenters){</b>
+<b class="nc">&nbsp;            Monster monster = (Monster) monsterPresenter.getModel();</b>
+&nbsp;
+<b class="nc">&nbsp;            if (!monster.getHitbox().intersects(swordHitbox)){</b>
+<b class="nc">&nbsp;                continue;</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            monsterPresenter.takeDamage(1, link.getDirection());</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+<b class="nc">&nbsp;        model.getMonsters().removeIf(monster -&gt; monster.getHearts() &lt;= 0);</b>
+<b class="nc">&nbsp;        monsterPresenters.removeIf(monsterPresenter -&gt; monsterPresenter.getModel().getHearts() &lt;= 0);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void checkLinkCollisions(){
+<b class="nc">&nbsp;        Link link = model.getLink();</b>
+&nbsp;
+<b class="nc">&nbsp;        List&lt;CollidingElement&gt; linkObstacles = new ArrayList&lt;&gt;();</b>
+&nbsp;
+<b class="nc">&nbsp;        for (Element tile : model.getTiles()){</b>
+<b class="nc">&nbsp;            if (tile instanceof CollidingElement el){</b>
+<b class="nc">&nbsp;                linkObstacles.add(el);</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+<b class="nc">&nbsp;        for (Monster monster : model.getMonsters()){</b>
+<b class="nc">&nbsp;            if (link.collidesWith(monster)){</b>
+<b class="nc">&nbsp;                linkPresenter.bump(link.getDirection());</b>
+<b class="nc">&nbsp;                linkObstacles.add(monster);</b>
+&nbsp;
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+<b class="nc">&nbsp;        for (Heart heart : model.getHearts()){</b>
+<b class="nc">&nbsp;            if (link.collidesWith(heart)){</b>
+<b class="nc">&nbsp;                linkPresenter.heal(1);</b>
+<b class="nc">&nbsp;                model.getHearts().remove(heart);</b>
+&nbsp;
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+<b class="nc">&nbsp;        link.setObstacles(linkObstacles);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void checkMonsterCollisions(Monster monster){
+<b class="nc">&nbsp;        List&lt;CollidingElement&gt; monsterObstacles = new ArrayList&lt;&gt;();</b>
+&nbsp;
+<b class="nc">&nbsp;        for (Monster m : model.getMonsters()){</b>
+<b class="nc">&nbsp;            if (monster == m || !monster.collidesWith(m)){</b>
+<b class="nc">&nbsp;                continue;</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            ACTION direction = monster.getDirection();</b>
+&nbsp;
+&nbsp;            // mudar a direção dos monstros que colidem
+<b class="nc">&nbsp;            monster.setDirection(m.getDirection());</b>
+<b class="nc">&nbsp;            m.setDirection(direction);</b>
+&nbsp;
+<b class="nc">&nbsp;            break;</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        for (Element tile : model.getTiles()){</b>
+<b class="nc">&nbsp;            if (tile instanceof CollidingElement el){</b>
+<b class="nc">&nbsp;                monsterObstacles.add(el);</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+<b class="nc">&nbsp;        for (Heart heart : model.getHearts()){</b>
+<b class="nc">&nbsp;            if (monster.collidesWith(heart)){</b>
+<b class="nc">&nbsp;                monster.heal(1);</b>
+<b class="nc">&nbsp;                model.getHearts().remove(heart);</b>
+&nbsp;
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+<b class="nc">&nbsp;        monster.setObstacles(monsterObstacles);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-12-24 01:05</div>
+</div>
+</body>
+</html>

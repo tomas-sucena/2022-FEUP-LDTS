@@ -1,0 +1,232 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > LinkPresenter</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.l08gr02.zelda.presenters.elements</a>
+</div>
+
+<h1>Coverage Summary for Class: LinkPresenter (com.l08gr02.zelda.presenters.elements)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LinkPresenter</td>
+<td class="coverageStat">
+  <span class="percent">
+    25%
+  </span>
+  <span class="absValue">
+    (2/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    21.6%
+  </span>
+  <span class="absValue">
+    (8/37)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">LinkPresenter$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    22.2%
+  </span>
+  <span class="absValue">
+    (2/9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    21.1%
+  </span>
+  <span class="absValue">
+    (8/38)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.l08gr02.zelda.presenters.elements;
+&nbsp;
+&nbsp;import com.l08gr02.zelda.gui.GUI;
+&nbsp;import com.l08gr02.zelda.models.elements.moving.Link;
+&nbsp;import com.l08gr02.zelda.models.sound.SoundEffect;
+&nbsp;import com.l08gr02.zelda.viewers.elements.moving.LinkViewer;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
+&nbsp;
+&nbsp;public class LinkPresenter extends FighterPresenter&lt;Link&gt; {
+&nbsp;    private List&lt;ACTION&gt; actions;
+&nbsp;    private SoundEffect walkSFX, swordSFX, lowHP;
+&nbsp;
+&nbsp;    // constructor
+&nbsp;    public LinkPresenter(Link model, LinkViewer viewer){
+<b class="fc">&nbsp;        super(model, viewer);</b>
+&nbsp;
+<b class="fc">&nbsp;        walkSFX = new SoundEffect(&quot;walk_grass&quot;);</b>
+<b class="fc">&nbsp;        swordSFX = new SoundEffect(&quot;sword&quot;);</b>
+<b class="fc">&nbsp;        healingSFX = new SoundEffect(&quot;heart&quot;);</b>
+<b class="fc">&nbsp;        damagedSFX = new SoundEffect(&quot;link hurt&quot;);</b>
+<b class="fc">&nbsp;        lowHP = new SoundEffect(&quot;low hp&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // methods
+&nbsp;    public void setActions(List&lt;ACTION&gt; actions) {
+<b class="nc">&nbsp;        this.actions = actions;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean isAttacking(){
+<b class="nc">&nbsp;        return ((LinkViewer) viewer).isAttacking();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void walk(){
+<b class="nc">&nbsp;        model.walk();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void sprint(){
+<b class="nc">&nbsp;        model.sprint();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void playSoundEffects(List&lt;ACTION&gt; actions){
+<b class="nc">&nbsp;        if (actions.contains(ACTION.ATTACK)){</b>
+<b class="nc">&nbsp;            swordSFX.play();</b>
+&nbsp;        }
+<b class="nc">&nbsp;        else if (actions.contains(ACTION.UP) || actions.contains(ACTION.DOWN) ||</b>
+<b class="nc">&nbsp;                 actions.contains(ACTION.LEFT) || actions.contains(ACTION.RIGHT)){</b>
+<b class="nc">&nbsp;            walkSFX.play();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void takeDamage(float heartsLost, ACTION attackDirection){
+<b class="fc">&nbsp;        super.takeDamage(heartsLost, attackDirection);</b>
+&nbsp;
+<b class="fc">&nbsp;        if (model.getHearts() &lt;= 1){</b>
+<b class="nc">&nbsp;            lowHP.play();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void update(GUI gui) {
+<b class="nc">&nbsp;        super.decreaseImmunity();</b>
+&nbsp;
+<b class="nc">&nbsp;        walk();</b>
+&nbsp;
+&nbsp;        // verificar se o Link está a atacar
+<b class="nc">&nbsp;        LinkViewer linkViewer = (LinkViewer) viewer;</b>
+&nbsp;
+<b class="nc">&nbsp;        if (linkViewer.isAttacking()){</b>
+<b class="nc">&nbsp;            linkViewer.setSprite(ACTION.ATTACK);</b>
+<b class="nc">&nbsp;            viewer.draw(gui, model);</b>
+<b class="nc">&nbsp;            attack();</b>
+&nbsp;
+&nbsp;            return;
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        for (ACTION action : actions){</b>
+<b class="nc">&nbsp;            linkViewer.setSprite(action);</b>
+&nbsp;
+<b class="nc">&nbsp;            switch (action){</b>
+<b class="nc">&nbsp;                case UP -&gt; moveUp(model.getSpeed());</b>
+&nbsp;
+<b class="nc">&nbsp;                case DOWN -&gt; moveDown(model.getSpeed());</b>
+&nbsp;
+<b class="nc">&nbsp;                case LEFT -&gt; moveLeft(model.getSpeed());</b>
+&nbsp;
+<b class="nc">&nbsp;                case RIGHT -&gt; moveRight(model.getSpeed());</b>
+&nbsp;
+<b class="nc">&nbsp;                case SPRINT -&gt; sprint();</b>
+&nbsp;
+<b class="nc">&nbsp;                case ATTACK -&gt; attack();</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+<b class="nc">&nbsp;        viewer.draw(gui, model);</b>
+&nbsp;
+<b class="nc">&nbsp;        playSoundEffects(actions);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-12-24 01:05</div>
+</div>
+</body>
+</html>

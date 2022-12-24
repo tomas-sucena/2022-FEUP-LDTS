@@ -130,6 +130,13 @@ The following interfaces have methods that will be needed for multiple game cara
 
 ### TESTING
 
+Using jQwik, we created numerous property-based tests. However, since Pitest was being uncooperative, we could not access our mutation coverage report.
+
+
+#### Coverage report
+![coverage.png](images/coverage.png)
+
+![link para repositório](images/coverage.png)
 ------
 
 ### SELF-EVALUATION

@@ -1,0 +1,267 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > LanternaGUI</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.l08gr02.zelda.gui</a>
+</div>
+
+<h1>Coverage Summary for Class: LanternaGUI (com.l08gr02.zelda.gui)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LanternaGUI</td>
+<td class="coverageStat">
+  <span class="percent">
+    62.5%
+  </span>
+  <span class="absValue">
+    (5/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    89.3%
+  </span>
+  <span class="absValue">
+    (25/28)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">LanternaGUI$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    33.3%
+  </span>
+  <span class="absValue">
+    (1/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (2/4)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">LanternaGUI$2</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/2)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    53.8%
+  </span>
+  <span class="absValue">
+    (7/13)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    82.4%
+  </span>
+  <span class="absValue">
+    (28/34)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.l08gr02.zelda.gui;
+&nbsp;
+&nbsp;import com.googlecode.lanterna.TerminalSize;
+&nbsp;import com.googlecode.lanterna.graphics.TextGraphics;
+&nbsp;import com.googlecode.lanterna.screen.Screen;
+&nbsp;import com.googlecode.lanterna.screen.TerminalScreen;
+&nbsp;import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
+&nbsp;import com.googlecode.lanterna.terminal.Terminal;
+&nbsp;import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
+&nbsp;import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
+&nbsp;
+&nbsp;import java.awt.*;
+&nbsp;import java.awt.event.KeyAdapter;
+&nbsp;import java.awt.event.KeyEvent;
+&nbsp;import java.awt.event.WindowAdapter;
+&nbsp;import java.awt.event.WindowEvent;
+&nbsp;import java.io.File;
+&nbsp;import java.io.IOException;
+&nbsp;import java.net.URISyntaxException;
+&nbsp;import java.net.URL;
+&nbsp;import java.util.Set;
+&nbsp;
+&nbsp;public class LanternaGUI extends GUI {
+&nbsp;    private final Screen screen;
+&nbsp;    private final TextGraphics graphics;
+&nbsp;
+&nbsp;    // constructor
+&nbsp;    public LanternaGUI(int tWidth, int tHeight, int TILE_SIZE, int fontSize) throws URISyntaxException, IOException, FontFormatException {
+<b class="fc">&nbsp;        super(tWidth, tHeight, TILE_SIZE);</b>
+&nbsp;
+&nbsp;        // criar o screen
+<b class="fc">&nbsp;        screen = new TerminalScreen(createTerminal(tWidth, tHeight, fontSize));</b>
+&nbsp;
+<b class="fc">&nbsp;        screen.setCursorPosition(null); // não precisamos do rato</b>
+<b class="fc">&nbsp;        screen.startScreen();</b>
+<b class="fc">&nbsp;        screen.doResizeIfNecessary();</b>
+&nbsp;
+&nbsp;        // criar os graphics
+<b class="fc">&nbsp;        graphics = screen.newTextGraphics();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // methods
+&nbsp;    @Override
+&nbsp;    public TextGraphics getGraphics() {
+<b class="fc">&nbsp;        return graphics;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void clear(){
+<b class="nc">&nbsp;        screen.clear();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void refresh() throws IOException {
+<b class="nc">&nbsp;        screen.refresh();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void close() throws IOException {
+<b class="nc">&nbsp;        screen.close();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Terminal createTerminal(int tWidth, int tHeight, int fontSize) throws URISyntaxException, IOException, FontFormatException {
+&nbsp;        // definir o tamanho do terminal
+<b class="fc">&nbsp;        TerminalSize tSize = new TerminalSize(tWidth, tHeight);</b>
+&nbsp;
+<b class="fc">&nbsp;        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory()</b>
+<b class="fc">&nbsp;                .setInitialTerminalSize(tSize);</b>
+&nbsp;
+&nbsp;        // criar a fonte
+<b class="fc">&nbsp;        AWTTerminalFontConfiguration fontConfig = loadFont(fontSize);</b>
+&nbsp;
+<b class="fc">&nbsp;        terminalFactory.setForceAWTOverSwing(true);</b>
+<b class="fc">&nbsp;        terminalFactory.setTerminalEmulatorFontConfiguration(fontConfig);</b>
+&nbsp;
+&nbsp;        // adicionar os listeners
+<b class="fc">&nbsp;        Terminal terminal = terminalFactory.createTerminal();</b>
+<b class="fc">&nbsp;        addListeners(terminal);</b>
+&nbsp;
+<b class="fc">&nbsp;        return terminal;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void addListeners(Terminal terminal){
+<b class="fc">&nbsp;        ((AWTTerminalFrame) terminal).getComponent(0).addKeyListener(new KeyAdapter() {</b>
+<b class="fc">&nbsp;            Set&lt;Integer&gt; pressedKeys = getPressedKeys();</b>
+&nbsp;
+&nbsp;            @Override
+&nbsp;            public void keyPressed(KeyEvent e) {
+<b class="nc">&nbsp;                pressedKeys.add(e.getKeyCode());</b>
+&nbsp;            }
+&nbsp;
+&nbsp;            @Override
+&nbsp;            public void keyReleased(KeyEvent e) {
+<b class="nc">&nbsp;                pressedKeys.remove(e.getKeyCode());</b>
+&nbsp;            }
+&nbsp;        });
+&nbsp;
+<b class="fc">&nbsp;        ((AWTTerminalFrame) terminal).addWindowListener(new WindowAdapter() {</b>
+&nbsp;            @Override
+&nbsp;            public void windowClosing(WindowEvent e) {
+<b class="nc">&nbsp;                System.exit(0);</b>
+&nbsp;            }
+&nbsp;        });
+&nbsp;    }
+&nbsp;
+&nbsp;    private AWTTerminalFontConfiguration loadFont(int fontSize) throws URISyntaxException, FontFormatException, IOException {
+<b class="fc">&nbsp;        URL resource = getClass().getClassLoader().getResource(&quot;fonts/font1.0.ttf&quot;);</b>
+<b class="fc">&nbsp;        File fontFile = new File(resource.toURI());</b>
+<b class="fc">&nbsp;        Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);</b>
+&nbsp;
+<b class="fc">&nbsp;        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();</b>
+<b class="fc">&nbsp;        ge.registerFont(font);</b>
+&nbsp;
+<b class="fc">&nbsp;        Font loadedFont = font.deriveFont(Font.PLAIN, fontSize);</b>
+&nbsp;
+<b class="fc">&nbsp;        return AWTTerminalFontConfiguration.newInstance(loadedFont);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-12-24 01:05</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,221 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Dungeon</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.l08gr02.zelda.models.dungeon</a>
+</div>
+
+<h1>Coverage Summary for Class: Dungeon (com.l08gr02.zelda.models.dungeon)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Dungeon</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    81.8%
+  </span>
+  <span class="absValue">
+    (9/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    95.1%
+  </span>
+  <span class="absValue">
+    (39/41)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.l08gr02.zelda.models.dungeon;
+&nbsp;
+&nbsp;import com.l08gr02.zelda.models.elements.Element;
+&nbsp;import com.l08gr02.zelda.models.elements.moving.Link;
+&nbsp;import com.l08gr02.zelda.models.elements.moving.monsters.Log;
+&nbsp;import com.l08gr02.zelda.models.elements.moving.monsters.Monster;
+&nbsp;import com.l08gr02.zelda.models.elements.moving.monsters.Weirdo;
+&nbsp;import com.l08gr02.zelda.models.elements.tiles.Bush;
+&nbsp;import com.l08gr02.zelda.models.elements.tiles.Grass;
+&nbsp;import com.l08gr02.zelda.models.elements.tiles.Heart;
+&nbsp;
+&nbsp;import java.io.BufferedReader;
+&nbsp;import java.io.FileReader;
+&nbsp;import java.io.IOException;
+&nbsp;import java.net.URL;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;
+<b class="fc">&nbsp;public class Dungeon {</b>
+&nbsp;    private List&lt;String&gt; map;
+&nbsp;    private List&lt;Element&gt; tiles;
+&nbsp;    private Link link;
+&nbsp;    private List&lt;Monster&gt; monsters;
+&nbsp;    private List&lt;Heart&gt; hearts;
+&nbsp;
+&nbsp;    // constructor
+<b class="fc">&nbsp;    public Dungeon() throws IOException {</b>
+<b class="fc">&nbsp;        URL resource = Dungeon.class.getResource(&quot;/models/dungeon/map.txt&quot;);</b>
+<b class="fc">&nbsp;        assert resource != null;</b>
+&nbsp;
+<b class="fc">&nbsp;        BufferedReader reader = new BufferedReader(new FileReader(resource.getFile()));</b>
+&nbsp;
+<b class="fc">&nbsp;        createMap(reader);</b>
+<b class="fc">&nbsp;        readMap();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // methods
+&nbsp;    public List&lt;String&gt; getMap(){
+<b class="nc">&nbsp;        return map;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Element&gt; getTiles() {
+<b class="fc">&nbsp;        return tiles;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Link getLink(){
+<b class="fc">&nbsp;        return link;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setLink(Link link) {
+<b class="nc">&nbsp;        this.link = link;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Monster&gt; getMonsters(){
+<b class="fc">&nbsp;        return monsters;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Heart&gt; getHearts(){
+<b class="fc">&nbsp;        return hearts;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void createMap(BufferedReader reader) throws IOException {
+<b class="fc">&nbsp;        map = new ArrayList&lt;&gt;();</b>
+&nbsp;
+<b class="fc">&nbsp;        for (String line; (line = reader.readLine()) != null;){</b>
+<b class="fc">&nbsp;            map.add(line);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public void readMap(){
+<b class="fc">&nbsp;        monsters = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;        hearts = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;        tiles = new ArrayList&lt;&gt;();</b>
+&nbsp;
+<b class="fc">&nbsp;        for (int y = 0; y &lt; map.size(); y++){</b>
+<b class="fc">&nbsp;            String line = map.get(y);</b>
+&nbsp;
+<b class="fc">&nbsp;            for (int x = 0; x &lt; line.length(); x++)</b>
+<b class="fc">&nbsp;                readChar(line, x, y);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public void readChar(String line, int x, int y){
+<b class="fc">&nbsp;        char c = line.charAt(x);</b>
+&nbsp;
+<b class="fc">&nbsp;        x *= 16; y *= 16;</b>
+&nbsp;
+<b class="fc">&nbsp;        switch (c) {</b>
+<b class="fc">&nbsp;            case &#39;L&#39; -&gt; {</b>
+<b class="fc">&nbsp;                link = new Link(x, y);</b>
+<b class="fc">&nbsp;                tiles.add(new Grass(x, y));</b>
+&nbsp;            }
+&nbsp;
+<b class="fc">&nbsp;            case &#39;l&#39; -&gt; {</b>
+<b class="fc">&nbsp;                monsters.add(new Log(x, y));</b>
+<b class="fc">&nbsp;                tiles.add(new Grass(x, y));</b>
+&nbsp;            }
+&nbsp;
+<b class="fc">&nbsp;            case &#39;W&#39; -&gt; {</b>
+<b class="fc">&nbsp;                monsters.add(new Weirdo(x, y));</b>
+<b class="fc">&nbsp;                tiles.add(new Grass(x, y));</b>
+&nbsp;            }
+&nbsp;
+<b class="fc">&nbsp;            case &#39;H&#39; -&gt; {</b>
+<b class="fc">&nbsp;                hearts.add(new Heart(x, y));</b>
+<b class="fc">&nbsp;                tiles.add(new Grass(x, y));</b>
+&nbsp;            }
+&nbsp;
+<b class="fc">&nbsp;            case &#39; &#39; -&gt; tiles.add(new Grass(x, y));</b>
+&nbsp;
+&nbsp;            default -&gt; {
+<b class="fc">&nbsp;                tiles.add(new Grass(x, y));</b>
+<b class="fc">&nbsp;                tiles.add(new Bush(x, y, c));</b>
+&nbsp;            }
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-12-24 01:05</div>
+</div>
+</body>
+</html>

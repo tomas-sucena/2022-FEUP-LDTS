@@ -1,0 +1,156 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > LogPresenter</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.l08gr02.zelda.presenters.elements.monsters</a>
+</div>
+
+<h1>Coverage Summary for Class: LogPresenter (com.l08gr02.zelda.presenters.elements.monsters)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LogPresenter</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (2/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    12.5%
+  </span>
+  <span class="absValue">
+    (2/16)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.l08gr02.zelda.presenters.elements.monsters;
+&nbsp;
+&nbsp;import com.l08gr02.zelda.gui.GUI;
+&nbsp;import com.l08gr02.zelda.models.elements.moving.Mover;
+&nbsp;import com.l08gr02.zelda.models.elements.moving.monsters.Log;
+&nbsp;import com.l08gr02.zelda.viewers.elements.moving.monsters.LogViewer;
+&nbsp;
+&nbsp;public class LogPresenter extends MonsterPresenter&lt;Log&gt; {
+&nbsp;    private Mover target;
+&nbsp;
+&nbsp;    // constructor
+&nbsp;    public LogPresenter(Log model, LogViewer viewer){
+<b class="fc">&nbsp;        super(model, viewer);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // methods
+&nbsp;    public void setTarget(Mover target){
+<b class="fc">&nbsp;        this.target = target;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void chaseTarget(){
+<b class="nc">&nbsp;        int diff_y = target.getPosition().getY() - model.getPosition().getY();</b>
+&nbsp;
+<b class="nc">&nbsp;        if (diff_y &gt; 0){</b>
+<b class="nc">&nbsp;            moveDown(model.getSpeed());</b>
+&nbsp;        }
+<b class="nc">&nbsp;        else if (diff_y &lt; 0){</b>
+<b class="nc">&nbsp;            moveUp(model.getSpeed());</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        int diff_x = target.getPosition().getX() - model.getPosition().getX();</b>
+&nbsp;
+<b class="nc">&nbsp;        if (diff_x &gt; 0){</b>
+<b class="nc">&nbsp;            moveRight(model.getSpeed());</b>
+&nbsp;        }
+<b class="nc">&nbsp;        else if (diff_x &lt; 0){</b>
+<b class="nc">&nbsp;            moveLeft(model.getSpeed());</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void update(GUI gui) {
+<b class="nc">&nbsp;        if (!mustUpdate(gui)){</b>
+&nbsp;            return;
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        chaseTarget();</b>
+&nbsp;
+<b class="nc">&nbsp;        ((LogViewer) viewer).setSprite(model.getDirection());</b>
+<b class="nc">&nbsp;        viewer.draw(gui, model);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-12-24 01:05</div>
+</div>
+</body>
+</html>

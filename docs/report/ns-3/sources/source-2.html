@@ -1,0 +1,165 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Sprite</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.l08gr02.zelda.models</a>
+</div>
+
+<h1>Coverage Summary for Class: Sprite (com.l08gr02.zelda.models)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Sprite</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    88.9%
+  </span>
+  <span class="absValue">
+    (16/18)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.l08gr02.zelda.models;
+&nbsp;
+&nbsp;import java.awt.*;
+&nbsp;import java.awt.image.BufferedImage;
+&nbsp;import java.io.File;
+&nbsp;import java.io.IOException;
+&nbsp;
+&nbsp;import javax.imageio.ImageIO;
+&nbsp;
+&nbsp;public class Sprite {
+&nbsp;    private final BufferedImage spriteSheet;
+&nbsp;    private int width, height;
+&nbsp;    private Color[][] pixels;
+&nbsp;
+&nbsp;    // constructor
+<b class="fc">&nbsp;    public Sprite(int width, int height, String type, String file){</b>
+<b class="fc">&nbsp;        this.width = width; this.height = height;</b>
+&nbsp;
+<b class="fc">&nbsp;        spriteSheet = loadSprite(type, file);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // methods
+&nbsp;    public Color[][] getPixels() {
+<b class="fc">&nbsp;        return pixels;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getHeight() {
+<b class="fc">&nbsp;        return height;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getWidth() {
+<b class="fc">&nbsp;        return width;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public BufferedImage loadSprite(String type, String file){
+<b class="fc">&nbsp;        BufferedImage sprite = null;</b>
+&nbsp;
+&nbsp;        try {
+<b class="fc">&nbsp;            sprite = ImageIO.read(new File(&quot;src/main/resources/models/&quot; + type + &quot;/&quot; + file + &quot;.png&quot;));</b>
+<b class="nc">&nbsp;        } catch (IOException e) {</b>
+<b class="nc">&nbsp;            e.printStackTrace();</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;
+<b class="fc">&nbsp;        return sprite;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public BufferedImage getSprite(int xGrid, int yGrid){
+<b class="fc">&nbsp;        return spriteSheet.getSubimage(xGrid * width, yGrid * height, width, height);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setPixels(int xGrid, int yGrid) {
+<b class="fc">&nbsp;        BufferedImage sprite = getSprite(xGrid, yGrid);</b>
+&nbsp;
+<b class="fc">&nbsp;        pixels = new Color[height][width];</b>
+<b class="fc">&nbsp;        for(int i = 0; i &lt; height; i++){</b>
+<b class="fc">&nbsp;            for(int j = 0; j &lt; width; j++){</b>
+<b class="fc">&nbsp;                pixels[i][j] = new Color(sprite.getRGB(i,j));</b>
+&nbsp;            }
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-12-24 01:05</div>
+</div>
+</body>
+</html>

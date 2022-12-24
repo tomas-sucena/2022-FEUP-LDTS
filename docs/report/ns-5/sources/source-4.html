@@ -1,0 +1,160 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Position</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.l08gr02.zelda.models.elements</a>
+</div>
+
+<h1>Coverage Summary for Class: Position (com.l08gr02.zelda.models.elements)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Position</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    80%
+  </span>
+  <span class="absValue">
+    (8/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    76.9%
+  </span>
+  <span class="absValue">
+    (10/13)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.l08gr02.zelda.models.elements;
+&nbsp;
+&nbsp;import java.util.Objects;
+&nbsp;
+&nbsp;public class Position {
+&nbsp;    private final int x, y;
+&nbsp;
+&nbsp;    // constructors
+<b class="fc">&nbsp;    public Position(int x, int y){</b>
+<b class="fc">&nbsp;        this.x = x; this.y = y;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // methods
+&nbsp;    public int getX(){
+<b class="fc">&nbsp;        return x;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getY() {
+<b class="fc">&nbsp;        return y;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Position up(int i){
+<b class="fc">&nbsp;        return new Position(x, y - i);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Position down(int i){
+<b class="fc">&nbsp;        return new Position(x, y + i);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Position left(int i){
+<b class="fc">&nbsp;        return new Position(x - i, y);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Position right(int i){
+<b class="fc">&nbsp;        return new Position(x + i, y);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public boolean equals(Object obj) {
+<b class="fc">&nbsp;        if (!(obj instanceof Position p)){</b>
+<b class="nc">&nbsp;            return false;</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        return (x == p.getX() &amp;&amp; y == p.getY());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public int hashCode() {
+<b class="nc">&nbsp;        return Objects.hash(x, y);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String toString(){
+<b class="nc">&nbsp;        return x + &quot; &quot; + y;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-12-24 01:05</div>
+</div>
+</body>
+</html>

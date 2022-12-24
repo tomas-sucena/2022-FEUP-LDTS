@@ -1,0 +1,279 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > LinkViewer</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.l08gr02.zelda.viewers.elements.moving</a>
+</div>
+
+<h1>Coverage Summary for Class: LinkViewer (com.l08gr02.zelda.viewers.elements.moving)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LinkViewer</td>
+<td class="coverageStat">
+  <span class="percent">
+    16.7%
+  </span>
+  <span class="absValue">
+    (1/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    4.3%
+  </span>
+  <span class="absValue">
+    (2/46)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">LinkViewer$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">LinkViewer$MockitoMock$1990773635</td>
+  </tr>
+  <tr>
+    <td class="name">LinkViewer$MockitoMock$1990773635$auxiliary$0FfVoYEw</td>
+  </tr>
+  <tr>
+    <td class="name">LinkViewer$MockitoMock$1990773635$auxiliary$2PSizW8s</td>
+  </tr>
+  <tr>
+    <td class="name">LinkViewer$MockitoMock$1990773635$auxiliary$gbK7EK24</td>
+  </tr>
+  <tr>
+    <td class="name">LinkViewer$MockitoMock$1990773635$auxiliary$GQk9oKzL</td>
+  </tr>
+  <tr>
+    <td class="name">LinkViewer$MockitoMock$1990773635$auxiliary$K1yqBWNL</td>
+  </tr>
+  <tr>
+    <td class="name">LinkViewer$MockitoMock$1990773635$auxiliary$NPB4WwMi</td>
+  </tr>
+  <tr>
+    <td class="name">LinkViewer$MockitoMock$1990773635$auxiliary$QaoQs4Eh</td>
+  </tr>
+  <tr>
+    <td class="name">LinkViewer$MockitoMock$1990773635$auxiliary$U4oqkhCl</td>
+  </tr>
+  <tr>
+    <td class="name">LinkViewer$MockitoMock$1990773635$auxiliary$W3lwooG3</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    14.3%
+  </span>
+  <span class="absValue">
+    (1/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    4.3%
+  </span>
+  <span class="absValue">
+    (2/47)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.l08gr02.zelda.viewers.elements.moving;
+&nbsp;
+&nbsp;import com.googlecode.lanterna.TextColor;
+&nbsp;import com.googlecode.lanterna.graphics.TextGraphics;
+&nbsp;import com.l08gr02.zelda.gui.GUI;
+&nbsp;import com.l08gr02.zelda.models.Sprite;
+&nbsp;import com.l08gr02.zelda.models.elements.moving.Link;
+&nbsp;
+&nbsp;import java.awt.*;
+&nbsp;
+&nbsp;import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
+&nbsp;
+&nbsp;public class LinkViewer extends MoverViewer&lt;Link&gt; {
+&nbsp;    private final Sprite heartSprite;
+&nbsp;    private boolean attacking;
+&nbsp;
+&nbsp;    // constructor
+&nbsp;    public LinkViewer(){
+<b class="fc">&nbsp;        super(new Sprite(44, 44, &quot;Link&quot;, &quot;spritesheet&quot;));</b>
+&nbsp;
+<b class="fc">&nbsp;        heartSprite = new Sprite(16, 16,&quot;gfx&quot;,&quot;objects&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // methods
+&nbsp;    public boolean isAttacking() {
+<b class="nc">&nbsp;        return attacking;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void draw(GUI gui, Link link) {
+<b class="nc">&nbsp;        super.draw(gui, link);</b>
+&nbsp;
+<b class="nc">&nbsp;        drawHealthBar(gui, link);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void drawHealthBar(GUI gui, Link link){
+<b class="nc">&nbsp;        heartSprite.setPixels(4,0);</b>
+&nbsp;
+<b class="nc">&nbsp;        float life = link.getHearts();</b>
+&nbsp;
+&nbsp;        // draw all whole hearts
+<b class="nc">&nbsp;        for (int i = 0; i &lt; (int) life; i++){</b>
+<b class="nc">&nbsp;            drawHeart(gui, i);</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        // draw the fragmented heart, if it exists
+<b class="nc">&nbsp;        if (life % 1 != 0){</b>
+<b class="nc">&nbsp;            heartSprite.setPixels(8 - (int) (life % 1 * 4),0);</b>
+<b class="nc">&nbsp;            drawHeart(gui, (int) life);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public void drawHeart(GUI gui, int n){
+<b class="nc">&nbsp;        TextGraphics graphics = gui.getGraphics();</b>
+<b class="nc">&nbsp;        Color[][] pixels = heartSprite.getPixels();</b>
+&nbsp;
+<b class="nc">&nbsp;        for (int i = 0; i &lt; heartSprite.getHeight(); i++) {</b>
+<b class="nc">&nbsp;            for (int j = 0; j &lt; heartSprite.getWidth(); j++) {</b>
+<b class="nc">&nbsp;                int R = pixels[i][j].getRed();</b>
+<b class="nc">&nbsp;                int G = pixels[i][j].getGreen();</b>
+<b class="nc">&nbsp;                int B = pixels[i][j].getBlue();</b>
+&nbsp;
+&nbsp;                // verify if the pixel is transparent
+<b class="nc">&nbsp;                if (R == 131 &amp;&amp; G == 131 &amp;&amp; B == 131) {</b>
+<b class="nc">&nbsp;                    continue;</b>
+&nbsp;                }
+&nbsp;
+<b class="nc">&nbsp;                graphics.setBackgroundColor(new TextColor.RGB(R, G, B));</b>
+<b class="nc">&nbsp;                graphics.setCharacter(n * 16 + i, j, &#39; &#39;);</b>
+&nbsp;            }
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void setSprite(ACTION action){
+<b class="nc">&nbsp;        switch (action) {</b>
+<b class="nc">&nbsp;            case UP -&gt; {</b>
+<b class="nc">&nbsp;                yGrid = 1;</b>
+<b class="nc">&nbsp;                xGrid = (xGrid &gt;= 7) ? 0 : xGrid + 1;</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            case DOWN -&gt; {</b>
+<b class="nc">&nbsp;                yGrid = 0;</b>
+<b class="nc">&nbsp;                xGrid = (xGrid &gt;= 7) ? 0 : xGrid + 1;</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            case LEFT -&gt; {</b>
+<b class="nc">&nbsp;                yGrid = 2;</b>
+<b class="nc">&nbsp;                xGrid = (xGrid &gt;= 5) ? 0 : xGrid + 1;</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            case RIGHT -&gt; {</b>
+<b class="nc">&nbsp;                yGrid = 3;</b>
+<b class="nc">&nbsp;                xGrid = (xGrid &gt;= 5) ? 0 : xGrid + 1;</b>
+&nbsp;            }
+&nbsp;
+&nbsp;            case ATTACK -&gt; {
+<b class="nc">&nbsp;                if (!attacking){</b>
+<b class="nc">&nbsp;                    attacking = true;</b>
+&nbsp;
+<b class="nc">&nbsp;                    yGrid += 4;</b>
+<b class="nc">&nbsp;                    xGrid = -1;</b>
+&nbsp;                }
+&nbsp;
+<b class="nc">&nbsp;                if (xGrid &lt; 4){</b>
+<b class="nc">&nbsp;                    xGrid++;</b>
+&nbsp;                }
+&nbsp;                else{
+<b class="nc">&nbsp;                    attacking = false;</b>
+&nbsp;
+<b class="nc">&nbsp;                    yGrid -= 4;</b>
+<b class="nc">&nbsp;                    xGrid = 0;</b>
+&nbsp;                }
+&nbsp;            }
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        sprite.setPixels(xGrid, yGrid);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-12-24 01:05</div>
+</div>
+</body>
+</html>

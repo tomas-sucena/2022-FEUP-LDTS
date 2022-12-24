@@ -1,0 +1,178 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > MoverPresenter</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.l08gr02.zelda.presenters.elements</a>
+</div>
+
+<h1>Coverage Summary for Class: MoverPresenter (com.l08gr02.zelda.presenters.elements)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MoverPresenter</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    86.4%
+  </span>
+  <span class="absValue">
+    (19/22)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.l08gr02.zelda.presenters.elements;
+&nbsp;
+&nbsp;import com.l08gr02.zelda.gui.GUI;
+&nbsp;import com.l08gr02.zelda.models.elements.CollidingElement;
+&nbsp;import com.l08gr02.zelda.models.elements.Hitbox;
+&nbsp;import com.l08gr02.zelda.models.elements.moving.Mover;
+&nbsp;import com.l08gr02.zelda.presenters.Presenter;
+&nbsp;import com.l08gr02.zelda.viewers.Viewer;
+&nbsp;
+&nbsp;import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
+&nbsp;
+&nbsp;public abstract class MoverPresenter&lt;T extends Mover&gt; extends Presenter&lt;T&gt; {
+&nbsp;    // constructor
+&nbsp;    public MoverPresenter(T model, Viewer&lt;T&gt; viewer){
+<b class="fc">&nbsp;        super(model, viewer);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // methods
+&nbsp;    public void moveUp(int speed) {
+<b class="fc">&nbsp;        model.setDirection(ACTION.UP);</b>
+&nbsp;
+&nbsp;        // verify if the model can move without colliding
+<b class="fc">&nbsp;        Hitbox dummy = model.getHitbox().up(speed);</b>
+&nbsp;
+<b class="fc">&nbsp;        if (canMove(dummy)){</b>
+<b class="fc">&nbsp;            model.up(speed);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public void moveDown(int speed) {
+<b class="fc">&nbsp;        model.setDirection(ACTION.DOWN);</b>
+&nbsp;
+&nbsp;        // verify if the model can move without colliding
+<b class="fc">&nbsp;        Hitbox dummy = model.getHitbox().down(speed);</b>
+&nbsp;
+<b class="fc">&nbsp;        if (canMove(dummy)){</b>
+<b class="fc">&nbsp;            model.down(speed);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public void moveLeft(int speed) {
+<b class="fc">&nbsp;        model.setDirection(ACTION.LEFT);</b>
+&nbsp;
+&nbsp;        // verify if the model can move without colliding
+<b class="fc">&nbsp;        Hitbox dummy = model.getHitbox().left(speed);</b>
+&nbsp;
+<b class="fc">&nbsp;        if (canMove(dummy)){</b>
+<b class="fc">&nbsp;            model.left(speed);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public void moveRight(int speed) {
+<b class="fc">&nbsp;        model.setDirection(ACTION.RIGHT);</b>
+&nbsp;
+&nbsp;        // verify if the model can move without colliding
+<b class="fc">&nbsp;        Hitbox dummy = model.getHitbox().right(speed);</b>
+&nbsp;
+<b class="fc">&nbsp;        if (canMove(dummy)){</b>
+<b class="fc">&nbsp;            model.right(speed);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean canMove(Hitbox dummy){
+<b class="fc">&nbsp;        for (CollidingElement el : model.getObstacles()){</b>
+<b class="nc">&nbsp;            if (dummy.intersects(el.getHitbox())){</b>
+<b class="nc">&nbsp;                return false;</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+<b class="fc">&nbsp;        return true;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public abstract void update(GUI gui);
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-12-24 01:05</div>
+</div>
+</body>
+</html>

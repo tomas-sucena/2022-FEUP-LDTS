@@ -62,7 +62,7 @@ public class FighterTest {
         //Testing constructor
         Log log = new Log(10,10);
         assertEquals(log.getHearts(),2);
-        assertEquals(log.getSpeed(), 3);
+        assertEquals(log.getSpeed(), 2);
         assertEquals(log.getHitbox(), new Hitbox(10 + 8, 10 + 12, 16, 16));
 
         //Just testing constructor seeing as though anything else that can be tested has already been tested on LinkTest
@@ -74,7 +74,7 @@ public class FighterTest {
         Weirdo weirdo = new Weirdo(10,10);
         assertEquals(weirdo.getHearts(),3.0);
         assertEquals(weirdo.getSpeed(),2);
-        assertEquals(weirdo.getHitbox(),new Hitbox(10 + 8, 10 + 12, 16, 16));
+        assertEquals(new Hitbox(18, 25, 8, 8), weirdo.getHitbox());
 
         //Just testing constructor seeing as though anything else that can be tested has already been tested on LinkTest
     }

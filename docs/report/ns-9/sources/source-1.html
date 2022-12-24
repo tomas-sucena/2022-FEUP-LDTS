@@ -1,0 +1,125 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Music</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.l08gr02.zelda.models.sound</a>
+</div>
+
+<h1>Coverage Summary for Class: Music (com.l08gr02.zelda.models.sound)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Music</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/5)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.l08gr02.zelda.models.sound;
+&nbsp;
+&nbsp;import javax.sound.sampled.*;
+&nbsp;
+&nbsp;public class Music extends Sound {
+&nbsp;    // constructor
+&nbsp;    public Music(String file) {
+<b class="nc">&nbsp;        super(&quot;music&quot;, file);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // method
+&nbsp;    @Override
+&nbsp;    public void play() {
+<b class="nc">&nbsp;        super.play();</b>
+<b class="nc">&nbsp;        clip.loop(Clip.LOOP_CONTINUOUSLY);</b>
+&nbsp;
+&nbsp;        // reduzir o volume da música
+<b class="nc">&nbsp;        FloatControl soundController = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);</b>
+<b class="nc">&nbsp;        soundController.setValue(-7.0f);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-12-24 01:05</div>
+</div>
+</body>
+</html>

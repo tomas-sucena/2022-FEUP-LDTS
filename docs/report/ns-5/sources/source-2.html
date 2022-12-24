@@ -1,0 +1,136 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Element</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.l08gr02.zelda.models.elements</a>
+</div>
+
+<h1>Coverage Summary for Class: Element (com.l08gr02.zelda.models.elements)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Element</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/7)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.l08gr02.zelda.models.elements;
+&nbsp;
+&nbsp;public abstract class Element {
+&nbsp;    private Position pos;
+&nbsp;    protected Hitbox hitbox;
+&nbsp;
+&nbsp;    // construtor
+<b class="fc">&nbsp;    public Element(int x, int y){</b>
+<b class="fc">&nbsp;        pos = new Position(x, y);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // métodos
+&nbsp;    public Position getPosition(){
+<b class="fc">&nbsp;        return pos;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setPosition(Position pos){
+<b class="fc">&nbsp;        this.pos = pos;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Hitbox getHitbox() {
+<b class="fc">&nbsp;        return hitbox;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setHitbox(Hitbox hitbox) {
+<b class="fc">&nbsp;        this.hitbox = hitbox;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean collidesWith(Element el){
+<b class="fc">&nbsp;        return hitbox.intersects(el.getHitbox());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-12-24 01:05</div>
+</div>
+</body>
+</html>

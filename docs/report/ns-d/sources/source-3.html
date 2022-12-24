@@ -1,0 +1,135 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > MonsterPresenterFactory</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.l08gr02.zelda.presenters.elements.monsters</a>
+</div>
+
+<h1>Coverage Summary for Class: MonsterPresenterFactory (com.l08gr02.zelda.presenters.elements.monsters)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MonsterPresenterFactory</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (11/11)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.l08gr02.zelda.presenters.elements.monsters;
+&nbsp;
+&nbsp;import com.l08gr02.zelda.models.dungeon.Dungeon;
+&nbsp;import com.l08gr02.zelda.models.elements.moving.monsters.Log;
+&nbsp;import com.l08gr02.zelda.models.elements.moving.monsters.Monster;
+&nbsp;import com.l08gr02.zelda.models.elements.moving.monsters.Weirdo;
+&nbsp;import com.l08gr02.zelda.viewers.elements.moving.monsters.LogViewer;
+&nbsp;import com.l08gr02.zelda.viewers.elements.moving.monsters.WeirdoViewer;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;
+<b class="fc">&nbsp;public class MonsterPresenterFactory {</b>
+&nbsp;    // method
+&nbsp;    public List&lt;MonsterPresenter&gt; createPresenters(Dungeon dungeon){
+<b class="fc">&nbsp;        List&lt;MonsterPresenter&gt; monsterPresenters = new ArrayList&lt;&gt;();</b>
+&nbsp;
+<b class="fc">&nbsp;        for (Monster monster : dungeon.getMonsters()){</b>
+<b class="fc">&nbsp;            if (monster instanceof Log){</b>
+<b class="fc">&nbsp;                LogPresenter logPresenter = new LogPresenter((Log) monster, new LogViewer());</b>
+<b class="fc">&nbsp;                logPresenter.setTarget(dungeon.getLink());</b>
+&nbsp;
+<b class="fc">&nbsp;                monsterPresenters.add(logPresenter);</b>
+<b class="fc">&nbsp;                continue;</b>
+&nbsp;            }
+&nbsp;
+<b class="fc">&nbsp;            monsterPresenters.add(new WeirdoPresenter((Weirdo) monster, new WeirdoViewer()));</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;
+<b class="fc">&nbsp;        return monsterPresenters;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-12-24 01:05</div>
+</div>
+</body>
+</html>
