@@ -140,7 +140,7 @@ The interfaces and abstract classes that serve as the basis of our Strategy patt
 ### TESTING
 
 #### Mutation testing
-Since Pitest was being uncooperative, we could not access our mutation coverage report.
+![img.png](images/pitest_coverage.png)
 
 #### Coverage report
 ![coverage.png](images/coverage.png)
