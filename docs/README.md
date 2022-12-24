@@ -18,6 +18,10 @@ The following UML diagram represents how the various game classes interact with 
 ### IMPLEMENTED FEATURES
 
 - **Movement** - Link can move in four directions: up (:arrow_up_small: or W), down (:arrow_down_small: or S), left (:arrow_backward: or A) and right (:arrow_forward: or D).
+- **Attack:crossed_swords: -** When you press the SPACE bar, Link fiercely swings his sword. Use this to defend yourself against the Exceptions.
+- **Collision -** A collision will occur when Link is in the same position as an enemy, causing our hero to take damage.
+- **Lose life -** Link starts out with 3 lives, represented as hearts on the screen. Everytime an enemy collides with him, Link takes damage and loses some hearts, depending on the strength of the attack.
+
 -----
 ### PLANNED FEATURES
 
@@ -26,11 +30,8 @@ The following UML diagram represents how the various game classes interact with 
 - **Collect Object:mag: -** When Link is in the same position as an object he collects it. Use to obtain all the objects of the game.
 - **Menu -** There will be a menu when the game opens with the start and instructions options.
 - **Game Over -** If the player loses the game, there will be a message on the screen.
-- **Collision -** A collision will occur when Link is in the same position as an enemy, causing our hero to take damage.
-- **Lose life -** Link starts out with 3 lives, represented as hearts on the screen. Everytime an enemy collides with him, Link will take damage and lose some hearts, depending on the strenght of the attack.
 
 -----
-
 ### DESIGN
 
 > For further insight into our implementation of the design patterns, please consult the UML Class diagram above
@@ -75,19 +76,19 @@ When considering how we wanted to program the distinct elements that compose our
 
 **The Pattern**
 
-
+To solve this issue, we implemented Strategy. This design pattern establishes a set of actions, encapsulates each one and makes them interchangeable. 
 
 **Implementation**
 
-Classes that share properties inherit/implement a superclass/interface, respectively. For instance:
+Entities that perform similar actions inherit/implement the same superclass/interface, respectively. For instance:
 
-- **Models -** All elements inherit the Element abstract class. Moreover, elements that can move inherit the MovingElement abstract class, which in turn also extends Elements.
-- **Presenters -** The dungeon and element presenters both extend the Presenter abstract class. This class defines the abstract method ```update(graphics, action)```
-- **Viewers -** The dungeon and element viewers implement the Viewer interface, which defines the ```draw(graphics, model)``` function
+- **Mover -** All moving elements extend the ```Mover``` abstract class, which in turn implements the ```Moving``` interface.
+- **Creatures -** Entities that can take damage extend the Creature abstract class, which extends Mover and implements ```Health```.
+- **Fighter -** Creatures that attack, such as Link, extend the Fighter class, which implements the ```Fighting``` interface.
 
-The classes that serve as the basis of our Composite pattern can be found in the following files:
+The interfaces that serve as the basis of our Strategy pattern can be found in the following files:
 
-- [Element](https://github.com/FEUP-LDTS-2022/project-l08gr02/blob/master/src/main/java/com/l08gr02/zelda/models/elements/Element.java) (abstract class)
+- [Moving](https://github.com/FEUP-LDTS-2022/project-l08gr02/blob/master/src/main/java/com/l08gr02/zelda/models/elements/Element.java) (abstract class)
 - [MovingElement](https://github.com/FEUP-LDTS-2022/project-l08gr02/blob/master/src/main/java/com/l08gr02/zelda/models/elements/MovingElement.java) (abstract class)
 - [Presenter](https://github.com/FEUP-LDTS-2022/project-l08gr02/blob/master/src/main/java/com/l08gr02/zelda/presenters/Presenter.java) (abstract class)
 - [Viewer](https://github.com/FEUP-LDTS-2022/project-l08gr02/blob/master/src/main/java/com/l08gr02/zelda/viewers/Viewer.java) (interface)
@@ -132,13 +133,18 @@ The following interfaces have methods that will be needed for multiple game cara
 
 ### TESTING
 
-Using jQwik, we created numerous property-based tests. However, since Pitest was being uncooperative, we could not access our mutation coverage report.
-
+#### Mutation testing
+Since Pitest was being uncooperative, we could not access our mutation coverage report.
 
 #### Coverage report
 ![coverage.png](images/coverage.png)
 
-![link para repositório](images/coverage.png)
+[Coverage report](https://github.com/FEUP-LDTS-2022/project-l08gr02/tree/master/docs/report)
+
+#### PBT
+
+Using JQwik, we created numerous property-based tests.
+
 ------
 
 ### SELF-EVALUATION
