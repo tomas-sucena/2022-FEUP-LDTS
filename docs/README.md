@@ -13,6 +13,17 @@ This project was developed by Andreia Silva (up202108769@up.pt), Gonçalo Nadais
 The following UML diagram represents how the various game classes interact with each other:
 
 ![UML Class diagram](images/UML.png)
+-----
+### Gameplay Short
+
+<p align="center" justify="center">
+  <img src="https://github.com/FEUP-LDTS-2022/project-l08gr02/blob/master/docs/gifs/killlog.gif"
+</p>
+<p align="center">
+  <b><i>Short Gameplay GIF</i></b>
+</p>
+<br>
+<br />
 
 -----
 ### IMPLEMENTED FEATURES
