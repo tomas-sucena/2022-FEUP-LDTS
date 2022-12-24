@@ -125,7 +125,9 @@ The following interfaces have methods that will be needed for multiple game cara
 - Comments
   - We use comments in some complex methods for a readers better understanding;
 - Lazy Classes
-  - For extend some classes, following the Open-Closed Principle, we created classes like Grass and Heart that do not do much.
+  - For extend some classes, following the Open-Closed Principle, we created classes like Grass and Heart that do not do much, creating this smell.
+- Duplicate Code
+  - This occurs when we have two code fragments look almost identical, like the setSprite method in the WeirdoViewer and LogViewer.  To fix this, we could create a more abstract method, that could be used to do the same job as the other two methods.
 ------
 
 ### TESTING
