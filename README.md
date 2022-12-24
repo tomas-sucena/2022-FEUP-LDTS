@@ -13,7 +13,7 @@ This project was developed by Andreia Silva (up202108769@up.pt), Gonçalo Nadais
 
 - **Arrow keys** OR **WASD -** Move
 - **SHIFT -** Sprint 
-
+- **Space -** Attack
 -----
 
 ## UML Class Diagram
