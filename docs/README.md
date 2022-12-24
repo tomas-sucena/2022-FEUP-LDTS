@@ -140,10 +140,12 @@ The interfaces and abstract classes that serve as the basis of our Strategy patt
 ### TESTING
 
 #### Mutation testing
-![img.png](images/pitest_coverage.png)
+![pitest_coverage.png](images/pitest_coverage.png)
+
+[Pitest report](https://github.com/FEUP-LDTS-2022/project-l08gr02/tree/master/docs/pitest/202212240149)
 
 #### Coverage report
-![coverage.png](images/coverage.png)
+![coverage.png](images/coverage_report.png)
 
 [Coverage report](https://github.com/FEUP-LDTS-2022/project-l08gr02/tree/master/docs/report)
 
