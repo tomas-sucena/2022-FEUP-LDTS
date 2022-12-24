@@ -93,51 +93,46 @@ To solve this issue, we implemented Strategy. This design pattern establishes a 
 
 Entities that perform similar actions inherit/implement the same superclass/interface, respectively. For instance:
 
-- **Mover -** All moving elements extend the ```Mover``` abstract class, which in turn implements the ```Moving``` interface.
-- **Creatures -** Entities that can take damage extend the Creature abstract class, which extends Mover and implements ```Health```.
-- **Fighter -** Creatures that attack, such as Link, extend the Fighter class, which implements the ```Fighting``` interface.
+- All elements that can **collide** extend the ```CollidingElement``` abstract class, which implements the ```Collision``` interface
+- All **moving** elements extend the ```Mover``` abstract class, which in turn implements the ```Moving``` interface.
+- Entities that can **heal** and **take damage** extend the ```Creature``` abstract class, which extends ```Mover``` and implements ```Health```.
+- Creatures that **attack**, such as Link, extend the ```Fighter``` abstract class, which implements the ```Fighting``` interface.
 
-The interfaces that serve as the basis of our Strategy pattern can be found in the following files:
+The interfaces and abstract classes that serve as the basis of our Strategy pattern can be found in the following files:
 
-- [Moving](https://github.com/FEUP-LDTS-2022/project-l08gr02/blob/master/src/main/java/com/l08gr02/zelda/models/elements/Element.java) (abstract class)
-- [MovingElement](https://github.com/FEUP-LDTS-2022/project-l08gr02/blob/master/src/main/java/com/l08gr02/zelda/models/elements/MovingElement.java) (abstract class)
-- [Presenter](https://github.com/FEUP-LDTS-2022/project-l08gr02/blob/master/src/main/java/com/l08gr02/zelda/presenters/Presenter.java) (abstract class)
-- [Viewer](https://github.com/FEUP-LDTS-2022/project-l08gr02/blob/master/src/main/java/com/l08gr02/zelda/viewers/Viewer.java) (interface)
+###### Interfaces
+- [Collision](https://github.com/FEUP-LDTS-2022/project-l08gr02/blob/master/src/main/java/com/l08gr02/zelda/models/elements/actions/Collision.java)
+- [Movement](https://github.com/FEUP-LDTS-2022/project-l08gr02/blob/master/src/main/java/com/l08gr02/zelda/models/elements/actions/Movement.java)
+- [Health](https://github.com/FEUP-LDTS-2022/project-l08gr02/blob/master/src/main/java/com/l08gr02/zelda/models/elements/actions/Health.java)
+- [Fighting](https://github.com/FEUP-LDTS-2022/project-l08gr02/blob/master/src/main/java/com/l08gr02/zelda/models/elements/actions/Fighting.java)
+
+###### Abstract classes
+- [CollidingElement](https://github.com/FEUP-LDTS-2022/project-l08gr02/blob/master/src/main/java/com/l08gr02/zelda/models/elements/CollidingElement.java)
+- [Mover](https://github.com/FEUP-LDTS-2022/project-l08gr02/blob/master/src/main/java/com/l08gr02/zelda/models/elements/moving/Mover.java)
+- [Creature](https://github.com/FEUP-LDTS-2022/project-l08gr02/blob/master/src/main/java/com/l08gr02/zelda/models/elements/moving/Creature.java)
+- [Fighter](https://github.com/FEUP-LDTS-2022/project-l08gr02/blob/master/src/main/java/com/l08gr02/zelda/models/elements/moving/Fighter.java)
 
 **Consequences**
 
 - Our code is easier to interpret, as the purpose of most classes can be pinpointed if we examine the classes it extends or the interfaces it implements.
 - Unit testing is more efficient, as we can test several classes at a time (provided they share the same properties)
-
-**The Pattern**
-
-We implemented the strategy pattern, implementing interfaces on multiple classes that difference only in their behavior.
-
-**Implementation**
-
-The following interfaces have methods that will be needed for multiple game caracters, but they will have different variants of the algorithm.     
-
-- Collision - Is implemented by Bush, CollidingElement, Creature, Fighter, Heart, Link, Log, Monster, Mover and Weirdo classes;
-- Fighting - Implemented by the Fighter and Link classes;
-- Health - The Creature abstract class implements the Health interface;
-- Movement - Implemented by the Mover abstract class.
-
-
+- Adding new actions and entities is extremely simple
 ------
 
 ### KNOWN CODE SMELLS
 
 **Object-Orientation Abusers:**
 - Switch Statements 
-  - This occurs more than once in our code: 
-  - Processing link instructions in the Link class or in the draw method on class BushViewer. 
+  - This occurs more than once in our code. For instance: 
+    - When processing instructions in the Link class 
+    - In the draw method of the BushViewer class
   - This code smell violates the Open-Closed Principle and one solution for it would be implementing new classes.    
 
 **Dispensables:**
 - Comments
   - We use comments in some complex methods for a readers better understanding;
 - Lazy Classes
-  - For extend some classes, following the Open-Closed Principle, we created classes like Grass and Heart that do not do much, creating this smell.
+  - Following the Open-Closed Principle, we created classes like Grass and Heart that do not do much, creating this smell.
 - Duplicate Code
   - This occurs when we have two code fragments look almost identical, like the setSprite method in the WeirdoViewer and LogViewer.  To fix this, we could create a more abstract method, that could be used to do the same job as the other two methods.
 ------
