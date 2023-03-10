@@ -7,7 +7,7 @@ import static com.l08gr02.zelda.presenters.GameplayPresenter.ACTION;
 public class Link extends Fighter {
     private int WALK_SPEED = 2, SPRINT_SPEED = 4;
 
-    // construtor
+    // constructor
     public Link(int x, int y){
         super(x, y);
         setHitbox(new Hitbox(x + 15, y + 24, 14, 10));
@@ -16,7 +16,7 @@ public class Link extends Fighter {
         setDirection(ACTION.DOWN);
     }
 
-    // métodos
+    // methods
     public void walk(){
         setSpeed(WALK_SPEED);
     }
@@ -27,7 +27,7 @@ public class Link extends Fighter {
 
     @Override
     public void attack() {
-        // definir a hitbox da espada
+        // define the hitbox of the sword
         Hitbox swordHitbox = null;
 
         int x = getPosition().getX();

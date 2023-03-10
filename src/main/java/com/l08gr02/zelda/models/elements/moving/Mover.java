@@ -9,12 +9,12 @@ public abstract class Mover extends CollidingElement implements Movement {
     private int speed;
     private ACTION direction;
 
-    // construtor
+    // constructor
     public Mover(int x, int y) {
         super(x, y);
     }
 
-    // métodos
+    // methods
     @Override
     public int getSpeed(){
         return speed;

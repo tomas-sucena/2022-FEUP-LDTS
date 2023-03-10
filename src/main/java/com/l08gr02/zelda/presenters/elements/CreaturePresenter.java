@@ -11,14 +11,14 @@ public abstract class CreaturePresenter<T extends Creature> extends MoverPresent
     private int immunityFrames;
     protected SoundEffect healingSFX, damagedSFX;
 
-    // construtor
+    // constructor
     public CreaturePresenter(T model, Viewer<T> viewer){
         super(model, viewer);
 
         immunityFrames = 0;
     }
 
-    // métodos
+    // methods
     public void heal(float heartsGained){
         model.heal(heartsGained);
         healingSFX.play();

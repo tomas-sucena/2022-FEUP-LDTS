@@ -38,7 +38,7 @@ public abstract class SpriteViewer<T extends Element> extends ElementViewer<T> {
                 int G = pixels[i][j].getGreen();
                 int B = pixels[i][j].getBlue();
 
-                // verificar se o pixel é transparente
+                // verify if the pixel is transparent
                 if (R == 131 && G == 131 && B == 131) {
                     continue;
                 }
@@ -63,7 +63,7 @@ public abstract class SpriteViewer<T extends Element> extends ElementViewer<T> {
                 int G = pixels[i][j].getGreen();
                 int B = pixels[i][j].getBlue();
 
-                // verificar se o pixel é transparente
+                // verify if the pixel is transparent
                 if (R == 131 && G == 131 && B == 131) {
                     continue;
                 }

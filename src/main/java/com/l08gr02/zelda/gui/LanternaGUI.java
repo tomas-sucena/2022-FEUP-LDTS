@@ -28,14 +28,14 @@ public class LanternaGUI extends GUI {
     public LanternaGUI(int tWidth, int tHeight, int TILE_SIZE, int fontSize) throws URISyntaxException, IOException, FontFormatException {
         super(tWidth, tHeight, TILE_SIZE);
 
-        // criar o screen
+        // create the screen
         screen = new TerminalScreen(createTerminal(tWidth, tHeight, fontSize));
 
-        screen.setCursorPosition(null); // não precisamos do rato
+        screen.setCursorPosition(null); // we don't need the cursor
         screen.startScreen();
         screen.doResizeIfNecessary();
 
-        // criar os graphics
+        // create the graphics
         graphics = screen.newTextGraphics();
     }
 
@@ -61,19 +61,19 @@ public class LanternaGUI extends GUI {
     }
 
     public Terminal createTerminal(int tWidth, int tHeight, int fontSize) throws URISyntaxException, IOException, FontFormatException {
-        // definir o tamanho do terminal
+        // define the size of the terminal
         TerminalSize tSize = new TerminalSize(tWidth, tHeight);
 
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory()
                 .setInitialTerminalSize(tSize);
 
-        // criar a fonte
+        // create the font
         AWTTerminalFontConfiguration fontConfig = loadFont(fontSize);
 
         terminalFactory.setForceAWTOverSwing(true);
         terminalFactory.setTerminalEmulatorFontConfiguration(fontConfig);
 
-        // adicionar os listeners
+        // add the listeners
         Terminal terminal = terminalFactory.createTerminal();
         addListeners(terminal);
 

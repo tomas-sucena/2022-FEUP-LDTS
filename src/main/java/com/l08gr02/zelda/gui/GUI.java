@@ -12,15 +12,15 @@ public abstract class GUI {
     private final Camera camera;
     private final Set<Integer> pressedKeys;
 
-    // construtor
+    // constructor
     public GUI(int tWidth, int tHeight, int TILE_SIZE) throws URISyntaxException, IOException, FontFormatException {
         pressedKeys = new HashSet<>();
 
-        // criar a câmara
+        // create the camera
         camera = new Camera(0, 0, tWidth, tHeight, TILE_SIZE);
     }
 
-    // métodos
+    // methods
     public Camera getCamera(){
         return camera;
     }

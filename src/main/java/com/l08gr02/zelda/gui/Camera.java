@@ -15,7 +15,7 @@ public class Camera extends Element {
     private int xLim, yLim;
     private final Queue<Hitbox> photoshoot;
 
-    // construtor
+    // constructor
     public Camera(int x, int y, int tWidth, int tHeight, int TILE_SIZE) {
         super(x, y);
         setHitbox(new Hitbox(x, y, tWidth, tHeight));
@@ -27,7 +27,7 @@ public class Camera extends Element {
         photoshoot = new ArrayDeque<>();
     }
 
-    // métodos
+    // methods
     public void setLimits(List<String> map){
         this.xLim = map.get(0).length() * TILE_SIZE;
         this.yLim = map.size() * TILE_SIZE;
@@ -43,19 +43,19 @@ public class Camera extends Element {
     private void followActor(){
         Hitbox photo = photoshoot.remove();
 
-        // definir o novo valor de x
+        // define new x value
         int nextX = photo.x - tWidth / 2;
         int currX = getPosition().getX();
 
         nextX = (nextX < 0 || nextX + tWidth > xLim) ? currX : nextX;
 
-        // definir o novo valor de y
+        // define new y value
         int nextY = photo.y - tHeight / 2;
         int currY = getPosition().getY();
 
         nextY = (nextY < 0 || nextY + tHeight > yLim) ? currY : nextY;
 
-        // definir a nova posição da câmara
+        // define new camera position
         setPosition(new Position(nextX, nextY));
         getHitbox().setLocation(nextX, nextY);
     }

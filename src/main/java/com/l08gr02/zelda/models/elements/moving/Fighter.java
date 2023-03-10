@@ -6,7 +6,7 @@ import com.l08gr02.zelda.models.elements.actions.Fighting;
 public abstract class Fighter extends Creature implements Fighting {
     private Hitbox attackHitbox;
 
-    // construtor
+    // constructor
     public Fighter(int x, int y){
         super(x, y);
     }

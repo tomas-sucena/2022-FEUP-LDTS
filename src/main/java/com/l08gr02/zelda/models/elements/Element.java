@@ -4,12 +4,12 @@ public abstract class Element {
     private Position pos;
     protected Hitbox hitbox;
 
-    // construtor
+    // constructor
     public Element(int x, int y){
         pos = new Position(x, y);
     }
 
-    // métodos
+    // methods
     public Position getPosition(){
         return pos;
     }
