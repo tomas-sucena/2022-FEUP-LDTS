@@ -28,17 +28,17 @@ The following UML diagram represents how the various game classes interact with 
 -----
 ### IMPLEMENTED FEATURES
 
-- **Movement** - Link can move in four directions: up (:arrow_up_small: or W), down (:arrow_down_small: or S), left (:arrow_backward: or A) and right (:arrow_forward: or D).
-- **Attack:crossed_swords: -** When you press the SPACE bar, Link fiercely swings his sword. Use this to defend yourself against the Exceptions.
+- **Movement** - Link can move in four directions: up (W or :arrow_up_small:), down (S or :arrow_down_small:), left (A or :arrow_backward:) and right (D or :arrow_forward:).
+- **Attack**:crossed_swords: **-** When you press the SPACE bar, Link fiercely swings his sword. Use this to defend yourself against the Exceptions.
 - **Collision -** A collision will occur when Link is in the same position as an enemy, causing our hero to take damage.
-- **Lose life -** Link starts out with 3 lives, represented as hearts on the screen. Everytime an enemy collides with him, Link takes damage and loses some hearts, depending on the strength of the attack.
+- **Lose life -** Link starts with 3 lives, represented as hearts on the screen. Every time an enemy collides with him, Link takes damage and loses some hearts, depending on the strength of the attack.
 
 -----
 ### PLANNED FEATURES
 
-- **Attack:crossed_swords: -** When you press the SPACE bar, Link will fiercely swing his sword. Use this to defend yourself against the Exceptions.
-- **Shoot:bow_and_arrow: -** Press the left mouse button to make Link shoot his trusty bow. His arrows may be limited, but they sure are lethal!
-- **Collect Object:mag: -** When Link is in the same position as an object he collects it. Use to obtain all the objects of the game.
+- **Attack**:crossed_swords: **-** When you press the SPACE bar, Link will fiercely swing his sword. Use this to defend yourself against the Exceptions.
+- **Shoot**:bow_and_arrow: **-** Press the left mouse button to make Link shoot his trusty bow. His arrows may be limited, but they sure are lethal!
+- **Collect Object**:mag: **-** When Link is in the same position as an object he collects it. Use to obtain all the objects of the game.
 - **Menu -** There will be a menu when the game opens with the start and instructions options.
 - **Game Over -** If the player loses the game, there will be a message on the screen.
 
